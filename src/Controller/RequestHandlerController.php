@@ -10,6 +10,12 @@ use RobinDort\PslzmeLinks\Service\Api;
 
 class RequestHandlerController {
 
+    private $api;
+
+    public function __construct(Api $api) {
+        $this->api = $api;
+    }
+
     #[Route('/requestHandler', name: 'request_handler', defaults: ['_scope' => 'backend'],  methods: ['POST'])]
     public function handleRequests(Request $request): JsonResponse {
         $postData = json_decode($request->getContent(), true);
@@ -21,7 +27,6 @@ class RequestHandlerController {
         $requestFunction = $postData['request'];
         $requestData = json_decode($postData['data'], true);
 
-        $api = new Api();
         $response = [];
 
         switch ($requestFunction) {
