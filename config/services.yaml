@@ -1,0 +1,3 @@
+services:
+  RobinDort\PslzmeLinks\Service\Api:
+    public: true
