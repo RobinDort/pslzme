@@ -1,0 +1,18 @@
+{
+	"name": "robindort/pslzme-links",
+	"description": "A contao bundle that handles custom logic for generated links by pslzme.com",
+	"type": "contao-bundle",
+	"autoload": {
+		"psr-4": {
+			"Robindort\\PslzmeLinks\\": "src/"
+		}
+	},
+	"authors": [
+		{
+			"name": "Robin Dort"
+		}
+	],
+	"require": {
+		"contao/core-bundle": "^4.13"
+	}
+}
