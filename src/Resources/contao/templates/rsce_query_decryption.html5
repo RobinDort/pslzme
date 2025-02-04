@@ -1,0 +1,69 @@
+<!-- indexer::stop -->
+<?php
+    use RobinDort\PslzmeLinks\Service\DecryptFormData;
+    use Contao\System;
+
+    // Access the Contao service container to get the DatabaseConnection service
+    $container = System::getContainer();
+
+    // Get the DatabaseConnection service
+    $dbConnection = $container->get(RobinDort\PslzmeLinks\Service\DatabaseConnection::class); 
+
+    // Instantiate the DecryptFormData service with the injected DatabaseConnection
+    $decryptFormData = new DecryptFormData($dbConnection);
+
+    // Call the decrypt method
+    $decryptFormData->decrypt();
+?>
+
+<?php
+
+	if (isset($decryptedLinkCreator) && $decryptedLinkCreator !== "") {
+		$GLOBALS['decryptedVars']['linkCreator'] = $decryptedLinkCreator;  
+	}
+	
+	if (isset($decryptedTitle) && $decryptedTitle !== "") {
+		$GLOBALS['decryptedVars']['title'] = $decryptedTitle;  
+	}
+	
+	if (isset($decryptedFirstName) && $decryptedFirstName !== "") {
+		$GLOBALS['decryptedVars']['firstName'] = $decryptedFirstName;  
+	}
+	
+	if (isset($decryptedLastName) && $decryptedLastName !== "") {
+		$GLOBALS['decryptedVars']['lastName'] = $decryptedLastName;  
+	}
+	
+	if (isset($decryptedCompanyName) && $decryptedCompanyName !== "") {
+		$GLOBALS['decryptedVars']['company'] = $decryptedCompanyName;  
+	}
+	
+	if (isset($decryptedCompanyGender)) {
+		$GLOBALS['decryptedVars']['companyGender'] = $decryptedCompanyGender;  
+	}
+	
+	if (isset($decryptedGender) && $decryptedGender !== "") {
+		$GLOBALS['decryptedVars']['gender'] = $decryptedGender;  
+	}
+	
+	if (isset($decryptedPosition) && $decryptedPosition !== "") {
+		$GLOBALS['decryptedVars']['position'] = $decryptedPosition;  
+	}
+	
+	if (isset($decryptedCurl) && $decryptedCurl !== "") {
+		$GLOBALS['decryptedVars']['curl'] = $decryptedCurl;  
+	}
+	
+	if (isset($decryptedFC) && $decryptedFC !== "") {
+		$GLOBALS['decryptedVars']['fc'] = $decryptedFC;  
+	}
+	
+	
+	if ($decryptedLinkCreator !== "" && $decryptedFirstName !== "" && $decryptedLastName !== "") {
+			$GLOBALS['decryptedVars']['varsSet'] = true;
+	} else {
+			$GLOBALS['decryptedVars']['varsSet'] = false;
+	}
+?>
+
+<!-- indexer::continue -->
