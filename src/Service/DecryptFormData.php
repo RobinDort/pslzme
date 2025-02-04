@@ -98,7 +98,7 @@ class DecryptFormData {
             $cookieQueryData = array(
                 "customerID" => $customerID,
                 "encryptID" => $encryptID,
-                "timestamp" => $timestamp
+                "timestamp" => $this->timestamp
             );
             
             $selectCookieResp = $this->sqlExecutor->selectQueryAcceptanceCustomerDB($cookieQueryData);
