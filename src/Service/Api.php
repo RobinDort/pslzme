@@ -4,6 +4,8 @@ namespace RobinDort\PslzmeLinks\Service;
 use RobinDort\PslzmeLinks\Service\DatabaseConnection;
 use RobinDort\PslzmeLinks\Service\DatabaseStatementExecutor;
 
+use Exception;
+
 class Api {
 
     private $db;
@@ -44,7 +46,7 @@ class Api {
 
         try {
             // Get the customer with its ID and its encrypt ID.
-            $selectStmtResponse = $sqlExecutor->selectCustomerInformationCustomerDB();
+            $selectStmtResponse = $this->sqlExecutor->selectCustomerInformationCustomerDB();
 
             $dbResponses .= $selectStmtResponse["response"];
             $customerID = $selectStmtResponse["customerID"];
@@ -60,13 +62,15 @@ class Api {
                     "encryptID" => $encryptID
                 );
 
-             $insertStmtResponse = $sqlExecutor->insertCustomerDBQuery($insertQueryData);
+             $insertStmtResponse = $this->sqlExecutor->insertCustomerDBQuery($insertQueryData);
              $dbResponses .= $insertStmtResponse;
         } catch(Exception $e) {
             $dbResponses .=  "Error while trying to use database: " . $e;
             echo $dbResponses;
         } finally {
-            $db->closeConnection();
+            if (isset($this->db)) {
+                $this->db->closeConnection();
+            }
         }
 
         return $dbResponses;
@@ -83,7 +87,7 @@ class Api {
 
         try {
              // Get the customer with its ID and its encrypt ID.
-             $selectStmtResponse = $sqlExecutor->selectCustomerInformationCustomerDB();
+             $selectStmtResponse = $this->sqlExecutor->selectCustomerInformationCustomerDB();
 
              $respArr["response"] .= $selectStmtResponse["response"];
              $customerID = $selectStmtResponse["customerID"];
@@ -95,13 +99,15 @@ class Api {
                 "encryptID" => $encryptID
              );
 
-            $secondSelectStmtResponse = $sqlExecutor->selectQueryAcceptanceCustomerDB($secondSelectData);
+            $secondSelectStmtResponse = $this->sqlExecutor->selectQueryAcceptanceCustomerDB($secondSelectData);
             $queryLocked = $secondSelectStmtResponse["queryLocked"];
             $respArr["queryIsLocked"] = $queryLocked;
         } catch(Exception $e) {
             $respArr["response"] .= "Error while trying to use database: " . $e;
         } finally {
-            $db->closeConnection();
+            if (isset($this->db)) {
+                $this->db->closeConnection();
+            }
         }
 
         return $respArr;
@@ -120,12 +126,8 @@ class Api {
          );
 
          try {
-            // Create connection
-            $db = new DatabaseConnection($this->servername, $this->username, $this->password, $this->dbname);
-            $sqlExecutor = new DatabaseStatementExecutor($db);
-
             // Get the customer with its ID and its encrypt ID.
-            $selectStmtResponse = $sqlExecutor->selectCustomerInformationCustomerDB();
+            $selectStmtResponse = $this->sqlExecutor->selectCustomerInformationCustomerDB();
             $respArr["response"] .= $selectStmtResponse["response"];
             $encryptionKey = $selectStmtResponse["encryptKey"];
 
@@ -152,7 +154,9 @@ class Api {
         } catch(Exception $e) {
             $respArr["response"] .= "Error while trying to use database: " . $e;
         } finally {
-            $db->closeConnection();
+            if (isset($this->db)) {
+                $this->db->closeConnection();
+            }
         }
 
         return $respArr;
@@ -172,13 +176,8 @@ class Api {
 
 
         try {
-            // Create connection
-            $db = new DatabaseConnection($this->servername, $this->username, $this->password, $this->dbname);
-            $sqlExecutor = new DatabaseStatementExecutor($db);
-
-
             // Get the customer with its ID and its encrypt ID.
-            $selectStmtResponse = $sqlExecutor->selectCustomerInformationCustomerDB();
+            $selectStmtResponse = $this->sqlExecutor->selectCustomerInformationCustomerDB();
             $respArr["response"] .= $selectStmtResponse["response"];
             $encryptionKey = $selectStmtResponse["encryptKey"];
 
@@ -202,7 +201,9 @@ class Api {
         } catch(Exception $e) {
             $respArr["response"] .= "Error while trying to use database: " . $e;
         } finally {
-            $db->closeConnection();
+            if (isset($this->db)) {
+                $this->db->closeConnection();
+            }
         }
 
         return $respArr;
