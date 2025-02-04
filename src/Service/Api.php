@@ -17,6 +17,10 @@ class Api {
         // create / inject database connection
         $this->db = $dbConn;
         $this->sqlExecutor = new DatabaseStatementExecutor($this->db);
+
+        $this->ciphering = "AES-128-CTR";
+        $this->ivLength = openssl_cipher_iv_length($this->ciphering);
+        $this->options = 0;
     }
 
     function handleQueryAcception($requestData) {
@@ -103,6 +107,56 @@ class Api {
         return $respArr;
     }
 
+
+    function handleGreetingDataExtraction($requestData) {
+        $encryptedFirstContact = str_replace(" ","+",rawurldecode($requestData->firstContact));
+        $encryptedLinkCreator = str_replace(" ","+",rawurldecode($requestData->linkCreator));
+        $timestamp = $requestData->timestamp;
+
+        $respArr = array(
+            "decryptedFirstContact" => "",
+            "decryptedLinkCreator" => "",
+            "response" => "",
+         );
+
+         try {
+            // Create connection
+            $db = new DatabaseConnection($this->servername, $this->username, $this->password, $this->dbname);
+            $sqlExecutor = new DatabaseStatementExecutor($db);
+
+            // Get the customer with its ID and its encrypt ID.
+            $selectStmtResponse = $sqlExecutor->selectCustomerInformationCustomerDB();
+            $respArr["response"] .= $selectStmtResponse["response"];
+            $encryptionKey = $selectStmtResponse["encryptKey"];
+
+
+            //decrypt the params
+            $ciphering = "AES-128-CTR";
+            $iv_length = openssl_cipher_iv_length($ciphering);
+            $options = 0;
+            $decryption_iv = $timestamp;
+            $decryptionKeyBin = hex2bin($encryptionKey);
+
+            $decryptedFirstContact = openssl_decrypt($encryptedFirstContact, $ciphering, 
+                        $decryptionKeyBin, $options, $decryption_iv);
+
+            
+            $decryptedLinkCreator = openssl_decrypt($encryptedLinkCreator, $ciphering, 
+                        $decryptionKeyBin, $options, $decryption_iv);
+
+            $respArr["decryptedFirstContact"] = $decryptedFirstContact;
+            $respArr["decryptedLinkCreator"] = $decryptedLinkCreator;
+
+
+
+        } catch(Exception $e) {
+            $respArr["response"] .= "Error while trying to use database: " . $e;
+        } finally {
+            $db->closeConnection();
+        }
+
+        return $respArr;
+    }
 }
 
 ?>
