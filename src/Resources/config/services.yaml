@@ -1,4 +1,19 @@
+parameters:
+  pslzme.db.host: "%env(PSLZME_SERVERNAME)%"
+  pslzme.db.user: "%env(PSLZME_USERNAME)%"
+  pslzme.db.pw: "%env(PSLZME_PASSWORD)%"
+  pslzme.db.name: "%env(PSLZME_DB_NAME)%"
+
 services:
   RobinDort\PslzmeLinks\Service\Api:
+    public: true
+    autowire: true
+
+  RobinDort\PslzmeLinks\Service\DatabaseConnection:
+    arguments:
+      $servername: "%pslzme.db.host%"
+      $username: "%pslzme.db.user%"
+      $password: "%pslzme.db.pw%"
+      $dbname: "%pslzme.db.name%"
     public: true
     autowire: true
