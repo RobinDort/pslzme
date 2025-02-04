@@ -2,6 +2,8 @@
 namespace RobinDort\PslzmeLinks\Service;
 
 use RobinDort\PslzmeLinks\Service\StatementPreparer;
+use RobinDort\PslzmeLinks\Service\DatabaseConnection;
+
 
 class DatabaseStatementExecutor {
     private $dbConn;
@@ -219,7 +221,7 @@ class DatabaseStatementExecutor {
             $convertedResponse->executionSuccessful = false;
             $convertedResponse->response = "Exception:" .$e;
         } finally {
-            $stmt->close();
+            if ($stmt) $stmt->close();
         }
         return $convertedResponse;
     }
@@ -258,7 +260,7 @@ class DatabaseStatementExecutor {
             $convertedResponse->executionSuccessful = false;
             $convertedResponse->response = "Exception:" .$e;
         } finally {
-            $stmt->close();
+            if ($stmt) $stmt->close();
         }
         return $convertedResponse;
     }
@@ -295,7 +297,7 @@ class DatabaseStatementExecutor {
             $convertedResponse->executionSuccessful = false;
             $convertedResponse->response = "Exception:" .$e;
         } finally {
-            $stmt->close();
+            if ($stmt) $stmt->close();
         }
         return $convertedResponse;
     }
@@ -337,7 +339,7 @@ class DatabaseStatementExecutor {
             $convertedResponse->executionSuccessful = false;
             $convertedResponse->response = "Exception:" .$e;
         } finally {
-            $stmt->close();
+            if ($stmt) $stmt->close();
         }
         return $convertedResponse;
     }
@@ -366,7 +368,7 @@ class DatabaseStatementExecutor {
             $convertedResponse->executionSuccessful = false;
             $convertedResponse->response = "Exception:" .$e;
         } finally {
-            $stmt->close();
+            if ($stmt) $stmt->close();
         }
         return $convertedResponse;
     }
@@ -395,7 +397,7 @@ class DatabaseStatementExecutor {
             $convertedResponse->executionSuccessful = false;
             $convertedResponse->response = "Exception:" .$e;
         } finally {
-            $stmt->close();
+            if ($stmt) $stmt->close();
         }
         return $convertedResponse;
     }
