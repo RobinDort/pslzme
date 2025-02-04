@@ -14,7 +14,8 @@
 		}
 	],
 	"require": {
-		"contao/core-bundle": "^4.13"
+		"contao/core-bundle": "^4.13",
+		"madeyourday/contao-rocksolid-custom-elements": "^2.4"
 	},
 	"require-dev": {
 		"contao/manager-plugin": "^2.0"
