@@ -14,5 +14,14 @@
 	],
 	"require": {
 		"contao/core-bundle": "^4.13"
+	},
+	"require-dev": {
+		"contao/manager-plugin": "^2.0"
+	},
+	"conflict": {
+		"contao/manager-plugin": "<2.0 || >=3.0"
+	},
+	"extra": {
+		"contao-manager-plugin": "RobinDort\\PslzmeLinks\\ContaoManager\\Plugin"
 	}
 }
