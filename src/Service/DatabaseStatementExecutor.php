@@ -51,6 +51,51 @@ class DatabaseStatementExecutor {
    }
 
 
+
+    public function selectQueryAcceptanceCustomerDB($data) {
+        $resp = "";
+
+        $customerID = $data["customerID"];
+        if ($customerID === null) {
+            $resp .= "Unable to extract customerID out of data array";
+            return $resp;
+        }
+
+        $encryptID = $data["encryptID"];
+        if ($encryptID === null) {
+            $resp .= "Unable to extract encryptID out of data array";
+            return $resp;
+        }
+
+        $timestamp = $data["timestamp"];
+        if ($timestamp === null) {
+            $resp .= "Unable to extract timestamp out of data array";
+            return $resp;
+        }
+
+        //select the query and check if it is accepted or not
+        $selectCustomerDBCookieAcceptanceResp = $this->selectCustomerDBCookieAcceptance($customerID, $encryptID, $timestamp);
+
+        if ($selectCustomerDBCookieAcceptanceResp->executionSuccessful === false) {
+            $resp .= $selectCustomerDBCookieAcceptanceResp->response;
+            return $resp;
+        }
+
+        $resp .= $selectCustomerDBCookieAcceptanceResp->response;
+
+        $cookieAccepted = $selectCustomerDBCookieAcceptanceResp->cookieAccepted;
+        $queryLocked = $selectCustomerDBCookieAcceptanceResp->queryLocked;
+
+        $respArr = array(
+            "response" => $resp,
+            "cookieAccepted" => $cookieAccepted,
+            "queryLocked" => $queryLocked
+        );
+
+        return $respArr;
+    }
+
+
    public function insertCustomerDBQuery($data) {
         $resp = "";
 
@@ -244,6 +289,48 @@ class DatabaseStatementExecutor {
             } else {
                 $convertedResponse->executionSuccessful = false;
                 $convertedResponse->response = "Error while trying to select customer query with timestamp: " . $timestamp . " and customer ID: " . $customerID . " and encryption ID: " . $encryptID;
+            } 
+
+        } catch(Exception $e) {
+            $convertedResponse->executionSuccessful = false;
+            $convertedResponse->response = "Exception:" .$e;
+        } finally {
+            $stmt->close();
+        }
+        return $convertedResponse;
+    }
+
+
+    private function selectCustomerDBCookieAcceptance($customerID, $encryptID, $timestamp) {
+        $response = array(
+            "executionSuccessful" => false,
+            "response" => "",
+            "cookieAccepted" => false,
+            "queryLocked" => false
+        );
+
+        $convertedResponse = (object)$response;
+        $stmt = $this->statementPreparer->prepareSelectCustomerQuery($timestamp, $customerID, $encryptID);
+
+        try {
+            if ($stmt->execute()) {
+                $convertedResponse->executionSuccessful = true;
+                $convertedResponse->response = "Successfully selected customer query for customer ID: " . $customerID . " and encryption ID: " . $encryptID;
+
+                $stmtResult = $stmt->get_result();
+                $row = $stmtResult->fetch_assoc();
+                $cookieAccepted = $row["Accepted"];
+                $queryLocked = $row["Locked"];
+                if ($cookieAccepted === 1) {
+                    $convertedResponse->cookieAccepted = true;
+                }
+                if ($queryLocked === 1) {
+                    $convertedResponse->queryLocked = true;
+                }
+            
+            } else {
+                $convertedResponse->executionSuccessful = false;
+                $convertedResponse->response = "Error while trying to select customer query for customer ID: " . $customerID . " and encryption ID: " . $encryptID;
             } 
 
         } catch(Exception $e) {
