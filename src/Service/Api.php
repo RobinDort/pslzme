@@ -2,11 +2,12 @@
 namespace RobinDort\PslzmeLinks\Service;
 
 use RobinDort\PslzmeLinks\Service\DatabaseConnection;
-
+use RobinDort\PslzmeLinks\Service\DatabaseStatementExecutor;
 
 class Api {
 
     private $db;
+    private $sqlExecutor;
 
     private $ciphering;
     private $ivLength;
@@ -15,6 +16,7 @@ class Api {
     public function __construct(DatabaseConnection $dbConn) {
         // create / inject database connection
         $this->db = $dbConn;
+        $this->sqlExecutor = new DatabaseStatementExecutor($this->db);
     }
 
     function handleQueryAcception($requestData) {
@@ -37,8 +39,6 @@ class Api {
         $dbResponses = "";
 
         try {
-            $sqlExecutor = new DatabaseStatementExecutor($db);
-
             // Get the customer with its ID and its encrypt ID.
             $selectStmtResponse = $sqlExecutor->selectCustomerInformationCustomerDB();
 
