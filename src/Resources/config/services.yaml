@@ -5,9 +5,12 @@ parameters:
   pslzme.db.name: "%env(PSLZME_DB_NAME)%"
 
 services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
   RobinDort\PslzmeLinks\Service\Api:
     public: true
-    autowire: true
 
   RobinDort\PslzmeLinks\Service\DatabaseConnection:
     arguments:
@@ -16,4 +19,3 @@ services:
       $password: "%pslzme.db.pw%"
       $dbname: "%pslzme.db.name%"
     public: true
-    autowire: true
