@@ -9,7 +9,8 @@
 	},
 	"authors": [
 		{
-			"name": "Robin Dort"
+			"name": "Robin Dort",
+			"homepage": "https://www.alexanderdort.com"
 		}
 	],
 	"require": {
