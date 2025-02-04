@@ -68,6 +68,41 @@ class Api {
         return $dbResponses;
     }
 
+
+    function handleQueryLockCheck($requestData) {
+        $timestamp = $requestData->timestamp;
+
+        $respArr = array(
+            "response" => "",
+            "queryIsLocked" => false
+        );
+
+        try {
+             // Get the customer with its ID and its encrypt ID.
+             $selectStmtResponse = $sqlExecutor->selectCustomerInformationCustomerDB();
+
+             $respArr["response"] .= $selectStmtResponse["response"];
+             $customerID = $selectStmtResponse["customerID"];
+             $encryptID = $selectStmtResponse["encryptID"];
+
+             $secondSelectData = array(
+                "timestamp" => $timestamp,
+                "customerID" => $customerID,
+                "encryptID" => $encryptID
+             );
+
+            $secondSelectStmtResponse = $sqlExecutor->selectQueryAcceptanceCustomerDB($secondSelectData);
+            $queryLocked = $secondSelectStmtResponse["queryLocked"];
+            $respArr["queryIsLocked"] = $queryLocked;
+        } catch(Exception $e) {
+            $respArr["response"] .= "Error while trying to use database: " . $e;
+        } finally {
+            $db->closeConnection();
+        }
+
+        return $respArr;
+    }
+
 }
 
 ?>
