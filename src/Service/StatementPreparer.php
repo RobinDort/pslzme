@@ -22,6 +22,30 @@ class StatementPreparer {
 
         return $stmt;
     }
+
+    public function prepareSelectCustomerQuery($queryParamTimestamp, $queryParamCustomerID, $queryParamEncryptionID) {
+        $sqlQuery = "SELECT * FROM query_link WHERE CreationTime=? AND PslzmeKundenID=? AND EncryptInfoID=?"; 
+        $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->bind_param("iii", $queryParamTimestamp, $queryParamCustomerID, $queryParamEncryptionID);
+
+        return $stmt;
+    }
+
+    public function prepareUpdateCustomerQuery($queryParamTimestamp, $queryParamChangedOn, $queryParamCookieAccepted, $queryParamCustomerID, $queryParamEncryptionID, $queryParamQueryLocked) {
+        $sqlQuery = "UPDATE query_link SET Accepted=?, Locked=?, ChangedOn=? WHERE CreationTime=? AND PslzmeKundenID=? AND EncryptInfoID=?"; 
+        $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->bind_param("iiiiii", $queryParamCookieAccepted, $queryParamQueryLocked, $queryParamChangedOn, $queryParamTimestamp, $queryParamCustomerID, $queryParamEncryptionID);
+
+        return $stmt;
+    }
+
+    public function prepareInsertCustomerQuery($queryParamQuery, $queryParamTimestamp, $queryParamAcceptedOn, $queryParamCookieAccepted, $queryParamCustomerID, $queryParamEncryptionID, $queryParamQueryLocked) {
+        $sqlQuery = "INSERT INTO query_link (QueryString, CreationTime, AcceptionTime, Accepted, Locked, PslzmeKundenID, EncryptInfoID) VALUES(?,?,?,?,?,?,?)"; 
+        $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->bind_param("siiiiii", $queryParamQuery, $queryParamTimestamp, $queryParamAcceptedOn, $queryParamCookieAccepted, $queryParamQueryLocked, $queryParamCustomerID, $queryParamEncryptionID);
+
+        return $stmt;
+    }
 }
 
 ?>
