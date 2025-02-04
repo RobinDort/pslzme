@@ -157,6 +157,88 @@ class Api {
 
         return $respArr;
     }
+
+
+
+    function handleCompareLinkOwner($requestData) {
+        $combinedNameInput = $requestData->firstInput . $requestData->secondInput . $requestData->thirdInput;
+        $timestamp = $requestData->timestamp;
+        $encryptedLastName = str_replace(" ","+",rawurldecode($requestData->encryptedLastName));
+
+        $respArr = array(
+            "nameMatchesOwner" => false,
+            "response" => "",
+        );
+
+
+        try {
+            // Create connection
+            $db = new DatabaseConnection($this->servername, $this->username, $this->password, $this->dbname);
+            $sqlExecutor = new DatabaseStatementExecutor($db);
+
+
+            // Get the customer with its ID and its encrypt ID.
+            $selectStmtResponse = $sqlExecutor->selectCustomerInformationCustomerDB();
+            $respArr["response"] .= $selectStmtResponse["response"];
+            $encryptionKey = $selectStmtResponse["encryptKey"];
+
+            //decrypt the params
+            $ciphering = "AES-128-CTR";
+            $iv_length = openssl_cipher_iv_length($ciphering);
+            $options = 0;
+            $decryption_iv = $timestamp;
+            $decryptionKeyBin = hex2bin($encryptionKey);
+
+            $decryptedLastName = openssl_decrypt($encryptedLastName, $ciphering, 
+                        $decryptionKeyBin, $options, $decryption_iv);
+
+
+            if ($this->compareStrings($decryptedLastName, $combinedNameInput)) {
+                $respArr["nameMatchesOwner"] = true;
+            } else {
+                $respArr["response"] .= "unable to compare strings";
+            }
+
+        } catch(Exception $e) {
+            $respArr["response"] .= "Error while trying to use database: " . $e;
+        } finally {
+            $db->closeConnection();
+        }
+
+        return $respArr;
+    }
+
+
+    private function compareStrings($str1, $str2) {
+
+        // Convert both strings to lowercase
+        $strToLower1 = mb_strtolower($str1, "UTF-8");
+        $strToLower2 = mb_strtolower($str2, "UTF-8");
+    
+        // Get the lengths of the strings
+        $len1 = strlen($strToLower1);
+        $len2 = strlen($strToLower2);
+    
+        // Check if the lengths are at least 3 characters
+        if ($len1 < 3 || $len2 < 3) {
+            return false;
+        }
+    
+        // Compare the first 3 characters
+        for ($i = 0; $i < 3; $i++) {
+            $currentCharOfStr1 = mb_substr($strToLower1,$i,1);
+            $currentCharOfStr2 = mb_substr($strToLower2,$i,1);
+            if ($currentCharOfStr1 !== $currentCharOfStr2) {
+                return false;
+            }
+            // if (strcmp($strToLower1[$i],$strToLower2[$i]) !== 0) {
+            //     return false;
+            // }
+        }
+    
+        // If all characters match, return true
+        return true;
+    }
 }
 
 ?>
