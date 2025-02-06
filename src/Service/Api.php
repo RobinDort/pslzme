@@ -42,13 +42,15 @@ class Api {
 
         $queryLocked = $requestData->queryIsLocked;
 
-        $dbResponses = "";
-
+        $respArr = array(
+            "response" => ""
+        );
+        
         try {
             // Get the customer with its ID and its encrypt ID.
             $selectStmtResponse = $this->sqlExecutor->selectCustomerInformationCustomerDB();
 
-            $dbResponses .= $selectStmtResponse["response"];
+            $respArr["response"] .= $selectStmtResponse["response"];
             $customerID = $selectStmtResponse["customerID"];
             $encryptID = $selectStmtResponse["encryptID"];
 
@@ -63,17 +65,17 @@ class Api {
                 );
 
              $insertStmtResponse = $this->sqlExecutor->insertCustomerDBQuery($insertQueryData);
-             $dbResponses .= $insertStmtResponse;
+             $respArr["response"] .= $insertStmtResponse;
         } catch(Exception $e) {
-            $dbResponses .=  "Error while trying to use database: " . $e;
-            echo $dbResponses;
+            $respArr["response"] .=  "Error while trying to use database: " . $e;
+            error_log($respArr);
         } finally {
             if (isset($this->db)) {
                 $this->db->closeConnection();
             }
         }
 
-        return $dbResponses;
+        return $respArr;
     }
 
 
