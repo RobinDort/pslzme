@@ -22,11 +22,3 @@ services:
       $password: "%pslzme.db.pw%"
       $dbname: "%pslzme.db.name%"
     public: true
-
-  RobinDort\PslzmeLinks\Controller\FrontendModule\QueryDecryptionController:
-    tags:
-      - name: contao.frontend_module
-        category: pslzme
-        template: rsce_query_decryption
-        renderer: forward
-        method: __invoke
