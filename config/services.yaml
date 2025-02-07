@@ -25,7 +25,7 @@ services:
 
   RobinDort\PslzmeLinks\Controller\FrontendModule\QueryDecryptionController:
     tags:
-      - name: Query-Decryption
+      - name: contao.frontend_module
         category: pslzme
         template: rsce_query_decryption
         renderer: forward
