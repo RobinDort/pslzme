@@ -10,7 +10,7 @@ services:
     autoconfigure: true
 
   RobinDort\PslzmeLinks:
-    ressource: ../src/Service/*
+    resource: ../src/Service/*
 
   RobinDort\PslzmeLinks\Service\Api:
     public: true
