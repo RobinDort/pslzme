@@ -1,9 +1,3 @@
-parameters:
-  pslzme.db.host: "%env(PSLZME_SERVERNAME)%"
-  pslzme.db.user: "%env(PSLZME_USERNAME)%"
-  pslzme.db.pw: "%env(PSLZME_PASSWORD)%"
-  pslzme.db.name: "%env(PSLZME_DB_NAME)%"
-
 services:
   _defaults:
     autowire: true

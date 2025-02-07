@@ -1,0 +1,5 @@
+parameters:
+  pslzme.db.host: "your_database_host"
+  pslzme.db.user: "your_database_user"
+  pslzme.db.pw: "your_database_password"
+  pslzme.db.name: "your_database_name"
