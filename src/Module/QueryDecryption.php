@@ -12,5 +12,9 @@ class QueryDecryption extends Module {
      * Generate the module content
      */
     protected function compile(){}
+
+    public function generate() {
+        $this->Template = new FrontendTemplate($this->strTemplate);
+    }
 }
 ?>
