@@ -5,6 +5,10 @@ use mysqli;
 
 class DatabaseConnection {
     private $connection;
+    private $servername;
+    private $username;
+    private $password;
+    private $dbname;
 
     public function __construct($servername, $username, $password, $dbname) {
         $this->servername = $servername;
