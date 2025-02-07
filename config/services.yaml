@@ -11,8 +11,8 @@ services:
 
   RobinDort\PslzmeLinks\Service\DatabaseConnection:
     arguments:
-      $servername: "%pslzme.db.host%"
-      $username: "%pslzme.db.user%"
-      $password: "%pslzme.db.pw%"
-      $dbname: "%pslzme.db.name%"
+      $servername: "%pslzme_db_host%"
+      $username: "%pslzme_db_user%"
+      $password: "%pslzme_db_pw%"
+      $dbname: "%pslzme_db_name%"
     public: true
