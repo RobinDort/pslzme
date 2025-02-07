@@ -9,9 +9,6 @@ services:
     autowire: true
     autoconfigure: true
 
-  RobinDort\PslzmeLinks\:
-    resource: ../src/Service/*
-
   RobinDort\PslzmeLinks\Service\Api:
     public: true
 
