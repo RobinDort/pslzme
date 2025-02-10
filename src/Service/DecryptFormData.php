@@ -132,7 +132,7 @@ class DecryptFormData {
                 $this->decryptedCompanyName = openssl_decrypt ($this->encryptedCompanyName, $ciphering, 
                             $decryptionKeyBin, $options, $decryption_iv);
            
-                $this->decryptedCompanyGender= openssl_decrypt ($this->encryptedCompanyGender, $ciphering, 
+                $this->decryptedCompanyGender = openssl_decrypt ($this->encryptedCompanyGender, $ciphering, 
                             $decryptionKeyBin, $options, $decryption_iv);       
         
                 $this->decryptedGender = openssl_decrypt ($this->encryptedGender, $ciphering, 
@@ -155,6 +155,47 @@ class DecryptFormData {
                 $this->db->closeConnection();
             }
         }
+    }
+
+    /** Getter functions */
+    public function getDecryptedLinkCreator() {
+        return $this->decryptedLinkCreator;
+    }
+
+    public function getDecryptedTitle() {
+        return $this->decryptedTitle;
+    }
+
+    public function getDecryptedFirstName() {
+        return $this->decryptedFirstName;
+    }
+
+    public function getDecryptedLastName() {
+        return $this->decryptedLastName;
+    }
+
+    public function getDecryptedCompanyName() {
+        return $this->decryptedCompanyName;
+    }
+
+    public function getDecryptedCompanyGender() {
+        return $this->decryptedCompanyGender;
+    }
+
+    public function getDecryptedGender() {
+        return $this->decryptedGender;
+    }
+
+    public function getDecryptedPosition() {
+        return $this->decryptedPosition;
+    }
+
+    public function getDecryptedCURL() {
+        return $this->decryptedCurl;
+    }
+
+    public function getDecryptedFC() {
+        return $this->decryptedFC;
     }
 }
 
