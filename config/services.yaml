@@ -1,6 +1,3 @@
-imports:
-  - { resource: parameters.yaml }
-
 services:
   _defaults:
     autowire: true
@@ -14,8 +11,8 @@ services:
 
   RobinDort\PslzmeLinks\Service\DatabaseConnection:
     arguments:
-      $servername: "%pslzme_db_host%"
-      $username: "%pslzme_db_user%"
-      $password: "%pslzme_db_pw%"
-      $dbname: "%pslzme_db_name%"
+      $servername: "localhost"
+      $username: "pslzme_customer_db_admin"
+      $password: "PslzmeCustomerDatabasePassword1!"
+      $dbname: "pslzme_test_customer_db"
     public: true
