@@ -3,6 +3,8 @@ namespace RobinDort\PslzmeLinks\Service;
 
 use RobinDort\PslzmeLinks\Service\DatabaseConnection;
 use RobinDort\PslzmeLinks\Service\DatabaseStatementExecutor;
+use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
+use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
 
 use Exception;
 
@@ -47,6 +49,9 @@ class Api {
         );
         
         try {
+            // Start transaction to secure all operations.
+            $this->db->getConnection()->begin_transaction();
+
             // Get the customer with its ID and its encrypt ID.
             $selectStmtResponse = $this->sqlExecutor->selectCustomerInformationCustomerDB();
 
@@ -66,9 +71,16 @@ class Api {
 
              $insertStmtResponse = $this->sqlExecutor->insertCustomerDBQuery($insertQueryData);
              $respArr["response"] .= $insertStmtResponse;
+
+            // Commit transaction to make both operations successful.
+            $this->db->getConnection()->commit();
+
+        } catch(InvalidDataException $ide) {
+            error_log($ide->getErrorMsg());
+        } catch(DatabaseException $dbe) {
+            error_log($dbe->getErrorMsg());
         } catch(Exception $e) {
-            $respArr["response"] .=  "Error while trying to use database: " . $e;
-            error_log($respArr);
+            error_log($e->getMessage());
         } finally {
             if (isset($this->db)) {
                 $this->db->closeConnection();

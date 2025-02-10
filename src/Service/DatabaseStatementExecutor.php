@@ -3,6 +3,8 @@ namespace RobinDort\PslzmeLinks\Service;
 
 use RobinDort\PslzmeLinks\Service\StatementPreparer;
 use RobinDort\PslzmeLinks\Service\DatabaseConnection;
+use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
+use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
 
 
 class DatabaseStatementExecutor {
@@ -20,21 +22,11 @@ class DatabaseStatementExecutor {
         $resp = "";
         $selectCustomerDBCustomerResp = $this->selectCustomerDBCustomer();
 
-        if ($selectCustomerDBCustomerResp->executionSuccessful === false) {
-            $resp .= $selectCustomerDBCustomerResp->response;
-            return $resp;
-        }
-
         $resp .= $selectCustomerDBCustomerResp->response;
         $customerID = $selectCustomerDBCustomerResp->presentCustomer->KundenID;
 
         // customer ID extracted. Now extract the encrypt ID and Key.
         $selectCustomerDBEncryptionResp = $this->selectCustomerEncryption($customerID);
-
-        if ($selectCustomerDBEncryptionResp->executionSuccessful === false) {
-            $resp .= $selectCustomerDBEncryptionResp->response;
-            return $resp;
-        }
         
         $resp .= $selectCustomerDBEncryptionResp->response;
 
@@ -192,7 +184,6 @@ class DatabaseStatementExecutor {
    private function selectCustomerDBCustomer() {
         $presentCustomer = (object)[];
         $response = array(
-            "executionSuccessful" => false,
             "response" => "",
             "presentCustomer" => $presentCustomer
         );
@@ -204,22 +195,19 @@ class DatabaseStatementExecutor {
             if ($stmt->execute()) {
                 $stmtResult = $stmt->get_result();
                 if ($stmtResult->num_rows === 0) {
-                    $convertedResponse->executionSuccessful = false;
-                    $convertedResponse->response = "Customer has not been initialized yet";
+                    throw new DatabaseException("selectAllCustomer returned rows = 0. Customer has not been initialized yet");
                 } else {
-                    $convertedResponse->executionSuccessful = true;
                     $convertedResponse->response = "Customer has been found";
                     $convertedResponse->presentCustomer = $stmtResult->fetch_object();
                 }
 
             } else {
-                $convertedResponse->executionSuccessful = false;
-                $convertedResponse->response = "Error while trying to select customer";
+                throw new DatabaseException("Unable to execute statement selectAllCustomer");
             } 
 
         } catch(Exception $e) {
-            $convertedResponse->executionSuccessful = false;
-            $convertedResponse->response = "Exception:" .$e;
+            // Rethrow so api can handle catching.
+            throw $e;
         } finally {
             if ($stmt) $stmt->close();
         }
@@ -230,7 +218,6 @@ class DatabaseStatementExecutor {
     private function selectCustomerEncryption($customerID) {
         $queryWithKey = (object) [];
         $response = array(
-            "executionSuccessful" => false,
             "response" => "",
             "queryWithKey" => $queryWithKey
         );
@@ -243,22 +230,19 @@ class DatabaseStatementExecutor {
             if ($stmt->execute()) {
                 $stmtResult = $stmt->get_result();
                 if ($stmtResult->num_rows === 0) {
-                    $convertedResponse->executionSuccessful = false;
-                    $convertedResponse->response = "Encryption Key for customer with ID: " . $customerID . " does not exist";
+                    throw new DatabaseException("prepareSelectCustomerKey returned rows = 0. Encryption Key for customer with ID: " . $customerID . " does not exist");
                 } else {
-                    $convertedResponse->executionSuccessful = true;
                     $convertedResponse->response = "Encryption key for customer with ID: " . $customerID . " found";
                     $convertedResponse->queryWithKey = $stmtResult->fetch_object();
                 }
 
             } else {
-                $convertedResponse->executionSuccessful = false;
-                $convertedResponse->response = "Error while trying to select encryption key for customer with ID: " . $customerID;
+                throw new DatabaseException("Unable to execute statement selectCustomerKey with customer ID: " . $customerID);
             } 
 
         } catch(Exception $e) {
-            $convertedResponse->executionSuccessful = false;
-            $convertedResponse->response = "Exception:" .$e;
+            // rethrow so api can handle catching.
+            throw $e;
         } finally {
             if ($stmt) $stmt->close();
         }
