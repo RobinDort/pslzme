@@ -51,29 +51,21 @@ class DatabaseStatementExecutor {
 
         $customerID = $data["customerID"];
         if ($customerID === null) {
-            $resp .= "Unable to extract customerID out of data array";
-            return $resp;
+            throw new InvalidDataException("Unable to extract customerID out of data object");
         }
 
         $encryptID = $data["encryptID"];
         if ($encryptID === null) {
-            $resp .= "Unable to extract encryptID out of data array";
-            return $resp;
+            throw new InvalidDataException("Unable to extract encryptID out of data object");
         }
 
         $timestamp = $data["timestamp"];
         if ($timestamp === null) {
-            $resp .= "Unable to extract timestamp out of data array";
-            return $resp;
+            throw new InvalidDataException("Unable to extract timestamp out of data array");
         }
 
         //select the query and check if it is accepted or not
         $selectCustomerDBCookieAcceptanceResp = $this->selectCustomerDBCookieAcceptance($customerID, $encryptID, $timestamp);
-
-        if ($selectCustomerDBCookieAcceptanceResp->executionSuccessful === false) {
-            $resp .= $selectCustomerDBCookieAcceptanceResp->response;
-            return $resp;
-        }
 
         $resp .= $selectCustomerDBCookieAcceptanceResp->response;
 
@@ -262,7 +254,6 @@ class DatabaseStatementExecutor {
 
     private function selectCustomerDBCookieAcceptance($customerID, $encryptID, $timestamp) {
         $response = array(
-            "executionSuccessful" => false,
             "response" => "",
             "cookieAccepted" => false,
             "queryLocked" => false
@@ -273,7 +264,6 @@ class DatabaseStatementExecutor {
 
         try {
             if ($stmt->execute()) {
-                $convertedResponse->executionSuccessful = true;
                 $convertedResponse->response = "Successfully selected customer query for customer ID: " . $customerID . " and encryption ID: " . $encryptID;
 
                 $stmtResult = $stmt->get_result();
@@ -288,13 +278,12 @@ class DatabaseStatementExecutor {
                 }
             
             } else {
-                $convertedResponse->executionSuccessful = false;
-                $convertedResponse->response = "Error while trying to select customer query for customer ID: " . $customerID . " and encryption ID: " . $encryptID;
+                throw new DatabaseException("Unable to execute statement selectCustomerQuery with customer ID: " . $customerID . ", encryption ID: " . $encryptID);
             } 
 
         } catch(Exception $e) {
-            $convertedResponse->executionSuccessful = false;
-            $convertedResponse->response = "Exception:" .$e;
+            //rethrow so api can handle catching
+            throw $e;
         } finally {
             if ($stmt) $stmt->close();
         }

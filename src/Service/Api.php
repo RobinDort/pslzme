@@ -103,6 +103,9 @@ class Api {
         );
 
         try {
+            // Start transaction to secure all operations.
+            $this->db->getConnection()->begin_transaction();
+
              // Get the customer with its ID and its encrypt ID.
              $selectStmtResponse = $this->sqlExecutor->selectCustomerInformationCustomerDB();
 
@@ -119,6 +122,15 @@ class Api {
             $secondSelectStmtResponse = $this->sqlExecutor->selectQueryAcceptanceCustomerDB($secondSelectData);
             $queryLocked = $secondSelectStmtResponse["queryLocked"];
             $respArr["queryIsLocked"] = $queryLocked;
+
+            // Commit transaction to make both operations successful.
+            $this->db->getConnection()->commit();
+        } catch(InvalidDataException $ide) {
+            $this->db->getConnection()->rollback();
+            error_log($ide->getErrorMsg());
+        } catch(DatabaseException $dbe) {
+            $this->db->getConnection()->rollback();
+            error_log($dbe->getErrorMsg());
         } catch(Exception $e) {
             $respArr["response"] .= "Error while trying to use database: " . $e;
         } finally {
