@@ -59,7 +59,7 @@
 	}
 	
 	
-	if ($decryptedLinkCreator !== "" && $decryptedFirstName !== "" && $decryptedLastName !== "") {
+	if (!empty($decryptedLinkCreator) && !empty($decryptedFirstName) && !empty($decryptedLastName)) {
 			$GLOBALS['decryptedVars']['varsSet'] = true;
 	} else {
 			$GLOBALS['decryptedVars']['varsSet'] = false;
