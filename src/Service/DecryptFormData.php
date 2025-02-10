@@ -2,6 +2,8 @@
 namespace RobinDort\PslzmeLinks\Service;
 
 use RobinDort\PslzmeLinks\Service\DatabaseConnection;
+use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
+use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
 
 class DecryptFormData {
 
@@ -42,6 +44,8 @@ class DecryptFormData {
     public function decrypt() {
         // Get the encrypted get parameters. Important!: => after the rawurldecode function all the "+" chars are converted to spaces " ". This is the current URL norm.
         // Because the decryption relies especially on the + char, we need to replace the spaces with the + chars again before decrypting.
+
+        $requiredParams = ["q1", "q3", "q4", "q5", "q6", "q7", "q9", "q11"];
 
         if(isset($_GET["q1"])) {
             $this->encryptedLinkCreator = str_replace(" ","+",rawurldecode($_GET["q1"]));
@@ -87,74 +91,92 @@ class DecryptFormData {
             $this->encryptedCompanyGender = str_replace(" ","+",rawurldecode($_GET["q11"]));
         }
 
-        try {
-            // Get the customer with its ID and its encrypt ID.
-            $selectStmtResponse = $this->sqlExecutor->selectCustomerInformationCustomerDB();
-            $customerID = $selectStmtResponse["customerID"];
-            $encryptID = $selectStmtResponse["encryptID"];
-            $encryptionKey = $selectStmtResponse["encryptKey"];
-        
-            //check if the customer has given permission to decrypt his data.
-            $cookieQueryData = array(
-                "customerID" => $customerID,
-                "encryptID" => $encryptID,
-                "timestamp" => $this->timestamp
-            );
+        $allParamsSet = $this->checkForRequiredParams($requiredParams);
+
+        if ($allParamsSet) {
+            try {
+                // Get the customer with its ID and its encrypt ID.
+                $selectStmtResponse = $this->sqlExecutor->selectCustomerInformationCustomerDB();
+                $customerID = $selectStmtResponse["customerID"];
+                $encryptID = $selectStmtResponse["encryptID"];
+                $encryptionKey = $selectStmtResponse["encryptKey"];
             
-            $selectCookieResp = $this->sqlExecutor->selectQueryAcceptanceCustomerDB($cookieQueryData);
-            $cookieAccepted = $selectCookieResp["cookieAccepted"];
-        
-            $cookie = $_COOKIE["consent_cookie"];
-            $cookieData = json_decode($cookie, true);
-            
-            //only decrypt when the user has given permission and the cookie is set
-            if ($selectCookieResp["cookieAccepted"] === true && $cookieData["accepted"] === true) {
+                //check if the customer has given permission to decrypt his data.
+                $cookieQueryData = array(
+                    "customerID" => $customerID,
+                    "encryptID" => $encryptID,
+                    "timestamp" => $this->timestamp
+                );
                 
-                //decrypt the params
-                $ciphering = "AES-128-CTR";
-                $iv_length = openssl_cipher_iv_length($ciphering);
-                $options = 0;
-                $decryption_iv = $timestamp;
-                $decryptionKeyBin = hex2bin($encryptionKey);
-        
-                $this->decryptedLinkCreator = openssl_decrypt ($this->encryptedLinkCreator, $ciphering, 
-                            $decryptionKeyBin, $options, $decryption_iv);
-        
-                $this->decryptedTitle = openssl_decrypt ($this->encryptedTitle, $ciphering, 
-                            $decryptionKeyBin, $options, $decryption_iv);
-        
-                $this->decryptedFirstName = openssl_decrypt ($this->encryptedFirstName, $ciphering, 
-                            $decryptionKeyBin, $options, $decryption_iv);
-        
-                $this->decryptedLastName = openssl_decrypt ($this->encryptedLastName, $ciphering, 
-                            $decryptionKeyBin, $options, $decryption_iv);
-        
-                $this->decryptedCompanyName = openssl_decrypt ($this->encryptedCompanyName, $ciphering, 
-                            $decryptionKeyBin, $options, $decryption_iv);
-           
-                $this->decryptedCompanyGender = openssl_decrypt ($this->encryptedCompanyGender, $ciphering, 
-                            $decryptionKeyBin, $options, $decryption_iv);       
-        
-                $this->decryptedGender = openssl_decrypt ($this->encryptedGender, $ciphering, 
-                            $decryptionKeyBin, $options, $decryption_iv);
-        
-                $this->decryptedPosition = openssl_decrypt ($this->encryptedPosition, $ciphering, 
-                            $decryptionKeyBin, $options, $decryption_iv);
-        
-                $this->decryptedCurl = openssl_decrypt ($this->encryptedCurl, $ciphering, 
-                            $decryptionKeyBin, $options, $decryption_iv);
-        
-                $this->decryptedFC = openssl_decrypt ($this->encryptedFC, $ciphering, 
-                            $decryptionKeyBin, $options, $decryption_iv);
-            }
-        
-        } catch(Exception $e) {
-             error_log("Error while trying to use database: " . $e->getMessage());
-        } finally {
-            if (isset($this->db)) {
-                $this->db->closeConnection();
+                $selectCookieResp = $this->sqlExecutor->selectQueryAcceptanceCustomerDB($cookieQueryData);
+                $cookieAccepted = $selectCookieResp["cookieAccepted"];
+            
+                $cookie = $_COOKIE["consent_cookie"];
+                $cookieData = json_decode($cookie, true);
+                
+                //only decrypt when the user has given permission and the cookie is set
+                if ($selectCookieResp["cookieAccepted"] === true && $cookieData["accepted"] === true) {
+                    
+                    //decrypt the params
+                    $ciphering = "AES-128-CTR";
+                    $iv_length = openssl_cipher_iv_length($ciphering);
+                    $options = 0;
+                    $decryption_iv = $timestamp;
+                    $decryptionKeyBin = hex2bin($encryptionKey);
+            
+                    $this->decryptedLinkCreator = openssl_decrypt ($this->encryptedLinkCreator, $ciphering, 
+                                $decryptionKeyBin, $options, $decryption_iv);
+            
+                    $this->decryptedTitle = openssl_decrypt ($this->encryptedTitle, $ciphering, 
+                                $decryptionKeyBin, $options, $decryption_iv);
+            
+                    $this->decryptedFirstName = openssl_decrypt ($this->encryptedFirstName, $ciphering, 
+                                $decryptionKeyBin, $options, $decryption_iv);
+            
+                    $this->decryptedLastName = openssl_decrypt ($this->encryptedLastName, $ciphering, 
+                                $decryptionKeyBin, $options, $decryption_iv);
+            
+                    $this->decryptedCompanyName = openssl_decrypt ($this->encryptedCompanyName, $ciphering, 
+                                $decryptionKeyBin, $options, $decryption_iv);
+            
+                    $this->decryptedCompanyGender = openssl_decrypt ($this->encryptedCompanyGender, $ciphering, 
+                                $decryptionKeyBin, $options, $decryption_iv);       
+            
+                    $this->decryptedGender = openssl_decrypt ($this->encryptedGender, $ciphering, 
+                                $decryptionKeyBin, $options, $decryption_iv);
+            
+                    $this->decryptedPosition = openssl_decrypt ($this->encryptedPosition, $ciphering, 
+                                $decryptionKeyBin, $options, $decryption_iv);
+            
+                    $this->decryptedCurl = openssl_decrypt ($this->encryptedCurl, $ciphering, 
+                                $decryptionKeyBin, $options, $decryption_iv);
+            
+                    $this->decryptedFC = openssl_decrypt ($this->encryptedFC, $ciphering, 
+                                $decryptionKeyBin, $options, $decryption_iv);
+                }
+            
+            } catch(InvalidDataException $ide) {
+                error_log($ide->getErrorMsg());
+            } catch(DatabaseException $dbe) {
+                error_log($dbe->getErrorMsg());
+            } catch(Exception $e) {
+                error_log("Error while trying to use database: " . $e->getMessage());
+            } finally {
+                if (isset($this->db)) {
+                    $this->db->closeConnection();
+                }
             }
         }
+    }
+
+
+    private function checkForRequiredParams($requiredParams) {
+        foreach($requiredParams as $key) {
+            if(!isset($_GET[$key])) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /** Getter functions */
