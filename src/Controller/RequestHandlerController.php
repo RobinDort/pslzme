@@ -16,7 +16,7 @@ class RequestHandlerController {
         $this->api = $api;
     }
 
-    #[Route('/requestHandler', name: 'request_handler', defaults: ['_token_check' => false, '_scope' => 'frontend'],  methods: ['POST'])]
+    #[Route('/requestHandler', name: 'request_handler', defaults: ['_token_check' => true, '_scope' => 'frontend'],  methods: ['POST'])]
     public function handleRequests(Request $request): JsonResponse {
         $postData = json_decode($request->getContent(), true);
         
@@ -29,30 +29,30 @@ class RequestHandlerController {
 
         $response = ["test"];
 
-        // switch ($requestFunction) {
-        //     case "query-acception":
-        //         $resp = $this->$api->handleQueryAcception($requestData);
-        //         $response = $resp;
-        //     break;
+        switch ($requestFunction) {
+            case "query-acception":
+                $resp = $this->$api->handleQueryAcception($requestData);
+                $response = $resp;
+            break;
 
-        //     case "query-lock-check":
-        //         $resp = $this->$api->handleQueryLockCheck($requestData);
-        //         $response = $resp;
-        //     break;
+            case "query-lock-check":
+                $resp = $this->$api->handleQueryLockCheck($requestData);
+                $response = $resp;
+            break;
 
-        //     case "extract-greeting-data":
-        //         $resp = $this->$api->handleGreetingDataExtraction($requestData);
-        //         $response = $resp;
-        //         break;
+            case "extract-greeting-data":
+                $resp = $this->$api->handleGreetingDataExtraction($requestData);
+                $response = $resp;
+                break;
 
-        //     case "compare-link-owner":
-        //         $resp = $this->$api->handleCompareLinkOwner($requestData);
-        //         $response = $resp;
-        //         break;
+            case "compare-link-owner":
+                $resp = $this->$api->handleCompareLinkOwner($requestData);
+                $response = $resp;
+                break;
 
-        //     default:
-        //         return new JsonResponse("Request does not match one of the provided availabilities");
-        // }
+            default:
+                return new JsonResponse("Request does not match one of the provided availabilities");
+        }
 
         return new JsonResponse($response);
     }
