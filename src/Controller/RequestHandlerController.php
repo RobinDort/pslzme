@@ -16,7 +16,7 @@ class RequestHandlerController {
         $this->api = $api;
     }
 
-    #[Route('/requestHandler', name: 'request_handler', defaults: ['_scope' => 'backend'],  methods: ['POST'])]
+    #[Route('/requestHandler', name: 'request_handler', defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])]
     public function handleRequests(Request $request): JsonResponse {
         $postData = json_decode($request->getContent(), true);
         
