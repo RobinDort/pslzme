@@ -95,85 +95,62 @@ class DatabaseStatementExecutor {
 
         $query = $data["query"];
         if ($query === null) {
-            $resp .= "Unable to extract query out of data array";
-            return $resp;
+            throw new InvalidDataException("Unable to extract query out of data object");
         }
 
         $timestamp = $data["timestamp"];
         if ($timestamp === null) {
-            $resp .= "Unable to extract timestamp out of data array";
-            return $resp;
+            throw new InvalidDataException("Unable to extract timestamp out of data object");
         }
 
         $acceptedOn = $data["acceptedOn"];
         if ($acceptedOn === null) {
-            $resp .= "Unable to extract acception time out of data array";
-            return $resp;
+            throw new InvalidDataException("Unable to extract acception time out of data object");
         }
 
         $queryLocked = $data["queryLocked"];
         if ($queryLocked === null) {
-            $resp .= "Unable to extract query locked out of data array";
-            return $resp;
+            throw new InvalidDataException("Unable to extract query locked out of data object");
         }
 
         $cookieAccepted = $data["cookieAccepted"];
         if ($cookieAccepted === null) {
-            $resp .= "Unable to extract cookie acception out of data array";
-            return $resp;
+            throw new InvalidDataException("Unable to extract cookie acception out of data object");
         }
 
         $customerID = $data["customerID"];
         if ($customerID === null) {
-            $resp .= "Unable to extract customer ID out of data array";
-            return $resp;
+            throw new InvalidDataException("Unable to extract customer ID out of data object");
         }
 
         $encryptID = $data["encryptID"];
         if ($encryptID === null) {
-            $resp .= "Unable to extract encryption ID out of data array";
-            return $resp;
+            throw new InvalidDataException("Unable to extract encryption ID out of data object");
         }
 
         // first check if the query already exists -> user has declined or accepted the cookie before
         $selectCustomerDBQueryStringResp = $this->selectCustomerDBQueryString($timestamp, $customerID, $encryptID);
 
         // select statement has been executed successfully and the query is not present
-        if ($selectCustomerDBQueryStringResp->executionSuccessful === true && $selectCustomerDBQueryStringResp->overwriteQuery === false) {
+        if ($selectCustomerDBQueryStringResp->overwriteQuery === false) {
 
             $resp .= $selectCustomerDBQueryStringResp->response;
 
             // insert the new query
             $insertCustomerDBQueryStringResp = $this->insertCustomerDBQueryString($query, $timestamp, $acceptedOn, $cookieAccepted, $customerID, $encryptID, $queryLocked);
 
-            if ($insertCustomerDBQueryStringResp->executionSuccessful === false) {
-                $resp .= $insertCustomerDBQueryStringResp->response;
-                return $resp;
-            }
-
             $resp .= $insertCustomerDBQueryStringResp->response;
 
         // select statement has been executed successfully but the query is already present and must be overwritten 
-        } else if ($selectCustomerDBQueryStringResp->executionSuccessful && $selectCustomerDBQueryStringResp->overwriteQuery === true) {
+        } else if ($selectCustomerDBQueryStringResp->overwriteQuery === true) {
 
             $resp .= $selectCustomerDBQueryStringResp->response;
 
             // update the query
             $updateCustomerDBQueryStringResp = $this->updateCustomerDBQueryString($timestamp, $acceptedOn, $cookieAccepted, $customerID, $encryptID, $queryLocked);
 
-        if ($updateCustomerDBQueryStringResp->executionSuccessful === false) {
-                $resp .= $updateCustomerDBQueryStringResp->response;
-                return $resp;
-            }
-
             $resp .= $updateCustomerDBQueryStringResp->response;
-
-        // select statement could not be executed
-        } else {
-            $resp .= $selectCustomerDBQueryStringResp->response;
-            return $resp;
-
-        }
+        } 
 
         return $resp;
     }
@@ -252,7 +229,6 @@ class DatabaseStatementExecutor {
 
     private function selectCustomerDBQueryString($timestamp, $customerID, $encryptID) {
         $response = array(
-            "executionSuccessful" => false,
             "response" => "",
             "overwriteQuery" => false,
         );
@@ -264,22 +240,19 @@ class DatabaseStatementExecutor {
             if ($stmt->execute()) {
                 $stmtResult = $stmt->get_result();
                 if ($stmtResult->num_rows === 0) {
-                    $convertedResponse->executionSuccessful = true;
                     $convertedResponse->response = "No query found. new query can safely be inserted into the database";
                 } else {
-                    $convertedResponse->executionSuccessful = true;
                     $convertedResponse->response = "Found already present query. Query needs to be overwritten.";
                     $convertedResponse->overwriteQuery = true;
                 }
             
             } else {
-                $convertedResponse->executionSuccessful = false;
-                $convertedResponse->response = "Error while trying to select customer query with timestamp: " . $timestamp . " and customer ID: " . $customerID . " and encryption ID: " . $encryptID;
+                throw new DatabaseException("Unable to execute statement selectCustomerQuery with timestamp: " . $timestamp . ", customer ID: " . $customerID . ", encryption ID: " . $encryptID);
             } 
 
         } catch(Exception $e) {
-            $convertedResponse->executionSuccessful = false;
-            $convertedResponse->response = "Exception:" .$e;
+            // rethrow so api can handle catching.
+            throw $e;
         } finally {
             if ($stmt) $stmt->close();
         }
@@ -331,7 +304,6 @@ class DatabaseStatementExecutor {
 
     private function insertCustomerDBQueryString($query, $timestamp, $acceptedOn, $cookieAccepted, $customerID, $encryptID, $queryLocked) {
         $response = array(
-            "executionSuccessful" => false,
             "response" => "",
         );
 
@@ -340,17 +312,14 @@ class DatabaseStatementExecutor {
 
         try {
             if ($stmt->execute()) {
-                $convertedResponse->executionSuccessful = true;
-                $convertedResponse->response = "Successfully inserted new query for customer ID: " . $customerID . " and encryption ID: " . $encryptID;
-            
+                $convertedResponse->response = "Successfully inserted new query for customer ID: " . $customerID . " and encryption ID: " . $encryptID;            
             } else {
-                $convertedResponse->executionSuccessful = false;
-                $convertedResponse->response = "Error while trying to insert customer query for customer ID: " . $customerID . " and encryption ID: " . $encryptID;
+                throw new DatabaseException("Unable to execute query insertCustomerQuery with customer ID: " . $customerID . ", encryption ID: " . $encryptID);
             } 
 
         } catch(Exception $e) {
-            $convertedResponse->executionSuccessful = false;
-            $convertedResponse->response = "Exception:" .$e;
+           // rethrow so api can handle catching.
+           throw $e;
         } finally {
             if ($stmt) $stmt->close();
         }
@@ -360,7 +329,6 @@ class DatabaseStatementExecutor {
 
     private function updateCustomerDBQueryString($timestamp, $acceptedOn, $cookieAccepted, $customerID, $encryptID, $queryLocked) {
         $response = array(
-            "executionSuccessful" => false,
             "response" => "",
         );
 
@@ -369,17 +337,15 @@ class DatabaseStatementExecutor {
 
         try {
             if ($stmt->execute()) {
-                $convertedResponse->executionSuccessful = true;
                 $convertedResponse->response = "Successfully updated query for timestamp: " . $timestamp . "and customer ID: " . $customerID . " and encryption ID: " . $encryptID;
             
             } else {
-                $convertedResponse->executionSuccessful = false;
-                $convertedResponse->response = "Error while trying to update customer query for timestamp: " . $timestamp . "and customer ID: " . $customerID . " and encryption ID: " . $encryptID;
+                throw new DatabaseException("Unable to execute statement updateCustomerQuery with timestamp: " . $timestamp . ", customer ID: " . $customerID . ", encryption ID: " . $encryptID);
             } 
 
         } catch(Exception $e) {
-            $convertedResponse->executionSuccessful = false;
-            $convertedResponse->response = "Exception:" .$e;
+            // rethrow so api can handle catching.
+            throw $e;
         } finally {
             if ($stmt) $stmt->close();
         }
