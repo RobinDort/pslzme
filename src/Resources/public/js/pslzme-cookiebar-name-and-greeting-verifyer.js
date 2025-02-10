@@ -1,8 +1,10 @@
 function verifyNameAndGreeting() {
 	const queryData = queryParamsSet();
 
-	handleGreetingVerification(queryData.params);
-	handleCustomerNameVerification(queryData.params);
+	if (queryData.isSet === true) {
+		handleGreetingVerification(queryData.params);
+		handleCustomerNameVerification(queryData.params);
+	}
 }
 
 async function handleGreetingVerification(queryData) {

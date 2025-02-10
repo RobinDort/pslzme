@@ -21,13 +21,13 @@ class RequestHandlerController {
         $postData = json_decode($request->getContent(), true);
         
         if (!isset($postData['request']) || !isset($postData['data'])) {
-            return new JsonResponse(["error" => "Invalid request format"], 400);
+            return new JsonResponse(["error" => "post data[request] or postdata[data] not set!"], 400);
         }
 
         $requestFunction = $postData['request'];
         $requestData = json_decode($postData['data'], true);
 
-        $response = ["test"];
+        $response = [];
 
         switch ($requestFunction) {
             case "query-acception":
