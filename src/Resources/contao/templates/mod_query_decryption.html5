@@ -14,47 +14,59 @@
 
     // Call the decrypt method
     $decryptFormData->decrypt();
+
+	// Init the vars for later use.
+	$decryptedLinkCreator = $decryptFormData->getDecryptedLinkCreator();
+	$decryptedTitle = $decryptFormData->getDecryptedTitle();
+	$decryptedFirstName = $decryptFormData->getDecryptedFirstName();
+	$decryptedLastName = $decryptFormData->getDecryptedLastName();
+	$decryptedCompanyName = $decryptFormData->getDecryptedCompanyName();
+	$decryptedCompanyGender = $decryptFormData->getDecryptedCompanyGender();
+	$decryptedGender = $decryptFormData->getDecryptedGender();
+	$decryptedPosition = $decryptFormData->getDecryptedPosition();
+	$decryptedCurl = $decryptFormData->getDecryptedCURL();
+	$decryptedFC = $decryptFormData->getDecryptedFC();
 ?>
 
 <?php
 
-	if (isset($decryptedLinkCreator) && $decryptedLinkCreator !== "") {
+	if ($decryptedLinkCreator !== null && $decryptedLinkCreator !== "") {
 		$GLOBALS['decryptedVars']['linkCreator'] = $decryptedLinkCreator;  
 	}
 	
-	if (isset($decryptedTitle) && $decryptedTitle !== "") {
+	if ($decryptedTitle !== null && $decryptedTitle !== "") {
 		$GLOBALS['decryptedVars']['title'] = $decryptedTitle;  
 	}
 	
-	if (isset($decryptedFirstName) && $decryptedFirstName !== "") {
+	if ($decryptedFirstName !== null && $decryptedFirstName !== "") {
 		$GLOBALS['decryptedVars']['firstName'] = $decryptedFirstName;  
 	}
 	
-	if (isset($decryptedLastName) && $decryptedLastName !== "") {
+	if ($decryptedLastName !== null && $decryptedLastName !== "") {
 		$GLOBALS['decryptedVars']['lastName'] = $decryptedLastName;  
 	}
 	
-	if (isset($decryptedCompanyName) && $decryptedCompanyName !== "") {
+	if ($decryptedCompanyName !== null && $decryptedCompanyName !== "") {
 		$GLOBALS['decryptedVars']['company'] = $decryptedCompanyName;  
 	}
 	
-	if (isset($decryptedCompanyGender)) {
+	if ($decryptedCompanyGender !== null) {
 		$GLOBALS['decryptedVars']['companyGender'] = $decryptedCompanyGender;  
 	}
 	
-	if (isset($decryptedGender) && $decryptedGender !== "") {
+	if ($decryptedGender !== null && $decryptedGender !== "") {
 		$GLOBALS['decryptedVars']['gender'] = $decryptedGender;  
 	}
 	
-	if (isset($decryptedPosition) && $decryptedPosition !== "") {
+	if ($decryptedPosition !== null && $decryptedPosition !== "") {
 		$GLOBALS['decryptedVars']['position'] = $decryptedPosition;  
 	}
 	
-	if (isset($decryptedCurl) && $decryptedCurl !== "") {
+	if ($decryptedCurl !== null && $decryptedCurl !== "") {
 		$GLOBALS['decryptedVars']['curl'] = $decryptedCurl;  
 	}
 	
-	if (isset($decryptedFC) && $decryptedFC !== "") {
+	if ($decryptedFC !== null && $decryptedFC !== "") {
 		$GLOBALS['decryptedVars']['fc'] = $decryptedFC;  
 	}
 	
