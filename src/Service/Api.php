@@ -178,8 +178,8 @@ class Api {
             $respArr["decryptedFirstContact"] = $decryptedFirstContact;
             $respArr["decryptedLinkCreator"] = $decryptedLinkCreator;
 
-
-
+        } catch (DatabaseException $dbe) {
+            error_log($dbe->getErrorMsg());
         } catch(Exception $e) {
             $respArr["response"] .= "Error while trying to use database: " . $e;
         } finally {
