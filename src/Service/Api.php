@@ -76,10 +76,13 @@ class Api {
             $this->db->getConnection()->commit();
 
         } catch(InvalidDataException $ide) {
+            $this->db->getConnection()->rollback();
             error_log($ide->getErrorMsg());
         } catch(DatabaseException $dbe) {
+            $this->db->getConnection()->rollback();
             error_log($dbe->getErrorMsg());
         } catch(Exception $e) {
+            $this->db->getConnection()->rollback();
             error_log($e->getMessage());
         } finally {
             if (isset($this->db)) {
