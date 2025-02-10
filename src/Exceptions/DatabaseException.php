@@ -1,4 +1,6 @@
 <?php
+namespace RobinDort\PslzmeLinks\Exceptions;
+
 use Exception;
 
 class DatabaseException extends Exception {

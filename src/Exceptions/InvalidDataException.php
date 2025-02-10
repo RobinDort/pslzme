@@ -1,4 +1,5 @@
 <?php
+namespace RobinDort\PslzmeLinks\Exceptions;
 
 use Exception;
 
