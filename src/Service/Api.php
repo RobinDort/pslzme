@@ -227,6 +227,8 @@ class Api {
                 $respArr["response"] .= "unable to compare strings";
             }
 
+        } catch (DatabaseException $dbe) {
+            error_log($dbe->getErrorMsg());
         } catch(Exception $e) {
             $respArr["response"] .= "Error while trying to use database: " . $e;
         } finally {
