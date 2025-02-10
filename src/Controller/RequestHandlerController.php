@@ -31,22 +31,22 @@ class RequestHandlerController {
 
         switch ($requestFunction) {
             case "query-acception":
-                $resp = $this->$api->handleQueryAcception($requestData);
+                $resp = $this->api->handleQueryAcception($requestData);
                 $response = $resp;
             break;
 
             case "query-lock-check":
-                $resp = $this->$api->handleQueryLockCheck($requestData);
+                $resp = $this->api->handleQueryLockCheck($requestData);
                 $response = $resp;
             break;
 
             case "extract-greeting-data":
-                $resp = $this->$api->handleGreetingDataExtraction($requestData);
+                $resp = $this->api->handleGreetingDataExtraction($requestData);
                 $response = $resp;
                 break;
 
             case "compare-link-owner":
-                $resp = $this->$api->handleCompareLinkOwner($requestData);
+                $resp = $this->api->handleCompareLinkOwner($requestData);
                 $response = $resp;
                 break;
 
