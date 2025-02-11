@@ -1,9 +1,9 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
 	pslzmeRedirection();
-	// pslzmeQueryClickListener();
-	// verifyNameAndGreeting();
-	// controlPslzmeCookiebar();
+	pslzmeQueryClickListener();
+	verifyNameAndGreeting();
+	controlPslzmeCookiebar();
 });
 
 

@@ -13,11 +13,11 @@ use RobinDort\PslzmeLinks\Service\Api;
 #[AsController]
 class RequestHandlerController {
 
-    // private $api;
+    private $api;
 
-    // public function __construct(Api $api) {
-    //     $this->api = $api;
-    // }
+    public function __construct(Api $api) {
+        $this->api = $api;
+    }
 
     public function __invoke(Request $request): JsonResponse {
         // $postData = json_decode($request->getContent(), true);
@@ -29,7 +29,7 @@ class RequestHandlerController {
         // $requestFunction = $postData['request'];
         // $requestData = json_decode($postData['data'], true);
 
-         $response = [];
+         $response = ["test"];
 
         // switch ($requestFunction) {
         //     case "query-acception":
