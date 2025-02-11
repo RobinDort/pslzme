@@ -1,5 +1,6 @@
 <?php
 use RobinDort\PslzmeLinks\Module\QueryDecryption;
+use RobinDort\PslzmeLinks\Module\PslzmeCookiebar;
 
 // Init all css / js files
 $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/url-query-data-filter.js|static";
@@ -12,6 +13,7 @@ $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/pslzme-cookiebar-
 $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/cookie-acception.js|static";
 $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/main.js|static";
 
-$GLOBALS['FE_MOD']['pslzme']['query_decryption'] = \RobinDort\PslzmeLinks\Module\QueryDecryption::class;
+$GLOBALS['FE_MOD']['pslzme']['query_decryption'] = QueryDecryption::class;
+$GLOBALS['FE_MOD']['pslzme']['pslzme_cookiebar'] = PslzmeCookiebar::class;
 
 ?>
