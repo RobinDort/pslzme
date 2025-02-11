@@ -9,7 +9,7 @@
 				<img src="files/Alexander_Dort_GmbH/Images/Pslzme/pslzme_logo.svg" style="max-height: 80px;"/>
 			</div>
 			<div class="pslzme-cookiebar-description ce_text block">
-				<p><?= $this->translate('robindort_pslzme_links.cookiebar_fh') ?></h4></p>
+				<p><?= $this->translate('robindort_pslzme_links.cookiebar_fh') ?></p>
 				<p><?= $this->translate('robindort_pslzme_links.cookiebar_sh') ?>		
 
 			</div>
