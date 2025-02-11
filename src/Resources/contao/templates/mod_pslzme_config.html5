@@ -1,9 +1,9 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-	pslzmeRedirection();
-	pslzmeQueryClickListener();
-	verifyNameAndGreeting();
-	controlPslzmeCookiebar();
+	// pslzmeRedirection();
+	// pslzmeQueryClickListener();
+	// verifyNameAndGreeting();
+	// controlPslzmeCookiebar();
 });
 
 
@@ -11,8 +11,8 @@ function handleAPIRequest(requestObject) {
     try {
         return new Promise(function (resolve, reject) {
             // Send the second AJAX request
-            $.ajax({
-                type: "POST",
+            new Request.JSON({
+                method: 'post',
                 url: "/requestHandler",
                 dataType: "json",
                 encode: true,
@@ -25,7 +25,7 @@ function handleAPIRequest(requestObject) {
                     console.log(error);
                     reject(error);
                 },
-            });
+            }).send();
         });
     } catch(error) {
         console.error(error);
