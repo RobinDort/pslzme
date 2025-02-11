@@ -17,7 +17,7 @@ $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/main.js|static";
 
 
 // Set the CSRF token to be able to send ajax requests via js
-$GLOBALS['TL_HEAD'][] = '<meta name="csrf-token" content="' . System::getContainer()->get('contao.csrf.token_manager')->getDefaultTokenValue() . '">';
+$GLOBALS['TL_MOOTOOLS'][] = '<meta name="csrf-token" content="' . System::getContainer()->get('contao.csrf.token_manager')->getDefaultTokenValue() . '">';
 
 $GLOBALS['FE_MOD']['pslzme']['query_decryption'] = QueryDecryption::class;
 $GLOBALS['FE_MOD']['pslzme']['pslzme_cookiebar'] = PslzmeCookiebar::class;
