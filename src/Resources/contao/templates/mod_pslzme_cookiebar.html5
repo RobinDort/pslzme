@@ -14,7 +14,17 @@
 
 			</div>
 			<div class="pslzme-cookiebar-footer block">
-				{{insert_module::191}}
+				<div id="name-verifiyer" data-user-attempts="0">
+					<p><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['cookiebar_nvft'] ?></p>
+					<div class="ce_text block flex-wrap">
+						<input type="text" value="" class="ce_text block" maxlength="1">
+						<input type="text" value="" class="ce_text block" maxlength="1">
+						<input type="text" value="" class="ce_text block" maxlength="1">
+					</div>
+					<p class="ce_text block space-top10 attempts-text"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['cookiebar_nvst'] ?></p>
+					<p style="text-align: center;"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['cookiebar_nvtt'] ?>
+					</p>
+				</div>
 				<div class="ce_text block space-top30">
 					<button class="pslzme-cookiebar-save-btn accept" id="pslzme-cookiebar-accept-btn" onClick=saveConsentCookie(true);handleCookie(true);hideVisibility(); disabled="true"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['yes'] ?></button>
 					<button class="pslzme-cookiebar-save-btn" id="pslzme-cookiebar-decline-btn" onClick="handleCookie(false);hideVisibility();"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['no'] ?></button>

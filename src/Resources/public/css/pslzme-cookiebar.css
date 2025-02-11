@@ -88,6 +88,13 @@
 	text-transform: none;
 }
 
+.flex-wrap {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+}
+
 .space-bottom20 {
 	margin-bottom: 20px;
 }
