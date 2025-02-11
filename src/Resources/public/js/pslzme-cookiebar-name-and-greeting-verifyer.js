@@ -34,7 +34,6 @@ function handleCustomerNameVerification(queryData) {
 					inputs[index + 1].focus();
 				}
 			}
-			//compareName(queryData);
 		});
 
 		input.addEventListener("change", function () {
@@ -83,6 +82,8 @@ async function compareName(queryData) {
 		data: JSON.stringify(requestData),
 		request: "compare-link-owner",
 	};
+
+	console.log(requestObject);
 
 	await compareLinkOwnerRequest(requestObject, firstInput, secondInput, thirdInput, acceptBtn);
 }
