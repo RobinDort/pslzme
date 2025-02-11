@@ -11,7 +11,7 @@ function handleAPIRequest(requestObject) {
     try {
         return new Promise(function (resolve, reject) {
             // Send the second AJAX request
-            new Request.JSON({
+            return new Request.JSON({
                 method: 'post',
                 url: "/requestHandler",
                 dataType: "json",
