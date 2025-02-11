@@ -16,3 +16,6 @@ services:
       $password: "PslzmeCustomerDatabasePassword1!"
       $dbname: "pslzme_test_customer_db"
     public: true
+
+  RobinDort\PslzmeLinks\Controller\RequestHandlerController:
+    tags: [controller.service_arguments]
