@@ -201,6 +201,7 @@ class Api {
         $respArr = array(
             "nameMatchesOwner" => false,
             "response" => "",
+            "combinedNameInput" => $combinedNameInput;
         );
 
 
