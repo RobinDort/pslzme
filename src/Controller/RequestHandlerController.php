@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use RobinDort\PslzmeLinks\Service\Api;
 
 
+#[Route('/requestHandler', name: RequestHandlerController::class, defaults: ['_scope' => 'frontend', '_token_check' => true])]
 class RequestHandlerController {
 
     private $api;
@@ -16,8 +17,7 @@ class RequestHandlerController {
         $this->api = $api;
     }
 
-    #[Route('/requestHandler', name: 'request_handler', defaults: ['_token_check' => false, '_scope' => 'frontend'],  methods: ['POST'])]
-    public function handleRequests(Request $request): JsonResponse {
+    public function __invoke(Request $request): JsonResponse {
         $postData = json_decode($request->getContent(), true);
         
         if (!isset($postData['request']) || !isset($postData['data'])) {
