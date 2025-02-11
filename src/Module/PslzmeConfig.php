@@ -1,12 +1,12 @@
 <?php
 namespace RobinDort\PslzmeLinks\Module;
 
-use Contao\FrontendModule;
+use Contao\Module;
 use Contao\FrontendTemplate;
 use Contao\Controller;
 use Contao\Environment;
 
-class PslzmeConfig extends FrontendModule {
+class PslzmeConfig extends Module {
     protected $strTemplate = "mod_pslzme_config";
 
     protected function compile() {}
