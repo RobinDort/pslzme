@@ -7,7 +7,11 @@ function handleAPIRequest(requestObject) {
 			url: "/requestHandler",
 			dataType: "json",
 			encode: true,
-			data: { ...requestObject, REQUEST_TOKEN: csrfToken },
+			data: requestObject,
+			headers: { RequestVerificationToken: csrfToken },
+			xhrFields: {
+				withCredentials: true, // This enables sending credentials like cookies with the request
+			},
 			success: function (response) {
 				console.log(response);
 				resolve(response);
