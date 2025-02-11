@@ -3,12 +3,14 @@ namespace RobinDort\PslzmeLinks\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\Routing\Annotation\Route;
 
 use RobinDort\PslzmeLinks\Service\Api;
 
 
 #[Route('/requestHandler', name: RequestHandlerController::class, defaults: ['_scope' => 'frontend', '_token_check' => true])]
+#[AsController]
 class RequestHandlerController {
 
     private $api;
@@ -18,16 +20,16 @@ class RequestHandlerController {
     }
 
     public function __invoke(Request $request): JsonResponse {
-        $postData = json_decode($request->getContent(), true);
+        // $postData = json_decode($request->getContent(), true);
         
-        if (!isset($postData['request']) || !isset($postData['data'])) {
-            return new JsonResponse(["error" => "post data[request] or postdata[data] not set!"], 400);
-        }
+        // if (!isset($postData['request']) || !isset($postData['data'])) {
+        //     return new JsonResponse(["error" => "post data[request] or postdata[data] not set!"], 400);
+        // }
 
-        $requestFunction = $postData['request'];
-        $requestData = json_decode($postData['data'], true);
+        // $requestFunction = $postData['request'];
+        // $requestData = json_decode($postData['data'], true);
 
-        $response = [];
+        // $response = [];
 
         // switch ($requestFunction) {
         //     case "query-acception":
@@ -54,7 +56,7 @@ class RequestHandlerController {
         //         return new JsonResponse("Request does not match one of the provided availabilities");
         // }
 
-        return new JsonResponse($response);
+        // return new JsonResponse($response);
     }
 }
 
