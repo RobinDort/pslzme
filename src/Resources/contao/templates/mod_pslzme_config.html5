@@ -1,14 +1,13 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 	pslzmeRedirection();
-	// pslzmeQueryClickListener();
-	// verifyNameAndGreeting();
-	// controlPslzmeCookiebar();
+	pslzmeQueryClickListener();
+	verifyNameAndGreeting();
+	controlPslzmeCookiebar();
 });
 
 
 function handleAPIRequest(requestObject) {
-    console.log(requestObject);
     try {
         return new Promise(function (resolve, reject) {
             // Send the second AJAX request
