@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use RobinDort\PslzmeLinks\Service\Api;
 
 
-#[Route('/requestHandler', name: RequestHandlerController::class, defaults: ['_scope' => 'frontend', '_token_check' => true])]
+#[Route('/requestHandler', name: RequestHandlerController::class)]
 #[AsController]
 class RequestHandlerController {
 
@@ -29,7 +29,7 @@ class RequestHandlerController {
         // $requestFunction = $postData['request'];
         // $requestData = json_decode($postData['data'], true);
 
-        // $response = [];
+         $response = [];
 
         // switch ($requestFunction) {
         //     case "query-acception":
@@ -56,7 +56,7 @@ class RequestHandlerController {
         //         return new JsonResponse("Request does not match one of the provided availabilities");
         // }
 
-        // return new JsonResponse($response);
+         return new JsonResponse($response);
     }
 }
 
