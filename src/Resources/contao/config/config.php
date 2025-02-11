@@ -1,7 +1,6 @@
 <?php
 use RobinDort\PslzmeLinks\Module\QueryDecryption;
 use RobinDort\PslzmeLinks\Module\PslzmeCookiebar;
-use RobinDort\PslzmeLinks\Module\PslzmeConfig;
 
 
 // Init all css / js files
@@ -17,13 +16,8 @@ $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/pslzme-cookiebar-
 $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/cookie-acception.js|static";
 $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/main.js|static";
 
-
-// Set the CSRF token to be able to send ajax requests via js
-$GLOBALS['TL_MOOTOOLS'][] = '<meta name="csrf-token" content="' . System::getContainer()->get('contao.csrf.token_manager')->getDefaultTokenValue() . '">';
-
 $GLOBALS['FE_MOD']['pslzme']['query_decryption'] = QueryDecryption::class;
 $GLOBALS['FE_MOD']['pslzme']['pslzme_cookiebar'] = PslzmeCookiebar::class;
-// $GLOBALS['FE_MOD']['pslzme']['pslzme_configuration'] = PslzmeConfig::class;
 
 
 ?>
