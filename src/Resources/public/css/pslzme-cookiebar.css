@@ -52,7 +52,8 @@
 	gap: 20px;
 }
 
-#pslzme-cookiebar .pslzme-cookiebar-info a {
+#pslzme-cookiebar .pslzme-cookiebar-info a,
+.contao-cookiebar .cc-info > a {
 	font-size: 1.2rem;
 }
 
@@ -67,6 +68,12 @@
 	color: rgba(102, 102, 102, 1);
 	cursor: pointer;
 	outline: 0 none;
+}
+
+#pslzme-cookiebar .pslzme-cookiebar-save-btn.accept:not(button:disabled) {
+	background-color: rgba(78, 158, 62, 1);
+	border-color: rgba(62, 120, 48, 1);
+	color: rgba(255, 255, 255, 1);
 }
 
 #pslzme-cookiebar #pslzme-cookiebar-accept-btn:disabled {
@@ -86,6 +93,12 @@
 
 .pslzme-heading {
 	text-transform: none;
+}
+
+.pslzme-cookiebar-close-btn {
+	background-color: rgba(#ffffff, 1);
+	border: 0px solid;
+	border-radius: 5px;
 }
 
 .flex-wrap {
@@ -115,6 +128,10 @@
 
 // Desktop
 @media (min-width: 1367px) {
+	#pslzme-cookiebar-inner {
+		max-width: 100%;
+	}
+
 	#name-verifiyer > div input {
 		width: 80px;
 		height: 80px;
