@@ -220,7 +220,7 @@ class Api {
             $decryptedLastName = openssl_decrypt($encryptedLastName, $ciphering, 
                         $decryptionKeyBin, $options, $decryption_iv);
 
-            $respArr["response"] = $decryptedLastName;
+            $respArr["response"] .= "Last Name: " . $decryptedLastName;
 
 
             if ($this->compareStrings($decryptedLastName, $combinedNameInput)) {
