@@ -3,7 +3,7 @@ function handleAPIRequest(requestObject) {
 		// Send the second AJAX request
 		$.ajax({
 			type: "POST",
-			url: "files/Alexander_Dort_GmbH/php/request-handler.php",
+			url: "/requestHandler",
 			dataType: "json",
 			encode: true,
 			data: requestObject,
