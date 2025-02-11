@@ -220,6 +220,8 @@ class Api {
             $decryptedLastName = openssl_decrypt($encryptedLastName, $ciphering, 
                         $decryptionKeyBin, $options, $decryption_iv);
 
+            $respArr["response"] = $decryptedLastName;
+
 
             if ($this->compareStrings($decryptedLastName, $combinedNameInput)) {
                 $respArr["nameMatchesOwner"] = true;
