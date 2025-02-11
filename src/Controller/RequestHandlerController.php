@@ -21,6 +21,7 @@ class RequestHandlerController {
 
     public function __invoke(Request $request): JsonResponse {
         $postData = json_decode($request->getContent(), true);
+        $data = $request->request->get('data');
         
         // if (!isset($postData['request']) || !isset($postData['data'])) {
         //     return new JsonResponse(["error" => "post data[request] or postdata[data] not set!"], 400);
@@ -29,7 +30,7 @@ class RequestHandlerController {
         // $requestFunction = $postData['request'];
         // $requestData = json_decode($postData['data'], true);
 
-         $response = [$postData];
+         $response = [$data];
 
         // switch ($requestFunction) {
         //     case "query-acception":
