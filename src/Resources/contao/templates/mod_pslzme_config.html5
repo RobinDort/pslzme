@@ -23,7 +23,7 @@ function handleAPIRequest(requestObject) {
                     console.log(error);
                     reject(error);
                 },
-            }).send();
+            });
         });
     } catch(error) {
         console.error(error);
