@@ -9,29 +9,29 @@
 				<img src="files/Alexander_Dort_GmbH/Images/Pslzme/pslzme_logo.svg" style="max-height: 80px;"/>
 			</div>
 			<div class="pslzme-cookiebar-description ce_text block">
-				<p><?= $this->translate('robindort_pslzme_links.cookiebar_fh') ?></p>
-				<p><?= $this->translate('robindort_pslzme_links.cookiebar_sh') ?>		
+				<p><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['cookiebar_fh'] ?></p>
+				<p><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['cookiebar_sh'] ?>		
 
 			</div>
 			<div class="pslzme-cookiebar-footer block">
 				{{insert_module::191}}
 				<div class="ce_text block space-top30">
-					<button class="pslzme-cookiebar-save-btn accept" id="pslzme-cookiebar-accept-btn" onClick=saveConsentCookie(true);handleCookie(true);hideVisibility(); disabled="true"><?= $this->translate('robindort_pslzme_links.yes') ?></button>
-					<button class="pslzme-cookiebar-save-btn" id="pslzme-cookiebar-decline-btn" onClick="handleCookie(false);hideVisibility();"><?= $this->translate('robindort_pslzme_links.no') ?></button>
+					<button class="pslzme-cookiebar-save-btn accept" id="pslzme-cookiebar-accept-btn" onClick=saveConsentCookie(true);handleCookie(true);hideVisibility(); disabled="true"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['yes'] ?></button>
+					<button class="pslzme-cookiebar-save-btn" id="pslzme-cookiebar-decline-btn" onClick="handleCookie(false);hideVisibility();"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['no'] ?></button>
 				</div>
                 <p><br></p>
                 <section class="ce_accordionSingle ce_accordion ce_text block">
-                    <div class="toggler ui-accordion-header ui-corner-top ui-state-default ui-accordion-icons ui-accordion-header-collapsed ui-corner-all" role="tab" id="ui-id-1" aria-controls="ui-id-2" aria-selected="true" aria-expanded="true" tabindex="0"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span><?= $this->translate('robindort_pslzme_links.cookiebar_footer_more_info') ?></div>
+                    <div class="toggler ui-accordion-header ui-corner-top ui-state-default ui-accordion-icons ui-accordion-header-collapsed ui-corner-all" role="tab" id="ui-id-1" aria-controls="ui-id-2" aria-selected="true" aria-expanded="true" tabindex="0"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-s"></span><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['cookiebar_footer_more_info'] ?></div>
                     <div class="accordion ui-accordion-content ui-corner-bottom ui-helper-reset ui-widget-content ui-accordion-content-active" style="" id="ui-id-2" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="false">
                         <div>
-                            <?= $this->translate('robindort_pslzme_links.cookiebar_footer_text') ?>
+                            <?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['cookiebar_footer_text'] ?>
                         </div>
                     </div>
                 </section>					
 			</div>
 			<div class="pslzme-cookiebar-info space-top20 block">
-				<a href="https://www.alexanderdort.com/impressum.html" rel="norefferer noopener"><?= $this->translate('robindort_pslzme_links.imprint') ?></a>
-				<a href="https://www.alexanderdort.com/datenschutz.html" rel="norefferer noopener"><?= $this->translate('robindort_pslzme_links.privacy') ?></a>
+				<a href="https://www.alexanderdort.com/impressum.html" rel="norefferer noopener"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['imprint'] ?></a>
+				<a href="https://www.alexanderdort.com/datenschutz.html" rel="norefferer noopener"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['privacy'] ?></a>
 			</div>
 		</div>
 	</div>
