@@ -5,6 +5,8 @@ use RobinDort\PslzmeLinks\Service\DatabaseConnection;
 use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
 use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
 
+$decryptedLinkCreator = "";
+
 class DecryptFormData {
 
     private $db;
@@ -124,7 +126,7 @@ class DecryptFormData {
                     $decryption_iv = $timestamp;
                     $decryptionKeyBin = hex2bin($encryptionKey);
             
-                    $this->decryptedLinkCreator = openssl_decrypt ($this->encryptedLinkCreator, $ciphering, 
+                    $decryptedLinkCreator = openssl_decrypt ($this->encryptedLinkCreator, $ciphering, 
                                 $decryptionKeyBin, $options, $decryption_iv);
             
                     $this->decryptedTitle = openssl_decrypt ($this->encryptedTitle, $ciphering, 
