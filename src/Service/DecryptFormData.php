@@ -100,6 +100,10 @@ class DecryptFormData {
                 $customerID = $selectStmtResponse["customerID"];
                 $encryptID = $selectStmtResponse["encryptID"];
                 $encryptionKey = $selectStmtResponse["encryptKey"];
+
+                echo $customerID;
+                echo $encryptID;
+                echo $encryptionKey;
             
                 //check if the customer has given permission to decrypt his data.
                 $cookieQueryData = array(
@@ -181,7 +185,7 @@ class DecryptFormData {
 
     /** Getter functions */
     public function getDecryptedLinkCreator() {
-        return $this->encryptedLinkCreator;
+        return $this->decryptedLinkCreator;
     }
 
     public function getDecryptedTitle() {
