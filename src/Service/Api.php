@@ -186,8 +186,9 @@ class Api {
 
         } catch (DatabaseException $dbe) {
             error_log($dbe->getErrorMsg());
+            $respArr["response"] = $dbe->getErrorMsg();
         } catch(Exception $e) {
-            $respArr["response"] .= "Error while trying to use database: " . $e;
+            $respArr["response"] .= "Error while trying to use database: " . $e->getMessage();
         } finally {
             if (isset($this->db)) {
                 $this->db->closeConnection();
