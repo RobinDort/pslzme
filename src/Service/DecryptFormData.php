@@ -107,6 +107,8 @@ class DecryptFormData {
                     "encryptID" => $encryptID,
                     "timestamp" => $this->timestamp
                 );
+
+                echo $this->timestamp;
                 
                 $selectCookieResp = $this->sqlExecutor->selectQueryAcceptanceCustomerDB($cookieQueryData);
                 $cookieAccepted = $selectCookieResp["cookieAccepted"];
@@ -126,8 +128,6 @@ class DecryptFormData {
             
                     $this->decryptedLinkCreator = openssl_decrypt ($this->encryptedLinkCreator, $ciphering, 
                                 $decryptionKeyBin, $options, $decryption_iv);
-
-                    echo $this->decryptedLinkCreator;
             
                     $this->decryptedTitle = openssl_decrypt ($this->encryptedTitle, $ciphering, 
                                 $decryptionKeyBin, $options, $decryption_iv);
