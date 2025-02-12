@@ -12,9 +12,9 @@ services:
   RobinDort\PslzmeLinks\Service\DatabaseConnection:
     arguments:
       $servername: "localhost"
-      $username: "pslzme_customer_db_admin"
-      $password: "PslzmeCustomerDatabasePassword1!"
-      $dbname: "pslzme_test_customer_db"
+      $username: "pslzme_admin_db_rd"
+      $password: "PSLZMEDBPW001!"
+      $dbname: "pslzme_test_customer_db_rd"
     public: true
 
   RobinDort\PslzmeLinks\Controller\RequestHandlerController:
