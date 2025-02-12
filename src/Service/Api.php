@@ -194,7 +194,7 @@ class Api {
 
 
     function handleCompareLinkOwner($requestData) {
-        $test = $requestData->firstInput;
+        $test = $requestData["firstInput"];
 
         $combinedNameInput = $requestData->firstInput . $requestData->secondInput . $requestData->thirdInput;
         $timestamp = $requestData->timestamp;
