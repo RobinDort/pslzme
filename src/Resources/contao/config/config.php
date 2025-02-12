@@ -2,6 +2,8 @@
 use RobinDort\PslzmeLinks\Module\QueryDecryption;
 use RobinDort\PslzmeLinks\Module\PslzmeCookiebar;
 use RobinDort\PslzmeLinks\Model\PslzmeAcceptionPage;
+use RobinDort\PslzmeLinks\Model\PslzmeDeclinePage;
+
 
 // Init all css / js files
 $GLOBALS['TL_CSS'][] = "bundles/robindortpslzmelinks/css/pslzme-cookiebar.css|static";
@@ -22,6 +24,7 @@ $GLOBALS['FE_MOD']['pslzme']['pslzme_cookiebar'] = PslzmeCookiebar::class;
 
 // Create new pages for pslzme redirection (accepted, locked)
 $pslzmeAcceptionPage = new PslzmeAcceptionPage();
+$pslzmeDeclinePage = new PslzmeDeclinePage();
 
  // Check if the page already exists.
  if (!$pslzmeAcceptionPage->selfExists()) {
@@ -34,7 +37,19 @@ $pslzmeAcceptionPage = new PslzmeAcceptionPage();
 
     // Save the new page.
     $pslzmeAcceptionPage->save();
+ }
 
+ // Do the same check for the other page
+ if (!$pslzmeDeclinePage->selfExists()) {
+
+    // Get parent page ID.
+    $pid = $pslzmeDeclinePage->selectActivePageRootID();
+
+    // Set the parent page ID to the new page.
+    $pslzmeDeclinePage->setParentPageID($pid);
+
+    // Save the new page.
+    $pslzmeDeclinePage->save();
  }
 
 
