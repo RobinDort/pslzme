@@ -91,9 +91,9 @@ class DecryptFormData {
             $this->encryptedCompanyGender = str_replace(" ","+",rawurldecode($_GET["q11"]));
         }
 
-        $allParamsSet = $this->checkForRequiredParams($requiredParams);
+        //$allParamsSet = $this->checkForRequiredParams($requiredParams);
 
-        if ($allParamsSet) {
+       // if ($allParamsSet) {
             try {
                 // Get the customer with its ID and its encrypt ID.
                 $selectStmtResponse = $this->sqlExecutor->selectCustomerInformationCustomerDB();
@@ -107,8 +107,6 @@ class DecryptFormData {
                     "encryptID" => $encryptID,
                     "timestamp" => $this->timestamp
                 );
-
-                echo $this->timestamp;
                 
                 $selectCookieResp = $this->sqlExecutor->selectQueryAcceptanceCustomerDB($cookieQueryData);
                 $cookieAccepted = $selectCookieResp["cookieAccepted"];
@@ -168,7 +166,7 @@ class DecryptFormData {
                     $this->db->closeConnection();
                 }
             }
-        }
+       // }
     }
 
 
