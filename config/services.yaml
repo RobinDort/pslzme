@@ -6,9 +6,6 @@ services:
   RobinDort\PslzmeLinks\Service\Api:
     public: true
 
-  RobinDort\PslzmeLinks\Service\DecryptFormData:
-    public: true
-
   RobinDort\PslzmeLinks\Service\DatabaseConnection:
     arguments:
       $servername: "localhost"
