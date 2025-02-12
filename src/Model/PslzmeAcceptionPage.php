@@ -87,7 +87,7 @@ class PslzmeAcceptionPage extends PageModel {
 
     protected static $strTable = 'tl_page';
 
-    private const PAGE_TITLE = "Pslzme-Acception";
+    private const PAGE_TITLE = "Pslzme-Accept";
     private const PAGE_TYPE = "regular";
     private const PAGE_ROBOTS = "index,follow";
     private const PAGE_REDIRECT = "permanent";
