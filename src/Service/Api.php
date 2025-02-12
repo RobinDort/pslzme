@@ -5,6 +5,8 @@ use RobinDort\PslzmeLinks\Service\DatabaseConnection;
 use RobinDort\PslzmeLinks\Service\DatabaseStatementExecutor;
 use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
 use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
+use RobinDort\PslzmeLinks\Exceptions\InvalidDecryptionException;
+
 
 use Exception;
 
@@ -177,9 +179,18 @@ class Api {
             $decryptedFirstContact = openssl_decrypt($encryptedFirstContact, $ciphering, 
                         $decryptionKeyBin, $options, $decryption_iv);
 
+            // Decryption failed
+            if ($decryptedFirstContact === false) {
+                throw new InvalidDecryptionException("Unable to decrypt first contact option");
+            }
             
             $decryptedLinkCreator = openssl_decrypt($encryptedLinkCreator, $ciphering, 
                         $decryptionKeyBin, $options, $decryption_iv);
+
+            // Decryption failed
+            if ($decryptedLinkCreator === false) {
+                throw new InvalidDecryptionException("Unable to decrypt link creator option");
+            }
 
             $respArr["decryptedFirstContact"] = $decryptedFirstContact;
             $respArr["decryptedLinkCreator"] = $decryptedLinkCreator;
@@ -187,6 +198,9 @@ class Api {
         } catch (DatabaseException $dbe) {
             error_log($dbe->getErrorMsg());
             $respArr["response"] = $dbe->getErrorMsg();
+        } catch (InvalidDecryptionException $idece) {
+            error_log($idece->getErrorMsg());
+            $respArr["response"] = $idece->getErrorMsg();
         } catch(Exception $e) {
             $respArr["response"] .= "Error while trying to use database: " . $e->getMessage();
         } finally {

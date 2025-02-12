@@ -39,10 +39,10 @@ function pslzmeRedirection() {
 function handleRedirectionToLockedPage(htmlLanguage, actualTargetPage) {
 	// the query is locked -> redirect to the QueryDeclined page.
 	if (htmlLanguage === "de") {
-		window.location.href = "https://www.robindort.de/pslzme-query-gesperrt.html?pslzme-follow=" + actualTargetPage;
+		window.location.href = "https://www.robindort.de/preview.php/pslzme-query-gesperrt.html?pslzme-follow=" + actualTargetPage;
 		return;
 	} else if (htmlLanguage === "en") {
-		window.location.href = "https://www.robindort.de/pslzme-query-locked.html?pslzme-follow=" + actualTargetPage;
+		window.location.href = "https://www.robindort.de/preview.php/pslzme-query-locked.html?pslzme-follow=" + actualTargetPage;
 		return;
 	}
 }
@@ -67,9 +67,9 @@ function handleRedirectionToAcceptionPage(userCameFromPslzmeLink, htmlLanguage, 
 		const plszmeAcceptionParam = "?plszme-follow=" + actualTargetPage + "&" + queryParamsString;
 
 		if (htmlLanguage === "de") {
-			window.location.href = "https://www.robindort.de/pslzme-akzeptierung.html" + plszmeAcceptionParam;
+			window.location.href = "https://www.robindort.de/preview.php/pslzme-akzeptierung.html" + plszmeAcceptionParam;
 		} else if (htmlLanguage === "en") {
-			window.location.href = "https://www.robindort.de/pslzme-acception.html" + plszmeAcceptionParam;
+			window.location.href = "https://www.robindort.de/preview.php/pslzme-acception.html" + plszmeAcceptionParam;
 		}
 	}
 }
