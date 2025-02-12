@@ -203,7 +203,7 @@ class Api {
         $respArr = array(
             "nameMatchesOwner" => false,
             "response" => "",
-            "data" => $test
+            "data" => $requestData
         );
 
 
