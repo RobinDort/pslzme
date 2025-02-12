@@ -83,6 +83,8 @@ async function compareName(queryData) {
 		request: "compare-link-owner",
 	};
 
+	console.log(requestObject);
+
 	await compareLinkOwnerRequest(requestObject, firstInput, secondInput, thirdInput, acceptBtn);
 }
 
