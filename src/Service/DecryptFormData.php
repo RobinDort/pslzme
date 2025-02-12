@@ -181,7 +181,7 @@ class DecryptFormData {
 
     /** Getter functions */
     public function getDecryptedLinkCreator() {
-        return $this->decryptedLinkCreator;
+        return $this->encryptedLinkCreator;
     }
 
     public function getDecryptedTitle() {
