@@ -3,6 +3,7 @@ use RobinDort\PslzmeLinks\Module\QueryDecryption;
 use RobinDort\PslzmeLinks\Module\PslzmeCookiebar;
 use RobinDort\PslzmeLinks\Model\PslzmeAcceptionPage;
 use RobinDort\PslzmeLinks\Model\PslzmeDeclinePage;
+use RobinDort\PslzmeLinks\Model\PslzmeAcceptionArticle;
 
 
 // Init all css / js files
@@ -37,6 +38,17 @@ $pslzmeDeclinePage = new PslzmeDeclinePage();
 
     // Save the new page.
     $pslzmeAcceptionPage->save();
+
+    // Get the newly created page ID.
+    $pslzmeAcceptionPageID = $pslzmeAcceptionPage->id;
+
+    // create the new pslzme acception article
+    $pslzmeAcceptionArticle = new PslzmeAcceptionArticle($pslzmeAcceptionPageID);
+
+    // save the new article when not existent
+    if (!$pslzmeAcceptionArticle->selfExists()) {
+        $pslzmeAcceptionArticle->save();
+    }
  }
 
  // Do the same check for the other page

@@ -45,6 +45,17 @@ class PslzmeAcceptionArticle extends ArticleModel {
         $this->sorting = 128;
         $this->published = true;
     }
+
+    public function selfExists() {
+        $existentArticle = ArticleModel::findByTitle(self::PAGE_TITLE);
+        
+        if ($existentArticle !== null) {
+            return true;
+         }
+   
+         return false;
+
+    }
 }
 
 ?>
