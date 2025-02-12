@@ -47,7 +47,8 @@ class Api {
         $queryLocked = $requestData->queryIsLocked;
 
         $respArr = array(
-            "response" => ""
+            "response" => "",
+            "data" => $requestData
         );
         
         try {
