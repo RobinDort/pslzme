@@ -49,7 +49,7 @@ class PslzmeAcceptionArticle extends ArticleModel {
     }
 
     public function selfExists() {
-        $existentArticle = ArticleModel::findByTitle(self::PAGE_TITLE);
+        $existentArticle = ArticleModel::findByTitle(self::ARTICLE_TITLE);
         
         if ($existentArticle !== null) {
             return true;
