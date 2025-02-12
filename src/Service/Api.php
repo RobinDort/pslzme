@@ -28,6 +28,8 @@ class Api {
     }
 
     function handleQueryAcception($requestData) {
+        $requestData = json_decode($requestData, false);
+
         $linkCreator = $requestData->linkCreator;
         $title = $requestData->title;
         $firstname = $requestData->firstname;
