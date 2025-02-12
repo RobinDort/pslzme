@@ -1,10 +1,12 @@
 <?php
 namespace RobinDort\PslzmeLinks\Model;
 
+use RobinDort\PslzmeLinks\Interfaces\CustomPageModel;
+
 use Contao\PageModel;
 use Contao\Database;
 
-class PslzmeAcceptionPage extends PageModel {
+class PslzmeAcceptionPage extends PageModel implements CustomPageModel{
 
     /**
      * Properties extended from Contaos PageModel class.
@@ -146,11 +148,11 @@ class PslzmeAcceptionPage extends PageModel {
     }
   
     public function getTitle() {
-    return $this->title;
+        return $this->title;
     }
   
     public function getID() {
-    return $this->id;
+        return $this->id;
     }
   
     public function setParentPageID($parentPageID) {
