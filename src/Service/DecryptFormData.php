@@ -101,9 +101,9 @@ class DecryptFormData {
                 $encryptID = $selectStmtResponse["encryptID"];
                 $encryptionKey = $selectStmtResponse["encryptKey"];
 
-                var_dump($customerID);
-                var_dump($encryptID);
-                var_dump($encryptionKey);
+                echo $customerID;
+                echo $encryptID;
+                echo $encryptionKey;
             
                 //check if the customer has given permission to decrypt his data.
                 $cookieQueryData = array(
