@@ -14,6 +14,8 @@ async function handleGreetingVerification(queryData) {
 		timestamp: queryData.timestamp,
 	};
 
+	console.log(requestData);
+
 	const requestObject = {
 		data: JSON.stringify(requestData),
 		request: "extract-greeting-data",
