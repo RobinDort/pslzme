@@ -194,6 +194,7 @@ class Api {
 
 
     function handleCompareLinkOwner($requestData) {
+
         $combinedNameInput = $requestData->firstInput . $requestData->secondInput . $requestData->thirdInput;
         $timestamp = $requestData->timestamp;
         $encryptedLastName = str_replace(" ","+",rawurldecode($requestData->encryptedLastName));
@@ -201,7 +202,7 @@ class Api {
         $respArr = array(
             "nameMatchesOwner" => false,
             "response" => "",
-            "combinedNameInput" => $combinedNameInput
+            "data" => $requestData
         );
 
 
