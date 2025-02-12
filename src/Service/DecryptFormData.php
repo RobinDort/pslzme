@@ -5,7 +5,6 @@ use RobinDort\PslzmeLinks\Service\DatabaseConnection;
 use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
 use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
 
-$decryptedLinkCreator = "";
 
 class DecryptFormData {
 
@@ -93,9 +92,9 @@ class DecryptFormData {
             $this->encryptedCompanyGender = str_replace(" ","+",rawurldecode($_GET["q11"]));
         }
 
-        //$allParamsSet = $this->checkForRequiredParams($requiredParams);
+        $requiredParamsSet = $this->checkForRequiredParams($requiredParams);
 
-       // if ($allParamsSet) {
+       if ($requiredParamsSet) {
             try {
                 // Get the customer with its ID and its encrypt ID.
                 $selectStmtResponse = $this->sqlExecutor->selectCustomerInformationCustomerDB();
@@ -126,7 +125,7 @@ class DecryptFormData {
                     $decryption_iv = $timestamp;
                     $decryptionKeyBin = hex2bin($encryptionKey);
             
-                    $decryptedLinkCreator = openssl_decrypt ($this->encryptedLinkCreator, $ciphering, 
+                    $this->decryptedLinkCreator = openssl_decrypt ($this->encryptedLinkCreator, $ciphering, 
                                 $decryptionKeyBin, $options, $decryption_iv);
             
                     $this->decryptedTitle = openssl_decrypt ($this->encryptedTitle, $ciphering, 
@@ -168,7 +167,7 @@ class DecryptFormData {
                     $this->db->closeConnection();
                 }
             }
-       // }
+        }
     }
 
 
