@@ -28,6 +28,8 @@ class Api {
     }
 
     function handleQueryAcception($requestData) {
+        $requestData = json_decode($requestData, false);
+
         $linkCreator = $requestData->linkCreator;
         $title = $requestData->title;
         $firstname = $requestData->firstname;
@@ -95,6 +97,8 @@ class Api {
 
 
     function handleQueryLockCheck($requestData) {
+        $requestData = json_decode($requestData, false);
+
         $timestamp = $requestData->timestamp;
 
         $respArr = array(
@@ -144,6 +148,8 @@ class Api {
 
 
     function handleGreetingDataExtraction($requestData) {
+        $requestData = json_decode($requestData, false);
+
         $encryptedFirstContact = str_replace(" ","+",rawurldecode($requestData->firstContact));
         $encryptedLinkCreator = str_replace(" ","+",rawurldecode($requestData->linkCreator));
         $timestamp = $requestData->timestamp;
@@ -203,7 +209,6 @@ class Api {
         $respArr = array(
             "nameMatchesOwner" => false,
             "response" => "",
-            "data" => $requestData
         );
 
 
