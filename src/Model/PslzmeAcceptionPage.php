@@ -2,6 +2,7 @@
 namespace RobinDort\PslzmeLinks\Model;
 
 use Contao\PageModel;
+use Contao\Database;
 
 class PslzmeAcceptionPage extends PageModel {
 
@@ -134,6 +135,14 @@ class PslzmeAcceptionPage extends PageModel {
         }
   
         return false;
+    }
+
+
+    public function selectActivePageRootID() {
+        $sqlQuery = "SELECT id FROM tl_page WHERE type='root' AND fallback=1";
+        $stmt = Database::getInstance()->execute($sqlQuery)->fetchAssoc();
+
+        return $stmt["id"] ?? 1;
     }
   
     public function getTitle() {

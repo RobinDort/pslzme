@@ -1,5 +1,6 @@
 <?php
 namespace RobinDort\PslzmeLinks\Service;
+use Contao\Database;
 
 class StatementPreparer {
     private $conn;
@@ -7,6 +8,8 @@ class StatementPreparer {
     public function __construct($connection) {
         $this->conn = $connection;
     }
+
+    /******************************* SELECT FUNCTIONS *******************************/
 
     public function prepareSelectAllCustomer() {
         $sqlQuery = "SELECT * FROM pslzme_kunde"; 
@@ -31,6 +34,9 @@ class StatementPreparer {
         return $stmt;
     }
 
+
+    /******************************* UPDATE FUNCTIONS *******************************/
+
     public function prepareUpdateCustomerQuery($queryParamTimestamp, $queryParamChangedOn, $queryParamCookieAccepted, $queryParamCustomerID, $queryParamEncryptionID, $queryParamQueryLocked) {
         $sqlQuery = "UPDATE query_link SET Accepted=?, Locked=?, ChangedOn=? WHERE CreationTime=? AND PslzmeKundenID=? AND EncryptInfoID=?"; 
         $stmt = $this->conn->prepare($sqlQuery);
@@ -38,6 +44,9 @@ class StatementPreparer {
 
         return $stmt;
     }
+
+
+    /******************************* INSERT FUNCTIONS *******************************/
 
     public function prepareInsertCustomerQuery($queryParamQuery, $queryParamTimestamp, $queryParamAcceptedOn, $queryParamCookieAccepted, $queryParamCustomerID, $queryParamEncryptionID, $queryParamQueryLocked) {
         $sqlQuery = "INSERT INTO query_link (QueryString, CreationTime, AcceptionTime, Accepted, Locked, PslzmeKundenID, EncryptInfoID) VALUES(?,?,?,?,?,?,?)"; 
