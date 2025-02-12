@@ -39,11 +39,8 @@ $pslzmeDeclinePage = new PslzmeDeclinePage();
     // Save the new page.
     $pslzmeAcceptionPage->save();
 
-    // Get the newly created page ID.
-    $pslzmeAcceptionPageID = $pslzmeAcceptionPage->id;
-
     // create the new pslzme acception article
-    $pslzmeAcceptionArticle = new PslzmeAcceptionArticle($pslzmeAcceptionPageID);
+    $pslzmeAcceptionArticle = new PslzmeAcceptionArticle();
 
     // save the new article when not existent
     if (!$pslzmeAcceptionArticle->selfExists()) {
