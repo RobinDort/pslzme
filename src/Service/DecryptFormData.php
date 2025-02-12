@@ -4,6 +4,7 @@ namespace RobinDort\PslzmeLinks\Service;
 use RobinDort\PslzmeLinks\Service\DatabaseConnection;
 use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
 use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
+use RobinDort\PslzmeLinks\Exceptions\InvalidDecryptionException;
 
 
 class DecryptFormData {
@@ -201,6 +202,8 @@ class DecryptFormData {
                 error_log($ide->getErrorMsg());
             } catch(DatabaseException $dbe) {
                 error_log($dbe->getErrorMsg());
+            } catch(InvalidDecryptionException $idece) {
+                error_log($idece->getErrorMsg());
             } catch(Exception $e) {
                 error_log("Error while trying to use database: " . $e->getMessage());
             } finally {
