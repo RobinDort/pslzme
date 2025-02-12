@@ -180,7 +180,7 @@ class Api {
                         $decryptionKeyBin, $options, $decryption_iv);
 
             // Decryption failed
-            if ($decryptedFirstContact === false) {
+            if ($decryptedFirstContact === false || !mb_check_encoding($decryptedFirstContact, 'UTF-8')) {
                 throw new InvalidDecryptionException("Unable to decrypt first contact option");
             }
             
@@ -188,7 +188,7 @@ class Api {
                         $decryptionKeyBin, $options, $decryption_iv);
 
             // Decryption failed
-            if ($decryptedLinkCreator === false) {
+            if ($decryptedLinkCreator === false || !mb_check_encoding($decryptedLinkCreator, 'UTF-8')) {
                 throw new InvalidDecryptionException("Unable to decrypt link creator option");
             }
 
