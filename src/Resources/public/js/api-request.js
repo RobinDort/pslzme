@@ -7,10 +7,12 @@ function handleAPIRequest(requestObject) {
 				type: "POST",
 				data: requestObject,
 				success: function (response) {
+					console.log("Action called: " + requestObject.request);
 					console.log(response);
 					resolve(response);
 				},
 				error: function (error) {
+					console.log("Action failed: " + requestObject.request);
 					console.log(error);
 					reject(error);
 				},

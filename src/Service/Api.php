@@ -61,9 +61,6 @@ class Api {
             $customerID = $selectStmtResponse["customerID"];
             $encryptID = $selectStmtResponse["encryptID"];
 
-            $respArr["ID"] = $customerID;
-            $respArr["encID"] = $encryptID;
-
             $insertQueryData = array(
                     "query" => "?q1=" . $linkCreator . "&q2=" . $title . "&q3=" . $firstname . "&q4=" . $lastname . "&q5=" . $company . "&q6=" . $gender . "&q7=" . $position . "&q8=" . $curl . "&q9=" . $fc . "&q10=" . $timestamp . "&q11=" . $companyGender,
                     "timestamp" => $timestamp,
