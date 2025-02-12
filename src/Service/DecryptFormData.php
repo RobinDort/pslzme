@@ -123,7 +123,7 @@ class DecryptFormData {
                     $ciphering = "AES-128-CTR";
                     $iv_length = openssl_cipher_iv_length($ciphering);
                     $options = 0;
-                    $decryption_iv = $timestamp;
+                    $decryption_iv = $this->timestamp;
                     $decryptionKeyBin = hex2bin($encryptionKey);
             
                     $this->decryptedLinkCreator = openssl_decrypt ($this->encryptedLinkCreator, $ciphering, 
