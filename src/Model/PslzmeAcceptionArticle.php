@@ -50,6 +50,7 @@ class PslzmeAcceptionArticle extends ArticleModel implements CustomArticleModel{
         $this->author = $this->findAuthorID();
         $this->sorting = 128;
         $this->tstamp = $time;
+        $this->inColumn = "Hauptspalte";
         $this->published = true;
     }
 
