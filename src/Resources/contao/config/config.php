@@ -41,11 +41,12 @@ $pslzmeDeclinePage = new PslzmeDeclinePage();
 
     // create the new pslzme acception article
     $pslzmeAcceptionArticle = new PslzmeAcceptionArticle();
+    System::log('Article PID: ' . $pslzmeAcceptionArticle->pid, __METHOD__, TL_ERROR);    // throw error for testing!
+    throw new Exception("Error PID");
 
     // save the new article when not existent
     if (!$pslzmeAcceptionArticle->selfExists()) {
         $pslzmeAcceptionArticle->save();
-        $pslzmeAcceptionArticle->refresh();
     }
  }
 
