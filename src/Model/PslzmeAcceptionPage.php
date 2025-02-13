@@ -157,6 +157,7 @@ class PslzmeAcceptionPage extends PageModel implements CustomPageModel{
   
     public function setParentPageID($parentPageID) {
         $this->pid = $parentPageID;
+        $this->sorting = $this->pid + 1; 
     }
 }
 
