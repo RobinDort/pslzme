@@ -6,43 +6,50 @@ use RobinDort\PslzmeLinks\Model\PslzmeDeclinePage;
 use RobinDort\PslzmeLinks\Model\PslzmeAcceptionArticle;
 
 class InitialSetup {
+
     public function runSetup() {
-        // Create new pages for pslzme redirection (accepted, locked)
-        $pslzmeAcceptionPage = new PslzmeAcceptionPage();
-        $pslzmeDeclinePage = new PslzmeDeclinePage();
+        $initDone = false;
 
-        // Check if the page already exists.
-        if (!$pslzmeAcceptionPage->selfExists()) {
+        if ($initDone === false) {
+            // Create new pages for pslzme redirection (accepted, locked)
+            $pslzmeAcceptionPage = new PslzmeAcceptionPage();
+            $pslzmeDeclinePage = new PslzmeDeclinePage();
 
-            // Get parent page ID.
-            $pid = $pslzmeAcceptionPage->selectActivePageRootID();
+            // Check if the page already exists.
+            if (!$pslzmeAcceptionPage->selfExists()) {
 
-            // Set the parent page ID to the new page.
-            $pslzmeAcceptionPage->setParentPageID($pid);
+                // Get parent page ID.
+                $pid = $pslzmeAcceptionPage->selectActivePageRootID();
 
-            // Save the new page.
-            $pslzmeAcceptionPage->save();
+                // Set the parent page ID to the new page.
+                $pslzmeAcceptionPage->setParentPageID($pid);
 
-            // create the new pslzme acception article
-            $pslzmeAcceptionArticle = new PslzmeAcceptionArticle();
+                // Save the new page.
+                $pslzmeAcceptionPage->save();
 
-            // save the new article when not existent
-            if (!$pslzmeAcceptionArticle->selfExists()) {
-                $pslzmeAcceptionArticle->save();
+                // create the new pslzme acception article
+                $pslzmeAcceptionArticle = new PslzmeAcceptionArticle();
+
+                // save the new article when not existent
+                if (!$pslzmeAcceptionArticle->selfExists()) {
+                    $pslzmeAcceptionArticle->save();
+                }
             }
-        }
 
-        // Do the same check for the other page
-        if (!$pslzmeDeclinePage->selfExists()) {
+            // Do the same check for the other page
+            if (!$pslzmeDeclinePage->selfExists()) {
 
-            // Get parent page ID.
-            $pid = $pslzmeDeclinePage->selectActivePageRootID();
+                // Get parent page ID.
+                $pid = $pslzmeDeclinePage->selectActivePageRootID();
 
-            // Set the parent page ID to the new page.
-            $pslzmeDeclinePage->setParentPageID($pid);
+                // Set the parent page ID to the new page.
+                $pslzmeDeclinePage->setParentPageID($pid);
 
-            // Save the new page.
-            $pslzmeDeclinePage->save();
+                // Save the new page.
+                $pslzmeDeclinePage->save();
+            }
+
+            $initDone = true;
         }
     }
 }
