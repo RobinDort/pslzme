@@ -1,13 +1,15 @@
 <?php
 namespace RobinDort\PslzmeLinks\Model;
 
+use RobinDort\PslzmeLinks\Interfaces\CustomContentModel;
+
 use Contao\ContentModel;
 use Contao\FilesModel;
 use Contao\ArticleModel;
 use Contao\Environment;
 
 
-class PslzmeAcceptionContent extends ContentModel {
+class PslzmeAcceptionContent extends ContentModel implements CustomContentModel {
     /**
     * Properties extended from Contaos ContentModel class.
     * @property string|integer    $id
