@@ -1,13 +1,15 @@
 <?php
 namespace RobinDort\PslzmeLinks\Model;
 
+use RobinDort\PslzmeLinks\Interfaces\CustomArticleModel;
+
 use Contao\ArticleModel;
 use Contao\PageModel;
 use Contao\Database;
 use Contao\BackendUser;
 
 
-class PslzmeDeclineArticle extends ArticleModel {
+class PslzmeDeclineArticle extends ArticleModel implements CustomArticleModel {
     /**
      * Properties extended from Contaos ArticleModel class.
      * @property string|integer $id
