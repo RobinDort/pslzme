@@ -50,7 +50,6 @@ class PslzmeAcceptionArticle extends ArticleModel implements CustomArticleModel{
         $this->author = $this->findAuthorID();
         $this->sorting = 128;
         $this->tstamp = $time;
-        $this->inColumn = "main";
         $this->published = true;
     }
 
@@ -80,6 +79,10 @@ class PslzmeAcceptionArticle extends ArticleModel implements CustomArticleModel{
         $currentBackendUser = BackendUser::getInstance();
         $authorId = $currentBackendUser->id;
         return $authorId ?? 1;
+    }
+
+    public function setInColumn($value) {
+        $this->inColumn = $value;
     }
 }
 
