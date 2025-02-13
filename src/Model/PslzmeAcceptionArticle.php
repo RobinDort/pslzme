@@ -3,6 +3,7 @@ namespace RobinDort\PslzmeLinks\Model;
 
 use Contao\ArticleModel;
 use Contao\PageModel;
+use Contao\Database;
 
 
 class PslzmeAcceptionArticle extends ArticleModel {
@@ -40,7 +41,7 @@ class PslzmeAcceptionArticle extends ArticleModel {
 
         $time = time();
 
-        $this->pid = 252;
+        $this->pid = $this->findParentPageID();
         $this->sorting = 128;
         $this->tstamp = $time;
         $this->title = self::ARTICLE_TITLE;
@@ -61,14 +62,11 @@ class PslzmeAcceptionArticle extends ArticleModel {
     }
 
     public function findParentPageID() {
-        // find the parent page and its ID by searching for its title. Same title as the articles.
-        $parentPage = PageModel::findByTitle(self::ARTICLE_TITLE);
+        $sqlQuery = "SELECT id FROM tl_page WHERE title='" . self::ARTICLE_TITLE . "'";
+        $stmt = Database::getInstance()->execute($sqlQuery);
+        $result = $stmt->fetchAssoc();
 
-        //Check if $parentPage is a collection or a single model, then return its ID
-        if ($parentPage instanceof \Model\Collection) {
-            return $parentPage->current()->id ?? 1;
-        }
-        return $parentPage->id ?? 1;
+        return $result ? $result["id"] : 1;
     }
 }
 
