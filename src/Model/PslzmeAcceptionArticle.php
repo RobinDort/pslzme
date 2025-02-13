@@ -40,7 +40,7 @@ class PslzmeAcceptionArticle extends ArticleModel {
 
         $time = time();
 
-        $this->pid = $this->findParentPageID();
+        $this->pid = 252;
         $this->title = self::ARTICLE_TITLE;
         $this->alias = strtolower(self::ARTICLE_TITLE);
         $this->tstamp = $time;
@@ -49,7 +49,7 @@ class PslzmeAcceptionArticle extends ArticleModel {
     }
 
     public function selfExists() {
-        $existentArticle = ArticleModel::findByTitle(self::ARTICLE_TITLE);
+        $existentArticle = ArticleModel::findOneBy('title', self::ARTICLE_TITLE);
         
         if ($existentArticle !== null) {
             return true;

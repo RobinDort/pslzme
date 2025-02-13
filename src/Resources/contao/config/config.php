@@ -45,6 +45,7 @@ $pslzmeDeclinePage = new PslzmeDeclinePage();
     // save the new article when not existent
     if (!$pslzmeAcceptionArticle->selfExists()) {
         $pslzmeAcceptionArticle->save();
+        $pslzmeAcceptionArticle->refresh();
     }
  }
 
