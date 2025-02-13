@@ -13,11 +13,7 @@ function pslzmeRedirection() {
 	if (!noPslzmeCookiebannerPages.includes(currentLocation)) {
 		const userCameFromPslzmeLink = queryParamsSet();
 
-		//get the current selected language
-		const htmlTag = document.querySelector("html");
-
 		if (userCameFromPslzmeLink.isSet === true) {
-			const queryParamsString = window.location.search.substring(1);
 			const actualTargetPage = window.location.pathname.replace("/", "");
 
 			//before anything else, check if the query is locked because someone has inserted the name wrongly for three times.
