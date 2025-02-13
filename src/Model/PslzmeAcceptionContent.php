@@ -4,6 +4,7 @@ namespace RobinDort\PslzmeLinks\Model;
 use Contao\ContentModel;
 use Contao\FilesModel;
 use Contao\ArticleModel;
+use Contao\Environment;
 
 
 class PslzmeAcceptionContent extends ContentModel {
@@ -109,44 +110,18 @@ class PslzmeAcceptionContent extends ContentModel {
         $this->type = "text";
         $this->sorting = 128;
         $this->tstamp = $time;
-        $this->text = $GLOBALS['TL_LANG']['robindort_pslzme_links']['pslzme_accept_content'];
-        $this->addImage = true;
-        $this->size = serialize(array(
-            0 => "350",
-            1 => "",
-            2 => "proportional"
-        ));
-        $this->imagemargin = serialize(array(
-            "bottom" => 50,
-            "left" => "",
-            "right" => "",
-            "top" => 100,
-            "unit" => "px"
-        ));
-        $this->singleSRC = $this->findUUID();
-        $this->floating = "above";
+        $this->addImage = false;
         $this->cssID = serialize(["",""]);
+        $this->text = '<h1 style="text-align: left;">Dear visitor,</h1>
+                    <p style="text-align: left;">You visited our website via a revolutionary pslz<strong>me</strong> link.</p>
+                    <p style="text-align: left;">With pslz<strong>me</strong> we are able to <strong>personalize</strong> our website for you <strong>in compliance with GDPR</strong>, if you allow us to do so.</p>
+                    <p style="text-align: left;">Please let us know via the pslz<strong>me</strong> pop-up whether we may personalize our website for you or whether you do not wish us to do so.</p>
+                    <p style="text-align: left;"><strong>Don\'t worry</strong>: pslz<strong>me</strong> runs exclusively on our servers in Germany and there is no data exchange with other servers.</p>
+                    <p style="text-align: left;">If you object to the pslz<strong>me</strong> function, we will simply redirect you to our standard website and your data will not be used in any way.</p>
+                    <p style="text-align: left;">However, if you agree, you will experience a <strong>veritable firework </strong>display of almost <strong>limitless possibilities</strong> that are available via our <strong>sophisticated system</strong> in the areas of <strong>programmatic web</strong> and even <strong>programmatic print</strong> and which we would also like to offer you for use <strong>on your own websites</strong>.</p>
+                    <p style="text-align: left;"><strong>Best regards,</strong><br><strong>Your team at Alexander Dort GmbH</strong></p>
+                    <p style="text-align: left;">[nbsp]</p>';
 
-    }
-
-
-    public function findUUID() {
-        // Get the pslzme logo as image from the asset folder
-        $filepath = '/bundles/robindortpslzmelinks/images/pslzme_logo.svg';
-        $contaoFilePath = 'assets/pslzme_logo.svg';
-
-        // If the file doesn't exist in the Contao file system, copy it
-        if (!file_exists($contaoFilePath)) {
-            copy($filepath, "files/" . $contaoFilePath);
-        }
-
-        // Find the file in Contao's file system
-        $file = FilesModel::findByPath($filePath);
-
-        // If the file is found, get the UUID
-        $fileUUID = $file ? $file->uuid : null;
-
-        return $fileUUID;
     }
 
     public function findParentArticleID() {
