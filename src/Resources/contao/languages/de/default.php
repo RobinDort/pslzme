@@ -19,4 +19,15 @@ $GLOBALS['TL_LANG']['robindort_pslzme_links']['privacy'] = 'Datenschutz';
 $GLOBALS['TL_LANG']['robindort_pslzme_links']['yes'] = 'Ja';
 $GLOBALS['TL_LANG']['robindort_pslzme_links']['no'] = 'Nein';
 
+
+$GLOBALS['TL_LANG']['robindort_pslzme_links']['pslzme_accept_content'] = '<h1 style="text-align: left;">Sehr geehrter Besucher,</h1>
+<p style="text-align: left;">Sie besuchten unsere Seite über einen revolutionären pslz<strong>me</strong>-link.</p>
+<p style="text-align: left;">Mit pslzme sind wir in der Lage, unsere Webseite <strong>DSGVO-konform</strong> für Sie zu <strong>personalisieren</strong>, so Sie uns dies gestatten.</p>
+<p style="text-align: left;">Bitte teilen Sie uns über das pslz<strong>me</strong>-Pop-Up mit, ob wir Ihnen unsere Webseite für Sie personalisieren dürfen oder ob Sie dies nicht wünschen.</p>
+<p style="text-align: left;"><strong>Keine Angst: </strong>pslz<strong>me</strong> läuft ausschließlich auf unseren Servern in Deutschland und es findet keinerlei Datenautausch mit anderen Servern statt.</p>
+<p style="text-align: left;">Sofern Sie der pslz<strong>me</strong>-Funktion widersprechen, leiten wir Sie einfach auf unsere Standard-Webseite weiter und es findet keinerlei Verwendung Ihrer Daten statt.</p>
+<p style="text-align: left;">Falls Sie jedoch zustimmen, erleben Sie ein <strong>wahres Feuerwerk </strong>an nahezu <strong>grenzenlosen Möglichkeiten</strong>, die über unser <strong>ausgeklügeltes System </strong>in den Bereichen des <strong>Programmatic Web</strong> und sogar <strong>Programmatic Print</strong> gegeben sind und die wir Ihnen sehr gerne auch zur <strong>Verwendung auf Ihren eigenen Webseiten</strong> anbieten möchten.</p>
+<p style="text-align: left;"><strong><em>Herzliche Grüße,</em></strong><br><strong><em>Ihr Team der Alexander Dort GmbH</em></strong></p>
+<p style="text-align: left;">[nbsp]</p>';
+
 ?>

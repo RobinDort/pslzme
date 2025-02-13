@@ -4,6 +4,8 @@ namespace RobinDort\PslzmeLinks\EventListener\contao;
 use RobinDort\PslzmeLinks\Model\PslzmeAcceptionPage;
 use RobinDort\PslzmeLinks\Model\PslzmeDeclinePage;
 use RobinDort\PslzmeLinks\Model\PslzmeAcceptionArticle;
+use RobinDort\PslzmeLinks\Model\PslzmeAcceptionContent;
+
 
 class InitialSetup {
 
@@ -36,6 +38,12 @@ class InitialSetup {
             // save the new article when not existent
             if (!$pslzmeAcceptionArticle->selfExists()) {
                 $pslzmeAcceptionArticle->save();
+
+                // create new pslzme acception content
+                $pslzmeAcceptionContent = new PslzmeAcceptionContent();
+                if (!$pslzmeAcceptionContent->selfExists()) {
+                    $pslzmeAcceptionContent->save();
+                }
             }
         }
 
