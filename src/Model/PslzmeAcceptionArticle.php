@@ -43,12 +43,14 @@ class PslzmeAcceptionArticle extends ArticleModel {
 
         $this->pid = 252;
         $this->title = "Pslzme-Accept";
+        $this->alias = "pslzme-accept";
         $this->author = 2;
         $this->inColumn = "main";
         $this->sorting = 128;
         $this->tstamp = $time;
-        $this->alias = "pslzme-accept";
         $this->published = true;
+        $this->teaserCssID = serialize(["", ""]);
+        $this->cssID = serialize(["", ""]);
     }
 
     public function selfExists() {
