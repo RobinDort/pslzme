@@ -4,6 +4,7 @@ namespace RobinDort\PslzmeLinks\EventListener\contao;
 use RobinDort\PslzmeLinks\Model\PslzmeAcceptionPage;
 use RobinDort\PslzmeLinks\Model\PslzmeDeclinePage;
 use RobinDort\PslzmeLinks\Model\PslzmeAcceptionArticle;
+use RobinDort\PslzmeLinks\Model\PslzmeDeclineArticle;
 use RobinDort\PslzmeLinks\Model\PslzmeAcceptionContent;
 
 
@@ -58,6 +59,15 @@ class InitialSetup {
 
             // Save the new page.
             $pslzmeDeclinePage->save();
+
+            // create the new pslzme decline article
+            $pslzmeDeclineArticle = new PslzmeDeclineArticle();
+
+            // save the new article when not existent
+            if (!$pslzmeDeclineArticle->selfExists()) {
+                $pslzmeDeclineArticle->save();
+            }
+
         }
 
         $this->ranOnce = true;
