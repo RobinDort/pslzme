@@ -21,7 +21,6 @@ class InitialSetup {
 
         // Create new pages for pslzme redirection (accepted, locked)
         $pslzmeAcceptionPage = new PslzmeAcceptionPage();
-        $pslzmeDeclinePage = new PslzmeDeclinePage();
 
         // Check if the page already exists.
         if (!$pslzmeAcceptionPage->selfExists()) {
@@ -49,6 +48,8 @@ class InitialSetup {
                 }
             }
         }
+
+        $pslzmeDeclinePage = new PslzmeDeclinePage();
 
         // Do the same check for the other page
         if (!$pslzmeDeclinePage->selfExists()) {

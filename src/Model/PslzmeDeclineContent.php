@@ -123,7 +123,7 @@ class PslzmeDeclineContent extends ContentModel implements CustomContentModel {
     }
 
     public function findParentArticleID() {
-        $parentArticle = ArticleModel::findOneBy('title', "Pslzme-Accept");
+        $parentArticle = ArticleModel::findOneBy('title', "Pslzme-Decline");
         $pid = $parentArticle->id ?? 1;
         return $pid;
     }
