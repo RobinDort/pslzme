@@ -34,7 +34,7 @@ function pslzmeRedirection() {
 function handleRedirectionToLockedPage(actualTargetPage) {
 	// the query is locked -> redirect to the QueryDeclined page.
 
-	window.location.href = window.location.origin + "/preview.php/pslzme-query-gesperrt.html?pslzme-follow=" + actualTargetPage;
+	window.location.href = window.location.origin + "/pslzme-decline.html?pslzme-follow=" + actualTargetPage;
 	return;
 }
 
