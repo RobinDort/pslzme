@@ -36,7 +36,6 @@ class InitialSetup {
 
             // create the new pslzme acception article
             $pslzmeAcceptionArticle = new PslzmeAcceptionArticle();
-            $pslzmeAcceptionArticle->setInColumn('main');
 
             // save the new article when not existent
             if (!$pslzmeAcceptionArticle->selfExists()) {
