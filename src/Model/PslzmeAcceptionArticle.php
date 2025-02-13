@@ -40,7 +40,7 @@ class PslzmeAcceptionArticle extends ArticleModel {
 
         $time = time();
 
-        $this->pid = $this->findParentPageID();
+        $this->pid = 252;
         $this->title = self::ARTICLE_TITLE;
         $this->alias = strtolower(self::ARTICLE_TITLE);
         $this->tstamp = $time;
