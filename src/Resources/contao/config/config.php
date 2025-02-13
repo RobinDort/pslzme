@@ -41,16 +41,11 @@ $pslzmeDeclinePage = new PslzmeDeclinePage();
 
     // create the new pslzme acception article
     $pslzmeAcceptionArticle = new PslzmeAcceptionArticle();
-    try {
-        throw new Exception("Error PID");
-    } catch (Exception $e) {
-        System::log('Article PID: ' . $pslzmeAcceptionArticle->pid, __METHOD__, TL_ERROR);    // throw error for testing!
-    }
 
     // save the new article when not existent
-    if (!$pslzmeAcceptionArticle->selfExists()) {
+    //if (!$pslzmeAcceptionArticle->selfExists()) {
         $pslzmeAcceptionArticle->save();
-    }
+    //}
  }
 
  // Do the same check for the other page
