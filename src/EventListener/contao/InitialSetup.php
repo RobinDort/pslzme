@@ -1,15 +1,16 @@
 <?php
 namespace RobinDort\PslzmeLinks\EventListener\contao;
 
-use Contao\Config;
 use RobinDort\PslzmeLinks\Model\PslzmeAcceptionPage;
 use RobinDort\PslzmeLinks\Model\PslzmeDeclinePage;
 use RobinDort\PslzmeLinks\Model\PslzmeAcceptionArticle;
 
 class InitialSetup {
 
+    private $ranOnce = false; 
+
     public function runSetup() {
-        if (Config::get('pslzme_setup_done')) {
+        if ($this->ranOnce === true) {
             return; // Exit if setup was already completed
         }
 
@@ -51,8 +52,7 @@ class InitialSetup {
             $pslzmeDeclinePage->save();
         }
 
-        // Mark setup as done
-        Config::set('pslzme_setup_done', true);
+        $this->ranOnce = true;
     }
 }
 
