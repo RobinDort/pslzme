@@ -132,7 +132,7 @@ class PslzmeAcceptionContent extends ContentModel {
 
     public function findUUID() {
         // Get the pslzme logo as image from the asset folder
-        $filepath = $this->asset('bundles/robindortpslzmelinks/images/pslzme_logo.svg');
+        $filepath = '/bundles/robindortpslzmelinks/images/pslzme_logo.svg';
 
         // Find the file in Contao's file system
         $file = FilesModel::findByPath($filePath);
