@@ -36,11 +36,11 @@ class PslzmeAcceptionArticle extends ArticleModel {
     private const ARTICLE_TITLE = "Pslzme-Accept";
 
     public function __construct() {
-        parent::construct();
+        parent::__construct();
 
         $time = time();
 
-        $this->pid = 252;
+        $this->pid = $this->findParentPageID();
         $this->title = self::ARTICLE_TITLE;
         $this->alias = strtolower(self::ARTICLE_TITLE);
         $this->tstamp = $time;
