@@ -6,6 +6,8 @@ use RobinDort\PslzmeLinks\Model\PslzmeDeclinePage;
 use RobinDort\PslzmeLinks\Model\PslzmeAcceptionArticle;
 use RobinDort\PslzmeLinks\Model\PslzmeDeclineArticle;
 use RobinDort\PslzmeLinks\Model\PslzmeAcceptionContent;
+use RobinDort\PslzmeLinks\Model\PslzmeDeclineContent;
+
 
 
 class InitialSetup {
@@ -66,6 +68,12 @@ class InitialSetup {
             // save the new article when not existent
             if (!$pslzmeDeclineArticle->selfExists()) {
                 $pslzmeDeclineArticle->save();
+
+                // create new pslzme decline content
+                $pslzmeDeclineContent = new PslzmeDeclineContent();
+                if (!$pslzmeDeclineContent->selfExists()) {
+                    $pslzmeDeclineContent->save();
+                }
             }
 
         }
