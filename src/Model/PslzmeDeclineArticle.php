@@ -83,5 +83,3 @@ class PslzmeDeclineArticle extends ArticleModel implements CustomArticleModel {
 }
 
 ?>
-
-?>

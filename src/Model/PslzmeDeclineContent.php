@@ -139,5 +139,3 @@ class PslzmeDeclineContent extends ContentModel implements CustomContentModel {
 }
 
 ?>
-
-?>
