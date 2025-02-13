@@ -4,6 +4,7 @@ namespace RobinDort\PslzmeLinks\Model;
 use Contao\ArticleModel;
 use Contao\PageModel;
 use Contao\Database;
+use Contao\BackendUser;
 
 
 class PslzmeAcceptionArticle extends ArticleModel {
@@ -44,7 +45,7 @@ class PslzmeAcceptionArticle extends ArticleModel {
         $this->pid = $this->findParentPageID();
         $this->title = self::ARTICLE_TITLE;
         $this->alias = strtolower(self::ARTICLE_TITLE);
-        $this->author = 2;
+        $this->author = $this->findAuthorID();
         $this->sorting = 128;
         $this->tstamp = $time;
         $this->published = true;
@@ -70,6 +71,12 @@ class PslzmeAcceptionArticle extends ArticleModel {
            return $parentPage->current()->id ?? 1;
        }
        return $parentPage->id ?? 1;
+    }
+
+    public function findAuthorID() {
+        $currentBackendUser = BackendUser::getInstance();
+        $authorId = $currentBackendUser->id;
+        return $authorId ?? 1;
     }
 }
 
