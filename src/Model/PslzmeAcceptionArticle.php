@@ -41,16 +41,14 @@ class PslzmeAcceptionArticle extends ArticleModel {
 
         $time = time();
 
-        $this->pid = 252;
-        $this->title = "Pslzme-Accept";
-        $this->alias = "pslzme-accept";
+        $this->pid = $this->findParentPageID();
+        $this->title = self::ARTICLE_TITLE;
+        $this->alias = strtolower(self::ARTICLE_TITLE);
         $this->author = 2;
         $this->inColumn = "main";
         $this->sorting = 128;
         $this->tstamp = $time;
         $this->published = true;
-        $this->teaserCssID = serialize(["", ""]);
-        $this->cssID = serialize(["", ""]);
     }
 
     public function selfExists() {
@@ -65,11 +63,14 @@ class PslzmeAcceptionArticle extends ArticleModel {
     }
 
     public function findParentPageID() {
-        $sqlQuery = "SELECT id FROM tl_page WHERE title='" . self::ARTICLE_TITLE . "'";
-        $stmt = Database::getInstance()->execute($sqlQuery);
-        $result = $stmt->fetchAssoc();
+       // find the parent page and its ID by searching for its title. Same title as the articles.
+       $parentPage = PageModel::findByTitle(self::ARTICLE_TITLE);
 
-        return $result ? $result["id"] : 1;
+       // Check if $parentPage is a collection or a single model, then return its ID
+       if ($parentPage instanceof \Model\Collection) {
+           return $parentPage->current()->id ?? 1;
+       }
+       return $parentPage->id ?? 1;
     }
 }
 
