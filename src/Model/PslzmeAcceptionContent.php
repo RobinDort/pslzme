@@ -2,7 +2,7 @@
 namespace RobinDort\PslzmeLinks\Model;
 
 use Contao\ContentModel;
-use Contao\Files;
+use Contao\FilesModel;
 use Contao\ArticleModel;
 
 
@@ -135,10 +135,10 @@ class PslzmeAcceptionContent extends ContentModel {
         $filepath = 'bundles/robindortpslzmelinks/images/pslzme_logo.svg';
 
         // Find the file in Contao's file system
-        $file = Files::getPathFromUuid($filePath);
+        $file = FilesModel::findByPath($filePath);
 
         // If the file is found, get the UUID
-        $fileUUID = $file ? $file->getUuid() : null;
+        $fileUUID = $file ? $file->uuid : null;
 
         return $fileUUID;
     }
