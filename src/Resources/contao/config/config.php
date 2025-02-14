@@ -1,6 +1,7 @@
 <?php
 use RobinDort\PslzmeLinks\Module\QueryDecryption;
 use RobinDort\PslzmeLinks\Module\PslzmeCookiebar;
+use RobinDort\PslzmeLinks\Elements\PslzmeTextElement;
 use RobinDort\PslzmeLinks\EventListener\contao\InitialSetup;
 
 
@@ -17,8 +18,14 @@ $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/pslzme-cookiebar-
 $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/cookie-acception.js|static";
 $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/main.js|static";
 
+
+// Init the Frontend Modules
 $GLOBALS['FE_MOD']['pslzme']['query_decryption'] = QueryDecryption::class;
 $GLOBALS['FE_MOD']['pslzme']['pslzme_cookiebar'] = PslzmeCookiebar::class;
+
+
+// Init the Content Elements
+$GLOBALS['TL_CTE']['pslzme']['pslzme_text'] = PslzmeTextElement::class;
 
 // Run initial setup when installing the plugin
 $GLOBALS['TL_HOOKS']['initializeSystem'][] = [InitialSetup::class, 'runSetup'];
