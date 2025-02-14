@@ -46,12 +46,12 @@ class PslzmeAcceptionArticle extends ArticleModel implements CustomArticleModel{
 
         $this->pid = $this->findParentPageID();
         $this->title = self::ARTICLE_TITLE;
-        $this->alias = strtolower(self::ARTICLE_TITLE);
-        $this->author = $this->findAuthorID();
-        $this->sorting = 128;
+        //$this->alias = strtolower(self::ARTICLE_TITLE);
+        //$this->author = $this->findAuthorID();
+        //$this->sorting = 128;
         $this->tstamp = $time;
-        $this->inColumn = "Hauptspalte";
-        $this->published = true;
+        //$this->inColumn = "Hauptspalte";
+        //$this->published = true;
     }
 
     public function selfExists() {
