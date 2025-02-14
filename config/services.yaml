@@ -16,3 +16,10 @@ services:
 
   RobinDort\PslzmeLinks\Controller\RequestHandlerController:
     tags: [controller.service_arguments]
+
+  RobinDort\PslzmeLinks\EventListener\InstallListener:
+    arguments:
+      $framework: "@contao.framework"
+      $kernel: "@kernel"
+    tags:
+      - { name: "kernel.event_subscriber" }
