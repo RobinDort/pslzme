@@ -28,6 +28,9 @@
 			"sources": {
 				"templates/": "src/Resources/contao/templates"
 			},
+			"resources": [
+				"src/Resources"
+			],
 			"icon": "bundles/robindortpslzmelinks/images/pslzme_logo.svg"
 		}
 	}
