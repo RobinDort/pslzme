@@ -1,0 +1,21 @@
+<?php $this->extend('block_searchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<?php if ($this->personalizedText && $GLOBALS['decryptedVars']['varsSet'] === true) :?>
+
+<!-- indexer::stop -->
+
+	<div class="ce_text block">
+		<?= $this->personalizedText ?>
+	</div>
+	
+<!-- indexer::continue -->
+
+<?php else :?>
+	<div class="ce_text block">
+		<?= $this->unpersonalizedText ?>
+	</div>
+<?php endif; ?>
+
+<?php $this->endblock(); ?>
