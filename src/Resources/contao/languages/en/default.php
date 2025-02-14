@@ -18,4 +18,6 @@ $GLOBALS['TL_LANG']['robindort_pslzme_links']['privacy'] = 'Privacy statement';
 $GLOBALS['TL_LANG']['robindort_pslzme_links']['yes'] = 'Yes';
 $GLOBALS['TL_LANG']['robindort_pslzme_links']['no'] = 'No';
 
+$GLOBALS['TL_LANG']['CTE']['pslzme_text'] = ['Pslzme Text', 'Personalizable text element'];
+
 ?>
