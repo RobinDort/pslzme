@@ -30,7 +30,7 @@ class InstallListener implements EventSubscriberInterface
     {
         // Make sure the output files are copied to the global template folder in order for the pslzme text content element to use them properly.
         $templateDir = $this->kernel->getProjectDir() . '/templates';
-        $extensionTemplateDir = $this->kernel->getProjectDir() . '/vendor/robindort/pslzme-links/src/Resources/contao/templates/outputs';
+        $extensionTemplateDir = $this->kernel->getProjectDir() . __DIR__ . '/Resources/contao/templates/outputs';
 
         if ($this->filesystem->exists($extensionTemplateDir)) {
             $this->filesystem->mirror($extensionTemplateDir, $templateDir);
