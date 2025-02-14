@@ -112,7 +112,7 @@ class PslzmeAcceptionPage extends PageModel implements CustomPageModel{
         $this->redirect = self::PAGE_REDIRECT;
         $this->jumpTo = 0;
         $this->includeLayout = true;
-        $this->layout = 2;
+        $this->layout = 61;
         $this->chmod = serialize(array(
             0 => "u1",
             1 => "u2",
