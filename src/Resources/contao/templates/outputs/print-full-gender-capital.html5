@@ -1,0 +1,25 @@
+<?php if (isset($GLOBALS['decryptedVars']['gender'])) :?>
+<?php if($GLOBALS['decryptedVars']['gender'] === "m") :?>
+{{iflng::de}}
+<?= "Sehr geehrter Herr" ?>
+{{iflng}}
+{{iflng::en}}
+<?php if(!isset($GLOBALS['decryptedVars']['title'])): ?>
+<?= "Dear Mr." ?>
+<?php else: ?>
+<?= "Dear" ?>
+<?php endif; ?>
+{{iflng}}
+<?php elseif($GLOBALS['decryptedVars']['gender'] === "f") :?>
+{{iflng::de}}
+<?= "Sehr geehrte Frau" ?>
+{{iflng}}
+{{iflng::en}}
+<?php if(!isset($GLOBALS['decryptedVars']['title'])): ?>
+<?= "Dear Ms." ?>
+<?php else: ?> 
+<?= "Dear" ?>
+<?php endif; ?>
+{{iflng}}
+<?php endif; ?>
+<?php endif; ?>
