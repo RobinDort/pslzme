@@ -1,0 +1,18 @@
+<?php if (isset($GLOBALS['decryptedVars']['companyGender'])) : ?>
+{{iflng::de}}
+<?php if($GLOBALS['decryptedVars']['companyGender'] === "m"): ?>
+<?=	"Den" ?>
+<?php elseif($GLOBALS['decryptedVars']['companyGender'] === "f"): ?>
+<?= "Die" ?>
+<?php elseif($GLOBALS['decryptedVars']['companyGender'] === "d"): ?>
+<?= "Das" ?>
+<?php else: ?>
+<!-- default value when the gender is not set -->
+<?= "Die"?>
+<?php endif; ?>
+{{iflng}}
+
+{{iflng::en}}
+<?= "The" ?>
+{{iflng}}
+<?php endif; ?>
