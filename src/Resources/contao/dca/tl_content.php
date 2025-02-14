@@ -13,10 +13,10 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedText'] = [
     'exclude'   => true,
     'inputType' => 'textarea',
     'eval'      => ['rte' => 'tinyMCE', 'helpwizard' => true, 'mandatory' => false],
-    'sql'       => ['type' => 'text', 'notnull' => false],
+    'sql' => "TEXT NULL"
 ];
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['personalizedTextGroup'] = [
+$GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedTextGroup'] = [
     'label' => array('Unpersonalized Text/HTML/Code'),
     'inputType' => 'group',
 ];
@@ -26,7 +26,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedText'] = [
     'exclude'   => true,
     'inputType' => 'textarea',
     'eval'      => ['rte' => 'tinyMCE', 'helpwizard' => true, 'mandatory' => true],
-    'sql'       => ['type' => 'text', 'notnull' => false],
+    'sql' => "TEXT NULL"
 ];
 
 ?>
