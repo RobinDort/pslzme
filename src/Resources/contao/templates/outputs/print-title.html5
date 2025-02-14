@@ -1,0 +1,5 @@
+<?php
+if (isset($GLOBALS['decryptedVars']['title'])) {
+    echo $GLOBALS['decryptedVars']['title'] . " ";
+}
+?>
