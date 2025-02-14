@@ -100,6 +100,7 @@ class PslzmeDeclinePage extends PageModel implements CustomPageModel{
         parent::__construct();
 
         $unixTime = time();
+        $layoutID = $this->findMostUsedLayoutID();
         
         // Set the sorting of the new page directly after the parent id.
         $this->sorting = $this->pid + 1; 
@@ -111,8 +112,6 @@ class PslzmeDeclinePage extends PageModel implements CustomPageModel{
         $this->robots = self::PAGE_ROBOTS;
         $this->redirect = self::PAGE_REDIRECT;
         $this->jumpTo = 0;
-        $this->includeLayout = true;
-        $this->layout = 2;
         $this->chmod = serialize(array(
             0 => "u1",
             1 => "u2",
@@ -127,6 +126,12 @@ class PslzmeDeclinePage extends PageModel implements CustomPageModel{
         $this->sitemap = self::PAGE_SITEMAP;
         $this->hide = false;
         $this->published = true;
+
+         // include layout when one is present
+         if ($layoutID !== -1) {
+            $this->includeLayout = true;
+            $this->layout = $layoutID;
+        }
     }
 
     public function selfExists() {
@@ -145,6 +150,13 @@ class PslzmeDeclinePage extends PageModel implements CustomPageModel{
         $stmt = Database::getInstance()->execute($sqlQuery)->fetchAssoc();
 
         return $stmt["id"] ?? 1;
+    }
+
+    public function findMostUsedLayoutID() {
+        $sqlQuery = "SELECT layout, COUNT(layout) AS count FROM tl_page GROUP BY layout ORDER BY count DESC LIMIT 1";
+        $stmt = Database::getInstance()->execute($sqlQuery)->fetchAssoc();
+
+        return $stmt["layout"] ?? -1;
     }
   
     public function getTitle() {
