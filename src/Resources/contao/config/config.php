@@ -8,6 +8,7 @@ use RobinDort\PslzmeLinks\EventListener\InstallListener;
 
 
 // Init all css / js files
+$GLOBALS['TL_CSS'][] = "bundles/robindortpslzmelinks/css/animations.css|static";
 $GLOBALS['TL_CSS'][] = "bundles/robindortpslzmelinks/css/pslzme-cookiebar.css|static";
 $GLOBALS['TL_CSS'][] = "bundles/robindortpslzmelinks/css/pslzme-cookie-caller.css|static";
 
