@@ -30,6 +30,5 @@ $GLOBALS['TL_CTE']['pslzme']['pslzme_text'] = PslzmeTextElement::class;
 
 // Run initial setup when installing the plugin
 $GLOBALS['TL_HOOKS']['initializeSystem'][] = [InitialSetup::class, 'runSetup'];
-$GLOBALS['TL_HOOKS']['initializeSystem'][] = [InstallListener::class, 'copyTemplates'];
 
 ?>
