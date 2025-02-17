@@ -1,11 +1,11 @@
-const addVisibleClassesToElement = (element) => {
+const addVisibleClassesToPslzmeElement = (element) => {
 	element.style.visibility = "visible";
 
 	element.classList.remove("animation", "slideOutRight", "slow");
 	element.classList.add("animation", "slideInRight", "slow");
 };
 
-const addHiddenClassesToElement = (element) => {
+const addHiddenClassesToPslzmeElement = (element) => {
 	element.classList.remove("animation", "slideInRight", "slow");
 	element.classList.add("animation", "slideOutRight", "slow");
 };
@@ -33,11 +33,11 @@ const controlPslzmeCookieCaller = () => {
 	window.addEventListener("scroll", function (event) {
 		if (html.scrollTop >= 110) {
 			if (queriesAreSet.isSet === true) {
-				addVisibleClassesToElement(pslzmeCookieCaller);
+				addVisibleClassesToPslzmeElement(pslzmeCookieCaller);
 			}
 		} else if (html.scrollTop <= 110) {
 			if (queriesAreSet.isSet === true) {
-				addHiddenClassesToElement(pslzmeCookieCaller);
+				addHiddenClassesToPslzmeElement(pslzmeCookieCaller);
 			}
 		}
 	});
