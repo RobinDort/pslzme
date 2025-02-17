@@ -3,4 +3,5 @@ document.addEventListener("DOMContentLoaded", function () {
 	pslzmeQueryClickListener();
 	verifyNameAndGreeting();
 	controlPslzmeCookiebar();
+	controlPslzmeCookieCaller();
 });

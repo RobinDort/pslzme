@@ -20,7 +20,7 @@ const addCookieCallerClickListener = () => {
 	});
 };
 
-const controlCookieCaller = () => {
+const controlPslzmeCookieCaller = () => {
 	let html = document.querySelector("html");
 	const pslzmeCookieCaller = document.getElementById("pslzme-cookie-caller");
 
