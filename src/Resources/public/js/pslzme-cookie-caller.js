@@ -1,13 +1,13 @@
 const addVisibleClassesToPslzmeElement = (element) => {
 	element.style.visibility = "visible";
 
-	element.classList.remove("slideOutRight");
+	element.classList.remove("pslzme-slide-out-right");
 	element.classList.add("pslzme-slide-in-right");
 };
 
 const addHiddenClassesToPslzmeElement = (element) => {
 	element.classList.remove("pslzme-slide-in-right");
-	element.classList.add("slideOutRight");
+	element.classList.add("pslzme-slide-out-right");
 };
 
 const addCookieCallerClickListener = () => {

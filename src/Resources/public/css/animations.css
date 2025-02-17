@@ -1,7 +1,13 @@
 .pslzme-slide-in-right {
-	position: fixed;
 	animation-name: pslzme-slide-in-right;
-	animation-duration: 1.5s;
+	animation-duration: 1.3s;
+	animation-timing-function: ease-out;
+	animation-fill-mode: both;
+}
+
+.pslzme-slide-out-right {
+	animation-name: pslzme-slide-out-right;
+	animation-duration: 1.3s;
 	animation-timing-function: ease-out;
 	animation-fill-mode: both;
 }
@@ -12,5 +18,14 @@
 	}
 	100% {
 		transform: translateX(0%);
+	}
+}
+
+@keyframes pslzme-slide-out-right {
+	0% {
+		transform: translateX(0%);
+	}
+	100% {
+		transform: translateX(100%);
 	}
 }
