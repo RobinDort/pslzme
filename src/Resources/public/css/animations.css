@@ -2,14 +2,17 @@
 	position: fixed;
 	right: -100%;
 	animation-name: pslzme-slide-in-right;
-	animation-duration: 1s;
+	animation-duration: 1.5s;
 	animation-timing-function: ease-out;
-	animation-fill-mode: forwards;
+	animation-fill-mode: both;
 }
 
 @keyframes pslzme-slide-in-right {
 	0% {
 		right: -100%;
+	}
+	50% {
+		right: -50%;
 	}
 	100% {
 		right: 0;
