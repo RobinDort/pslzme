@@ -19,7 +19,7 @@ class InstallListener
     public function copyTemplates()
     {
         // Make sure the output files are copied to the global template folder in order for the pslzme text content element to use them properly.
-        $$sourceDir = $this->projectDir .  '/vendor/robindort/pslzmelinks/src/Resources/contao/templates/outputs';
+        $$sourceDir = __DIR__ .  '/../Resources/contao/templates/outputs';
         $targetDir = $this->projectDir . '/templates';
 
         if (!$this->filesystem->exists($targetDir)) {
