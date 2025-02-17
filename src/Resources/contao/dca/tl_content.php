@@ -39,7 +39,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedText'] = [
  * Configuration for pslzme_3D_content element
  */
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_3D_content'] = '{type_legend},type,headline;{text_legend},pageLink,html,addImage,arrData,cssID';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_3D_content'] = '{type_legend},type,headline;{text_legend},pageLink,html,addImage;{image_legend},singleSRC,alt,size,imagemargin,imageUrl,fullsize,caption,floating;{expert_legend:hide},cssID';
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedLinkGroup'] = [
     'label' => array('Personalized image'),

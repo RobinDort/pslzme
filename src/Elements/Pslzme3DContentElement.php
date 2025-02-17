@@ -12,7 +12,10 @@ class Pslzme3DContentElement extends ContentElement {
         $this->Template->pageLink = $this->pageLink;
         $this->Template->html = $this->html;
         $this->Template->addImage = $this->addImage;
-        $this->Template->arrData = $this->arrData;
+        
+        if ($this->addImage) {
+            $this->addImageToTemplate($this->Template, $this->arrData);
+        }        
     }
 
 }

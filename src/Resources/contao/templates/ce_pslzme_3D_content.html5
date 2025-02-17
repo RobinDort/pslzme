@@ -12,7 +12,7 @@
 			<div class="ce_image gly-image block">
 				<figure class="image_container">
 					<a class="ce_hyperlink block" href="{{link_url::<?= $this->pageLink ?>}}">
-						<?php echo $this->html?>
+						<?= $this->html ?>
 					</a>
 				</figure>
 			</div>
@@ -21,7 +21,7 @@
 		<?php if($this->addImage): ?>
 			<div id="gallery-row" class="block">
 				<div class="ce_image">
-		    		<?php $this->insert('image', $this->arrData); ?>
+		    		<?= $this->addImage ?>
 		      </div>
 		    </div>
 	    <?php endif; ?>
