@@ -37,6 +37,8 @@ class InstallListener
             }
         } catch (InvalidFileException $ife) {
             System::log($ife->getErrorMsg(), __METHOD__, TL_ERROR);
+        } catch (Exception $e) {
+            System::log($$e->getMessage(), __METHOD__, TL_ERROR);
         }
     }
 }
