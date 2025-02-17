@@ -1,0 +1,17 @@
+.pslzme-slide-in-right {
+	position: fixed;
+	right: -100%;
+	animation-name: pslzme-slide-in-right;
+	animation-duration: 1s;
+	animation-timing-function: ease-out;
+	animation-fill-mode: forwards;
+}
+
+@keyframe pslzme-slide-in-right {
+	0% {
+		right: -100%;
+	}
+	100% {
+		right: 0;
+	}
+}

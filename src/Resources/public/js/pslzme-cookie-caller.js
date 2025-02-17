@@ -2,11 +2,11 @@ const addVisibleClassesToPslzmeElement = (element) => {
 	element.style.visibility = "visible";
 
 	element.classList.remove("animation", "slideOutRight", "slow");
-	element.classList.add("animation", "slideInRight", "slow");
+	element.classList.add("animation", "pslzme-slide-in-right", "slow");
 };
 
 const addHiddenClassesToPslzmeElement = (element) => {
-	element.classList.remove("animation", "slideInRight", "slow");
+	element.classList.remove("animation", "pslzme-slide-in-right", "slow");
 	element.classList.add("animation", "slideOutRight", "slow");
 };
 
