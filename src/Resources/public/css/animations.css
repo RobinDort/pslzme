@@ -1,13 +1,13 @@
 .pslzme-slide-in-right {
 	animation-name: pslzme-slide-in-right;
-	animation-duration: 1.3s;
+	animation-duration: 1.4s;
 	animation-timing-function: ease-out;
 	animation-fill-mode: both;
 }
 
 .pslzme-slide-out-right {
 	animation-name: pslzme-slide-out-right;
-	animation-duration: 1.3s;
+	animation-duration: 1.4s;
 	animation-timing-function: ease-out;
 	animation-fill-mode: both;
 }
