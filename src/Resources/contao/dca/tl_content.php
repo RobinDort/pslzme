@@ -46,12 +46,6 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_3D_content'] = '
     {expert_legend:hide},cssID';
 
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['addImage'] = [
-    'inputType' => 'checkbox',
-    'eval'      => ['mandatory' => true, 'tl_class' => 'clr'],
-    'sql'       => "char(1) NOT NULL default ''"
-];
-
 $GLOBALS['TL_DCA']['tl_content']['fields']['pageLink'] = [
     'label' => array('Link address'),
     'inputType' => 'pageTree',
