@@ -41,17 +41,9 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedText'] = [
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_3D_content'] = '
     {type_legend},type,headline;
-    {personalized_legend},personalizedLinkGroup,addImage;
-    {3d_legend},3dPlayGround,pageLink,html;
-    {image_legend},singleSRC,alt,size,imagemargin,imageUrl,fullsize,caption,floating;
-    {expert_legend:hide},cssID
-';
-
-$GLOBALS['TL_DCA']['tl_content']['fields']['3dPlayGround'] = [
-    'label' => array('3D image'),
-    'inputType' => 'group',
-    'eval' => ['tl_class' => 'clr'], // Ensures it appears on a new line
-];
+    {Personalized image},addImage;
+    {3D PlayGround},pageLink,html;
+    {expert_legend:hide},cssID';
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['pageLink'] = [
     'label' => array('Link address'),
