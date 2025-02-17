@@ -7,7 +7,7 @@
 	animation-fill-mode: forwards;
 }
 
-@keyframe pslzme-slide-in-right {
+@keyframes pslzme-slide-in-right {
 	0% {
 		right: -100%;
 	}
