@@ -3,6 +3,7 @@ use RobinDort\PslzmeLinks\Module\QueryDecryption;
 use RobinDort\PslzmeLinks\Module\PslzmeCookiebar;
 use RobinDort\PslzmeLinks\Module\PslzmeCookieCaller;
 use RobinDort\PslzmeLinks\Elements\PslzmeTextElement;
+use RobinDort\PslzmeLinks\Elements\Pslzme3DContentElement;
 use RobinDort\PslzmeLinks\EventListener\contao\InitialSetup;
 use RobinDort\PslzmeLinks\EventListener\InstallListener;
 
@@ -25,13 +26,14 @@ $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/main.js|static";
 //$GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/pslzme.min.js|static";
 
 
-// Init the Frontend Modules
+// Init Frontend Modules
 $GLOBALS['FE_MOD']['pslzme']['query_decryption'] = QueryDecryption::class;
 $GLOBALS['FE_MOD']['pslzme']['pslzme_cookiebar'] = PslzmeCookiebar::class;
 $GLOBALS['FE_MOD']['pslzme']['pslzme_cookie_caller'] = PslzmeCookieCaller::class;
 
-// Init the Content Elements
+// Init Content Elements
 $GLOBALS['TL_CTE']['pslzme']['pslzme_text'] = PslzmeTextElement::class;
+$GLOBALS['TL_CTE']['pslzme']['pslzme_3D_content'] = Pslzme3DContentElement::class;
 
 // Run initial setup when installing the plugin
 $GLOBALS['TL_HOOKS']['initializeSystem'][] = [InitialSetup::class, 'runSetup'];
