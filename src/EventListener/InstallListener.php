@@ -3,6 +3,7 @@ namespace RobinDort\PslzmeLinks\EventListener;
 
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpKernel\KernelInterface;
+use RobinDort\PslzmeLinks\Exceptions\InvalidFileException;
 
 class InstallListener
 {
