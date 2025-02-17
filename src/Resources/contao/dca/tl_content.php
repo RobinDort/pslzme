@@ -46,10 +46,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedLinkGroup'] = [
     'inputType' => 'group',
 ];
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['addImage'] = [
-    'inputType' => 'standardField',
-];
-
 $GLOBALS['TL_DCA']['tl_content']['fields']['3dPlayGround'] = [
     'label' => array('3D image'),
     'inputType' => 'group',
@@ -58,10 +54,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['3dPlayGround'] = [
 $GLOBALS['TL_DCA']['tl_content']['fields']['pageLink'] = [
     'label' => array('Link address'),
     'inputType' => 'pageTree',
-];
-
-$GLOBALS['TL_DCA']['tl_content']['fields']['html'] = [
-    'inputType' => 'standardField',
 ];
 
 ?>
