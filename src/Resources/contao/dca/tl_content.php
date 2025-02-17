@@ -42,12 +42,14 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedText'] = [
 $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_3D_content'] = '
     {type_legend},type,headline;
     {Personalized image},addImage;
-    {3D PlayGround},pageLink,html;
+    {3D PlayGround},singleSRC,html;
     {expert_legend:hide},cssID';
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['pageLink'] = [
-    'label' => array('Link address'),
-    'inputType' => 'pageTree',
-];
+// $GLOBALS['TL_DCA']['tl_content']['fields']['pageLink'] = [
+//     'label' => array('Link address'),
+//     'inputType' => 'pageTree',
+//     'eval'      => ['mandatory' => false, 'tl_class' => 'clr'],
+//     'sql'       => "int(10) unsigned NOT NULL default 0"
+// ];
 
 ?>
