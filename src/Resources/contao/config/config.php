@@ -3,6 +3,7 @@ use RobinDort\PslzmeLinks\Module\QueryDecryption;
 use RobinDort\PslzmeLinks\Module\PslzmeCookiebar;
 use RobinDort\PslzmeLinks\Elements\PslzmeTextElement;
 use RobinDort\PslzmeLinks\EventListener\contao\InitialSetup;
+use RobinDort\PslzmeLinks\EventListener\InstallListener;
 
 
 // Init all css / js files
@@ -29,5 +30,6 @@ $GLOBALS['TL_CTE']['pslzme']['pslzme_text'] = PslzmeTextElement::class;
 
 // Run initial setup when installing the plugin
 $GLOBALS['TL_HOOKS']['initializeSystem'][] = [InitialSetup::class, 'runSetup'];
+$GLOBALS['TL_HOOKS']['initializeSystem'][] = [InstallListener::class, 'copyTemplates'];
 
 ?>
