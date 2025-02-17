@@ -1,15 +1,3 @@
-<script>
-	$(document).ready(function () {
-		$("#pslzme-cookie-caller").click(function (event) {
-			$("#pslzme-cookiebar").css({
-				display: "flex",
-				"align-items": "center",
-				"justify-content": "center",
-			});
-		});
-	});
-</script>
-
 <div id="pslzme-cookie-caller">
 	<ul class="level_1">
 		<li style="background-image: url('<?= $this->asset('bundles/robindortpslzmelinks/images/pslzme_fingerprint.svg') ?>');">[nbsp]</li>
