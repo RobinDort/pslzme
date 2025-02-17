@@ -41,9 +41,16 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedText'] = [
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_3D_content'] = '
     {type_legend},type,headline;
-    {Personalized image},addImage;
+    {3D Image},addImage;
     {3D PlayGround},pageLink,html;
     {expert_legend:hide},cssID';
+
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['addImage'] = [
+    'inputType' => 'checkbox',
+    'eval'      => ['mandatory' => true, 'tl_class' => 'clr'],
+    'sql'       => "char(1) NOT NULL default ''"
+];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['pageLink'] = [
     'label' => array('Link address'),
