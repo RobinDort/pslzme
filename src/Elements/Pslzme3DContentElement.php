@@ -14,6 +14,7 @@ class Pslzme3DContentElement extends ContentElement {
         $this->Template->imageContent = $this->imageContent;
 
         if ($this->imageContent) {
+            $this->singleSRC = $this->imageContent;
             $this->addImageToTemplate($this->Template, $this->arrData);
         }        
     }

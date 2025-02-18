@@ -18,10 +18,10 @@
 			</div>
 		</div>
 	<?php else: ?>
-		<?php if($this->addImage): ?>
+		<?php if($this->singleSRC): ?>
 			<div id="gallery-row" class="block">
 				<div class="ce_image">
-		    		<?= $this->imageContent ?>
+		    		<?php $this->insert('image', $this->arrData); ?>
 		      </div>
 		    </div>
 	    <?php endif; ?>
