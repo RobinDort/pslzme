@@ -40,6 +40,7 @@ class DatabaseConnection {
             $this->closeConnection();
             System::log($dbe->getErrorMsg(),__METHOD__,TL_ERROR);
             error_log($dbe->getErrorMsg());
+
         } catch (Exception $e) {
             $this->connection->rollback();
             $this->closeConnection();
@@ -67,7 +68,7 @@ class DatabaseConnection {
     private function createPslzmeCustomerTable() {
         $sqlQuery = "CREATE TABLE IF NOT EXISTS pslzme_kunde (
             KundenID BIGINT AUTO_INCREMENT PRIMARY KEY,
-            Name varchar(255)
+            Name varchar(255) NOT NULL
         )";
 
         $result = $this->connection->query($sqlQuery);
