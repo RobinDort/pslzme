@@ -22,7 +22,7 @@
 			<div id="gallery-row" class="block">
 				<div class="ce_image <?= $this->floating?>">
 					<figure class="image_container">
-						<img src="<?= $this->imagePath ?> alt='<?= $this->altText ?>'"/>
+						<img src="<?= $this->imagePath ?>"  alt='<?= $this->altText ?>'/>
 		    			<?php if($this->imageCaption): ?>
 							<figcaption><?= $this->imageCaption ?></figcaption>
 						<?php endif; ?>
