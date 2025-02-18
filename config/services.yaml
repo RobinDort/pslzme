@@ -11,7 +11,7 @@ services:
       $servername: "localhost"
       $username: "PluginAdmin"
       $password: "PluginAdmin123!"
-      $dbname: "plugin_test"
+      $dbname: "plugin_test_db"
     public: true
 
   RobinDort\PslzmeLinks\Controller\RequestHandlerController:
