@@ -9,9 +9,9 @@ services:
   RobinDort\PslzmeLinks\Service\DatabaseConnection:
     arguments:
       $servername: "localhost"
-      $username: "pslzme_admin_db_rd"
-      $password: "PSLZMEDBPW001!"
-      $dbname: "pslzme_test_customer_db_rd"
+      $username: "PluginAdmin"
+      $password: "PluginAdmin123!"
+      $dbname: "plugin_test"
     public: true
 
   RobinDort\PslzmeLinks\Controller\RequestHandlerController:
