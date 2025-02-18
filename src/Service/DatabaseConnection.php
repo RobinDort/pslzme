@@ -49,9 +49,9 @@ class DatabaseConnection {
 
     private function initTables() {
         // create all tables
-        createPslzmeCustomerTable();
-        createEncryptionInfoTable();
-        createQueryLinkTable();
+        $this->createPslzmeCustomerTable();
+        $this->createEncryptionInfoTable();
+        $this->createQueryLinkTable();
     }
 
     private function createPslzmeCustomerTable() {
