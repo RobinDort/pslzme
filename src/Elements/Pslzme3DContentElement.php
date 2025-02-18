@@ -11,10 +11,18 @@ class Pslzme3DContentElement extends ContentElement {
     protected function compile() {
         $this->Template->pageLink = $this->pageLink;
         $this->Template->html = $this->html;
-        $this->Template->imageContent = $this->imageContent;
         
-        if ($this->imageContent) {
-            $this->addImageToTemplate($this->Template, $this->arrData);
+        if ($this->singleSRC) {
+            $this->addImageToTemplate($this->Template, [
+                'singleSRC'     => $this->singleSRC,
+                'size'          => $this->size,
+                'imagemargin'   => $this->imagemargin,
+                'fullsize'      => $this->fullsize,
+                'imageUrl'      => $this->imageUrl,
+                'floating'      => $this->floating,
+                'caption'       => $this->caption,
+                'alt'           => $this->alt
+            ]);
         }        
     }
 
