@@ -41,7 +41,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedText'] = [
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_3D_content'] = '
     {type_legend},type,headline;
-    {3D Image},3DImageContent;
+    {3D Image},3DImageContent,size,imagemargin,imageUrl,alt,caption,floating;
     {3D PlayGround},pageLink,html;
     {expert_legend:hide},cssID';
 
