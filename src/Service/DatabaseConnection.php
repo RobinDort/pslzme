@@ -57,7 +57,7 @@ class DatabaseConnection {
 
     private function createPslzmeCustomerTable() {
         $sqlQuery = "CREATE TABLE IF NOT EXISTS pslzme_kunde (
-            KundenID BIGINT(20) AUTO_INCREMENT PRIMARY KEY,
+            KundenID BIGINT AUTO_INCREMENT PRIMARY KEY,
             Name varchar(255)
         )";
 
@@ -71,9 +71,9 @@ class DatabaseConnection {
 
     private function createEncryptionInfoTable() {
         $sqlQuery = "CREATE TABLE IF NOT EXISTS encrypt_info (
-            EncryptionID BIGINT(20) AUTO_INCREMENT PRIMARY KEY,
+            EncryptionID BIGINT AUTO_INCREMENT PRIMARY KEY,
             EncryptionKey varchar(255) NOT NULL,
-            PslzmeKundenID BIGINT(20) NOT NULL,
+            PslzmeKundenID BIGINT NOT NULL,
 
             CONSTRAINT fk_kunden_id FOREIGN KEY (PslzmeKundenID) REFERENCES pslzme_kunde(KundenID) ON DELETE CASCADE
         )";
@@ -89,15 +89,15 @@ class DatabaseConnection {
     private function createQueryLinkTable() {
         $sqlQuery = "CREATE TABLE IF NOT EXISTS query_link (
             QueryID INT AUTO_INCREMENT PRIMARY KEY,
-            QueryString varchar(255) NOT NULL,
-            CreationTime BIGINT(20),
-            AcceptionTime BIGINT(20),
-            ChangedOn BIGINT(20),
+            QueryString VARCHAR(255) NOT NULL,
+            CreationTime BIGINT,
+            AcceptionTime BIGINT,
+            ChangedOn BIGINT,
             Accepted TINYINT(1) NOT NULL,
-            Locked TINYINT(20) NOT NULL DEFAULT 0,
-            PslzmeKundenID BIGINT(20) NOT NULL,
-            EncryptInfoID BIGINT(20) NOT NULL,
-
+            Locked TINYINT(1) NOT NULL DEFAULT 0,
+            PslzmeKundenID BIGINT NOT NULL,
+            EncryptInfoID BIGINT NOT NULL,
+        
             CONSTRAINT fk_kunden_id FOREIGN KEY (PslzmeKundenID) REFERENCES pslzme_kunde(KundenID),
             CONSTRAINT fk_encryption_id FOREIGN KEY (EncryptInfoID) REFERENCES encrypt_info(EncryptionID)
         )";
