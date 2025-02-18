@@ -36,8 +36,6 @@ class DatabaseConnection {
             }   
         } catch (Exception $e) {
             error_log($e->getMessage());
-            // Rethrow the exception so the caller knows the connection failed
-            throw $e;
         }
     }
 
@@ -92,7 +90,7 @@ class DatabaseConnection {
         $result = $conn->query($sqlQuery);
 
         $conn->close();
-        
+
         if ($result) {
             \System::Log("Database created successfully.", __METHOD__,TL_GENERAL);
         } else {
