@@ -2,6 +2,7 @@
 namespace RobinDort\PslzmeLinks\Elements;
 
 use Contao\ContentElement;
+use Contao\FilesModel;
 
 class Pslzme3DContentElement extends ContentElement {
 
@@ -13,8 +14,9 @@ class Pslzme3DContentElement extends ContentElement {
         $this->Template->html = $this->html;
         
         if ($this->singleSRC) {
+            $image = FilesModel::findByUuid($this->singleSRC);
             $this->addImageToTemplate($this->Template, [
-                'singleSRC'     => $this->singleSRC,
+                'singleSRC'     => $image->path,
                 'size'          => $this->size,
                 'imagemargin'   => $this->imagemargin,
                 'fullsize'      => $this->fullsize,
