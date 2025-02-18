@@ -28,13 +28,21 @@ class DatabaseConnection {
                 throw new \Exception("Connection to database failed: " . $this->connection->connect_error);
             } 
 
+
             // first check if the pslzme database tables exist. Create them only when not present
+            // begin transaction to make sure all tables get created.
+            $this->connection->begin_transaction();
             $this->initTables();
+            $this->connection->commit();
   
         } catch(DatabaseException $dbe) {
-            \System::log($dbe->getErrorMsg(),__METHOD__,TL_ERROR);
+            System::log($dbe->getErrorMsg(),__METHOD__,TL_ERROR);
+            error_log($dbe->getErrorMsg());
         } catch (Exception $e) {
             error_log($e->getMessage());
+        } finally {
+            $this->connection->rollback();
+            $this->closeConnection();
         }
     }
 
