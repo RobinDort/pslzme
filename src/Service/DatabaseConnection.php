@@ -28,7 +28,7 @@ class DatabaseConnection {
             } 
 
             // first check if the pslzme database tables exist. Create them only when not present
-            initTables();
+            $this->initTables();
   
         } catch(DatabaseException $dbe) {
             \System::log($dbe->getErrorMsg(),__METHOD__,TL_ERROR);
