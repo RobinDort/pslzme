@@ -18,7 +18,7 @@
 			</div>
 		</div>
 	<?php else: ?>
-		<?php if($this->addImage): ?>
+		<?php if($this->imageContent): ?>
 			<div id="gallery-row" class="block">
 				<div class="ce_image">
 					<?php $this->insert('image', $this->arrData); ?>

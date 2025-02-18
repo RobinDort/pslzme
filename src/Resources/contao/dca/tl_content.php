@@ -41,12 +41,15 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedText'] = [
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_3D_content'] = '
     {type_legend},type,headline;
-    {3D Image},addImage;
+    {3D Image},imageContent;
     {3D PlayGround},pageLink,html;
     {expert_legend:hide},cssID';
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['addImage'] = [
-    'inputType' => 'standardField',
+$GLOBALS['TL_DCA']['tl_content']['fields']['imageContent'] = [
+    'label' => array('Select 3D image'),
+    'inputType' => 'addImage',
+    'eval' => ['mandatory' => true, 'tl_class' => 'clr'],
+    'sql' => "binary(16) NOT NULL"
 ];
 
 
