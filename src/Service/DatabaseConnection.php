@@ -2,6 +2,7 @@
 namespace RobinDort\PslzmeLinks\Service;
 
 use mysqli;
+use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
 
 class DatabaseConnection {
     private $connection;
@@ -18,22 +19,19 @@ class DatabaseConnection {
 
 
         try {
-            // first check if the pslzme database exists
-            $dbExists = databaseExists();
+            // create connection to database
+            $this->connection = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
 
-            if (!$dbExists) {
-                // The database does not exist and must therefore be created first
-                createPslzmeDatabase();
-            } else {
-                // The database exists and the connection can be established
-                // create connection
-                $this->connection = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
+            // check if connection was established
+            if($this->connection->connect_error) {
+                throw new \Exception("Connection to database failed: " . $this->connection->connect_error);
+            } 
 
-                // check if connection was established
-                if($this->connection->connect_error) {
-                    throw new \Exception("Connection to database failed: " . $this->connection->connect_error);
-                } 
-            }   
+            // first check if the pslzme database tables exist. Create them only when not present
+            initTables();
+  
+        } catch(DatabaseException $dbe) {
+            \System::log($dbe->getErrorMsg(),__METHOD__,TL_ERROR);
         } catch (Exception $e) {
             error_log($e->getMessage());
         }
@@ -49,54 +47,66 @@ class DatabaseConnection {
         }
     }
 
-    private function databaseExists() {
+    private function initTables() {
+        // create all tables
+        createPslzmeCustomerTable();
+        createEncryptionInfoTable();
+        createQueryLinkTable();
+    }
 
-        // establish a connection to the mysql server. NOT to the database in order to check for the database existence
-        $conn = new mysqli($this->servername, $this->username, $this->password);
+    private function createPslzmeCustomerTable() {
+        $sqlQuery = "CREATE TABLE IF NOT EXISTS pslzme_kunde (
+            KundenID BIGINT(20) AUTO_INCREMENT PRIMARY KEY,
+            Name varchar(255)
+        )";
 
-        // check if connection was established
-        if($conn->connect_error) {
-            throw new \Exception("Connection to mysql server failed: " . $conn->connect_error);
-        } 
-
-        // connection established
-        // select the database by its name
-        $sqlQuery = "SHOW DATABASES LIKE '" . $this->dbname . "'";
-        $result = $conn->query($sqlQuery);
-
-        // Close the connection after the query
-        $conn->close();
-
-        if ($result->num_rows === 0) {
-            // Database does not exist
-            return false;
+        $result = $this->connection->query($sqlQuery);
+        if ($result === true) {
+            \System::log("Table pslzme_kunde created successfully",__METHOD__,TL_GENERAL);
         } else {
-            // Database already exists
-            return true;
+            throw new DatabaseException("Unable to create table pslzme_kunde");
         }
     }
 
+    private function createEncryptionInfoTable() {
+        $sqlQuery = "CREATE TABLE IF NOT EXISTS encrypt_info (
+            EncryptionID BIGINT(20) AUTO_INCREMENT PRIMARY KEY,
+            EncryptionKey varchar(255) NOT NULL,
+            PslzmeKundenID BIGINT(20) NOT NULL,
 
-    private function createPslzmeDatabase() {
-        // establish a connection to the mysql server. NOT to the database in order to create it
-        $conn = new mysqli($this->servername, $this->username, $this->password);
+            CONSTRAINT fk_kunden_id FOREIGN KEY (PslzmeKundenID) REFERENCES pslzme_kunde(KundenID) ON DELETE CASCADE
+        )";
 
-        // check if connection was established
-        if($conn->connect_error) {
-            throw new \Exception("Connection to mysql server failed: " . $conn->connect_error);
-        }
-
-        $sqlQuery = "CREATE DATABASE " . $this->dbname;
-        $result = $conn->query($sqlQuery);
-
-        $conn->close();
-
-        if ($result) {
-            \System::Log("Database created successfully.", __METHOD__,TL_GENERAL);
+        $result = $this->connection->query($sqlQuery);
+        if ($result === true) {
+            \System::log("Table encrypt_info created successfully",__METHOD__,TL_GENERAL);
         } else {
-            throw new Exception("Error while trying to create pslzme_customer database");
+            throw new DatabaseException("Unable to create table encrypt_info");
         }
+    }
 
+    private function createQueryLinkTable() {
+        $sqlQuery = "CREATE TABLE IF NOT EXISTS query_link (
+            QueryID INT AUTO_INCREMENT PRIMARY KEY,
+            QueryString varchar(255) NOT NULL,
+            CreationTime BIGINT(20),
+            AcceptionTime BIGINT(20),
+            ChangedOn BIGINT(20),
+            Accepted TINYINT(1) NOT NULL,
+            Locked TINYINT(20) NOT NULL DEFAULT 0,
+            PslzmeKundenID BIGINT(20) NOT NULL,
+            EncryptInfoID BIGINT(20) NOT NULL,
+
+            CONSTRAINT fk_kunden_id FOREIGN KEY (PslzmeKundenID) REFERENCES pslzme_kunde(KundenID),
+            CONSTRAINT fk_encryption_id FOREIGN KEY (EncryptInfoID) REFERENCES encrypt_info(EncryptionID)
+        )";
+        
+        $result = $this->connection->query($sqlQuery);
+        if ($result === true) {
+            \System::log("Table query_link created successfully",__METHOD__,TL_GENERAL);
+        } else {
+            throw new DatabaseException("Unable to create table query_link");
+        }
     }
 }
 ?>
