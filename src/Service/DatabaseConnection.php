@@ -2,6 +2,7 @@
 namespace RobinDort\PslzmeLinks\Service;
 
 use mysqli;
+use Contao\System;
 use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
 
 class DatabaseConnection {
@@ -62,7 +63,7 @@ class DatabaseConnection {
 
         $result = $this->connection->query($sqlQuery);
         if ($result === true) {
-            \System::log("Table pslzme_kunde created successfully",__METHOD__,TL_GENERAL);
+            System::log("Table pslzme_kunde created successfully",__METHOD__,TL_GENERAL);
         } else {
             throw new DatabaseException("Unable to create table pslzme_kunde");
         }
@@ -79,7 +80,7 @@ class DatabaseConnection {
 
         $result = $this->connection->query($sqlQuery);
         if ($result === true) {
-            \System::log("Table encrypt_info created successfully",__METHOD__,TL_GENERAL);
+            System::log("Table encrypt_info created successfully",__METHOD__,TL_GENERAL);
         } else {
             throw new DatabaseException("Unable to create table encrypt_info");
         }
@@ -103,7 +104,7 @@ class DatabaseConnection {
         
         $result = $this->connection->query($sqlQuery);
         if ($result === true) {
-            \System::log("Table query_link created successfully",__METHOD__,TL_GENERAL);
+            System::log("Table query_link created successfully",__METHOD__,TL_GENERAL);
         } else {
             throw new DatabaseException("Unable to create table query_link");
         }
