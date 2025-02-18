@@ -21,7 +21,7 @@
 		<?php if($this->addImage): ?>
 			<div id="gallery-row" class="block">
 				<div class="ce_image">
-		    		<?= $this->addImage ?>
+		    		<?= $this->imageContent ?>
 		      </div>
 		    </div>
 	    <?php endif; ?>

@@ -11,9 +11,9 @@ class Pslzme3DContentElement extends ContentElement {
     protected function compile() {
         $this->Template->pageLink = $this->pageLink;
         $this->Template->html = $this->html;
-        $this->Template->addImage = $this->addImage;
-        
-        if ($this->addImage) {
+        $this->Template->imageContent = $this->imageContent;
+
+        if ($this->imageContent) {
             $this->addImageToTemplate($this->Template, $this->arrData);
         }        
     }
