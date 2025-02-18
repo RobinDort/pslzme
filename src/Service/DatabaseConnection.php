@@ -37,13 +37,13 @@ class DatabaseConnection {
   
         } catch(DatabaseException $dbe) {
             $this->connection->rollback();
+            $this->closeConnection();
             System::log($dbe->getErrorMsg(),__METHOD__,TL_ERROR);
             error_log($dbe->getErrorMsg());
         } catch (Exception $e) {
             $this->connection->rollback();
-            error_log($e->getMessage());
-        } finally {
             $this->closeConnection();
+            error_log($e->getMessage());
         }
     }
 
