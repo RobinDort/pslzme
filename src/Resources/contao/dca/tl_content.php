@@ -45,6 +45,10 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_3D_content'] = '
     {3D PlayGround},pageLink,html;
     {expert_legend:hide},cssID';
 
+$GLOBALS['TL_DCA']['tl_content']['fields']['addImage'] = [
+    'inputType' => 'standardField',
+];
+
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['pageLink'] = [
     'label' => array('Link address'),
