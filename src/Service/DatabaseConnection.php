@@ -36,12 +36,13 @@ class DatabaseConnection {
             $this->connection->commit();
   
         } catch(DatabaseException $dbe) {
+            $this->connection->rollback();
             System::log($dbe->getErrorMsg(),__METHOD__,TL_ERROR);
             error_log($dbe->getErrorMsg());
         } catch (Exception $e) {
+            $this->connection->rollback();
             error_log($e->getMessage());
         } finally {
-            $this->connection->rollback();
             $this->closeConnection();
         }
     }
@@ -51,7 +52,7 @@ class DatabaseConnection {
     }
 
     public function closeConnection() {
-        if ($this->connection !== null) {
+        if ($this->connection !== null && $this->connection->ping()) {
             $this->connection->close();
         }
     }
@@ -106,8 +107,8 @@ class DatabaseConnection {
             PslzmeKundenID BIGINT NOT NULL,
             EncryptInfoID BIGINT NOT NULL,
         
-            CONSTRAINT fk_kunden_id FOREIGN KEY (PslzmeKundenID) REFERENCES pslzme_kunde(KundenID),
-            CONSTRAINT fk_encryption_id FOREIGN KEY (EncryptInfoID) REFERENCES encrypt_info(EncryptionID)
+            CONSTRAINT fk_ql_kunden_id FOREIGN KEY (PslzmeKundenID) REFERENCES pslzme_kunde(KundenID),
+            CONSTRAINT fk_ql_encryption_id FOREIGN KEY (EncryptInfoID) REFERENCES encrypt_info(EncryptionID)
         )";
         
         $result = $this->connection->query($sqlQuery);
