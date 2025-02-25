@@ -4,6 +4,9 @@ namespace RobinDort\PslzmeLinks\Service;
 use mysqli;
 use Contao\System;
 use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
+use RobinDort\PslzmeLinks\Service\DatabaseManager;
+
+use Exception;
 
 class DatabaseConnection {
     private $connection;
@@ -25,9 +28,9 @@ class DatabaseConnection {
 
             // check if connection was established
             if($this->connection->connect_error) {
-                throw new \Exception("Connection to database failed: " . $this->connection->connect_error);
+                throw new Exception("Connection to database failed: " . $this->connection->connect_error);
             } 
-              
+
         } catch (Exception $e) {
             $this->connection->rollback();
             $this->closeConnection();

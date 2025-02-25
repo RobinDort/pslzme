@@ -7,6 +7,7 @@ use RobinDort\PslzmeLinks\Model\PslzmeAcceptionArticle;
 use RobinDort\PslzmeLinks\Model\PslzmeDeclineArticle;
 use RobinDort\PslzmeLinks\Model\PslzmeAcceptionContent;
 use RobinDort\PslzmeLinks\Model\PslzmeDeclineContent;
+use RobinDort\PslzmeLinks\Service\DatabaseManager;
 
 
 
@@ -80,6 +81,11 @@ class InitialSetup {
         }
 
         $this->ranOnce = true;
+    }
+
+    public function initDatabaseTables() {
+        $dbmanager = new DatabaseManager();
+        $dbmanager->initTables();
     }
 }
 
