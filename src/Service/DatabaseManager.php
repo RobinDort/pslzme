@@ -22,7 +22,7 @@ class DatabaseManager {
 
 
 
-    private function initTables() {
+    public function initTables() {
 
         try {
             // first check if the pslzme database tables exist. Create them only when not present
