@@ -53,7 +53,7 @@ class DatabaseManager {
             Name varchar(255) NOT NULL
         )";
 
-        $result = $this->connection->query($sqlQuery);
+        $result = $this->dbc->getConnection()->query($sqlQuery);
         if ($result === true) {
             System::log("Table pslzme_kunde created successfully",__METHOD__,TL_GENERAL);
         } else {
@@ -70,7 +70,7 @@ class DatabaseManager {
             CONSTRAINT fk_kunden_id FOREIGN KEY (PslzmeKundenID) REFERENCES pslzme_kunde(KundenID) ON DELETE CASCADE
         )";
 
-        $result = $this->connection->query($sqlQuery);
+        $result = $this->dbc->getConnection()->query($sqlQuery);
         if ($result === true) {
             System::log("Table encrypt_info created successfully",__METHOD__,TL_GENERAL);
         } else {
@@ -94,7 +94,7 @@ class DatabaseManager {
             CONSTRAINT fk_ql_encryption_id FOREIGN KEY (EncryptInfoID) REFERENCES encrypt_info(EncryptionID)
         )";
         
-        $result = $this->connection->query($sqlQuery);
+        $result = $this->dbc->getConnection()->query($sqlQuery);
         if ($result === true) {
             System::log("Table query_link created successfully",__METHOD__,TL_GENERAL);
         } else {
