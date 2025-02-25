@@ -2,6 +2,7 @@
 namespace RobinDort\PslzmeLinks\Service;
 
 use RobinDort\PslzmeLinks\Service\DatabaseConnection;
+use Contao\System;
 
 class DatabaseManager {
 
