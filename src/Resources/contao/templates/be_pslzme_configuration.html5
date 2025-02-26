@@ -3,7 +3,7 @@
         <h1>pslz<span>me</span> Konfiguration</h1>
 
         <div class="pslzme-configuration-container">
-            <h2>Datenbank Konfiguration</h2>
+            <h2>1: Datenbank Konfiguration</h2>
 
             <div class="pslzme-explanation">
                 <p>Zur erfolgreichen Nutzung von pslz<strong>me</strong> ist eine Datenbankanbindung notwendig.</p>
@@ -30,7 +30,7 @@
                 <div class="pslzme-explanation">
                     <h3><span>Schritt 2:</span> Datenbank an plsz<strong>me</strong> plugin anbinden</h3>
                     <p>Als nächstes tragen Sie bitte die Verbindungsdaten der soeben erstellten Datenbank in die nachstehenden Felder ein. Nach
-                        Bestätigung des Speichern buttons, werden die benötigten Tabellen von plsz<strong>me</strong> automatisiert initiiert.
+                        Bestätigung des Speichern buttons, werden die benötigten Tabellen von pslz<strong>me</strong> automatisiert initiiert.
                     </p>
                 </div>
 
@@ -59,7 +59,7 @@
         </div>
 
         <div class="pslzme-configuration-container">
-            <h2>Interne Seiten Konfiguration</h2>
+            <h2>2: Interne Seiten Konfiguration</h2>
         </div>
     </div>
 <?php $this->endblock(); ?>
