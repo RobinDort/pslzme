@@ -14,6 +14,7 @@ function handleAPIRequest(requestObject) {
 					console.log("Error Status:", status); // E.g. "error", "timeout", "abort", etc.
 					console.log("XHR Response:", xhr.responseText); // The response from the server
 					console.log("Error Thrown:", error); // Detailed error message
+					reject(status);
 				},
 			});
 		});
