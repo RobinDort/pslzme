@@ -17,7 +17,8 @@ class BackendRequestHandlerController {
     #[Route('/saveDatabaseData', name: "save_database_data")]
     public function saveDatabaseData(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
-        $response = "";
+        $requestData = json_decode($requestData, false);
+
         try {
             $databaseName = $requestData->dbName;
             $databaseUser = $requestData->dbUsername;
