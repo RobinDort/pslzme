@@ -22,7 +22,7 @@
                         Username und Passwort an. Sollten Sie noch keinen Datenbank-User erstellt haben, so muss dies im Idealfall vor der
                         Erstellung der Datenbank getan werden. Dieser kann jedoch auch nachträglich erstellt und der Datenbank zugewiesen werden.
                         Zur Erstellung des Users, navigieren sie zum Abschnitt <span>&lt;Datenbank-Nutzer erstellen&gt;</span>
-                        und weissen Sie dann die gewünschten Konfigurationdaten wie Username, Passwort zu.Nach beidiger erfolgreicher Erstellung
+                        und weissen Sie dann die gewünschten Konfigurationdaten wie Username und Passwort zu. Nach beidiger Erstellung
                         muss zuletzt - wenn nicht bereits getan - der erstellte User noch der Datenbank zugewiesen werden.
                     </p>
                 </div>

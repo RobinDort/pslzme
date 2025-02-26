@@ -32,6 +32,10 @@
 	line-height: 1.1rem;
 }
 
+#pslzme-configuration button[type="submit"] {
+	padding: 5px;
+}
+
 .pslzme-configuration-container {
 	margin-top: 2em;
 	border: 1px solid #ededed;
@@ -62,4 +66,10 @@
 	border-radius: 8px;
 	padding: 5px;
 	margin-bottom: 1em;
+}
+
+.pslzme-db-configuration input:focus,
+.pslzme-db-configuration input:focus-visible {
+	outline: none;
+	border-color: #000;
 }
