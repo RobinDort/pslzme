@@ -89,21 +89,18 @@
            data: JSON.stringify(requestData),
         };
 
-        // send request to store the values
-        $.ajax({
+        return new Request.JSON({
             url: "/saveDatabaseData",
-            type: "POST",
+            method: "post",
             data: requestObject,
-            success: function (response) {
-               console.log(response);
+            onSuccess: function (response) {
+                console.log(response);
             },
-            error: function (xhr, status, error) {
+            onFailure: function (xhr) { 
                 console.log("Action failed: " + requestObject.request);
-                console.log("Error Status:", status); // E.g. "error", "timeout", "abort", etc.
-                console.log("XHR Response:", xhr.responseText); // The response from the server
-                console.log("Error Thrown:", error); // Detailed error message
-            },
-    });
+                console.log("XHR Response:", xhr.responseText);
+            }
+        }).send();
     }
 
     function togglePassword() {
