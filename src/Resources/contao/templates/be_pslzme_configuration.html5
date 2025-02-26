@@ -1,6 +1,6 @@
 <?php $this->block('main'); ?>
     <div id="pslzme-configuration">
-        <h1>pslz<strong>me</strong> Konfiguration</h1>
+        <h1>pslz<span>me</span> Konfiguration</h1>
 
         <div class="plszme-configuration-container">
             <h2>Datenbank Konfiguration</h2>

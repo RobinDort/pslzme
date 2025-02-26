@@ -1,0 +1,41 @@
+:root {
+	--pslzme-fs-h1: 2rem;
+	--pslzme-fs-h2: 1.3rem;
+	--pslzme-fs-h3: 1.1rem;
+	--pslzme-red: #ff0000;
+}
+
+#plszme-configuration {
+	padding: 20px;
+}
+
+#plszme-configuration h1 {
+	font-size: var(--pslzme-fs-h1);
+}
+
+#plszme-configuration h2 {
+	font-size: var(--pslzme-fs-h2);
+	padding: 20px 0;
+}
+
+#plszme-configuration h3 {
+	font-size: var(--pslzme-fs-h3);
+	padding: 10px 0;
+}
+
+#plszme-configuration h1 span {
+	color: var(--pslzme-red);
+}
+
+#plszme-configuration p {
+	font-size: 0.9rem;
+	line-height: 1.1rem;
+}
+
+.plszme-configuration-container {
+	margin-top: 2em;
+}
+
+.pslzme-configuration-step h3 span {
+	color: #ff4d00;
+}
