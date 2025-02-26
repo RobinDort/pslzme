@@ -22,5 +22,7 @@ $GLOBALS['TL_LANG']['robindort_pslzme_links']['no'] = 'Nein';
 $GLOBALS['TL_LANG']['CTE']['pslzme_text'] = ['Pslzme Text', 'Personalisierbares Text element'];
 $GLOBALS['TL_LANG']['CTE']['pslzme_3D_content'] = ['Pslzme 3D content', 'Personalisierbares 3D Content Element'];
 
+$GLOBALS['TL_LANG']['MOD']['pslzme_configuration'] = 'Konfiguration';
+
 
 ?>
