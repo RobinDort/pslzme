@@ -34,19 +34,20 @@ class BackendRequestHandlerController {
             $result = Database::getInstance()->prepare("INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw) VALUES (?,?,?)")->execute($databaseName, $databaseUser, $encryptedPassword);
 
             if ($result->affectedRows > 0) {
-                $response = "Sucessfully inserted pslzme database data.";
+                return new JsonResponse("Sucessfully inserted pslzme database data.");
             } else {
                 throw new DatabaseException("Unable to insert pslzme configuration data into tl_pslzme_config table");
             }
         } catch (InvalidDataException $ide) {
             error_log($ide->getErrorMsg());
+            return new JsonResponse($ide->getErrorMsg());
         } catch(DatabaseException $dbe) {
             error_log($dbe->getErrorMsg());
+            return new JsonResponse($dbe->getErrorMsg());
         } catch (Exception $e) {
             error_log($e->getMessage());
+            return new JsonResponse($e->getMessage());
         }
-
-        return new JsonResponse($response);
     }
 
 }
