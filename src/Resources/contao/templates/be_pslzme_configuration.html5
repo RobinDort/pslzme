@@ -71,8 +71,11 @@
 
 <script>
     function savePslzmeDBConfiguration(configuration) {
+            // Get form values
+        const formData = new FormData(configuration);
+        const values = Object.fromEntries(formData.entries()); 
 
-        console.log(configuration);
+        console.log(values);
     }
 
     function togglePassword() {
