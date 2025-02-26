@@ -50,9 +50,7 @@
                             <label for="pslzme-db-pw">Datenbank Passwort:</label>
                             <div class="pslzme-pw-container">
                                 <input type="password" name="pslzme-db-pw" required/>
-                                <button type="button" onClick="togglePassword()">
-                                    <img src="/system/themes/flexible/icons/visible_.svg"/>
-                                </button>
+                                <img src="/system/themes/flexible/icons/visible_.svg" onClick="togglePassword()"/>
                             </div>
                         </div>
 
@@ -72,4 +70,15 @@
 
 <script>
     function savePslzmeDBConfiguration() {}
+
+    function togglePassword() {
+        const passwordField = document.querySelector("input[name='pslzme-db-pw']");
+        if (!passwordField) return;
+
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+        } else {
+            passwordField.type = "password";
+        }
+    }
 </script>
