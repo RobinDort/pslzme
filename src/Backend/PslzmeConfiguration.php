@@ -5,6 +5,8 @@ use Contao\BackendModule;
 
 class PslzmeConfiguration extends BackendModule {
 
+    protected $strTemplate = "be_pslzme_configuration";
+
     public function __construct() {
         parent::__construct();
     }
@@ -14,6 +16,11 @@ class PslzmeConfiguration extends BackendModule {
      */
     public function compile() {}
 
-    public function generate() {}
+    public function generate() {
+        $this->Template = new BackendTemplate($this->strTemplate);
+        $this->compile();
+
+        return $this->Template->parse();
+    }
 }
 ?>
