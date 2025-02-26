@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="tl_formbody_edit">
-                    <form onsubmit="savePslzmeDBConfiguration(this)">
+                    <form onsubmit="event.preventDefault(); savePslzmeDBConfiguration(this);">
                         <div class="pslzme-db-configuration">
                             <label for="pslzme-db-name">Datenbankname:</label>
                             <input type="text" name="pslzme-db-name" required/>
@@ -71,6 +71,7 @@
 
 <script>
     function savePslzmeDBConfiguration(configuration) {
+
         console.log(configuration);
     }
 
