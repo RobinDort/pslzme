@@ -9,6 +9,7 @@ use Contao\Database;
 use Contao\Encryption;
 
 use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
+use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
 
 #[AsController]
 class BackendRequestHandlerController {
@@ -16,6 +17,7 @@ class BackendRequestHandlerController {
     #[Route('/saveDatabaseData', name: "save_database_data")]
     public function saveDatabaseData(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
+        $response = "";
         try {
             $databaseName = $requestData->dbName;
             $databaseUser = $requestData->dbUsername;
@@ -29,11 +31,22 @@ class BackendRequestHandlerController {
             $encryptedPassword = Encryption::encrypt($databasePassword);
 
             // save the database data into the pslzme config table
+            $result = Database::getInstance()->prepare("INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw) VALUES (?,?,?)")->execute($databaseName, $databaseUser, $encryptedPassword);
+
+            if ($result->affectedRows > 0) {
+                $response = "Sucessfully inserted pslzme database data.";
+            } else {
+                throw new DatabaseException("Unable to insert pslzme configuration data into tl_pslzme_config table");
+            }
         } catch (InvalidDataException $ide) {
             error_log($ide->getErrorMsg());
+        } catch(DatabaseException $dbe) {
+            error_log($dbe->getErrorMsg());
+        } catch (Exception $e) {
+            error_log($e->getMessage());
         }
 
-        return new JsonResponse($encryptedPassword);
+        return new JsonResponse($response);
     }
 
 }
