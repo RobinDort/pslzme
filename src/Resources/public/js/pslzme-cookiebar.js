@@ -17,8 +17,6 @@ function controlPslzmeCookiebar() {
 }
 
 function checkConsent(queryParams, consentCookie) {
-	//	const consentCookie = getCookie("consent_cookie");
-
 	// show cookie banner when cookie is not set
 	if (consentCookie === undefined) {
 		showVisibility();
@@ -38,9 +36,6 @@ function checkConsent(queryParams, consentCookie) {
 
 function compareUpdatedQueryTimestampWithCookie(alreadySetConsentCookie, queryParams) {
 	const decodedCookie = JSON.parse(alreadySetConsentCookie);
-
-	console.log(decodedCookie.queryTime);
-	console.log(queryParams.params.timestamp);
 
 	// compare the cookie timestamp with the one from the url
 	if (decodedCookie.queryTime !== queryParams.params.timestamp) {

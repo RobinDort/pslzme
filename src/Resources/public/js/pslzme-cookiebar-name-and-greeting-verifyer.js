@@ -49,7 +49,6 @@ async function extractGreetingDataRequest(requestObject) {
 		console.log(response);
 		const firstContactSpan = document.getElementById("pslzme-cookiebar-first-contact");
 		const linkCreatorSpan = document.getElementById("pslzme-cookiebar-link-creator");
-		const language = document.documentElement.lang;
 
 		firstContactSpan.innerText = response.decryptedFirstContact;
 		linkCreatorSpan.innerText = response.decryptedLinkCreator;

@@ -19,9 +19,8 @@ function pslzmeQueryClickListener() {
 				} else {
 					hrefOfEventTarget = event.target.href;
 				}
-				//let hrefOfEventTarget = eventTarget.matches("a img") ? eventTarget.parentElement.href : event.target.href;
 
-				// check if the user clicked on the logo and thus would be redirected to the base url without a pathname.
+				// check if the user clicked on the page logo and thus would be redirected to the base url without a pathname.
 				if (hrefOfEventTarget === window.location.origin + "/") {
 					// redirect the user to the homepage
 					hrefOfEventTarget = window.location.origin + "/home.html";

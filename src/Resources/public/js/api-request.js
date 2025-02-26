@@ -7,8 +7,6 @@ function handleAPIRequest(requestObject) {
 				type: "POST",
 				data: requestObject,
 				success: function (response) {
-					console.log("Action called: " + requestObject.request);
-					console.log(response);
 					resolve(response);
 				},
 				error: function (xhr, status, error) {

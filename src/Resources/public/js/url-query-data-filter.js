@@ -1,3 +1,4 @@
+// The actual function that extracts all the needed data from the pslzme link
 const queryParamsSet = () => {
 	const queryParams = new URLSearchParams(window.location.search);
 

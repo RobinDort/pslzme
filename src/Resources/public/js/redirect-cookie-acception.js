@@ -46,6 +46,7 @@ function handleRedirectionToAcceptionPage(userCameFromPslzmeLink, actualTargetPa
 		consentCookieAccepted = false;
 	}
 
+	// This checks if the user used another link instead of the one he may have accepted before
 	if (consentCookie !== undefined) {
 		const decodedCookie = JSON.parse(consentCookie);
 		if (decodedCookie.queryTime !== userCameFromPslzmeLink.params.timestamp) {
