@@ -6,6 +6,7 @@ use RobinDort\PslzmeLinks\Elements\PslzmeTextElement;
 use RobinDort\PslzmeLinks\Elements\Pslzme3DContentElement;
 use RobinDort\PslzmeLinks\EventListener\contao\InitialSetup;
 use RobinDort\PslzmeLinks\EventListener\InstallListener;
+use RobinDort\PslzmeLinks\Backend\PslzmeConfiguration;
 
 
 // Init all css / js files
@@ -30,6 +31,13 @@ $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/main.js|static";
 $GLOBALS['FE_MOD']['pslzme']['query_decryption'] = QueryDecryption::class;
 $GLOBALS['FE_MOD']['pslzme']['pslzme_cookiebar'] = PslzmeCookiebar::class;
 $GLOBALS['FE_MOD']['pslzme']['pslzme_cookie_caller'] = PslzmeCookieCaller::class;
+
+
+// Init Backend Modules
+$GLOBALS['BE_MOD']['pslzme']['Konfiguration'] = [
+    'callback'  => PslzmeConfiguration::class,
+];
+
 
 // Init Content Elements
 $GLOBALS['TL_CTE']['pslzme']['pslzme_text'] = PslzmeTextElement::class;
