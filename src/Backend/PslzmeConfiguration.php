@@ -2,6 +2,7 @@
 namespace RobinDort\PslzmeLinks\Backend;
 
 use Contao\BackendModule;
+use Contao\BackendTemplate;
 
 class PslzmeConfiguration extends BackendModule {
 
