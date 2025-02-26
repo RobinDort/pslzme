@@ -34,7 +34,9 @@ $GLOBALS['FE_MOD']['pslzme']['pslzme_cookie_caller'] = PslzmeCookieCaller::class
 
 
 // Init Backend Modules
-$GLOBALS['BE_MOD']['pslzme'][$GLOBALS['TL_LANG']['MOD']['pslzme_configuration']] = PslzmeConfiguration::class;
+$GLOBALS['BE_MOD']['pslzme'][$GLOBALS['TL_LANG']['MOD']['pslzme_configuration']] = [
+    'callback' => PslzmeConfiguration::class,
+];
 
 
 // Init Content Elements
