@@ -2,7 +2,7 @@
     <div id="pslzme-configuration">
         <h1>pslz<span>me</span> Konfiguration</h1>
 
-        <div class="plszme-configuration-container">
+        <div class="pslzme-configuration-container">
             <h2>Datenbank Konfiguration</h2>
 
             <div class="pslzme-explanation">
@@ -58,7 +58,7 @@
             <p></p>
         </div>
 
-        <div class="plszme-configuration-container">
+        <div class="pslzme-configuration-container">
             <h2>Interne Seiten Konfiguration</h2>
         </div>
     </div>

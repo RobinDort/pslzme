@@ -5,34 +5,34 @@
 	--pslzme-red: #ff0000;
 }
 
-#plszme-configuration {
+#pslzme-configuration {
 	padding: 20px;
 }
 
-#plszme-configuration h1 {
+#pslzme-configuration h1 {
 	font-size: var(--pslzme-fs-h1);
 }
 
-#plszme-configuration h2 {
+#pslzme-configuration h2 {
 	font-size: var(--pslzme-fs-h2);
 	padding: 20px 0;
 }
 
-#plszme-configuration h3 {
+#pslzme-configuration h3 {
 	font-size: var(--pslzme-fs-h3);
 	padding: 10px 0;
 }
 
-#plszme-configuration h1 span {
+#pslzme-configuration h1 span {
 	color: var(--pslzme-red);
 }
 
-#plszme-configuration p {
+#pslzme-configuration p {
 	font-size: 0.9rem;
 	line-height: 1.1rem;
 }
 
-.plszme-configuration-container {
+.pslzme-configuration-container {
 	margin-top: 2em;
 }
 
