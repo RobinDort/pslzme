@@ -38,17 +38,17 @@
                     <form onsubmit="savePslzmeDBConfiguration(this)">
                         <div class="pslzme-db-configuration">
                             <label for="pslzme-db-name">Datenbankname:</label>
-                            <input type="text" name="pslzme-db-name"/>
+                            <input type="text" name="pslzme-db-name" required/>
                         </div>
 
                         <div class="pslzme-db-configuration">
                             <label for="pslzme-db-user">Datenbank User:</label>
-                            <input type="text" name="pslzme-db-user"/>
+                            <input type="text" name="pslzme-db-user" required/>
                         </div>
 
                         <div class="pslzme-db-configuration">
                             <label for="pslzme-db-pw">Datenbank Passwort:</label>
-                            <input type="password" name="pslzme-db-pw"/>
+                            <input type="password" name="pslzme-db-pw" required/>
                         </div>
 
                         <button type="submit">Speichern</button>
