@@ -19,7 +19,8 @@
                     <p>Zur Erstellung einer Datenbank loggen Sie sich bitte in Ihrem gewählten Serverhosting-Tool ein und navigieren dort zum
                         bereitgestellten Abschnitt <span>&lt;Datenbanken&gt;</span>. Anschließend wählen Sie die Option <span>
                         &lt;Neue Datenbank erstellen&gt;</span> und geben dann Ihre gewünschten Konfigurationdaten für Datenbankname,
-                        Username und Passwort an. Sollten Sie noch keinen Datenbank-User erstellt haben, so muss dies im Idealfall vor der
+                        Username und Passwort an.</p>
+                        <p>Sollten Sie noch keinen Datenbank-User erstellt haben, so muss dies im Idealfall vor der
                         Erstellung der Datenbank getan werden. Dieser kann jedoch auch nachträglich erstellt und der Datenbank zugewiesen werden.
                         Zur Erstellung des Users, navigieren sie zum Abschnitt <span>&lt;Datenbank-Nutzer erstellen&gt;</span>
                         und weissen Sie dann die gewünschten Konfigurationdaten wie Username und Passwort zu. Nach beidiger Erstellung
