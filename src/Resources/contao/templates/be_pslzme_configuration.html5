@@ -75,7 +75,11 @@
         const formData = new FormData(configuration);
         const values = Object.fromEntries(formData.entries()); 
 
-        console.log(values);
+        const dbName = values["pslzme-db-name"];
+        const dbUsername = values["pslzme-db-user"];
+        const dbPW = values["pslzme-db-pw"];
+
+        // send request to store the values
     }
 
     function togglePassword() {
