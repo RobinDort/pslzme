@@ -48,7 +48,12 @@
 
                         <div class="pslzme-db-configuration">
                             <label for="pslzme-db-pw">Datenbank Passwort:</label>
-                            <input type="password" name="pslzme-db-pw" required/>
+                            <div class="pslzme-pw-container">
+                                <input type="password" name="pslzme-db-pw" required/>
+                                <button type="button" onClick="togglePassword()">
+                                    <img src="/system/themes/flexible/icons/visible_.svg"/>
+                                </button>
+                            </div>
                         </div>
 
                         <button type="submit">Speichern</button>
