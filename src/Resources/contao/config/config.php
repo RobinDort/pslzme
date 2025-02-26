@@ -7,7 +7,11 @@ use RobinDort\PslzmeLinks\Elements\Pslzme3DContentElement;
 use RobinDort\PslzmeLinks\EventListener\contao\InitialSetup;
 use RobinDort\PslzmeLinks\EventListener\InstallListener;
 use RobinDort\PslzmeLinks\Backend\PslzmeConfiguration;
+use Contao\System;
 
+
+// load language file
+System::loadLanguageFile("default");
 
 // Init all css / js files
 $GLOBALS['TL_CSS'][] = "bundles/robindortpslzmelinks/css/animations.css|static";
