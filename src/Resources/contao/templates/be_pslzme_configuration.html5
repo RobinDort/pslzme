@@ -1,57 +1,67 @@
 <?php $this->block('main'); ?>
-    <h1>pslz<strong>me</strong> Konfiguration</h1>
+    <div id="pslzme-configuration">
+        <h1>pslz<strong>me</strong> Konfiguration</h1>
 
-    <div class="plszme-configuration-container">
-        <h2>Datenbank Konfiguration</h2>
-        <p>Zur erfolgreichen Nutzung von pslz<strong>me</strong> ist eine Datenbankanbindung notwendig.</p>
-        <p>Um Ihnen die Konfiguration dessen so einfach wie möglich zu gestalten, finden Sie im weiteren Abschnitt eine detaillierte Beschreibung
-            der benötigten Schritte zur Erstellung und Konfiguration der Datenbank.
-        </p>
+        <div class="plszme-configuration-container">
+            <h2>Datenbank Konfiguration</h2>
 
-        <div class="pslzme-configuration-step">
-            <h3>Schritt 1: Erstellung der Datenbank</h3>
-            <p>Zur Erstellung einer Datenbank loggen Sie sich bitte in Ihrem gewählten Serverhosting-Tool ein und navigieren dort zum
-                bereitgestellten Abschnitt &lt;Datenbanken&gt;. Anschließend wählen Sie die Option &lt;Neue Datenbank erstellen&gt; und geben
-                dann Ihre gewünschten Konfigurationdaten für Datenbankname, Username und Passwort an. Sollten Sie noch keinen Datenbank-User 
-                erstellt haben, so muss dies im Idealfall vor der Erstellung der Datenbank getan werden. Dieser kann jedoch auch nachträglich
-                erstellt und der Datenbank zugewiesen werden. Zur Erstellung des Users, navigieren sie zum Abschnitt
-                &lt;Datenbank-Nutzer erstellen&gt; und weissen Sie dann die gewünschten Konfigurationdaten wie Username, Passwort zu.
-                Nach beidiger erfolgreicher Erstellung muss zuletzt - wenn nicht bereits getan - der erstellte User noch der Datenbank zugewiesen werden.
-            </p>
-
-            <h3>Schritt 2: Datenbank an plsz<strong>me</strong> plugin anbinden</h3>
-            <p>Als nächstes tragen Sie bitte die Verbindungsdaten der soeben erstellten Datenbank in die nachstehenden Felder ein. Nach
-                Bestätigung des Speichern buttons, werden die benötigten Tabellen von plsz<strong>me</strong> automatisiert initiiert.
-            </p>
-
-            <div class="tl_formbody_edit">
-                <form onsubmit="savePslzmeDBConfiguration(this)">
-                    <div class="pslzme-configuration">
-                        <label for="pslzme-db-name">Datenbankname:</label>
-                        <input type="text" name="pslzme-db-name"/>
-                    </div>
-
-                    <div class="pslzme-configuration">
-                        <label for="pslzme-db-user">Datenbank User:</label>
-                        <input type="text" name="pslzme-db-user"/>
-                    </div>
-
-                    <div class="pslzme-configuration">
-                        <label for="pslzme-db-pw">Datenbank Passwort:</label>
-                        <input type="password" name="pslzme-db-pw"/>
-                    </div>
-
-                    <button type="submit">Speichern</button>
-                </form>
+            <div class="pslzme-explanation">
+                <p>Zur erfolgreichen Nutzung von pslz<strong>me</strong> ist eine Datenbankanbindung notwendig.</p>
+                <p>Um Ihnen die Konfiguration dessen so einfach wie möglich zu gestalten, finden Sie im weiteren Abschnitt eine detaillierte Beschreibung
+                    der benötigten Schritte zur Erstellung und Konfiguration der Datenbank.
+                </p>
             </div>
+
+            <div class="pslzme-configuration-step">
+                <h3><span>Schritt 1:</span> Erstellung der Datenbank</h3>
+
+                <div class="pslzme-explanation">
+                    <p>Zur Erstellung einer Datenbank loggen Sie sich bitte in Ihrem gewählten Serverhosting-Tool ein und navigieren dort zum
+                        bereitgestellten Abschnitt <span>&lt;Datenbanken&gt;</span>. Anschließend wählen Sie die Option <span>
+                        &lt;Neue Datenbank erstellen&gt;</span> und geben dann Ihre gewünschten Konfigurationdaten für Datenbankname,
+                        Username und Passwort an. Sollten Sie noch keinen Datenbank-User erstellt haben, so muss dies im Idealfall vor der
+                        Erstellung der Datenbank getan werden. Dieser kann jedoch auch nachträglich erstellt und der Datenbank zugewiesen werden.
+                        Zur Erstellung des Users, navigieren sie zum Abschnitt <span>&lt;Datenbank-Nutzer erstellen&gt;</span>
+                        und weissen Sie dann die gewünschten Konfigurationdaten wie Username, Passwort zu.Nach beidiger erfolgreicher Erstellung
+                        muss zuletzt - wenn nicht bereits getan - der erstellte User noch der Datenbank zugewiesen werden.
+                    </p>
+                </div>
+
+                <div class="pslzme-explanation">
+                    <h3><span>Schritt 2:</span> Datenbank an plsz<strong>me</strong> plugin anbinden</h3>
+                    <p>Als nächstes tragen Sie bitte die Verbindungsdaten der soeben erstellten Datenbank in die nachstehenden Felder ein. Nach
+                        Bestätigung des Speichern buttons, werden die benötigten Tabellen von plsz<strong>me</strong> automatisiert initiiert.
+                    </p>
+                </div>
+
+                <div class="tl_formbody_edit">
+                    <form onsubmit="savePslzmeDBConfiguration(this)">
+                        <div class="pslzme-db-configuration">
+                            <label for="pslzme-db-name">Datenbankname:</label>
+                            <input type="text" name="pslzme-db-name"/>
+                        </div>
+
+                        <div class="pslzme-db-configuration">
+                            <label for="pslzme-db-user">Datenbank User:</label>
+                            <input type="text" name="pslzme-db-user"/>
+                        </div>
+
+                        <div class="pslzme-db-configuration">
+                            <label for="pslzme-db-pw">Datenbank Passwort:</label>
+                            <input type="password" name="pslzme-db-pw"/>
+                        </div>
+
+                        <button type="submit">Speichern</button>
+                    </form>
+                </div>
+            </div>
+            <p></p>
         </div>
-        <p></p>
-    </div>
 
-    <div class="plszme-configuration-container">
-        <h2>Interne Seiten Konfiguration</h2>
+        <div class="plszme-configuration-container">
+            <h2>Interne Seiten Konfiguration</h2>
+        </div>
     </div>
-
 <?php $this->endblock(); ?>
 
 
