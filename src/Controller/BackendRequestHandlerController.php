@@ -41,7 +41,10 @@ class BackendRequestHandlerController {
             // save the database data into the pslzme config table
             $db = Database::getInstance();
             if (!$db) {
-                throw new DatabaseException("Unable to connect to contao database");
+                return new JsonResponse([
+                    "error" => "Database instance is null",
+                    "trace" => debug_backtrace()
+                ], 500);
             }
 
             return new JsonResponse($db);
