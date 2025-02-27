@@ -41,7 +41,7 @@ class BackendRequestHandlerController {
 
             if ($selectResult->numRows > 0) {
                 // database data has been found. Update it.
-                $updateResult = Database::getInstance()->prepare("UPDATE tl_pslzme_config SET pslzme_db_name = ?, pslzme_db_user = ?, pslzme_db_pw=?")->execute($databaseName, $databaseUser. $encryptedPassword);
+                $updateResult = Database::getInstance()->prepare("UPDATE tl_pslzme_config SET pslzme_db_name = ?, pslzme_db_user = ?, pslzme_db_pw = ?")->execute($databaseName, $databaseUser, $encryptedPassword);
 
                 if ($updateResult->affectedRows > 0) {
                     return new JsonResponse("Sucessfully updated pslzme database data.");
