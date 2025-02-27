@@ -28,10 +28,11 @@ class BackendRequestHandlerController {
             }
 
             // encrypt the password before saving
-           // $encryptedPassword = Encryption::encrypt($databasePassword);
+            $timestamp = time();
+            $encryptedPassword = $this->encryptPassword($databasePassword,$timestamp);
 
             // save the database data into the pslzme config table
-            //$result = Database::getInstance()->prepare("INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw) VALUES (?,?,?)")->execute($databaseName, $databaseUser, $encryptedPassword);
+            $result = Database::getInstance()->prepare("INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, timestamp) VALUES (?,?,?,?)")->execute($databaseName, $databaseUser, $encryptedPassword, $timestamp);
 
             if ($result->affectedRows > 0) {
                 return new JsonResponse("Sucessfully inserted pslzme database data.");
@@ -50,6 +51,26 @@ class BackendRequestHandlerController {
         }
     }
 
+
+    private function encryptPassword($password, $timestamp) {
+        $secretKey = hash('sha256', $timestamp); // Create a key from the timestamp
+        $iv = random_bytes(16); // Generate IV
+    
+        $ciphertext = openssl_encrypt($password, 'aes-256-cbc', $secretKey, 0, $iv);
+        $encryptedData = base64_encode($iv . $ciphertext);
+    
+        return $encryptedData;
+    }  
+
+    function decryptPassword($encryptedPassword, $timestamp) {
+        $secretKey = hash('sha256', $timestamp); // Recreate key from timestamp
+        $data = base64_decode($encryptedPassword);
+        
+        $iv = substr($data, 0, 16);
+        $ciphertext = substr($data, 16);
+        
+        return openssl_decrypt($ciphertext, 'aes-256-cbc', $secretKey, 0, $iv);
+    }
 }
 
 ?>
