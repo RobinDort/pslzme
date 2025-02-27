@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Attribute\AsController;
 use Contao\Database;
+use Contao\System;
 
 use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
 use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
@@ -15,6 +16,7 @@ class BackendRequestHandlerController {
 
     #[Route('/saveDatabaseData', name: "save_database_data")]
     public function saveDatabaseData(Request $request): JsonResponse {
+        System::initialize(); // Ensures Contao's environment is loaded
         $requestData = $request->request->get('data');
         $requestData = json_decode($requestData, false);
 
