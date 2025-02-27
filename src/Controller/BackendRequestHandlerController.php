@@ -36,7 +36,12 @@ class BackendRequestHandlerController {
             $encryptedPassword = $this->encryptPassword($databasePassword,$timestamp);
 
             // save the database data into the pslzme config table
-            $result = Database::getInstance()->prepare("INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, timestamp) VALUES (?,?,?,?)")->execute($databaseName, $databaseUser, $encryptedPassword, $timestamp);
+            $db = Database::getInstance();
+            if (!$db) {
+                throw new DatabaseException("Unable to connect to contao database");
+            }
+
+            $result = $db->prepare("INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, timestamp) VALUES (?,?,?,?)")->execute($databaseName, $databaseUser, $encryptedPassword, $timestamp);
 
             if ($result->affectedRows > 0) {
                 return new JsonResponse("Sucessfully inserted pslzme database data.");
