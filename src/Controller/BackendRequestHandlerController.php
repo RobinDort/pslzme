@@ -6,13 +6,18 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Attribute\AsController;
 use Contao\Database;
-use Contao\System;
 
 use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
 use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
 
 #[AsController]
 class BackendRequestHandlerController {
+
+    private $contaoDB;
+
+    public function __construct()  {
+        $this->contaoDB = Database::getInstance();
+    }
 
     #[Route('/saveDatabaseData', name: "save_database_data")]
     public function saveDatabaseData(Request $request): JsonResponse {
@@ -38,17 +43,8 @@ class BackendRequestHandlerController {
             $encryptedPassword = $this->encryptPassword($databasePassword,$timestamp);
 
             // save the database data into the pslzme config table
-            $db = Database::getInstance();
-            if (!$db) {
-                return new JsonResponse([
-                    "error" => "Database instance is null",
-                    "trace" => debug_backtrace()
-                ], 500);
-            }
 
-            return new JsonResponse($db);
-
-            // $result = $db->prepare("INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, timestamp) VALUES (?,?,?,?)")->execute($databaseName, $databaseUser, $encryptedPassword, $timestamp);
+             $result = $this->contaoDB->prepare("INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, timestamp) VALUES (?,?,?,?)")->execute($databaseName, $databaseUser, $encryptedPassword, $timestamp);
 
             // if ($result->affectedRows > 0) {
             //     return new JsonResponse("Sucessfully inserted pslzme database data.");
