@@ -13,12 +13,6 @@ use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
 #[AsController]
 class BackendRequestHandlerController {
 
-    private $contaoDB;
-
-    public function __construct()  {
-        $this->contaoDB = Database::getInstance();
-    }
-
     #[Route('/saveDatabaseData', name: "save_database_data", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])] 
     public function saveDatabaseData(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
@@ -43,7 +37,7 @@ class BackendRequestHandlerController {
             $encryptedPassword = $this->encryptPassword($databasePassword,$timestamp);
 
             // save the database data into the pslzme config table
-            $result = $this->contaoDB->prepare("INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, timestamp) VALUES (?,?,?,?)")->execute($databaseName, $databaseUser, $encryptedPassword, $timestamp);
+            $result = Database::getInstance()->prepare("INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, timestamp) VALUES (?,?,?,?)")->execute($databaseName, $databaseUser, $encryptedPassword, $timestamp);
 
             if ($result->affectedRows > 0) {
                 return new JsonResponse("Sucessfully inserted pslzme database data.");
