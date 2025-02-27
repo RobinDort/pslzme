@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Attribute\AsController;
 use Contao\Database;
-use Contao\Encryption;
 
 use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
 use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
@@ -29,10 +28,10 @@ class BackendRequestHandlerController {
             }
 
             // encrypt the password before saving
-            $encryptedPassword = Encryption::encrypt($databasePassword);
+           // $encryptedPassword = Encryption::encrypt($databasePassword);
 
             // save the database data into the pslzme config table
-            $result = Database::getInstance()->prepare("INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw) VALUES (?,?,?)")->execute($databaseName, $databaseUser, $encryptedPassword);
+            //$result = Database::getInstance()->prepare("INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw) VALUES (?,?,?)")->execute($databaseName, $databaseUser, $encryptedPassword);
 
             if ($result->affectedRows > 0) {
                 return new JsonResponse("Sucessfully inserted pslzme database data.");

@@ -33,6 +33,11 @@ $GLOBALS['TL_DCA']['tl_pslzme_config'] = [
             'foreignKey' => 'tl_page.title',
             'relation' => ['type' => 'hasMany', 'load' => 'lazy'],
             'sql'       => "BLOB NULL"
+        ],
+        'timestamp' => [
+            'inputType' => 'number',
+            'eval'      => ['mandatory' => true, 'rgxp' => 'digit'],
+            'sql'       => "INT(10) UNSIGNED NOT NULL"
         ]
     ]
 ];
