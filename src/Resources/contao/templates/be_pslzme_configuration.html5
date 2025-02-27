@@ -94,6 +94,7 @@
             method: "post",
             data: requestObject,
             onSuccess: function (response) {
+                alert(response);
                 setTimeout(function() {
                     window.location.reload();
                 }, 1000);
