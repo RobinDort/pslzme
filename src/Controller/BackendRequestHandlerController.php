@@ -22,42 +22,43 @@ class BackendRequestHandlerController {
             throw new InvalidDataException("Unable to extract request data out of /saveDatabaseData object");
         }
 
-        try {
-            $databaseName = $requestData->dbName;
-            $databaseUser = $requestData->dbUsername;
-            $databasePassword = $requestData->dbPW;
+        // try {
+        //     $databaseName = $requestData->dbName;
+        //     $databaseUser = $requestData->dbUsername;
+        //     $databasePassword = $requestData->dbPW;
 
-            if (!$databaseName || !$databaseUser || !$databasePassword) {
-                throw new InvalidDataException("Unable to extract database information out of request object");
-            }
+        //     if (!$databaseName || !$databaseUser || !$databasePassword) {
+        //         throw new InvalidDataException("Unable to extract database information out of request object");
+        //     }
 
-            // encrypt the password before saving
-            $timestamp = time();
-            $encryptedPassword = $this->encryptPassword($databasePassword,$timestamp);
+        //     // encrypt the password before saving
+        //     $timestamp = time();
+        //     $encryptedPassword = $this->encryptPassword($databasePassword,$timestamp);
 
-            // save the database data into the pslzme config table
-            $db = Database::getInstance();
-            if (!$db) {
-                throw new DatabaseException("Unable to connect to contao database");
-            }
+        //     // save the database data into the pslzme config table
+        //     $db = Database::getInstance();
+        //     if (!$db) {
+        //         throw new DatabaseException("Unable to connect to contao database");
+        //     }
 
-            $result = $db->prepare("INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, timestamp) VALUES (?,?,?,?)")->execute($databaseName, $databaseUser, $encryptedPassword, $timestamp);
+        //     $result = $db->prepare("INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, timestamp) VALUES (?,?,?,?)")->execute($databaseName, $databaseUser, $encryptedPassword, $timestamp);
 
-            if ($result->affectedRows > 0) {
-                return new JsonResponse("Sucessfully inserted pslzme database data.");
-            } else {
-                throw new DatabaseException("Unable to insert pslzme configuration data into tl_pslzme_config table");
-            }
-        } catch (InvalidDataException $ide) {
-            error_log($ide->getErrorMsg());
-            return new JsonResponse($ide->getErrorMsg());
-        } catch(DatabaseException $dbe) {
-            error_log($dbe->getErrorMsg());
-            return new JsonResponse($dbe->getErrorMsg());
-        } catch (Exception $e) {
-            error_log($e->getMessage());
-            return new JsonResponse($e->getMessage());
-        }
+        //     if ($result->affectedRows > 0) {
+        //         return new JsonResponse("Sucessfully inserted pslzme database data.");
+        //     } else {
+        //         throw new DatabaseException("Unable to insert pslzme configuration data into tl_pslzme_config table");
+        //     }
+        // } catch (InvalidDataException $ide) {
+        //     error_log($ide->getErrorMsg());
+        //     return new JsonResponse($ide->getErrorMsg());
+        // } catch(DatabaseException $dbe) {
+        //     error_log($dbe->getErrorMsg());
+        //     return new JsonResponse($dbe->getErrorMsg());
+        // } catch (Exception $e) {
+        //     error_log($e->getMessage());
+        //     return new JsonResponse($e->getMessage());
+        // }
+        return new JsonResponse($requestData);
     }
 
 
