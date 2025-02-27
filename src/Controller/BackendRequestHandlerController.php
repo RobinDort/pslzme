@@ -18,6 +18,10 @@ class BackendRequestHandlerController {
         $requestData = $request->request->get('data');
         $requestData = json_decode($requestData, false);
 
+        if (!$requestData) {
+            throw new InvalidDataException("Unable to extract request data out of /saveDatabaseData object");
+        }
+
         try {
             $databaseName = $requestData->dbName;
             $databaseUser = $requestData->dbUsername;
