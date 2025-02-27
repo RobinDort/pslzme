@@ -64,6 +64,8 @@
 }
 
 .pslzme-db-configuration input {
+	display: flex;
+	flex-wrap: wrap;
 	border-radius: 8px;
 	padding: 5px;
 	margin-bottom: 1em;

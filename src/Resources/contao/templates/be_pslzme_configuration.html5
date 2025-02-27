@@ -38,20 +38,36 @@
                 <div class="tl_formbody_edit">
                     <form onsubmit="event.preventDefault(); savePslzmeDBConfiguration(this);">
                         <div class="pslzme-db-configuration">
-                            <label for="pslzme-db-name">Datenbankname:</label>
-                            <input type="text" name="pslzme-db-name" required/>
+                            <div>
+                                <label for="pslzme-db-name">Datenbankname:</label>
+                                <input type="text" name="pslzme-db-name" required/>
+                            </div>
+
+                            <div>
+                                <p>Aktuelle Datenbank:</p>
+                                <p><strong>DB</strong></p>
+                            </div>
                         </div>
 
                         <div class="pslzme-db-configuration">
-                            <label for="pslzme-db-user">Datenbank User:</label>
-                            <input type="text" name="pslzme-db-user" required/>
+                            <div>
+                                <label for="pslzme-db-user">Datenbank User:</label>
+                                <input type="text" name="pslzme-db-user" required/>
+                            </div>
+
+                            <div>
+                                <p>Aktueller Datenbank-User</p>
+                                <p><strong>USER</strong></p>
+                            </div>
                         </div>
 
                         <div class="pslzme-db-configuration">
+                            <div>
                             <label for="pslzme-db-pw">Datenbank Passwort:</label>
-                            <div class="pslzme-pw-container">
-                                <input type="password" name="pslzme-db-pw" required/>
-                                <img src="/system/themes/flexible/icons/visible_.svg" onClick="togglePassword()"/>
+                                <div class="pslzme-pw-container">
+                                    <input type="password" name="pslzme-db-pw" required/>
+                                    <img src="/system/themes/flexible/icons/visible_.svg" onClick="togglePassword()"/>
+                                </div>
                             </div>
                         </div>
 
