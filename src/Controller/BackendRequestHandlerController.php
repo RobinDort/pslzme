@@ -27,16 +27,15 @@ class BackendRequestHandlerController {
             $databaseUser = $requestData->dbUsername;
             $databasePassword = $requestData->dbPW;
 
-            $testArr = [$databaseName, $databaseUser, $databasePassword];
-            return new JsonResponse($testArr);
 
-            // if (!$databaseName || !$databaseUser || !$databasePassword) {
-            //     throw new InvalidDataException("Unable to extract database information out of request object");
-            // }
+            if (!$databaseName || !$databaseUser || !$databasePassword) {
+                throw new InvalidDataException("Unable to extract database information out of request object");
+            }
 
-            // // encrypt the password before saving
-            // $timestamp = time();
-            // $encryptedPassword = $this->encryptPassword($databasePassword,$timestamp);
+            // encrypt the password before saving
+            $timestamp = time();
+            $encryptedPassword = $this->encryptPassword($databasePassword,$timestamp);
+            return new JsonResponse($encryptedPassword);
 
             // // save the database data into the pslzme config table
             // $db = Database::getInstance();
