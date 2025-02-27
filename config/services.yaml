@@ -17,9 +17,6 @@ services:
   RobinDort\PslzmeLinks\Controller\RequestHandlerController:
     tags: [controller.service_arguments]
 
-  RobinDort\PslzmeLinks\Controller\BackendRequestHandlerController:
-    tags: [controller.service_arguments]
-
   RobinDort\PslzmeLinks\EventListener\InstallListener:
     arguments:
       $kernel: "@kernel"

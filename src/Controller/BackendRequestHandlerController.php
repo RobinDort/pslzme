@@ -19,7 +19,7 @@ class BackendRequestHandlerController {
         $this->contaoDB = Database::getInstance();
     }
 
-    #[Route('/saveDatabaseData', name: "save_database_data")]
+    #[Route('/saveDatabaseData', name: "save_database_data", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])] 
     public function saveDatabaseData(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
         $requestData = json_decode($requestData, false);
