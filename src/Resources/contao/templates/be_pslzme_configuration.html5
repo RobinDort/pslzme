@@ -94,7 +94,10 @@
             method: "post",
             data: requestObject,
             onSuccess: function (response) {
-                console.log(response);
+                setTimeout(function() {
+                    window.location.reload();
+                }, 1000);
+                
             },
             onFailure: function (xhr) { 
                 console.log("Action failed: " + requestObject.request);
