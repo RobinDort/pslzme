@@ -43,14 +43,13 @@ class BackendRequestHandlerController {
             $encryptedPassword = $this->encryptPassword($databasePassword,$timestamp);
 
             // save the database data into the pslzme config table
+            $result = $this->contaoDB->prepare("INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, timestamp) VALUES (?,?,?,?)")->execute($databaseName, $databaseUser, $encryptedPassword, $timestamp);
 
-             $result = $this->contaoDB->prepare("INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, timestamp) VALUES (?,?,?,?)")->execute($databaseName, $databaseUser, $encryptedPassword, $timestamp);
-
-            // if ($result->affectedRows > 0) {
-            //     return new JsonResponse("Sucessfully inserted pslzme database data.");
-            // } else {
-            //     throw new DatabaseException("Unable to insert pslzme configuration data into tl_pslzme_config table");
-            // }
+            if ($result->affectedRows > 0) {
+                return new JsonResponse("Sucessfully inserted pslzme database data.");
+            } else {
+                throw new DatabaseException("Unable to insert pslzme configuration data into tl_pslzme_config table");
+            }
         } catch (InvalidDataException $ide) {
             error_log($ide->getErrorMsg());
             return new JsonResponse($ide->getErrorMsg());
