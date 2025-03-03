@@ -1,37 +1,26 @@
 <?php $this->block('main'); ?>
     <div id="pslzme-configuration">
-        <h1>pslz<span>me</span> Konfiguration</h1>
+        <h1><?= $GLOBALS['TL_LANG']['pslzme_configuration']['main_heading'] ?></h1>
 
         <div class="pslzme-configuration-container">
-            <h2>1: Datenbank Konfiguration</h2>
+            <h2><?= $GLOBALS['TL_LANG']['pslzme_configuration']['first_config_container_h2'] ?></h2>
 
             <div class="pslzme-explanation">
-                <p>Zur erfolgreichen Nutzung von pslz<strong>me</strong> ist eine Datenbankanbindung notwendig.</p>
-                <p>Um Ihnen die Konfiguration dessen so einfach wie möglich zu gestalten, finden Sie im weiteren Abschnitt eine detaillierte Beschreibung
-                    der benötigten Schritte zur Erstellung und Konfiguration der Datenbank.
-                </p>
+                <p><?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_one'] ?></p>
+                <p><?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_two'] ?></p>
             </div>
 
             <div class="pslzme-configuration-step">
-                <h3><span>Schritt 1:</span> Erstellung der Datenbank</h3>
+                <h3><span><?= $GLOBALS['TL_LANG']['pslzme_configuration']['config_step_one'] ?></h3>
 
                 <div class="pslzme-explanation">
-                    <p>Zur Erstellung einer Datenbank loggen Sie sich bitte in Ihrem gewählten Serverhosting-Tool ein und navigieren dort zum
-                        bereitgestellten Abschnitt <span>&lt;Datenbanken&gt;</span>. Anschließend wählen Sie die Option <span>
-                        &lt;Neue Datenbank erstellen&gt;</span> und geben dann Ihre gewünschten Konfigurationdaten für Datenbankname,
-                        Username und Passwort an.</p>
-                        <p>Sollten Sie noch keinen Datenbank-User erstellt haben, so muss dies im Idealfall vor der
-                        Erstellung der Datenbank getan werden. Dieser kann jedoch auch nachträglich erstellt und der Datenbank zugewiesen werden.
-                        Zur Erstellung des Users, navigieren sie zum Abschnitt <span>&lt;Datenbank-Nutzer erstellen&gt;</span>
-                        und weissen Sie dann die gewünschten Konfigurationdaten wie Username und Passwort zu. Nach beidiger Erstellung
-                        muss zuletzt - wenn nicht bereits getan - der erstellte User noch der Datenbank zugewiesen werden.
-                    </p>
+                    <p><?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_three'] ?></p>
+                    <p><?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_four'] ?></p>
                 </div>
 
                 <div class="pslzme-explanation">
-                    <h3><span>Schritt 2:</span> Datenbank an plsz<strong>me</strong> plugin anbinden</h3>
-                    <p>Als nächstes tragen Sie bitte die Verbindungsdaten der soeben erstellten Datenbank in die nachstehenden Felder ein. Nach
-                        Bestätigung des Speichern buttons, werden die benötigten Tabellen von pslz<strong>me</strong> automatisiert initiiert.
+                    <h3><?= $GLOBALS['TL_LANG']['pslzme_configuration']['config_step_two'] ?></h3>
+                    <p><?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_five'] ?>
                     </p>
                 </div>
 
@@ -39,39 +28,39 @@
                     <form onsubmit="event.preventDefault(); savePslzmeDBConfiguration(this);">
                         <div class="pslzme-db-configuration">
                             <div>
-                                <label for="pslzme-db-name">Datenbankname:</label>
+                                <label for="pslzme-db-name"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['db_name'] ?></label>
                                 <input type="text" name="pslzme-db-name" required/>
                             </div>
 
                             <div>
-                                <p class="current-config-header"><strong>Aktuelle Datenbank:</strong></p>
+                                <p class="current-config-header"><strong><?= $GLOBALS['TL_LANG']['pslzme_configuration']['current_db'] ?></strong></p>
                                 <?php if($this->pslzmeDBName): ?>
                                     <p><strong><?= $this->pslzmeDBName ?></strong></p>
                                 <?php else: ?>
-                                    <p><strong>Keine Datenbank konfiguriert</strong></p>
+                                    <p><strong><?= $GLOBALS['TL_LANG']['pslzme_configuration']['no_db'] ?> </strong></p>
                                 <?php endif; ?>
                             </div>
                         </div>
 
                         <div class="pslzme-db-configuration">
                             <div>
-                                <label for="pslzme-db-user">Datenbank User:</label>
+                                <label for="pslzme-db-user"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['db_user'] ?></label>
                                 <input type="text" name="pslzme-db-user" required/>
                             </div>
 
                             <div>
-                                <p class="current-config-header"><strong>Aktueller Datenbank-User</strong></p>
+                                <p class="current-config-header"><strong><?= $GLOBALS['TL_LANG']['pslzme_configuration']['current_db_user'] ?></strong></p>
                                 <?php if($this->pslzmeDBUser): ?>
                                     <p><strong><?= $this->pslzmeDBUser ?></strong></p>
                                 <?php else: ?>
-                                    <p><strong>Kein Datenbank-User konfiguriert</strong></p>
+                                    <p><strong><?= $GLOBALS['TL_LANG']['pslzme_configuration']['no_db_user'] ?></strong></p>
                                 <?php endif; ?>
                             </div>
                         </div>
 
                         <div class="pslzme-db-configuration">
                             <div>
-                            <label for="pslzme-db-pw">Datenbank Passwort:</label>
+                            <label for="pslzme-db-pw"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['db_pw'] ?></label>
                                 <div class="pslzme-pw-container">
                                     <input type="password" name="pslzme-db-pw" required/>
                                     <img src="/system/themes/flexible/icons/visible_.svg" onClick="togglePassword()"/>
@@ -79,7 +68,7 @@
                             </div>
                         </div>
 
-                        <button type="submit">Speichern</button>
+                        <button type="submit"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['save'] ?></button>
                     </form>
                 </div>
             </div>
@@ -87,7 +76,7 @@
         </div>
 
         <div class="pslzme-configuration-container">
-            <h2>2: Interne Seiten Konfiguration</h2>
+            <h2><?= $GLOBALS['TL_LANG']['pslzme_configuration']['second_config_container_h2'] ?></h2>
         </div>
     </div>
 <?php $this->endblock(); ?>

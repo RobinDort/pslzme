@@ -1,5 +1,7 @@
 <?php
 
+/** PSLZME cookiebar */
+
 $GLOBALS['TL_LANG']['robindort_pslzme_links']['cookiebar_fh'] = '<h4 class="pslzme-heading">Sehr geehrte/r BesucherIn,</h4>';
 $GLOBALS['TL_LANG']['robindort_pslzme_links']['cookiebar_sh'] = '<h4 class="pslzme-heading">Sie sind über <span id="pslzme-cookiebar-first-contact"></span> einem persönlichen pslz<b>me</b> Einladungslink von <span id="pslzme-cookiebar-link-creator"></span> gefolgt.</h4></p>
 <p>Hierdurch sind wir in der Lage, Sie auf unserer Webseite DSGVO-konform persönlich anzusprechen und Ihnen unsere Webseite mit persönlich für Sie zugeschnittenen Inhalten zu präsentieren, sofern Sie uns dies gestatten.</p>
@@ -19,10 +21,45 @@ $GLOBALS['TL_LANG']['robindort_pslzme_links']['privacy'] = 'Datenschutz';
 $GLOBALS['TL_LANG']['robindort_pslzme_links']['yes'] = 'Ja';
 $GLOBALS['TL_LANG']['robindort_pslzme_links']['no'] = 'Nein';
 
+
+/** Custom elements */
+
 $GLOBALS['TL_LANG']['CTE']['pslzme_text'] = ['Pslzme Text', 'Personalisierbares Text element'];
 $GLOBALS['TL_LANG']['CTE']['pslzme_3D_content'] = ['Pslzme 3D content', 'Personalisierbares 3D Content Element'];
 
+
+/** Backend module */
+
 $GLOBALS['TL_LANG']['MOD']['pslzme_configuration'] = 'Konfiguration';
+$GLOBALS['TL_LANG']['pslzme_configuration']['main_heading'] = 'pslz<span>me</span> Konfiguration';
+$GLOBALS['TL_LANG']['pslzme_configuration']['first_config_container_h2'] = '1: Datenbank Konfiguration';
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_one'] = 'Zur erfolgreichen Nutzung von pslz<strong>me</strong> ist eine Datenbankanbindung notwendig.';
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_two'] = 'Um Ihnen die Konfiguration dessen so einfach wie möglich zu gestalten, finden Sie im weiteren Abschnitt eine detaillierte Beschreibung
+                    der benötigten Schritte zur Erstellung und Konfiguration der Datenbank.';
+$GLOBALS['TL_LANG']['pslzme_configuration']['config_step_one'] = 'Schritt 1:</span> Erstellung der Datenbank';
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_three'] = 'Zur Erstellung einer Datenbank loggen Sie sich bitte in Ihrem gewählten Serverhosting-Tool ein und navigieren dort zum
+                        bereitgestellten Abschnitt <span>&lt;Datenbanken&gt;</span>. Anschließend wählen Sie die Option <span>
+                        &lt;Neue Datenbank erstellen&gt;</span> und geben dann Ihre gewünschten Konfigurationdaten für Datenbankname,
+                        Username und Passwort an.';
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_four'] = 'Sollten Sie noch keinen Datenbank-User erstellt haben, so muss dies im Idealfall vor der
+                        Erstellung der Datenbank getan werden. Dieser kann jedoch auch nachträglich erstellt und der Datenbank zugewiesen werden.
+                        Zur Erstellung des Users, navigieren sie zum Abschnitt <span>&lt;Datenbank-Nutzer erstellen&gt;</span>
+                        und weissen Sie dann die gewünschten Konfigurationdaten wie Username und Passwort zu. Nach beidiger Erstellung
+                        muss zuletzt - wenn nicht bereits getan - der erstellte User noch der Datenbank zugewiesen werden.';
+$GLOBALS['TL_LANG']['pslzme_configuration']['config_step_two'] = '<span>Schritt 2:</span> Datenbank an plsz<strong>me</strong> plugin anbinden';
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_five'] = 'Als nächstes tragen Sie bitte die Verbindungsdaten der soeben erstellten Datenbank in die nachstehenden Felder ein. Nach
+                        Bestätigung des Speichern buttons, werden die benötigten Tabellen von pslz<strong>me</strong> automatisiert initiiert.';
+
+$GLOBALS['TL_LANG']['pslzme_configuration']['db_name'] = "Datenbankname:";
+$GLOBALS['TL_LANG']['pslzme_configuration']['current_db'] = "Aktuelle Datenbank:";
+$GLOBALS['TL_LANG']['pslzme_configuration']['no_db'] = "Keine Datenbank konfiguriert";
+$GLOBALS['TL_LANG']['pslzme_configuration']['db_user'] = "Datenbank-User:";
+$GLOBALS['TL_LANG']['pslzme_configuration']['current_db_user'] = 'Aktueller Datenbank-User:';
+$GLOBALS['TL_LANG']['pslzme_configuration']['no_db_user'] = 'Kein Datenbank-User konfiguriert';
+$GLOBALS['TL_LANG']['pslzme_configuration']['db_pw'] = 'Datenbank Passwort:';
+$GLOBALS['TL_LANG']['pslzme_configuration']['second_config_container_h2'] = '2: Interne Seiten Konfiguration';
+$GLOBALS['TL_LANG']['pslzme_configuration']['save'] = "Speichern";
+
 
 
 ?>
