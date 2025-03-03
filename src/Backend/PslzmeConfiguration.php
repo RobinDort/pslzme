@@ -42,7 +42,7 @@ class PslzmeConfiguration extends BackendModule {
             'fieldType' => 'radio', // Only one page per name
             'multiple'  => false
         ]);
-        $imprintPageTree->generate();
+        $this->Template->imprintPageTree = $imprintPageTree->generate();
 
         $privacyPolicyPageTree = new PageTree([
             'id'        => 'Privacy Policy',
@@ -51,7 +51,7 @@ class PslzmeConfiguration extends BackendModule {
             'fieldType' => 'radio', // Only one page per name
             'multiple'  => false
         ]);
-        $privacyPolicyPageTree->generate();
+        $this->Template->privacyPolicyPageTree = $privacyPolicyPageTree->generate();
 
         $homePageTree = new PageTree([
             'id'        => 'Home',
@@ -60,11 +60,7 @@ class PslzmeConfiguration extends BackendModule {
             'fieldType' => 'radio', // Only one page per name
             'multiple'  => false
         ]);
-        $homePageTree->generate();
-
-        $this->Template->imprintPageTree = $imprintPageTree;
-        $this->Template->privacyPolicyPageTree = $privacyPolicyPageTree;
-        $this->Template->homePageTree = $homePageTree;
+        $this->Template->homePageTree = $homePageTree->generate();
 
         $this->compile();
 
