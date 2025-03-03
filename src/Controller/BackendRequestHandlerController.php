@@ -40,7 +40,9 @@ class BackendRequestHandlerController {
 
             // use database and insert or update the data
             $dbPslzmeStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
-            $dbPslzmeStmtExecutor->initDatabaseConfigurationData($databaseName, $databaseUser, $encryptedPassword, $timestamp);
+            $result = $dbPslzmeStmtExecutor->initDatabaseConfigurationData($databaseName, $databaseUser, $encryptedPassword, $timestamp);
+            Message::addConfirmation($result);
+            return new JsonResponse("result");
 
             // // check if database options are already saved
             // $selectResult = Database::getInstance()->prepare("SELECT * FROM tl_pslzme_config")->execute();
