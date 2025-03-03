@@ -44,7 +44,7 @@
                             </div>
 
                             <div>
-                                <p>Aktuelle Datenbank:</p>
+                                <p class="current-config-header"><strong>Aktuelle Datenbank:</strong></p>
                                 <p><strong>DB</strong></p>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                             </div>
 
                             <div>
-                                <p>Aktueller Datenbank-User</p>
+                                <p class="current-config-header"><strong>Aktueller Datenbank-User</strong></p>
                                 <p><strong>USER</strong></p>
                             </div>
                         </div>

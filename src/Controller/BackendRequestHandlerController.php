@@ -43,7 +43,7 @@ class BackendRequestHandlerController {
             $result = $dbPslzmeStmtExecutor->initDatabaseConfigurationData($databaseName, $databaseUser, $encryptedPassword, $timestamp);
             Message::addConfirmation($result);
             return new JsonResponse($result);
-
+            
         } catch (InvalidDataException $ide) {
             error_log($ide->getErrorMsg());
             return new JsonResponse($ide->getErrorMsg());

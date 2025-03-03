@@ -55,6 +55,16 @@
 	color: var(--pslzme-red);
 }
 
+.pslzme-db-configuration {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 50px;
+}
+
+.pslzme-db-configuration .current-config-header {
+	margin-bottom: 8px;
+}
+
 .pslzme-db-configuration label {
 	display: block;
 	width: 100%;
@@ -64,8 +74,6 @@
 }
 
 .pslzme-db-configuration input {
-	display: flex;
-	flex-wrap: wrap;
 	border-radius: 8px;
 	padding: 5px;
 	margin-bottom: 1em;
