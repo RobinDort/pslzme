@@ -36,8 +36,8 @@ class PslzmeConfiguration extends BackendModule {
         $this->Template->pslzmeDBUser = $this->pslzmeDBUser;
 
         $imprintPageTree = new PageTree([
-            'id'        => 'Imprint',
-            'name'      => 'Imprint',
+            'id'        => 'imprint_page',
+            'name'      => 'imprint_page',
             'value'     => '',
             'fieldType' => 'radio', // Only one page per name
             'multiple'  => false
@@ -45,8 +45,8 @@ class PslzmeConfiguration extends BackendModule {
         $this->Template->imprintPageTree = $imprintPageTree->generate();
 
         $privacyPolicyPageTree = new PageTree([
-            'id'        => 'Privacy Policy',
-            'name'      => 'Privacy Policy',
+            'id'        => 'privacy_page',
+            'name'      => 'privacy_page',
             'value'     => '',
             'fieldType' => 'radio', // Only one page per name
             'multiple'  => false
@@ -54,8 +54,8 @@ class PslzmeConfiguration extends BackendModule {
         $this->Template->privacyPolicyPageTree = $privacyPolicyPageTree->generate();
 
         $homePageTree = new PageTree([
-            'id'        => 'Home',
-            'name'      => 'Home',
+            'id'        => 'home_page',
+            'name'      => 'home_page',
             'value'     => '',
             'fieldType' => 'radio', // Only one page per name
             'multiple'  => false
@@ -65,6 +65,15 @@ class PslzmeConfiguration extends BackendModule {
         $this->compile();
 
         return $this->Template->parse();
+    }
+
+    
+    private function saveSelectedPages() {
+        $selectedPages = [
+            'imprint_page' => Input::post('Imprint'),
+            'privacy_page' => Input::post('privacy_policy'),
+            'home_page' => Input::post('home')
+        ];
     }
 }
 ?>
