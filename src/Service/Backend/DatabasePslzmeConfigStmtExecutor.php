@@ -29,8 +29,6 @@ class DatabasePslzmeConfigStmtExecutor {
             $insertResult = $this->insertDatabaseConfiguration($databaseName, $databaseUser, $databasePW, $timestamp);
             return $insertResult;
          }
-
-        
     }
 
     private function selectDatabaseConfiguration() {
@@ -38,12 +36,12 @@ class DatabasePslzmeConfigStmtExecutor {
 
         try {
             $result = $stmt->execute();
-            
+
             if (!$result) {
                 throw new DatabaseException("Unable to execute statement prepareSelectPslzmeDBConfig.");
-            } else {
-                return $stmt->numRows;
-            }
+            } 
+
+            return $result->numRows;
         } catch (DatabaseException $dbe) {
             // rethrow 
             throw $dbe;

@@ -44,35 +44,6 @@ class BackendRequestHandlerController {
             Message::addConfirmation($result);
             return new JsonResponse($result);
 
-            // // check if database options are already saved
-            // $selectResult = Database::getInstance()->prepare("SELECT * FROM tl_pslzme_config")->execute();
-
-            // if ($selectResult->numRows > 0) {
-            //     // database data has been found. Update it.
-            //     $updateResult = Database::getInstance()->prepare("UPDATE tl_pslzme_config SET pslzme_db_name = ?, pslzme_db_user = ?, pslzme_db_pw = ?")->execute($databaseName, $databaseUser, $encryptedPassword);
-
-            //     if ($updateResult->affectedRows > 0) {
-            //         Message::addConfirmation("Update successful!");
-            //         return new JsonResponse("Sucessfully updated pslzme database data.");
-            //     } else {
-            //         Message::addError("An error occurred while updating database data.");
-            //         throw new DatabaseException("Unable to update pslzme configuration data into tl_pslzme_config table");
-            //     }
-
-            // } else {
-            //     // no database data found. Insert the new data
-
-            //     // save the database data into the pslzme config table
-            //     $insertResult = Database::getInstance()->prepare("INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, timestamp) VALUES (?,?,?,?)")->execute($databaseName, $databaseUser, $encryptedPassword, $timestamp);
-
-            //     if ($insertResult->affectedRows > 0) {
-            //         Message::addConfirmation("Successfully inserted database data");
-            //         return new JsonResponse("Sucessfully inserted pslzme database data.");
-            //     } else {
-            //         Message::addError("An error occurred while inserting new database data.");
-            //         throw new DatabaseException("Unable to insert pslzme configuration data into tl_pslzme_config table");
-            //     }
-            // }
         } catch (InvalidDataException $ide) {
             error_log($ide->getErrorMsg());
             return new JsonResponse($ide->getErrorMsg());
