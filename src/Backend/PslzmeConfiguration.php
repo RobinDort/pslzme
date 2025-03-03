@@ -60,7 +60,7 @@ class PslzmeConfiguration extends BackendModule {
             'fieldType' => 'radio', // Only one page per name
             'multiple'  => false
         ]);
-        $HomePageTree->generate();
+        $homePageTree->generate();
 
         $this->Template->imprintPageTree = $imprintPageTree;
         $this->Template->privacyPolicyPageTree = $privacyPolicyPageTree;
