@@ -82,6 +82,19 @@
                 <p>Für einen reibungslosen und DSGVO-Konformen Ablauf nutzt pslz<strong>me</strong> interne Weiterleitungen zu bestimmten Unterseiten Ihrer Webseite.</p>
                 <p>Beispielsweise benötigt der pslz<strong>me</strong> Cookiebanner, welcher als essentielles Bestandsteil funkgiert, Angaben zu Impressum und Datenschutz der Seite.</p>
                 <p>Damit die interne Weiterleitung problemlos genutzt werden kann, weissen Sie bitte die in den nachstehenden Feldern beschriebenen Seiten durch Auswahl der Filestruktur zu.</p>
+
+                <div class="tl_formbody_edit">
+                    <form>
+                        <div class="pslzme-db-configuration">
+                            <?php foreach ($this->internalPages as $label => $selector): ?>
+                                <label><?php echo $label; ?>:</label>
+                                <?php echo $selector; ?>
+                            <?php endforeach; ?>
+                        </div>
+
+                        <button type="submit"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['save'] ?></button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
