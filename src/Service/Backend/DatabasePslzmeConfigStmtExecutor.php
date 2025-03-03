@@ -37,10 +37,12 @@ class DatabasePslzmeConfigStmtExecutor {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareSelectPslzmeDBConfig();
 
         try {
-            if ($stmt->execute()) {
-                return $stmt->numRows;
-            } else {
+            $result = $stmt->execute();
+            
+            if (!$result) {
                 throw new DatabaseException("Unable to execute statement prepareSelectPslzmeDBConfig.");
+            } else {
+                return $stmt->numRows;
             }
         } catch (DatabaseException $dbe) {
             // rethrow 
@@ -49,18 +51,17 @@ class DatabasePslzmeConfigStmtExecutor {
     }
 
     private function updateDatabaseConfiguration($databaseName, $databaseUser, $databasePW) {
-        $stmt = $this->dbPslzmeConfigStmtPreparer->prepareUpdatePslzmeDBConfig($databaseName, $databaseUser, $databasePW);
+        $stmt = $this->dbPslzmeConfigStmtPreparer->prepareUpdatePslzmeDBConfig();
 
         try {
-            if ($stmt->execute()) {
-                if ($updateResult->affectedRows > 0) {
-                    return "Sucessfully updated pslzme database data.";
-                } else {
-                    throw new DatabaseException("Statement prepareUpdatePslzmeDBConfig executed successful but rows affected = 0");
-                }
+            $stmt->execute($databaseName, $databaseUser, $databasePW);
+        
+            if ($stmt->affectedRows > 0) {
+                return "Sucessfully updated pslzme database data.";
             } else {
-                throw new DatabaseException("Unable to execute statement prepareUpdatePslzmeDBConfig.");
+                throw new DatabaseException("Statement prepareUpdatePslzmeDBConfig executed successful but rows affected = 0");
             }
+          
         } catch (DatabaseException $dbe) {
             // rethrow 
             throw $dbe;
@@ -69,17 +70,15 @@ class DatabasePslzmeConfigStmtExecutor {
 
 
     private function insertDatabaseConfiguration($databaseName, $databaseUser, $databasePW, $timestamp) {
-        $stmt = $this->dbPslzmeConfigStmtPreparer->prepareInsertPslzmeDBConfig($databaseName, $databaseUser, $databasePW, $timestamp);
+        $stmt = $this->dbPslzmeConfigStmtPreparer->prepareInsertPslzmeDBConfig();
 
         try {
-            if ($stmt->execute()) {
-                if ($updateResult->affectedRows > 0) {
-                    return "Sucessfully inserted pslzme database data.";
-                } else {
-                    throw new DatabaseException("Statement prepareInsertPslzmeDBConfig executed successful but rows affected = 0");
-                }
+            $stmt->execute($databaseName, $databaseUser, $databasePW, $timestamp);
+
+            if ($stmt->affectedRows > 0) {
+                return "Sucessfully inserted pslzme database data.";
             } else {
-                throw new DatabaseException("Unable to execute statement prepareInsertPslzmeDBConfig.");
+                throw new DatabaseException("Statement prepareInsertPslzmeDBConfig executed successful but rows affected = 0");
             }
         } catch (DatabaseException $dbe) {
             // rethrow 
