@@ -48,7 +48,7 @@
                                 <?php if($this->pslzmeDBName): ?>
                                     <p><strong><?= $this->pslzmeDBName ?></strong></p>
                                 <?php else: ?>
-                                    <p><strong>DB</strong></p>
+                                    <p><strong>Keine Datenbank konfiguriert</strong></p>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                                 <?php if($this->pslzmeDBUser): ?>
                                     <p><strong><?= $this->pslzmeDBUser ?></strong></p>
                                 <?php else: ?>
-                                    <p><strong>USER</strong></p>
+                                    <p><strong>Kein Datenbank-User konfiguriert</strong></p>
                                 <?php endif; ?>
                             </div>
                         </div>
