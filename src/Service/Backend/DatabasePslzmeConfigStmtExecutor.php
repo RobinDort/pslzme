@@ -5,6 +5,7 @@ use Contao\Database;
 
 use RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtPreparer;
 use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
+use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
 
 class DatabasePslzmeConfigStmtExecutor {
     private $connection;
@@ -19,7 +20,7 @@ class DatabasePslzmeConfigStmtExecutor {
          // check if database options are already saved
          $selectResult = $this->selectDatabaseConfiguration();
 
-         if ($selectResult > 0) {
+         if ($selectResult["numRows"] > 0) {
             // database data has been found. Update it.
             $updateResult = $this->updateDatabaseConfiguration($databaseName, $databaseUser, $databasePW);
             return $updateResult;
@@ -29,6 +30,35 @@ class DatabasePslzmeConfigStmtExecutor {
             $insertResult = $this->insertDatabaseConfiguration($databaseName, $databaseUser, $databasePW, $timestamp);
             return $insertResult;
          }
+    }
+
+
+    public function selectCurrentDatabaseConfigurationData() {
+        try {
+            $selectResult = $this->selectDatabaseConfiguration();
+            $rows = $selectResult["rows"];
+            if (!empty($rows)) {
+                // only one data configuration entry exists, so only the first row contains the needed data.
+                $databaseName = $rows[0]["pslzme_db_name"];
+                $databaseUser = $rows[0]["pslzme_db_user"];
+                $databasePassword = $rows[0]["pslzme_db_pw"];
+                $databaseIPR = $rows[0]["pslzme_ipr"];
+                $databaseTimestamp = $rows[0]["timestamp"];
+
+                return [
+                    $databaseName,
+                    $databaseUser,
+                    $databasePassword,
+                    $databaseIPR,
+                    $databaseTimestamp
+                ];
+            } else {
+            throw new InvalidDataException("No current database configuration specified.");
+            }
+        } catch (InvalidDataException $ide) {
+             // rethrow 
+             throw $ide;
+        }
     }
 
     private function selectDatabaseConfiguration() {
@@ -41,7 +71,13 @@ class DatabasePslzmeConfigStmtExecutor {
                 throw new DatabaseException("Unable to execute statement prepareSelectPslzmeDBConfig.");
             } 
 
-            return $result->numRows;
+            // Fetch all rows
+            $rows = $result->fetchAllAssoc();
+
+            return [
+                'rows' => $rows,
+                'numRows' => $result->numRows
+            ];
         } catch (DatabaseException $dbe) {
             // rethrow 
             throw $dbe;
