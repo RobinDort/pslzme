@@ -32,7 +32,6 @@ class DatabasePslzmeConfigStmtExecutor {
          }
     }
 
-
     public function selectCurrentDatabaseConfigurationData() {
         try {
             $selectResult = $this->selectDatabaseConfiguration();
@@ -46,11 +45,11 @@ class DatabasePslzmeConfigStmtExecutor {
                 $databaseTimestamp = $rows[0]["timestamp"];
 
                 return [
-                    $databaseName,
-                    $databaseUser,
-                    $databasePassword,
-                    $databaseIPR,
-                    $databaseTimestamp
+                    "databaseName"      => $databaseName,
+                    "databaseUser"      => $databaseUser,
+                    "databasePassword"  => $databasePassword,
+                    "databaseIPR"       => $databaseIPR,
+                    "databaseTimestamp" => $databaseTimestamp
                 ];
             } else {
             throw new InvalidDataException("No current database configuration specified.");
