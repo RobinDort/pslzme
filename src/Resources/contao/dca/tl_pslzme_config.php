@@ -29,9 +29,13 @@ $GLOBALS['TL_DCA']['tl_pslzme_config'] = [
             'sql'       => "VARCHAR(255) NOT NULL"
         ],
         'pslzme_ipr' => [
-            'inputType' => 'checkboxWizard',
-            'foreignKey' => 'tl_page.title',
-            'relation' => ['type' => 'hasMany', 'load' => 'lazy'],
+            'inputType' => 'pageTree',
+            'eval'      => [
+                'multiple'   => true,  // Allows selecting multiple pages
+                'mandatory'  => false, // Not required
+                'fieldType'  => 'checkbox',
+                'tl_class'   => 'clr'
+            ],
             'sql'       => "BLOB NULL"
         ],
         'timestamp' => [
