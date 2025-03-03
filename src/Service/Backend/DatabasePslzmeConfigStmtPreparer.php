@@ -10,14 +10,14 @@ class DatabasePslzmeConfigStmtPreparer {
     }
 
     public function prepareSelectPslzmeDBConfig() {
-        $stmt = "SELECT * FROM tl_pslzme_config";
-        $this->connection->prepare($stmt);
+        $sqlQuery = "SELECT * FROM tl_pslzme_config";
+        $stmt = $this->connection->prepare($stmt);
         return $stmt;
     }
 
     public function prepareUpdatePslzmeDBConfig($databaseName, $databaseUser, $databasePW) {
-        $stmt = "UPDATE tl_pslzme_config SET pslzme_db_name = ?, pslzme_db_user = ?, pslzme_db_pw = ?";
-        $this->connection->prepare($stmt);
+        $sqlQuery = "UPDATE tl_pslzme_config SET pslzme_db_name = ?, pslzme_db_user = ?, pslzme_db_pw = ?";
+        $stmt = $this->connection->prepare($stmt);
         $stmt->bind_param("sss", $databaseName, $databaseUser, $databasePW);
 
         return $stmt;
@@ -25,8 +25,8 @@ class DatabasePslzmeConfigStmtPreparer {
 
 
     public function prepareInsertPslzmeDBConfig($databaseName, $databaseUser, $databasePW, $timestamp) {
-        $stmt = "INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, timestamp) VALUES (?,?,?,?)";
-        $this->connection->prepare($stmt);
+        $sqlQuery = "INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, timestamp) VALUES (?,?,?,?)";
+        $stmt = $this->connection->prepare($stmt);
         $stmt->bind_param("sssi", $databaseName, $databaseUser, $databasePW, $timestamp);
 
         return $stmt;
