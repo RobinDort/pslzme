@@ -35,22 +35,37 @@ class PslzmeConfiguration extends BackendModule {
         $this->Template->pslzmeDBName = $this->pslzmeDBName;
         $this->Template->pslzmeDBUser = $this->pslzmeDBUser;
 
-        $widgets = [];
-        $internalPageReferences = ["Imprint", "Privacy policy", "Home"];
+        $imprintPageTree = new PageTree([
+            'id'        => 'Imprint',
+            'name'      => 'Imprint',
+            'value'     => '',
+            'fieldType' => 'radio', // Only one page per name
+            'multiple'  => false
+        ]);
+        $imprintPageTree->generate();
 
-        foreach ($internalPageReferences as $key => $pageLabel) {
-            $widget = new PageTree([
-                'id'        => 'pageTree_' . $key,
-                'name'      => 'pageSelections[' . $pageLabel . ']',
-                'value'     => '',
-                'fieldType' => 'radio', // Only one page per name
-                'multiple'  => false
-            ]);
-    
-            $widgets[$pageLabel] = $widget->generate();
-        }
+        $privacyPolicyPageTree = new PageTree([
+            'id'        => 'Privacy Policy',
+            'name'      => 'Privacy Policy',
+            'value'     => '',
+            'fieldType' => 'radio', // Only one page per name
+            'multiple'  => false
+        ]);
+        $privacyPolicyPageTree->generate();
 
-        $this->Template->internalPages = $widgets;
+        $homePageTree = new PageTree([
+            'id'        => 'Home',
+            'name'      => 'Home',
+            'value'     => '',
+            'fieldType' => 'radio', // Only one page per name
+            'multiple'  => false
+        ]);
+        $HomePageTree->generate();
+
+        $this->Template->imprintPageTree = $imprintPageTree;
+        $this->Template->privacyPolicyPageTree = $privacyPolicyPageTree;
+        $this->Template->homePageTree = $homePageTree;
+
         $this->compile();
 
         return $this->Template->parse();

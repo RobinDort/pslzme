@@ -86,10 +86,18 @@
                 <div class="tl_formbody_edit">
                     <form>
                         <div class="pslzme-db-configuration">
-                            <?php foreach ($this->internalPages as $label => $selector): ?>
-                                <label><?php echo $label; ?>:</label>
-                                <?php echo $selector; ?>
-                            <?php endforeach; ?>
+                            <p>Impressum:</p>
+                            <?= $this->imprintPageTree; ?>
+                        </div>
+
+                        <div class="pslzme-db-configuration">
+                            <p>Datenschutz:</p>
+                            <?= $this->privacyPolicyPageTree; ?>
+                        </div>
+
+                        <div class="pslzme-db-configuration">
+                            <p>Homepage:</p>
+                            <?= $this->homePageTree; ?>
                         </div>
 
                         <button type="submit"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['save'] ?></button>
