@@ -35,9 +35,9 @@
                             <div>
                                 <p class="current-config-header"><strong><?= $GLOBALS['TL_LANG']['pslzme_configuration']['current_db'] ?></strong></p>
                                 <?php if($this->pslzmeDBName): ?>
-                                    <input type="text" readonly><strong><?= $this->pslzmeDBName ?></strong></input>
+                                    <input type="text" value="<?= $this->pslzmeDBName ?>" readonly></input>
                                 <?php else: ?>
-                                    <input type="text" readonly><strong><?= $GLOBALS['TL_LANG']['pslzme_configuration']['no_db'] ?> </strong></input>
+                                    <input type="text" value ="<?= $GLOBALS['TL_LANG']['pslzme_configuration']['no_db'] ?>" readonly></input>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -51,9 +51,9 @@
                             <div>
                                 <p class="current-config-header"><strong><?= $GLOBALS['TL_LANG']['pslzme_configuration']['current_db_user'] ?></strong></p>
                                 <?php if($this->pslzmeDBUser): ?>
-                                    <input type="text" readonly><strong><?= $this->pslzmeDBUser ?></strong></input>
+                                    <input type="text" value="<?= $this->pslzmeDBUser ?>" readonly></input>
                                 <?php else: ?>
-                                    <input type="text" readonly><strong><?= $GLOBALS['TL_LANG']['pslzme_configuration']['no_db_user'] ?></strong></input>
+                                    <input type="text" value="<?= $GLOBALS['TL_LANG']['pslzme_configuration']['no_db_user'] ?>" readonly></input>
                                 <?php endif; ?>
                             </div>
                         </div>
