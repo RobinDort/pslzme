@@ -85,6 +85,8 @@
 
                 <div class="tl_formbody_edit">
                     <form id="internal-page-form">
+                        <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>"/>
+                        
                         <div class="pslzme-db-configuration">
                             <p>Impressum:</p>
                             <?= $this->imprintPageTree; ?>

@@ -36,7 +36,14 @@ class PslzmeConfiguration extends BackendModule {
         $this->Template->pslzmeDBName = $this->pslzmeDBName;
         $this->Template->pslzmeDBUser = $this->pslzmeDBUser;
 
-        $currentValue = Input::post('pageTree') ?: 0;
+        if (Input::post('FORM_SUBMIT') === "internal-page-form") {
+            // Validate CSRF token
+            if (!System::getContainer()->get('contao.csrf.token_manager')->isTokenValid(Input::post('REQUEST_TOKEN'))) {
+                throw new \Exception('Invalid CSRF token');
+            }
+        }
+
+        $currentValue = Input::post('imprint_page') ?: 0;
 
         // Create the PageTree widget
         $imprintPageTree = new PageTree([
