@@ -36,18 +36,20 @@ class PslzmeConfiguration extends BackendModule {
         $this->Template->pslzmeDBUser = $this->pslzmeDBUser;
 
         // Create the PageTree widget
-        $objWidget = new PageTree([
+        $imprintPageTree = new PageTree([
             'id'        => 'imprint_page',
             'name'      => 'imprint_page',
             'value'     => $selectedPageId,
             'fieldType' => 'radio', // Single selection
             'mandatory' => true, // Required
         ]);
+        $this->Template->imprintPageTree = $imprintPageTree->generate();
         
         if ($_POST) {
-            $objWidget->validate();
-            if (!$objWidget->hasErrors()) {
-                echo $objWidget->value;
+            $imprintPageTree->validate();
+            if (!$imprintPageTree->hasErrors()) {
+                echo $imprintPageTree->value;
+
             }
         }
         
