@@ -85,18 +85,39 @@
                     <form id="internal-page-form" onsubmit="event.preventDefault(); saveInternalPageConfiguration(this);">
 
                         <div class="pslzme-db-configuration">
-                            <label for="imprint-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['imprint_id'] ?></label>
-                            <input name="imprint-id" type="text" required/>
+                            <div>
+                                <label for="imprint-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['imprint_id'] ?></label>
+                                <input name="imprint-id" type="text" required/>
+                            </div>
+
+                            <div>
+                                <label for="current-id">Aktuelle Impressum ID:</label>
+                                <input name="current-id" type="text" value="" readonly/>
+                            </div>
                         </div>
 
                         <div class="pslzme-db-configuration">
-                        <label for="privacy-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['privacy_id'] ?></label>
-                        <input name="privacy-id" type="text" required/>
+                            <div>
+                                <label for="privacy-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['privacy_id'] ?></label>
+                                <input name="privacy-id" type="text" required/>
+                            </div>
+
+                            <div>
+                                <label for="current-privacy-id">Aktuelle Datenschutz ID:</label>
+                                <input name="current-privacy-id" type="text" value="" readonly/>
+                            </div>
                         </div>
 
                         <div class="pslzme-db-configuration">
-                            <label for="home-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['home_id'] ?></label>
-                            <input name="home-id" type="text" required/>
+                            <div>
+                                <label for="home-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['home_id'] ?></label>
+                                <input name="home-id" type="text" required/>
+                            </div>
+
+                            <div>
+                                <label for="current-home-id">Aktuelle Home ID:</label>
+                                <input name="current-home-id" type="text" value="" readonly/>
+                            </div>
                         </div>
 
                         <button type="submit"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['save'] ?></button>
