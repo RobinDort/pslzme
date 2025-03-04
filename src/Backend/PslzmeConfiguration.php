@@ -36,7 +36,7 @@ class PslzmeConfiguration extends BackendModule {
         $this->Template->pslzmeDBName = $this->pslzmeDBName;
         $this->Template->pslzmeDBUser = $this->pslzmeDBUser;
 
-        if (Input::post('FORM_SUBMIT') === "internal-page-form") {
+        if (Input::post('FORM_SUBMIT') === "imprint_page") {
             // Validate CSRF token
             if (!System::getContainer()->get('contao.csrf.token_manager')->isTokenValid(Input::post('REQUEST_TOKEN'))) {
                 throw new \Exception('Invalid CSRF token');
