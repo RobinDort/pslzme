@@ -34,7 +34,7 @@ $GLOBALS['TL_LANG']['MOD']['pslzme_configuration'] = 'Konfiguration';
 $GLOBALS['TL_LANG']['pslzme_configuration']['main_heading'] = 'pslz<span>me</span> Konfiguration';
 $GLOBALS['TL_LANG']['pslzme_configuration']['first_config_container_h2'] = '1: Datenbank Konfiguration';
 $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_one'] = 'Zur erfolgreichen Nutzung von pslz<strong>me</strong> ist eine Datenbankanbindung notwendig.';
-$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_two'] = 'Um Ihnen die Konfiguration dessen so einfach wie möglich zu gestalten, finden Sie im weiteren Abschnitt eine detaillierte Beschreibung
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_two'] = 'Um Ihnen die Konfiguration so einfach wie möglich zu gestalten, finden Sie im weiteren Abschnitt eine detaillierte Beschreibung
                     der benötigten Schritte zur Erstellung und Konfiguration der Datenbank.';
 $GLOBALS['TL_LANG']['pslzme_configuration']['config_step_one'] = 'Schritt 1:</span> Erstellung der Datenbank';
 $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_three'] = 'Zur Erstellung einer Datenbank loggen Sie sich bitte in Ihrem gewählten Serverhosting-Tool ein und navigieren dort zum
