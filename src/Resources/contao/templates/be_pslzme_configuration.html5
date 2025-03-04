@@ -79,26 +79,23 @@
             <h2><?= $GLOBALS['TL_LANG']['pslzme_configuration']['second_config_container_h2'] ?></h2>
 
             <div class="pslzme-explanation">
-                <p>Für einen reibungslosen und DSGVO-Konformen Ablauf nutzt pslz<strong>me</strong> interne Weiterleitungen zu bestimmten Unterseiten Ihrer Webseite.</p>
-                <p>Beispielsweise benötigt der pslz<strong>me</strong> Cookiebanner, welcher als essentielles Bestandsteil fungiert, Angaben zu Impressum und Datenschutz der Seite.</p>
-                <p>Damit die interne Weiterleitung problemlos genutzt werden kann, weissen Sie bitte die in den nachstehenden Feldern beschriebenen Seiten mit der entprechenden ID der passenden internen Seite zu.</p>
+                <?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_six'] ?>
 
                 <div class="tl_formbody_edit">
                     <form id="internal-page-form" onsubmit="event.preventDefault(); saveInternalPageConfiguration(this);">
-                        <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>"/>
 
                         <div class="pslzme-db-configuration">
-                            <label for="imprint-id">Impressum ID:</label>
+                            <label for="imprint-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['imprint_id'] ?></label>
                             <input name="imprint-id" type="text" required/>
                         </div>
 
                         <div class="pslzme-db-configuration">
-                        <label for="privacy-id">Datenschutz ID:</label>
+                        <label for="privacy-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['privacy_id'] ?>:</label>
                         <input name="privacy-id" type="text" required/>
                         </div>
 
                         <div class="pslzme-db-configuration">
-                            <label for="home-id">Homepage ID:</label>
+                            <label for="home-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['home_id'] ?></label>
                             <input name="home-id" type="text" required/>
                         </div>
 
