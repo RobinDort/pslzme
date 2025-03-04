@@ -34,12 +34,6 @@ class DatabasePslzmeConfigStmtPreparer {
         return $stmt;
     }
 
-    public function prepareInsertInternalPages() {
-        $sqlQuery = "INSERT INTO tl_pslzme_config (pslzme_ipr) VALUES (?)";
-        $stmt = $this->connection->prepare($sqlQuery);
-        return $stmt;
-    }
-
 }
 
 

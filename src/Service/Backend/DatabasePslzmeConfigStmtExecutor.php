@@ -34,19 +34,16 @@ class DatabasePslzmeConfigStmtExecutor {
 
 
     public function saveInternalPagesData($internalPages) {
-        // check if pages are already saved
-        $selectResult = $this->selectCurrentDatabaseConfigurationData();
+        // check if the database data has been saved before.
+        $selectResult = $this->selectDatabaseConfiguration();
 
-        if ($selectResult["databaseIPR"] !== null) {
-            // pages are already saved -> update.
+        if ($selectResult["numRows"] > 0) {
+            // database data already saved -> update the pages.
             $updateResult = $this->updateInternalPagesData($internalPages);
             return $updateResult;
         } else {
-            // no pages saved -> insert.
-            $insertResult = $this->insertInternalPagesData($internalPages);
-            return $insertResult;
+            throw new DatabaseException("Unable to update internal pages. Database data must be configured first.");
         }
-
     }
 
     public function selectCurrentDatabaseConfigurationData() {
@@ -69,7 +66,7 @@ class DatabasePslzmeConfigStmtExecutor {
                     "databaseTimestamp" => $databaseTimestamp
                 ];
             } else {
-            throw new InvalidDataException("No current database configuration specified.");
+                throw new InvalidDataException("No current database configuration specified.");
             }
         } catch (InvalidDataException $ide) {
              // rethrow 
@@ -147,23 +144,6 @@ class DatabasePslzmeConfigStmtExecutor {
                 return "Sucessfully inserted pslzme database data.";
             } else {
                 throw new DatabaseException("Statement prepareInsertPslzmeDBConfig executed successful but rows affected = 0");
-            }
-        } catch (DatabaseException $dbe) {
-            // rethrow 
-            throw $dbe;
-        }
-    }
-
-    private function insertInternalPagesData($internalPages) {
-        $stmt = $this->dbPslzmeConfigStmtPreparer->prepareInsertInternalPages();
-
-        try {
-            $stmt->execute($internalPages);
-
-            if ($stmt->affectedRows > 0) {
-                return "Sucessfully inserted pslzme internal pages.";
-            } else {
-                throw new DatabaseException("Statement prepareInsertInternalPages executed successful but rows affected = 0");
             }
         } catch (DatabaseException $dbe) {
             // rethrow 

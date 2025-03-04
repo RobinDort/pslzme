@@ -180,9 +180,9 @@
                 }, 1000);
                 
             },
-            onFailure: function (xhr) { 
+            onFailure: function (error) { 
                 console.log("Action failed: " + requestObject.request);
-                console.log("XHR Response:", xhr.responseText);
+                console.log("XHR Response:", error.responseText);
             }
         }).send();
     }

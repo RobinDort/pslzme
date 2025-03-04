@@ -89,12 +89,15 @@ class BackendRequestHandlerController {
 
         } catch (InvalidDataException $ide) {
             error_log($ide->getErrorMsg());
+            Message::addError($ide->getErrorMsg());
             return new JsonResponse($ide->getErrorMsg());
         } catch(DatabaseException $dbe) {
             error_log($dbe->getErrorMsg());
+            Message::addError($dbe->getErrorMsg());
             return new JsonResponse($dbe->getErrorMsg());
         } catch (Exception $e) {
             error_log($e->getMessage());
+            Message::addError($e->getMessage());
             return new JsonResponse($e->getMessage());
         }
         return new JsonResponse("");
