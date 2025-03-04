@@ -92,7 +92,11 @@
 
                             <div>
                                 <label for="current-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['current_id'] ?></label>
-                                <input name="current-id" type="text" value="" readonly/>
+                                <?php if($this->imprintID): ?>
+                                    <input name="current-id" type="text" value="<?= $this->imprintID ?>" readonly/>
+                                <?php else: ?>
+                                    <input name="current-id" type="text" value="Keine aktuelle ID" readonly/>
+                                <?php endif; ?>
                             </div>
                         </div>
 

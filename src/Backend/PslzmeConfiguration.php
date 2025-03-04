@@ -35,7 +35,11 @@ class PslzmeConfiguration extends BackendModule {
         $this->Template = new BackendTemplate($this->strTemplate);
         $this->Template->pslzmeDBName = $this->pslzmeDBName;
         $this->Template->pslzmeDBUser = $this->pslzmeDBUser;
-        
+
+        if(!empty($this->pslzmeDBIPR)) {
+            $this->Template->imprintID = $this->pslzmeDBIPR;
+        }
+
         $this->compile();
 
         return $this->Template->parse();
