@@ -35,9 +35,9 @@
                             <div>
                                 <p class="current-config-header"><strong><?= $GLOBALS['TL_LANG']['pslzme_configuration']['current_db'] ?></strong></p>
                                 <?php if($this->pslzmeDBName): ?>
-                                    <p><strong><?= $this->pslzmeDBName ?></strong></p>
+                                    <input type="text" readonly><strong><?= $this->pslzmeDBName ?></strong></input>
                                 <?php else: ?>
-                                    <p><strong><?= $GLOBALS['TL_LANG']['pslzme_configuration']['no_db'] ?> </strong></p>
+                                    <input type="text" readonly><strong><?= $GLOBALS['TL_LANG']['pslzme_configuration']['no_db'] ?> </strong></input>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -51,9 +51,9 @@
                             <div>
                                 <p class="current-config-header"><strong><?= $GLOBALS['TL_LANG']['pslzme_configuration']['current_db_user'] ?></strong></p>
                                 <?php if($this->pslzmeDBUser): ?>
-                                    <p><strong><?= $this->pslzmeDBUser ?></strong></p>
+                                    <input type="text" readonly><strong><?= $this->pslzmeDBUser ?></strong></input>
                                 <?php else: ?>
-                                    <p><strong><?= $GLOBALS['TL_LANG']['pslzme_configuration']['no_db_user'] ?></strong></p>
+                                    <input type="text" readonly><strong><?= $GLOBALS['TL_LANG']['pslzme_configuration']['no_db_user'] ?></strong></input>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                         </div>
 
                         <div class="pslzme-db-configuration">
-                        <label for="privacy-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['privacy_id'] ?>:</label>
+                        <label for="privacy-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['privacy_id'] ?></label>
                         <input name="privacy-id" type="text" required/>
                         </div>
 

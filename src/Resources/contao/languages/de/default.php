@@ -61,7 +61,7 @@ $GLOBALS['TL_LANG']['pslzme_configuration']['second_config_container_h2'] = '2: 
 $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_six'] = "<p>Für einen reibungslosen und DSGVO-Konformen Ablauf nutzt pslz<strong>me</strong> interne Weiterleitungen zu bestimmten Unterseiten Ihrer Webseite.</p>
                 <p>Beispielsweise benötigt der pslz<strong>me</strong> Cookiebanner, welcher als essentielles Bestandsteil fungiert, Angaben zu Impressum und Datenschutz der Seite.</p>
                 <p>Damit die interne Weiterleitung problemlos genutzt werden kann, weissen Sie bitte die in den nachstehenden Feldern beschriebenen Seiten mit der entprechenden ID der passenden internen Seite zu.</p>";
-$GLOBALS['TL_LANG']['pslzme_configuration']['imprint_id'] = "ID der Impressumseite:";
+$GLOBALS['TL_LANG']['pslzme_configuration']['imprint_id'] = "ID der Impressumsseite:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['privacy_id'] = "ID der Datenschutzsseite:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['home_id'] = "ID der Homeseite:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['save'] = "Speichern";
