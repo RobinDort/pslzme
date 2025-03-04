@@ -64,6 +64,9 @@ $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_six'] = "<p
 $GLOBALS['TL_LANG']['pslzme_configuration']['imprint_id'] = "ID der Impressumsseite:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['privacy_id'] = "ID der Datenschutzsseite:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['home_id'] = "ID der Homeseite:";
+$GLOBALS['TL_LANG']['pslzme_configuration']['current_id'] = "Aktuelle Impressum ID:";
+$GLOBALS['TL_LANG']['pslzme_configuration']['current_privacy_id'] = "Aktuelle Datenschutz ID:";
+$GLOBALS['TL_LANG']['pslzme_configuration']['current_home_id'] = "Aktuelle Home ID:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['save'] = "Speichern";
 
 

@@ -91,7 +91,7 @@
                             </div>
 
                             <div>
-                                <label for="current-id">Aktuelle Impressum ID:</label>
+                                <label for="current-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['current_id'] ?></label>
                                 <input name="current-id" type="text" value="" readonly/>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                             </div>
 
                             <div>
-                                <label for="current-privacy-id">Aktuelle Datenschutz ID:</label>
+                                <label for="current-privacy-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['current_privacy_id'] ?></label>
                                 <input name="current-privacy-id" type="text" value="" readonly/>
                             </div>
                         </div>
@@ -115,7 +115,7 @@
                             </div>
 
                             <div>
-                                <label for="current-home-id">Aktuelle Home ID:</label>
+                                <label for="current-home-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['current_home_id'] ?></label>
                                 <input name="current-home-id" type="text" value="" readonly/>
                             </div>
                         </div>
