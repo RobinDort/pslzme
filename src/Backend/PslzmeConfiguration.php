@@ -43,16 +43,9 @@ class PslzmeConfiguration extends BackendModule {
             'fieldType' => 'radio', // Single selection
             'mandatory' => true, // Required
         ]);
+        
         $this->Template->imprintPageTree = $imprintPageTree->generate();
-        
-        if ($_POST) {
-            $imprintPageTree->validate();
-            if (!$imprintPageTree->hasErrors()) {
-                echo $imprintPageTree->value;
-
-            }
-        }
-        
+        $this->Template->selectedPage = $imprintPageTree->value;
         $this->compile();
 
         return $this->Template->parse();

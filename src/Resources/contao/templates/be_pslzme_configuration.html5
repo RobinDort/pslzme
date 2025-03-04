@@ -88,6 +88,7 @@
                         <div class="pslzme-db-configuration">
                             <p>Impressum:</p>
                             <?= $this->imprintPageTree; ?>
+                            <?= $this->selectedPage; ?>
                         </div>
 
                         <div class="pslzme-db-configuration">
