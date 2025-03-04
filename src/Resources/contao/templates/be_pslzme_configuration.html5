@@ -81,26 +81,25 @@
             <div class="pslzme-explanation">
                 <p>Für einen reibungslosen und DSGVO-Konformen Ablauf nutzt pslz<strong>me</strong> interne Weiterleitungen zu bestimmten Unterseiten Ihrer Webseite.</p>
                 <p>Beispielsweise benötigt der pslz<strong>me</strong> Cookiebanner, welcher als essentielles Bestandsteil funkgiert, Angaben zu Impressum und Datenschutz der Seite.</p>
-                <p>Damit die interne Weiterleitung problemlos genutzt werden kann, weissen Sie bitte die in den nachstehenden Feldern beschriebenen Seiten durch Auswahl der Filestruktur zu.</p>
+                <p>Damit die interne Weiterleitung problemlos genutzt werden kann, weissen Sie bitte die in den nachstehenden Feldern beschriebenen Seiten mit der entprechenden ID der passenden internen Seite zu.</p>
 
                 <div class="tl_formbody_edit">
                     <form id="internal-page-form">
                         <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>"/>
-                        
+
                         <div class="pslzme-db-configuration">
-                            <p>Impressum:</p>
-                            <?= $this->imprintPageTree; ?>
-                            <?= $this->selectedPage; ?>
+                            <label for="imprint-id">Impressum ID:</label>
+                            <input name="imprint-id" type="text" required/>
                         </div>
 
                         <div class="pslzme-db-configuration">
-                            <p>Datenschutz:</p>
-                            <?= $this->privacyPolicyPageTree; ?>
+                        <label for="privacy-id">Datenschutz ID:</label>
+                        <input name="privacy-id" type="text" required/>
                         </div>
 
                         <div class="pslzme-db-configuration">
-                            <p>Homepage:</p>
-                            <?= $this->homePageTree; ?>
+                            <label for="home-id">Homepage ID:</label>
+                            <input name="home-id" type="text" required/>
                         </div>
 
                         <button type="submit"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['save'] ?></button>
@@ -141,6 +140,44 @@
                 setTimeout(function() {
                     window.location.reload();
                 }, 1000);
+                
+            },
+            onFailure: function (xhr) { 
+                console.log("Action failed: " + requestObject.request);
+                console.log("XHR Response:", xhr.responseText);
+            }
+        }).send();
+    }
+
+
+    function saveInternalPageConfiguration(configuration) {
+            // Get form values
+        const formData = new FormData(configuration);
+        const values = Object.fromEntries(formData.entries()); 
+
+        const imprintID = values["imprint-id"];
+        const privacyID = values["privacy-id"];
+        const homeID = values["home-id"];
+
+        const requestData = {
+            imprintID,
+            privacyID,
+            homeID
+        };
+
+        const requestObject = {
+           data: JSON.stringify(requestData),
+        };
+
+        return new Request.JSON({
+            url: "/saveInternalPages",
+            method: "post",
+            data: requestObject,
+            onSuccess: function (response) {
+                console.log(response);
+                // setTimeout(function() {
+                //     window.location.reload();
+                // }, 1000);
                 
             },
             onFailure: function (xhr) { 

@@ -35,26 +35,7 @@ class PslzmeConfiguration extends BackendModule {
         $this->Template = new BackendTemplate($this->strTemplate);
         $this->Template->pslzmeDBName = $this->pslzmeDBName;
         $this->Template->pslzmeDBUser = $this->pslzmeDBUser;
-
-
-        $currentValue = Input::post('imprint_page') ?: 0;
-
-        // Create the PageTree widget
-        $imprintPageTree = new PageTree([
-            'id'        => 'imprint_page',
-            'name'      => 'imprint_page',
-            'label'     => 'Select your imprint',
-            'value'     => $currentValue,
-            'fieldType' => 'radio', // Single selection
-            'mandatory' => true, // Required
-        ]);
-
-        if (Input::post('FORM_SUBMIT') == $this->imprintPageTree->id) {
-            $currentValue = Input::post('imprint_page');
-            $this->Template->selectedPage = $currentValue;
-        }
         
-        $this->Template->imprintPageTree = $imprintPageTree->parse();
         $this->compile();
 
         return $this->Template->parse();

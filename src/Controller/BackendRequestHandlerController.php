@@ -18,13 +18,14 @@ class BackendRequestHandlerController {
     #[Route('/saveDatabaseData', name: "save_database_data", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])] 
     public function saveDatabaseData(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
-        $requestData = json_decode($requestData, false);
-
-        if (!$requestData) {
-            throw new InvalidDataException("Unable to extract request data out of /saveDatabaseData object");
-        }
 
         try {
+            $requestData = json_decode($requestData, false);
+
+            if (!$requestData) {
+                throw new InvalidDataException("Unable to extract request data out of /saveDatabaseData object");
+            }
+
             $databaseName = $requestData->dbName;
             $databaseUser = $requestData->dbUsername;
             $databasePassword = $requestData->dbPW;
@@ -43,7 +44,7 @@ class BackendRequestHandlerController {
             $result = $dbPslzmeStmtExecutor->initDatabaseConfigurationData($databaseName, $databaseUser, $encryptedPassword, $timestamp);
             Message::addConfirmation($result);
             return new JsonResponse($result);
-            
+
         } catch (InvalidDataException $ide) {
             error_log($ide->getErrorMsg());
             return new JsonResponse($ide->getErrorMsg());
@@ -54,6 +55,31 @@ class BackendRequestHandlerController {
             error_log($e->getMessage());
             return new JsonResponse($e->getMessage());
         }
+    }
+
+
+    #[Route('/saveInternalPages', name: "save_internal_pages", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])] 
+    public function saveInternalPages(Request $request): JsonResponse {
+        $requestData = $request->request->get('data');
+
+        try {
+            $requestData = json_decode($requestData, false);
+
+            if (!$requestData) {
+                throw new InvalidDataException("Unable to extract request data out of /saveDatabaseData object");
+            }
+
+            $imprintID = $requestData->imprintID;
+            $privacyID = $requestData->privacyID;
+            $homeID = $requestData->homeID;
+
+            return new JsonResponse([$imprintID, $privacyID, $homeID]);
+
+        } catch (InvalidDataException $ide) {
+            error_log($ide->getErrorMsg());
+            return new JsonResponse($ide->getErrorMsg());
+        }
+        return new JsonResponse("");
     }
 
 
