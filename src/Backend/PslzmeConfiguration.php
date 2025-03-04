@@ -37,21 +37,14 @@ class PslzmeConfiguration extends BackendModule {
         $this->Template->pslzmeDBUser = $this->pslzmeDBUser;
 
         if(!empty($this->pslzmeDBIPR)) {
-            $this->Template->imprintID = json_decode($this->pslzmeDBIPR);
+            $decodedPages = json_decode($this->pslzmeDBIPR);
+            $imprintID = $decodedPages["Imprint"];
+            $this->Template->imprintID = $imprintID;
         }
 
         $this->compile();
 
         return $this->Template->parse();
-    }
-
-    
-    private function saveSelectedPages() {
-        $selectedPages = [
-            'imprint_page' => Input::post('Imprint'),
-            'privacy_page' => Input::post('privacy_policy'),
-            'home_page' => Input::post('home')
-        ];
     }
 }
 ?>
