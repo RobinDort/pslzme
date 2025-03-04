@@ -3,7 +3,8 @@ namespace RobinDort\PslzmeLinks\Backend;
 
 use Contao\BackendModule;
 use Contao\BackendTemplate;
-use \Contao\PageTree;
+use Contao\PageTree;
+use Contao\Input;
 
 use RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor;
 
