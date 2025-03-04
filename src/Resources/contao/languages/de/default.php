@@ -67,6 +67,7 @@ $GLOBALS['TL_LANG']['pslzme_configuration']['home_id'] = "ID der Homeseite:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['current_id'] = "Aktuelle Impressum ID:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['current_privacy_id'] = "Aktuelle Datenschutz ID:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['current_home_id'] = "Aktuelle Home ID:";
+$GLOBALS['TL_LANG']['pslzme_configuration']['no_id'] = "Keine aktuelle ID";
 $GLOBALS['TL_LANG']['pslzme_configuration']['save'] = "Speichern";
 
 

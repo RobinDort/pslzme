@@ -95,7 +95,7 @@
                                 <?php if($this->imprintID): ?>
                                     <input name="current-id" type="text" value="<?= $this->imprintID ?>" readonly/>
                                 <?php else: ?>
-                                    <input name="current-id" type="text" value="Keine aktuelle ID" readonly/>
+                                    <input name="current-id" type="text" value="<?= $GLOBALS['TL_LANG']['pslzme_configuration']['no_id'] ?>" readonly/>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -108,7 +108,11 @@
 
                             <div>
                                 <label for="current-privacy-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['current_privacy_id'] ?></label>
-                                <input name="current-privacy-id" type="text" value="" readonly/>
+                                <?php if($this->privacyID): ?>
+                                    <input name="current-privacy-id" type="text" value="<?= $this->privacyID ?>" readonly/>
+                                <?php else: ?>
+                                    <input name="current-privacy-id" type="text" value="<?= $GLOBALS['TL_LANG']['pslzme_configuration']['no_id'] ?>" readonly/>
+                                <?php endif; ?>
                             </div>
                         </div>
 
@@ -120,7 +124,11 @@
 
                             <div>
                                 <label for="current-home-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['current_home_id'] ?></label>
-                                <input name="current-home-id" type="text" value="" readonly/>
+                                <?php if($this->homeID): ?>
+                                    <input name="current-home-id" type="text" value="<?= $this->homeID ?>" readonly/>
+                                <?php else: ?>
+                                    <input name="current-home-id" type="text" value="<?= $GLOBALS['TL_LANG']['pslzme_configuration']['no_id'] ?>" readonly/>
+                                <?php endif; ?>
                             </div>
                         </div>
 

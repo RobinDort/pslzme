@@ -54,6 +54,7 @@ $GLOBALS['TL_LANG']['pslzme_configuration']['home_id'] = "ID of the home page:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['current_id'] = "Current imprint ID:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['current_privacy_id'] = "Current privacy statement ID:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['current_home_id'] = "Current home ID:";
+$GLOBALS['TL_LANG']['pslzme_configuration']['no_id'] = "No current ID";
 $GLOBALS['TL_LANG']['pslzme_configuration']['save'] = "Save";
 
 
