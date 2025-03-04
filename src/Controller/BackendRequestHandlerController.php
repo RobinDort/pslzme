@@ -66,18 +66,36 @@ class BackendRequestHandlerController {
             $requestData = json_decode($requestData, false);
 
             if (!$requestData) {
-                throw new InvalidDataException("Unable to extract request data out of /saveDatabaseData object");
+                throw new InvalidDataException("Unable to extract request data out of /saveInternalPages object");
             }
 
             $imprintID = $requestData->imprintID;
             $privacyID = $requestData->privacyID;
             $homeID = $requestData->homeID;
 
-            return new JsonResponse([$imprintID, $privacyID, $homeID]);
+            $combinedInternalPages = [
+                "Imprint"   => $imprintID,
+                "Privacy"   => $privacyID,
+                "Home"      => $homeID
+            ];
+            $jsonPages = json_encode($combinedInternalPages);
+
+            // save the pages into the database
+            $dbPslzmeStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
+            $result = $dbPslzmeStmtExecutor->saveInternalPagesData($jsonPages);
+
+            Message::addConfirmation($result);
+            return new JsonResponse($result);
 
         } catch (InvalidDataException $ide) {
             error_log($ide->getErrorMsg());
             return new JsonResponse($ide->getErrorMsg());
+        } catch(DatabaseException $dbe) {
+            error_log($dbe->getErrorMsg());
+            return new JsonResponse($dbe->getErrorMsg());
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+            return new JsonResponse($e->getMessage());
         }
         return new JsonResponse("");
     }

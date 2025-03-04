@@ -32,6 +32,23 @@ class DatabasePslzmeConfigStmtExecutor {
          }
     }
 
+
+    public function saveInternalPagesData($internalPages) {
+        // check if pages are already saved
+        $selectResult = $this->selectCurrentDatabaseConfigurationData();
+
+        if ($selectResult["databaseIPR"] !== null) {
+            // pages are already saved -> update.
+            $updateResult = $this->updateInternalPagesData($internalPages);
+            return $updateResult;
+        } else {
+            // no pages saved -> insert.
+            $insertResult = $this->insertInternalPagesData($internalPages);
+            return $insertResult;
+        }
+
+    }
+
     public function selectCurrentDatabaseConfigurationData() {
         try {
             $selectResult = $this->selectDatabaseConfiguration();
@@ -101,6 +118,24 @@ class DatabasePslzmeConfigStmtExecutor {
         }
     }
 
+    private function updateInternalPagesData($internalPages) {
+        $stmt = $this->dbPslzmeConfigStmtPreparer->prepareUpdateInternalPages();
+
+        try {
+            $stmt->execute($internalPages);
+        
+            if ($stmt->affectedRows > 0) {
+                return "Sucessfully updated pslzme internal pages data.";
+            } else {
+                throw new DatabaseException("Statement prepareUpdateInternalPages executed successful but rows affected = 0");
+            }
+          
+        } catch (DatabaseException $dbe) {
+            // rethrow 
+            throw $dbe;
+        }
+    }
+
 
     private function insertDatabaseConfiguration($databaseName, $databaseUser, $databasePW, $timestamp) {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareInsertPslzmeDBConfig();
@@ -112,6 +147,23 @@ class DatabasePslzmeConfigStmtExecutor {
                 return "Sucessfully inserted pslzme database data.";
             } else {
                 throw new DatabaseException("Statement prepareInsertPslzmeDBConfig executed successful but rows affected = 0");
+            }
+        } catch (DatabaseException $dbe) {
+            // rethrow 
+            throw $dbe;
+        }
+    }
+
+    private function insertInternalPagesData($internalPages) {
+        $stmt = $this->dbPslzmeConfigStmtPreparer->prepareInsertInternalPages();
+
+        try {
+            $stmt->execute($internalPages);
+
+            if ($stmt->affectedRows > 0) {
+                return "Sucessfully inserted pslzme internal pages.";
+            } else {
+                throw new DatabaseException("Statement prepareInsertInternalPages executed successful but rows affected = 0");
             }
         } catch (DatabaseException $dbe) {
             // rethrow 

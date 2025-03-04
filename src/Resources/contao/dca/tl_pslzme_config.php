@@ -36,7 +36,7 @@ $GLOBALS['TL_DCA']['tl_pslzme_config'] = [
                 'fieldType'  => 'checkbox',
                 'tl_class'   => 'clr'
             ],
-            'sql'       => "BLOB NULL"
+            'sql'       => "TEXT NULL"
         ],
         'timestamp' => [
             'inputType' => 'number',
