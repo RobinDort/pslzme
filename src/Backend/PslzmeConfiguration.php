@@ -37,7 +37,7 @@ class PslzmeConfiguration extends BackendModule {
         $this->Template->pslzmeDBUser = $this->pslzmeDBUser;
 
         if(!empty($this->pslzmeDBIPR)) {
-            $this->Template->imprintID = $this->pslzmeDBIPR;
+            $this->Template->imprintID = json_decode($this->pslzmeDBIPR);
         }
 
         $this->compile();
