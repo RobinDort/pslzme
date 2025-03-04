@@ -35,33 +35,22 @@ class PslzmeConfiguration extends BackendModule {
         $this->Template->pslzmeDBName = $this->pslzmeDBName;
         $this->Template->pslzmeDBUser = $this->pslzmeDBUser;
 
-        $imprintPageTree = new PageTree([
+        // Create the PageTree widget
+        $objWidget = new PageTree([
             'id'        => 'imprint_page',
             'name'      => 'imprint_page',
-            'value'     => $this->varValue,
-            'fieldType' => 'radio', // Only one page per name
-            'multiple'  => false
+            'value'     => $selectedPageId,
+            'fieldType' => 'radio', // Single selection
+            'mandatory' => true, // Required
         ]);
-        $this->Template->imprintPageTree = $imprintPageTree->generate();
-
-        $privacyPolicyPageTree = new PageTree([
-            'id'        => 'privacy_page',
-            'name'      => 'privacy_page',
-            'value'     => $this->varValue,
-            'fieldType' => 'radio', // Only one page per name
-            'multiple'  => false
-        ]);
-        $this->Template->privacyPolicyPageTree = $privacyPolicyPageTree->generate();
-
-        $homePageTree = new PageTree([
-            'id'        => 'home_page',
-            'name'      => 'home_page',
-            'value'     => $this->varValue,
-            'fieldType' => 'radio', // Only one page per name
-            'multiple'  => false
-        ]);
-        $this->Template->homePageTree = $homePageTree->generate();
-
+        
+        if ($_POST) {
+            $objWidget->validate();
+            if (!$objWidget->hasErrors()) {
+                echo $objWidget->value;
+            }
+        }
+        
         $this->compile();
 
         return $this->Template->parse();
