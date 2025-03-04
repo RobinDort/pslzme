@@ -84,7 +84,7 @@
                 <p>Damit die interne Weiterleitung problemlos genutzt werden kann, weissen Sie bitte die in den nachstehenden Feldern beschriebenen Seiten mit der entprechenden ID der passenden internen Seite zu.</p>
 
                 <div class="tl_formbody_edit">
-                    <form id="internal-page-form">
+                    <form id="internal-page-form" onsubmit="event.preventDefault(); saveInternalPageConfiguration(this);">
                         <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN ?>"/>
 
                         <div class="pslzme-db-configuration">
