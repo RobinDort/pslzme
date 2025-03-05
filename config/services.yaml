@@ -8,10 +8,7 @@ services:
 
   RobinDort\PslzmeLinks\Service\DatabaseConnection:
     arguments:
-      $servername: "%servername%"
-      $username: "%username%"
-      $password: "%password%"
-      $dbname: "%database%"
+      $params: "@parameter_bag"
     public: true
 
   RobinDort\PslzmeLinks\Controller\RequestHandlerController:
