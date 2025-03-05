@@ -11,6 +11,7 @@ use Contao\Message;
 use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
 use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
 use RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor;
+use RobinDort\PslzmeLinks\Service\Backend\ParametersUpdater;
 
 #[AsController]
 class BackendRequestHandlerController {
@@ -42,6 +43,11 @@ class BackendRequestHandlerController {
             // use database and insert or update the data
             $dbPslzmeStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
             $result = $dbPslzmeStmtExecutor->initDatabaseConfigurationData($databaseName, $databaseUser, $encryptedPassword, $timestamp);
+
+            // update parameters.yaml to use the new database data.
+            $paramsUpdater = new ParametersUpdater();
+            $paramsUpdater->updateDatabaseParameters("localhost", $databaseUser, $databasePassword, $databaseName);
+            
             Message::addConfirmation($result);
             return new JsonResponse($result);
 

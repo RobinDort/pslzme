@@ -1,7 +1,7 @@
 <?php
 namespace RobinDort\PslzmeLinks\Service\Backend;
 
-class ParamtersUpdater {
+class ParametersUpdater {
     private $parametersFile;
 
     public function __construct() {
