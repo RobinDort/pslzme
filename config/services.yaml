@@ -8,10 +8,10 @@ services:
 
   RobinDort\PslzmeLinks\Service\DatabaseConnection:
     arguments:
-      $servername: "localhost"
-      $username: "PluginAdmin"
-      $password: "PluginAdmin123!"
-      $dbname: "plugin_test_db"
+      $servername: "%servername%"
+      $username: "%username%"
+      $password: "%password%"
+      $dbname: "%database%"
     public: true
 
   RobinDort\PslzmeLinks\Controller\RequestHandlerController:
