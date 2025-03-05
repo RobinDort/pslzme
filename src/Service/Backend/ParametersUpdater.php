@@ -5,7 +5,7 @@ class ParametersUpdater {
     private $parametersFile;
 
     public function __construct() {
-        $this->parametersFile = __DIR__ . "../../config/parameters.yaml";
+        $this->parametersFile = __DIR__ . "../../../config/parameters.yaml";
     }
 
     public function updateDatabaseParameters($host, $user, $pw, $dbname) {
