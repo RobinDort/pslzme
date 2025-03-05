@@ -15,7 +15,7 @@ class ParametersUpdater {
         $content = preg_replace('/password: .*/', "password: '$pw'", $content);
         $content = preg_replace('/database: .*/', "database: '$dbname'", $content);
 
-        file_put_contents($this->parameterFile, $content);
+        file_put_contents($this->parametersFile, $content);
 
         // Clear cache to apply changes
         shell_exec('php bin/console cache:clear --env=prod');
