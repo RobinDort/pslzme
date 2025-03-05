@@ -47,7 +47,6 @@ class DatabasePslzmeConfigStmtExecutor {
     }
 
     public function selectCurrentDatabaseConfigurationData() {
-        try {
             $selectResult = $this->selectDatabaseConfiguration();
             $rows = $selectResult["rows"];
             if (!empty($rows)) {
@@ -66,12 +65,8 @@ class DatabasePslzmeConfigStmtExecutor {
                     "databaseTimestamp" => $databaseTimestamp
                 ];
             } else {
-                throw new InvalidDataException("No current database configuration specified.");
+                return [];
             }
-        } catch (InvalidDataException $ide) {
-             // rethrow 
-             throw $ide;
-        }
     }
 
     private function selectDatabaseConfiguration() {
