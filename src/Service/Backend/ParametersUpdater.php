@@ -1,6 +1,8 @@
 <?php
 namespace RobinDort\PslzmeLinks\Service\Backend;
 
+use Exception;
+
 class ParametersUpdater {
     private $parametersFile;
 
@@ -9,16 +11,20 @@ class ParametersUpdater {
     }
 
     public function updateDatabaseParameters($host, $user, $pw, $dbname) {
-        $content = file_get_contents($this->parametersFile);
-        $content = preg_replace('/servername: .*/', "servername: '$host'", $content);
-        $content = preg_replace('/username: .*/', "username: '$user'", $content);
-        $content = preg_replace('/password: .*/', "password: '$pw'", $content);
-        $content = preg_replace('/database: .*/', "database: '$dbname'", $content);
+        try {
+            if (!is_writable($this->parametersFile)) {
+                throw new Exception("Error: Cannot write to parameters.yaml");
+            }
+            $content = file_get_contents($this->parametersFile);
+            $content = preg_replace('/servername: .*/', "servername: '$host'", $content);
+            $content = preg_replace('/username: .*/', "username: '$user'", $content);
+            $content = preg_replace('/password: .*/', "password: '$pw'", $content);
+            $content = preg_replace('/database: .*/', "database: '$dbname'", $content);
 
-        file_put_contents($this->parametersFile, $content);
-
-        // Clear cache to apply changes
-        shell_exec('php bin/console cache:clear --env=prod');
+            file_put_contents($this->parametersFile, $content);
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+        }
     }
 }
 
