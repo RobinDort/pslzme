@@ -44,8 +44,6 @@ class BackendRequestHandlerController {
             $dbPslzmeStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
             $result = $dbPslzmeStmtExecutor->initDatabaseConfigurationData($databaseName, $databaseUser, $encryptedPassword, $timestamp);
 
-            $paramsUpdater->updateDatabaseParameters("localhost", $databaseUser, $databasePassword, $databaseName);
-
             Message::addConfirmation($result);
             return new JsonResponse($result);
 
