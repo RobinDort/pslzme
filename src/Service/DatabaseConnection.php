@@ -8,6 +8,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
 use RobinDort\PslzmeLinks\Service\DatabaseManager;
 use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
+use RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor;
 
 use Exception;
 
@@ -44,21 +45,33 @@ class DatabaseConnection {
     // }
 
 
-    public function __construct(ParameterBagInterface $params) {
+    public function __construct() {
         $this->params = $params;
 
         try {
-            $servername = $this->params->get('servername');
-            $username =  $this->params->get('username');
-            $password =  $this->params->get('password');
-            $dbname =  $this->params->get('dbname');
+            // Get the database data
+            $dbStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
+            $dbData = $dbStmtExecutor->selectCurrentDatabaseConfigurationData();
 
-            if (empty($servername) || empty($username) || empty($password) || empty($dbname)) {
+            if(empty($dbData)) {
+                throw new DatabaseException("No pslzme database configuration specified.");
+            } 
+
+            $servername = "localhost";
+            $username =  $dbData["databaseUser"];
+            $encryptedPW = $dbData["databasePassword"];
+            $timestamp = $dbData["databaseTimestamp"];
+            $dbname =  $dbData["databaseName"];
+
+            if (empty($username) || empty($password) || empty($dbname)) {
                 throw new InvalidDataException("Unable to extract parameters from ParamaterBagInterface");
             }
+
+            // decrypt the password
+            $decryptedPW = $this->decryptPassword($encryptedPW, $timestamp);
      
             // create connection to database
-            $this->connection = new mysqli($servername, $username, $password, $dbname);
+            $this->connection = new mysqli($servername, $username, $decryptedPW, $dbname);
 
             // check if connection was established
             if($this->connection->connect_error) {
@@ -85,6 +98,16 @@ class DatabaseConnection {
         if ($this->connection !== null && $this->connection->ping()) {
             $this->connection->close();
         }
+    }
+    
+    private function decryptPassword($encryptedPassword, $timestamp) {
+        $secretKey = hash('sha256', $timestamp); // Recreate key from timestamp
+        $data = base64_decode($encryptedPassword);
+        
+        $iv = substr($data, 0, 16);
+        $ciphertext = substr($data, 16);
+        
+        return openssl_decrypt($ciphertext, 'aes-256-cbc', $secretKey, 0, $iv);
     }
 }
 ?>

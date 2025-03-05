@@ -7,8 +7,6 @@ services:
     public: true
 
   RobinDort\PslzmeLinks\Service\DatabaseConnection:
-    arguments:
-      $params: "@parameter_bag"
     public: true
 
   RobinDort\PslzmeLinks\Controller\RequestHandlerController:

@@ -44,10 +44,8 @@ class BackendRequestHandlerController {
             $dbPslzmeStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
             $result = $dbPslzmeStmtExecutor->initDatabaseConfigurationData($databaseName, $databaseUser, $encryptedPassword, $timestamp);
 
-            // update parameters.yaml to use the new database data.
-            $paramsUpdater = new ParametersUpdater();
             $paramsUpdater->updateDatabaseParameters("localhost", $databaseUser, $databasePassword, $databaseName);
-            
+
             Message::addConfirmation($result);
             return new JsonResponse($result);
 
@@ -118,16 +116,6 @@ class BackendRequestHandlerController {
         $encryptedData = base64_encode($iv . $ciphertext);
     
         return $encryptedData;
-    }  
-
-    private function decryptPassword($encryptedPassword, $timestamp) {
-        $secretKey = hash('sha256', $timestamp); // Recreate key from timestamp
-        $data = base64_decode($encryptedPassword);
-        
-        $iv = substr($data, 0, 16);
-        $ciphertext = substr($data, 16);
-        
-        return openssl_decrypt($ciphertext, 'aes-256-cbc', $secretKey, 0, $iv);
     }
 }
 
