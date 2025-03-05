@@ -16,6 +16,12 @@ use RobinDort\PslzmeLinks\Service\DatabaseManager;
 #[AsController]
 class BackendRequestHandlerController {
 
+    private $dbm;
+
+    public function __construct(DatabaseManager $dbm) {
+        $this->dbm = $dbm;
+    }
+
     #[Route('/saveDatabaseData', name: "save_database_data", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])] 
     public function saveDatabaseData(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
@@ -45,7 +51,6 @@ class BackendRequestHandlerController {
             $result = $dbPslzmeStmtExecutor->initDatabaseConfigurationData($databaseName, $databaseUser, $encryptedPassword, $timestamp);
 
             // init the pslzme database tables
-            $dbmanager = new DatabaseManager();
             $dbmanager->initTables();
 
             Message::addConfirmation($result);

@@ -9,6 +9,9 @@ services:
   RobinDort\PslzmeLinks\Service\DatabaseConnection:
     public: true
 
+  RobinDort\PslzmeLinks\Service\DatabaseManager:
+    public: true
+
   RobinDort\PslzmeLinks\Controller\RequestHandlerController:
     tags: [controller.service_arguments]
 

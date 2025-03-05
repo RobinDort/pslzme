@@ -19,8 +19,6 @@ class DatabaseConnection {
     // private $password;
     // private $dbname;
 
-    private $params;
-
     // public function __construct($servername, $username, $password, $dbname) {
     //     $this->servername = $servername;
     //     $this->username = $username;
@@ -46,8 +44,6 @@ class DatabaseConnection {
 
 
     public function __construct() {
-        $this->params = $params;
-
         try {
             // Get the database data
             $dbStmtExecutor = new DatabasePslzmeConfigStmtExecutor();

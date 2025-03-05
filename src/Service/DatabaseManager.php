@@ -15,9 +15,9 @@ class DatabaseManager {
         "query_link"    => "createQueryLinkTable"
     ];
 
-    public function __construct() {
+    public function __construct(DatabaseConnection $dbConnection) {
         // fetch the service manually to prevent circular dependency
-        $this->dbc = System::getContainer()->get(DatabaseConnection::class);
+        $this->dbc = $dbConnection;
     }
 
 
