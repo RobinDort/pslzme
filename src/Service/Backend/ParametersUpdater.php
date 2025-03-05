@@ -2,6 +2,7 @@
 namespace RobinDort\PslzmeLinks\Service\Backend;
 
 use Exception;
+use Symfony\Component\Yaml\Yaml;
 
 class ParametersUpdater {
     private $parametersFile;
@@ -15,13 +16,17 @@ class ParametersUpdater {
             if (!is_writable($this->parametersFile)) {
                 throw new Exception("Error: Cannot write to parameters.yaml");
             }
-            $content = file_get_contents($this->parametersFile);
-            $content = preg_replace('/servername: .*/', "servername: '$host'", $content);
-            $content = preg_replace('/username: .*/', "username: '$user'", $content);
-            $content = preg_replace('/password: .*/', "password: '$pw'", $content);
-            $content = preg_replace('/database: .*/', "database: '$dbname'", $content);
+            // Load current values from YAML
+            $config = Yaml::parseFile($this->parametersFile);
+            $config['parameters']['servername'] = $host;
+            $config['parameters']['username'] = $user;
+            $config['parameters']['password'] = $pw;
+            $config['parameters']['database'] = $dbname;
 
-            file_put_contents($this->parametersFile, $content);
+            file_put_contents($this->parametersFile, Yaml::dump($config, 4));
+
+            // Clear cache to apply changes
+            shell_exec('php bin/console cache:clear --env=prod');
         } catch (Exception $e) {
             error_log($e->getMessage());
         }
