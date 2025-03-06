@@ -74,7 +74,7 @@
                 <div class="pslzme-explanation">
                     <h3><span>Schritt 3:</span> pslz<strong>me</strong> Tabellen konfigurieren</h3>
                     <p>Zuletzt müssen die benötigten pslz<strong>me</strong>Datenbanktabellen angelegt werden. Dies erfolgt vollständig automatisiert nach bestätigung des nachstehenden Buttons. Wichtig ist nur, das die Angaben im vorherigen Schritt keine Fehler enthalten.</p>
-                    <button onclick="event.preventDefault();createPslzmeTables();">Tabellen anlegen</button>
+                    <button type="submit" onclick="event.preventDefault();createPslzmeTables();">Tabellen anlegen</button>
                 </div>
             </div>
             <p></p>
