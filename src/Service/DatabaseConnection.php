@@ -62,8 +62,8 @@ class DatabaseConnection {
             // decrypt the password
             $decryptedPW = $this->decryptPassword($encryptedPW, $timestamp);
             error_log("decrypted PW: " .$decryptedPW);
-            throw new Exception("Decrypted PW");
             \System::log("decrypted PW: " . $decryptedPW, __METHOD__, TL_ERROR);
+            throw new Exception("Decrypted PW");
      
             // create connection to database
             $this->connection = new mysqli($servername, $username, $decryptedPW, $dbname);
