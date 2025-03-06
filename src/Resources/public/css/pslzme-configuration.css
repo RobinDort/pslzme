@@ -47,6 +47,11 @@
 	font-weight: normal;
 }
 
+.pslzme-configuration-step .pslzme-explanation,
+.pslzme-configuration-step .tl_formbody_edit {
+	margin-bottom: 2em;
+}
+
 .pslzme-explanation span {
 	font-weight: bold;
 }
