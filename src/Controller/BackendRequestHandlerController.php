@@ -47,7 +47,7 @@ class BackendRequestHandlerController {
 
             // init the pslzme database tables
             $dbm = new DatabaseManager();
-            $this->dbm->initTables();
+            $dbm->initTables();
 
             Message::addConfirmation($result);
             return new JsonResponse($result);
