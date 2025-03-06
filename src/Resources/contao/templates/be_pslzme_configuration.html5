@@ -234,7 +234,6 @@
                 
             },
             onFailure: function (error) { 
-                console.log("Action failed: " + requestObject.request);
                 console.log("XHR Response:", error.responseText);
             }
         }).send();
