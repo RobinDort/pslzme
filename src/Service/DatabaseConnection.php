@@ -98,13 +98,15 @@ class DatabaseConnection {
     }
     
     private function decryptPassword($encryptedPassword, $timestamp) {
-        $secretKey = hash('sha256', $timestamp); // Recreate key from timestamp
+        $secretKey = hash('sha256', $timestamp, true); // Recreate key from timestamp
         $data = base64_decode($encryptedPassword);
         
         $iv = substr($data, 0, 16);
         $ciphertext = substr($data, 16);
+
+        $decryptedPW = openssl_decrypt($ciphertext, 'aes-256-cbc', $secretKey, 0, $iv);
         
-        return openssl_decrypt($ciphertext, 'aes-256-cbc', $secretKey, 0, $iv);
+        return $decryptedPW;
     }
 }
 ?>

@@ -121,7 +121,7 @@ class BackendRequestHandlerController {
 
 
     private function encryptPassword($password, $timestamp) {
-        $secretKey = hash('sha256', $timestamp); // Create a key from the timestamp
+        $secretKey = hash('sha256', $timestamp, true); // Create a key from the timestamp
         $iv = random_bytes(16); // Generate IV
     
         $ciphertext = openssl_encrypt($password, 'aes-256-cbc', $secretKey, 0, $iv);
