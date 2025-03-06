@@ -44,7 +44,7 @@ class DatabaseConnection {
 
 
     public function __construct() {
-        try {
+        // try {
             // Get the database data
             $dbStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
             $dbData = $dbStmtExecutor->selectCurrentDatabaseConfigurationData();
@@ -73,16 +73,16 @@ class DatabaseConnection {
                 throw new DatabaseException("Connection to database failed: " . $this->connection->connect_error);
             } 
 
-        } catch(InvalidDataException $ide) {
-            error_log($ide->getErrorMsg());
-            $this->closeConnection();
-        } catch(DatabaseException $dbe) {
-            error_log($dbe->getErrorMsg());
-            $this->closeConnection();
-        } catch(Exception $e) {
-            $this->closeConnection();
-            error_log($e->getMessage());
-        }
+        // } catch(InvalidDataException $ide) {
+        //     error_log($ide->getErrorMsg());
+        //     $this->closeConnection();
+        // } catch(DatabaseException $dbe) {
+        //     error_log($dbe->getErrorMsg());
+        //     $this->closeConnection();
+        // } catch(Exception $e) {
+        //     $this->closeConnection();
+        //     error_log($e->getMessage());
+        // }
     }
 
     public function getConnection() {
