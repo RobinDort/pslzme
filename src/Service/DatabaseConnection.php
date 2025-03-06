@@ -44,7 +44,7 @@ class DatabaseConnection {
 
 
     public function __construct() {
-        // try {
+        try {
             // Get the database data
             $dbStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
             $dbData = $dbStmtExecutor->selectCurrentDatabaseConfigurationData();
@@ -61,11 +61,6 @@ class DatabaseConnection {
 
             // decrypt the password
             $decryptedPW = $this->decryptPassword($encryptedPW, $timestamp);
-            error_log("decrypted PW: " .$decryptedPW);
-            \System::log("encrypted PW: " . $encryptedPW, __METHOD__, TL_ERROR);
-            \System::log("timestamp: " . $timestamp, __METHOD__, TL_ERROR);
-            \System::log("decrypted PW: " . $decryptedPW, __METHOD__, TL_ERROR);
-            throw new Exception("Decrypted PW");
      
             // create connection to database
             $this->connection = new mysqli($servername, $username, $decryptedPW, $dbname);
@@ -75,16 +70,16 @@ class DatabaseConnection {
                 throw new DatabaseException("Connection to database failed: " . $this->connection->connect_error);
             } 
 
-        // } catch(InvalidDataException $ide) {
-        //     error_log($ide->getErrorMsg());
-        //     $this->closeConnection();
-        // } catch(DatabaseException $dbe) {
-        //     error_log($dbe->getErrorMsg());
-        //     $this->closeConnection();
-        // } catch(Exception $e) {
-        //     $this->closeConnection();
-        //     error_log($e->getMessage());
-        // }
+        } catch(InvalidDataException $ide) {
+            error_log($ide->getErrorMsg());
+            $this->closeConnection();
+        } catch(DatabaseException $dbe) {
+            error_log($dbe->getErrorMsg());
+            $this->closeConnection();
+        } catch(Exception $e) {
+            $this->closeConnection();
+            error_log($e->getMessage());
+        }
     }
 
     public function getConnection() {
