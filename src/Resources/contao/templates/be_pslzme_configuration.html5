@@ -20,8 +20,7 @@
 
                 <div class="pslzme-explanation">
                     <h3><?= $GLOBALS['TL_LANG']['pslzme_configuration']['config_step_two'] ?></h3>
-                    <p><?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_five'] ?>
-                    </p>
+                    <p><?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_five'] ?></p>
                 </div>
 
                 <div class="tl_formbody_edit">
@@ -70,6 +69,12 @@
 
                         <button type="submit"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['save'] ?></button>
                     </form>
+                </div>
+
+                <div class="pslzme-explanation">
+                    <h3><span>Schritt 3:</span> pslz<strong>me</strong> Tabellen konfigurieren</h3>
+                    <p>Zuletzt müssen die benötigten pslz<strong>me</strong>Datenbanktabellen angelegt werden. Dies erfolgt vollständig automatisiert nach bestätigung des nachstehenden Buttons. Wichtig ist nur, das die Angaben im vorherigen Schritt keine Fehler enthalten.</p>
+                    <button onclick="">Tabellen anlegen</button>
                 </div>
             </div>
             <p></p>
@@ -181,7 +186,7 @@
 
 
     function saveInternalPageConfiguration(configuration) {
-            // Get form values
+        // Get form values
         const formData = new FormData(configuration);
         const values = Object.fromEntries(formData.entries()); 
 
@@ -203,6 +208,24 @@
             url: "/saveInternalPages",
             method: "post",
             data: requestObject,
+            onSuccess: function (response) {
+                alert(response);
+                setTimeout(function() {
+                    window.location.reload();
+                }, 1000);
+                
+            },
+            onFailure: function (error) { 
+                console.log("Action failed: " + requestObject.request);
+                console.log("XHR Response:", error.responseText);
+            }
+        }).send();
+    }
+
+    function createPslzmeTables() {
+        return new Request.JSON({
+            url: "/createPslzmeTables",
+            method: "post",
             onSuccess: function (response) {
                 alert(response);
                 setTimeout(function() {
