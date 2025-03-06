@@ -19,7 +19,7 @@ class RequestHandlerController {
     //     $this->api = $api;
     // }
 
-    public function __construct(Api $api) {
+    public function __construct() {
         $this->api = new Api();
     }
 
