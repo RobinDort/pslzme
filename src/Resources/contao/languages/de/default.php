@@ -47,9 +47,7 @@ $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_four'] = 'S
                         und weissen Sie dann die gewünschten Konfigurationdaten wie Username und Passwort zu. Nach beidiger Erstellung
                         muss zuletzt - wenn nicht bereits getan - der erstellte User noch der Datenbank zugewiesen werden.';
 $GLOBALS['TL_LANG']['pslzme_configuration']['config_step_two'] = '<span>Schritt 2:</span> Datenbank an plsz<strong>me</strong> plugin anbinden';
-$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_five'] = 'Als nächstes tragen Sie bitte die Verbindungsdaten der soeben erstellten Datenbank in die nachstehenden Felder ein. Nach
-                        Bestätigung des Speichern buttons, werden die benötigten Tabellen von pslz<strong>me</strong> automatisiert initiiert.';
-
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_five'] = 'Als nächstes tragen Sie bitte die Verbindungsdaten der soeben erstellten Datenbank in die nachstehenden Felder ein und bestätigen dies durch Klick des Speichern buttons.';
 $GLOBALS['TL_LANG']['pslzme_configuration']['db_name'] = "Datenbankname:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['current_db'] = "Aktuelle Datenbank:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['no_db'] = "Keine Datenbank konfiguriert";
