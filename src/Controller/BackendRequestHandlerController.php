@@ -40,13 +40,14 @@ class BackendRequestHandlerController {
             // encrypt the password before saving
             $timestamp = time();
             $encryptedPassword = $this->encryptPassword($databasePassword,$timestamp);
+            $decryptedPW = $this->decryptPassword($encryptedPassword, $timestamp);
 
             // use database and insert or update the data
             $dbPslzmeStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
             $result = $dbPslzmeStmtExecutor->initDatabaseConfigurationData($databaseName, $databaseUser, $encryptedPassword, $timestamp);
 
             Message::addConfirmation($result);
-            return new JsonResponse($result);
+            return new JsonResponse($decryptedPW);
 
         } catch (InvalidDataException $ide) {
             error_log($ide->getErrorMsg());
@@ -129,6 +130,17 @@ class BackendRequestHandlerController {
     
         return $encryptedData;
     }
+
+    private function decryptPassword($encryptedPassword, $timestamp) {
+        $secretKey = hash('sha256', $timestamp); // Recreate key from timestamp
+        $data = base64_decode($encryptedPassword);
+        
+        $iv = substr($data, 0, 16);
+        $ciphertext = substr($data, 16);
+        
+        return openssl_decrypt($ciphertext, 'aes-256-cbc', $secretKey, 0, $iv);
+    }
 }
+
 
 ?>
