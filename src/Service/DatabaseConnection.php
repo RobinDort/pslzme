@@ -49,8 +49,8 @@ class DatabaseConnection {
             $dbStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
             $dbData = $dbStmtExecutor->selectCurrentDatabaseConfigurationData();
 
-            if(empty($dbData)) {
-                throw new DatabaseException("No pslzme database configuration specified.");
+            if(empty($dbData["databaseUser"]) || empty($dbData["databasePassword"]) || empty($dbData["databaseTimestamp"]) || empty($dbData["databaseName"])) {
+                throw new DatabaseException("No correct pslzme database configuration specified.");
             } 
 
             $servername = "localhost";
