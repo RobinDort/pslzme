@@ -62,6 +62,8 @@ class DatabaseConnection {
             // decrypt the password
             $decryptedPW = $this->decryptPassword($encryptedPW, $timestamp);
             error_log("decrypted PW: " .$decryptedPW);
+            \System::log("encrypted PW: " . $encryptedPW, __METHOD__, TL_ERROR);
+            \System::log("timestamp: " . $timestamp, __METHOD__, TL_ERROR);
             \System::log("decrypted PW: " . $decryptedPW, __METHOD__, TL_ERROR);
             throw new Exception("Decrypted PW");
      
