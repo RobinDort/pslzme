@@ -13,8 +13,7 @@ services:
     public: true
 
   RobinDort\PslzmeLinks\Controller\BackendRequestHandlerController:
-    arguments:
-      $dbm: '@RobinDort\PslzmeLinks\Service\DatabaseManager'
+    public: true
 
   RobinDort\PslzmeLinks\Controller\RequestHandlerController:
     tags: [controller.service_arguments]
