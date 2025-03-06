@@ -48,10 +48,12 @@ class DatabaseConnection {
             // Get the database data
             $dbStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
             $dbData = $dbStmtExecutor->selectCurrentDatabaseConfigurationData();
+            error_log("Database data retrieved: " . print_r($dbData, true));
 
             if(empty($dbData["databaseUser"]) || empty($dbData["databasePassword"]) || empty($dbData["databaseTimestamp"]) || empty($dbData["databaseName"])) {
                 throw new DatabaseException("No correct pslzme database configuration specified.");
             } 
+
 
             $servername = "localhost";
             $username =  $dbData["databaseUser"];
