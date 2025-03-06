@@ -72,9 +72,9 @@
                 </div>
 
                 <div class="pslzme-explanation">
-                    <h3><span>Schritt 3:</span> pslz<strong>me</strong> Tabellen konfigurieren</h3>
-                    <p>Zuletzt müssen die benötigten pslz<strong>me</strong>Datenbanktabellen angelegt werden. Dies erfolgt vollständig automatisiert nach bestätigung des nachstehenden Buttons. Wichtig ist nur, das die Angaben im vorherigen Schritt keine Fehler enthalten.</p>
-                    <button type="submit" onclick="event.preventDefault();createPslzmeTables();">Tabellen anlegen</button>
+                    <h3><?= $GLOBALS['TL_LANG']['pslzme_configuration']['config_step_three'] ?></h3>
+                    <p><?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_six'] ?></p>
+                    <button type="submit" onclick="event.preventDefault();createPslzmeTables();"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['create_tables'] ?></button>
                 </div>
             </div>
             <p></p>
@@ -84,7 +84,7 @@
             <h2><?= $GLOBALS['TL_LANG']['pslzme_configuration']['second_config_container_h2'] ?></h2>
 
             <div class="pslzme-explanation">
-                <?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_six'] ?>
+                <?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_seven'] ?>
 
                 <div class="tl_formbody_edit">
                     <form id="internal-page-form" onsubmit="event.preventDefault(); saveInternalPageConfiguration(this);">

@@ -55,8 +55,11 @@ $GLOBALS['TL_LANG']['pslzme_configuration']['db_user'] = "Datenbank-User:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['current_db_user'] = 'Aktueller Datenbank-User:';
 $GLOBALS['TL_LANG']['pslzme_configuration']['no_db_user'] = 'Kein Datenbank-User konfiguriert';
 $GLOBALS['TL_LANG']['pslzme_configuration']['db_pw'] = 'Datenbank Passwort:';
+$GLOBALS['TL_LANG']['pslzme_configuration']['config_step_three'] = '<span>Schritt 3:</span> pslz<strong>me</strong> Tabellen konfigurieren';
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_six'] = 'Zuletzt müssen die benötigten pslz<strong>me</strong> Datenbanktabellen angelegt werden. Dies erfolgt vollständig automatisiert nach Bestätigung des nachstehenden Buttons. Bitte prüfen Sie erneut, ob die Angaben im vorherigen Schritt keine Fehler enthalten.';
+$GLOBALS['TL_LANG']['pslzme_configuration']['create_tables'] = 'Tabellen anlegen';
 $GLOBALS['TL_LANG']['pslzme_configuration']['second_config_container_h2'] = '2: Interne Seiten Konfiguration';
-$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_six'] = "<p>Für einen reibungslosen und DSGVO-Konformen Ablauf nutzt pslz<strong>me</strong> interne Weiterleitungen zu bestimmten Unterseiten Ihrer Webseite.</p>
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_seven'] = "<p>Für einen reibungslosen und DSGVO-Konformen Ablauf nutzt pslz<strong>me</strong> interne Weiterleitungen zu bestimmten Unterseiten Ihrer Webseite.</p>
                 <p>Beispielsweise benötigt der pslz<strong>me</strong> Cookiebanner, welcher als essentielles Bestandsteil fungiert, Angaben zu Impressum und Datenschutz der Seite.</p>
                 <p>Damit die interne Weiterleitung problemlos genutzt werden kann, weissen Sie bitte die in den nachstehenden Feldern beschriebenen Seiten mit der entprechenden ID der passenden internen Seite zu.</p>";
 $GLOBALS['TL_LANG']['pslzme_configuration']['imprint_id'] = "ID der Impressumsseite:";

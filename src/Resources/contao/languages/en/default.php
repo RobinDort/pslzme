@@ -44,8 +44,11 @@ $GLOBALS['TL_LANG']['pslzme_configuration']['db_user'] = "Database user:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['current_db_user'] = 'Current database user:';
 $GLOBALS['TL_LANG']['pslzme_configuration']['no_db_user'] = 'No database user configured';
 $GLOBALS['TL_LANG']['pslzme_configuration']['db_pw'] = 'Database password:';
+$GLOBALS['TL_LANG']['pslzme_configuration']['config_step_three'] = '<span>Step 3:</span> configure pslz<strong>me</strong> tables';
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_six'] = 'Finally, the required pslz<strong>me</strong> database tables must be created. This is fully automated after confirming the button below. Please check again that the details in the previous step do not contain any errors.';
+$GLOBALS['TL_LANG']['pslzme_configuration']['create_tables'] = 'Create tables';
 $GLOBALS['TL_LANG']['pslzme_configuration']['second_config_container_h2'] = '2: Internal page configuration';
-$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_six'] = "<p>For a smooth and GDPR-compliant process, pslz<strong>me</strong> uses internal redirects to certain subpages of your website.</p>
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_seven'] = "<p>For a smooth and GDPR-compliant process, pslz<strong>me</strong> uses internal redirects to certain subpages of your website.</p>
                 <p>For example, the pslzme cookie banner, which functions as an essential component, requires information on the site's legal notice and data protection.</p>
                 <p>To ensure that internal forwarding can be used without any problems, please assign the pages described in the fields below with the corresponding ID to the appropriate internal page</p>";
 $GLOBALS['TL_LANG']['pslzme_configuration']['imprint_id'] = "ID of the imprint page:";
