@@ -61,7 +61,7 @@ class DatabaseConnection {
 
             // decrypt the password
             $decryptedPW = $this->decryptPassword($encryptedPW, $timestamp);
-            error_log($decryptedPW);
+            error_log("decrypted PW: " .$decryptedPW);
      
             // create connection to database
             $this->connection = new mysqli($servername, $username, $decryptedPW, $dbname);
