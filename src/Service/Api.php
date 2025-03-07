@@ -33,11 +33,11 @@ class Api {
     public function __construct(DatabaseConnection $dbConn) {
         // create / inject database connection
         $this->db = $dbConn;
-        $this->sqlExecutor = new DatabaseStatementExecutor($this->db);
+        // $this->sqlExecutor = new DatabaseStatementExecutor($this->db);
 
-        $this->ciphering = "AES-128-CTR";
-        $this->ivLength = openssl_cipher_iv_length($this->ciphering);
-        $this->options = 0;
+        // $this->ciphering = "AES-128-CTR";
+        // $this->ivLength = openssl_cipher_iv_length($this->ciphering);
+        // $this->options = 0;
     }
 
 
