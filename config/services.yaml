@@ -13,6 +13,9 @@ services:
   RobinDort\PslzmeLinks\Controller\BackendRequestHandlerController:
     public: true
 
+  RobinDort\PslzmeLinks\Service\DatabasePslzmeConfigStmtExecutor:
+    public: true
+
   RobinDort\PslzmeLinks\Controller\RequestHandlerController:
     tags: [controller.service_arguments]
 

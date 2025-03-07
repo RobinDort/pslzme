@@ -14,6 +14,7 @@ use Exception;
 
 class DatabaseConnection {
     private $connection;
+    private $dbStmtExecutor;
     // private $servername;
     // private $username;
     // private $password;
@@ -43,10 +44,11 @@ class DatabaseConnection {
     // }
 
 
-    public function __construct() {
+    public function __construct(DatabasePslzmeConfigStmtExecutor $dbPslzmeCSE) {
         try {
             // Get the database data
-            $dbStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
+            //$dbStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
+            $this->dbStmtExecutor = $dbPslzmeCSE;
             $dbData = $dbStmtExecutor->selectCurrentDatabaseConfigurationData();
 
             if(empty($dbData["databaseUser"]) || empty($dbData["databasePassword"]) || empty($dbData["databaseTimestamp"]) || empty($dbData["databaseName"])) {
