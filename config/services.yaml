@@ -15,7 +15,7 @@ services:
 
   RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor:
     arguments:
-      $database: "@contao.database_connection"
+      $database: "@database_connection"
     public: true
 
   RobinDort\PslzmeLinks\Controller\RequestHandlerController:
