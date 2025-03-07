@@ -9,6 +9,9 @@ services:
   RobinDort\PslzmeLinks\Controller\BackendRequestHandlerController:
     public: true
 
+  RobinDort\PslzmeLinks\Controller\RequestHandlerController:
+    public: true
+
   RobinDort\PslzmeLinks\EventListener\InstallListener:
     arguments:
       $kernel: "@kernel"
