@@ -14,7 +14,7 @@ services:
     public: true
 
   RobinDort\PslzmeLinks\Controller\RequestHandlerController:
-    public: true
+    tags: [controller.service_arguments]
 
   RobinDort\PslzmeLinks\EventListener\InstallListener:
     arguments:
