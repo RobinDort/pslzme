@@ -46,8 +46,7 @@ class RequestHandlerController {
 
             case "extract-greeting-data":
                 $resp = $this->api->handleGreetingDataExtraction($requestData);
-                $response .= $this->api;
-                $response .= $resp;
+                $response = $resp;
                 break;
 
             case "compare-link-owner":

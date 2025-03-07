@@ -3,17 +3,11 @@ services:
     autowire: true
     autoconfigure: true
 
-  RobinDort\PslzmeLinks\Service\Api:
-    public: true
-
   RobinDort\PslzmeLinks\Service\DatabaseConnection:
     public: true
 
   RobinDort\PslzmeLinks\Controller\BackendRequestHandlerController:
     public: true
-
-  RobinDort\PslzmeLinks\Controller\RequestHandlerController:
-    tags: [controller.service_arguments]
 
   RobinDort\PslzmeLinks\EventListener\InstallListener:
     arguments:
