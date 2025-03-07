@@ -6,6 +6,11 @@ services:
   RobinDort\PslzmeLinks\Service\DatabaseConnection:
     public: true
 
+  RobinDort\PslzmeLinks\Service\Api:
+    arguments:
+      $dbConn: '@RobinDort\PslzmeLinks\Service\DatabaseConnection'
+    public: true
+
   RobinDort\PslzmeLinks\Controller\BackendRequestHandlerController:
     public: true
 

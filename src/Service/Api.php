@@ -30,9 +30,9 @@ class Api {
     // }
 
 
-    public function __construct() {
+    public function __construct(DatabaseConnection $dbConn) {
         // create / inject database connection
-        $this->db = new DatabaseConnection();
+        $this->db = $dbConn;
         $this->sqlExecutor = new DatabaseStatementExecutor($this->db);
 
         $this->ciphering = "AES-128-CTR";
