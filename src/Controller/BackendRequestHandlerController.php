@@ -16,6 +16,12 @@ use RobinDort\PslzmeLinks\Service\DatabaseManager;
 #[AsController]
 class BackendRequestHandlerController {
 
+    private $dbPslzmeStmtExecutor;
+
+    public function __construct(DatabasePslzmeConfigStmtExecutor $dbPslzmeStmtExecutor) {
+        $this->dbPslzmeStmtExecutor = $dbPslzmeStmtExecutor;
+    }
+
 
     #[Route('/saveDatabaseData', name: "save_database_data", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])] 
     public function saveDatabaseData(Request $request): JsonResponse {
@@ -42,8 +48,7 @@ class BackendRequestHandlerController {
             $encryptedPassword = $this->encryptPassword($databasePassword,$timestamp);
 
             // use database and insert or update the data
-            $dbPslzmeStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
-            $result = $dbPslzmeStmtExecutor->initDatabaseConfigurationData($databaseName, $databaseUser, $encryptedPassword, $timestamp);
+            $result = $this->dbPslzmeStmtExecutor->initDatabaseConfigurationData($databaseName, $databaseUser, $encryptedPassword, $timestamp);
 
             Message::addConfirmation($result);
             return new JsonResponse($result);
@@ -97,8 +102,7 @@ class BackendRequestHandlerController {
             $jsonPages = json_encode($combinedInternalPages);
 
             // save the pages into the database
-            $dbPslzmeStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
-            $result = $dbPslzmeStmtExecutor->saveInternalPagesData($jsonPages);
+            $result = $this->dbPslzmeStmtExecutor->saveInternalPagesData($jsonPages);
 
             Message::addConfirmation($result);
             return new JsonResponse($result);

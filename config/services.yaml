@@ -10,6 +10,8 @@ services:
     public: true
 
   RobinDort\PslzmeLinks\Controller\BackendRequestHandlerController:
+    arguments:
+      $dbPslzmeStmtExecutor: "@RobinDort\\PslzmeLinks\\Service\\Backend\\DatabasePslzmeConfigStmtExecutor"
     public: true
 
   RobinDort\PslzmeLinks\Backend\PslzmeConfiguration:
