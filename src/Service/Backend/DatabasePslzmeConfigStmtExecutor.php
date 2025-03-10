@@ -1,8 +1,6 @@
 <?php
 namespace RobinDort\PslzmeLinks\Service\Backend;
 
-use Doctrine\DBAL\Connection;
-
 use RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtPreparer;
 use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
 use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
@@ -11,7 +9,7 @@ class DatabasePslzmeConfigStmtExecutor {
     private $connection;
     private $dbPslzmeConfigStmtPreparer;
 
-    public function __construct(Connection $connection) {
+    public function __construct($connection) {
         $this->connection = $connection;
        // $this->connection = Database::getInstance();
         $this->dbPslzmeConfigStmtPreparer = new DatabasePslzmeConfigStmtPreparer($this->connection);
