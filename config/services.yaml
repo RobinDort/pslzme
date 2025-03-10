@@ -13,6 +13,7 @@ services:
 
   RobinDort\PslzmeLinks\Controller\RequestHandlerController:
     tags: [controller.service_arguments]
+    public: true
 
   RobinDort\PslzmeLinks\Service\Api:
     public: true
