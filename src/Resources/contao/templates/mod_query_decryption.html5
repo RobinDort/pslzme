@@ -1,6 +1,7 @@
 <!-- indexer::stop -->
 <?php
     use RobinDort\PslzmeLinks\Service\DecryptFormData;
+	use RobinDort\PslzmeLinks\Service\DatabaseConnection;
     use Contao\System;
 
     // Access the Contao service container to get the DatabaseConnection service
