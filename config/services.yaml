@@ -14,8 +14,7 @@ services:
 
   RobinDort\PslzmeLinks\Backend\PslzmeConfiguration:
     arguments:
-    #prettier-ignore
-      $dbPslzmeStmtExecutor: "@RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor"
+      $dbPslzmeStmtExecutor: "@RobinDort\\PslzmeLinks\\Service\\Backend\\DatabasePslzmeConfigStmtExecutor"
     public: true
 
   RobinDort\PslzmeLinks\Service\DatabaseStatementExecutor:
