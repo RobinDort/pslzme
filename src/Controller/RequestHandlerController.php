@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use RobinDort\PslzmeLinks\Service\Api;
 
 
-#[Route('/requestHandler', name: RequestHandlerController::class)]
+#[Route('/requestHandler', name: RequestHandlerController::class, defaults: ['_token_check' => true, '_scope' => 'frontend'],  methods: ['POST'])] 
 #[AsController]
 class RequestHandlerController {
 
