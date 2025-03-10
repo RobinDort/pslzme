@@ -4,7 +4,6 @@ namespace RobinDort\PslzmeLinks\Service;
 use mysqli;
 use Contao\System;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use Doctrine\DBAL\Connection;
 
 use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
 use RobinDort\PslzmeLinks\Service\DatabaseManager;
@@ -15,7 +14,6 @@ use Exception;
 
 class DatabaseConnection {
     private $connection;
-    private $contaoConnection;
     // private $servername;
     // private $username;
     // private $password;
@@ -45,11 +43,10 @@ class DatabaseConnection {
     // }
 
 
-    public function __construct(Connection $contaoConnection) {
+    public function __construct() {
         //try {
-            $this->contaoConnection = $contaoConnection;
             // Get the database data
-            $dbStmtExecutor = new DatabasePslzmeConfigStmtExecutor($this->contaoConnection);
+            $dbStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
             $dbData = $dbStmtExecutor->selectCurrentDatabaseConfigurationData();
 
             if(empty($dbData["databaseUser"]) || empty($dbData["databasePassword"]) || empty($dbData["databaseTimestamp"]) || empty($dbData["databaseName"])) {

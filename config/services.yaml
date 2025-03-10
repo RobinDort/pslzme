@@ -4,8 +4,6 @@ services:
     autoconfigure: true
 
   RobinDort\PslzmeLinks\Service\DatabaseConnection:
-    arguments:
-      $contaoConnection: "@database_connection"
     public: true
 
   RobinDort\PslzmeLinks\Service\DatabaseStatementExecutor:
@@ -20,13 +18,7 @@ services:
 
   RobinDort\PslzmeLinks\Controller\BackendRequestHandlerController:
     arguments:
-      $contaoConnection: "@database_connection"
       $dbManager: "@RobinDort\\PslzmeLinks\\Service\\DatabaseManager"
-    public: true
-
-  RobinDort\PslzmeLinks\Backend\PslzmeConfiguration:
-    calls:
-      - [setDatabasePslzmeStmtExecutor, ["@database_connection"]]
     public: true
 
   RobinDort\PslzmeLinks\Controller\RequestHandlerController:

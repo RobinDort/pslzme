@@ -5,7 +5,6 @@ use Contao\BackendModule;
 use Contao\BackendTemplate;
 use Contao\PageTree;
 use Contao\Input;
-use Doctrine\DBAL\Connection;
 
 use RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor;
 
@@ -17,17 +16,11 @@ class PslzmeConfiguration extends BackendModule {
     private $pslzmeDBUser;
     private $pslzmeDBIPR;
 
-    private $contaoConnection;
 
     public function __construct() {
         parent::__construct();
-    }
 
-
-    public function setDatabasePslzmeStmtExecutor(Connection $contaoConnection)
-    {
-        $this->contaoConnection = $contaoConnection;
-        $dbPslzmeStmtExecutor = new DatabasePslzmeConfigStmtExecutor($this->contaoConnection);
+        $dbPslzmeStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
 
         $databaseData = $dbPslzmeStmtExecutor->selectCurrentDatabaseConfigurationData();
         if (!empty($databaseData)) {
