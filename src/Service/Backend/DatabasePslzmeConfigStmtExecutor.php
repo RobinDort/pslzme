@@ -14,7 +14,7 @@ class DatabasePslzmeConfigStmtExecutor {
     private $connection;
     private $dbPslzmeConfigStmtPreparer;
 
-    public function __construct(Connection $connection) {
+    public function __construct() {
         //$this->connection = $connection;
         $this->connection = Database::getInstance();
         $this->dbPslzmeConfigStmtPreparer = new DatabasePslzmeConfigStmtPreparer($this->connection);
