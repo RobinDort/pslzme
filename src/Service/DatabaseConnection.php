@@ -50,7 +50,7 @@ class DatabaseConnection {
             $this->contaoConnection = $contaoConnection;
             // Get the database data
             $dbStmtExecutor = new DatabasePslzmeConfigStmtExecutor($this->contaoConnection);
-            $dbData = $this->dbStmtExecutor->selectCurrentDatabaseConfigurationData();
+            $dbData = $dbStmtExecutor->selectCurrentDatabaseConfigurationData();
 
             if(empty($dbData["databaseUser"]) || empty($dbData["databasePassword"]) || empty($dbData["databaseTimestamp"]) || empty($dbData["databaseName"])) {
                 throw new DatabaseException("No correct pslzme database configuration specified.");

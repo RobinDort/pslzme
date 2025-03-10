@@ -74,7 +74,7 @@ class BackendRequestHandlerController {
     public function createPslzmeTables():JsonResponse {
         try {
             //$dbm = new DatabaseManager();
-            $this->dbm->initTables();
+            $this->dbManager->initTables();
             return new JsonResponse("Tables created successfully");
         } catch (Exception $e) {
             error_log($e->getMessage());
