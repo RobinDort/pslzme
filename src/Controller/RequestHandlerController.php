@@ -15,13 +15,13 @@ class RequestHandlerController {
 
     private $api;
 
-    public function __construct(Api $api) {
-        $this->api = $api;
-    }
-
-    // public function __construct() {
-    //     $this->api = new Api();
+    // public function __construct(Api $api) {
+    //     $this->api = $api;
     // }
+
+    public function __construct() {
+        $this->api = new Api();
+    }
 
     public function __invoke(Request $request): JsonResponse {
         $requestData = $request->request->get('data');

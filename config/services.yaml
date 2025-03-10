@@ -16,6 +16,8 @@ services:
     public: true
 
   RobinDort\PslzmeLinks\Service\Api:
+    arguments:
+      $dbConn: '@RobinDort\PslzmeLinks\Service\DatabaseConnection'
     public: true
 
   RobinDort\PslzmeLinks\EventListener\InstallListener:
