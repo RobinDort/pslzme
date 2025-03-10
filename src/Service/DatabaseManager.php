@@ -15,8 +15,8 @@ class DatabaseManager {
         "query_link"    => "createQueryLinkTable"
     ];
 
-    public function __construct() {
-        $this->dbc = new DatabaseConnection();
+    public function __construct(DatabaseConnection $dbc) {
+        $this->dbc = $dbc;
     }
 
 
