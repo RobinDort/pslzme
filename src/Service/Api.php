@@ -19,26 +19,26 @@ class Api {
     private $ivLength;
     private $options;
 
-    // public function __construct(DatabaseConnection $dbConn) {
-    //     // create / inject database connection
-    //     $this->db = $dbConn;
-    //     $this->sqlExecutor = new DatabaseStatementExecutor($this->db);
-
-    //     $this->ciphering = "AES-128-CTR";
-    //     $this->ivLength = openssl_cipher_iv_length($this->ciphering);
-    //     $this->options = 0;
-    // }
-
-
-    public function __construct() {
+    public function __construct(DatabaseConnection $dbConn) {
         // create / inject database connection
-        $this->db = new DatabaseConnection();
-        // $this->sqlExecutor = new DatabaseStatementExecutor($this->db);
+        $this->db = $dbConn;
+        $this->sqlExecutor = new DatabaseStatementExecutor($this->db);
 
-        // $this->ciphering = "AES-128-CTR";
-        // $this->ivLength = openssl_cipher_iv_length($this->ciphering);
-        // $this->options = 0;
+        $this->ciphering = "AES-128-CTR";
+        $this->ivLength = openssl_cipher_iv_length($this->ciphering);
+        $this->options = 0;
     }
+
+
+    // public function __construct() {
+    //     // create / inject database connection
+    //     $this->db = new DatabaseConnection();
+    //     // $this->sqlExecutor = new DatabaseStatementExecutor($this->db);
+
+    //     // $this->ciphering = "AES-128-CTR";
+    //     // $this->ivLength = openssl_cipher_iv_length($this->ciphering);
+    //     // $this->options = 0;
+    // }
 
 
     function handleQueryAcception($requestData) {
