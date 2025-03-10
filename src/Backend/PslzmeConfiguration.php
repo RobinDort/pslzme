@@ -20,20 +20,23 @@ class PslzmeConfiguration extends BackendModule {
 
     public function __construct($dbPslzmeStmtExecutor = null) {
         parent::__construct();
-
-        if ($dbPslzmeStmtExecutor instanceof DatabasePslzmeConfigStmtExecutor) {
-            //$dbPslzmeStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
-            $databaseData = $dbPslzmeStmtExecutor->selectCurrentDatabaseConfigurationData();
-            if (!empty($databaseData)) {
-                $this->pslzmeDBName = $databaseData["databaseName"];
-                $this->pslzmeDBUser = $databaseData["databaseUser"];
-                $this->pslzmeDBIPR = $databaseData["databaseIPR"];
-            }
-        } else {
-            $this->dbPslzmeStmtExecutor = null;
-        }
-      
     }
+
+
+    public function setContainer($container) {
+        parent::setContainer($container);
+
+        // Retrieve the service from the container
+        $this->dbPslzmeStmtExecutor = $this->container->get('RobinDort\\PslzmeLinks\\Service\\Backend\\DatabasePslzmeConfigStmtExecutor');
+
+        $databaseData = $this->dbPslzmeStmtExecutor->selectCurrentDatabaseConfigurationData();
+        if (!empty($databaseData)) {
+            $this->pslzmeDBName = $databaseData["databaseName"];
+            $this->pslzmeDBUser = $databaseData["databaseUser"];
+            $this->pslzmeDBIPR = $databaseData["databaseIPR"];
+        }
+    }
+
 
     /**
      * {@inheritDoc}
