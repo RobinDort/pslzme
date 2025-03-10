@@ -31,6 +31,8 @@ class RequestHandlerController {
             return new JsonResponse(["error" => "post data[request] or postdata[data] not set!"], 400);
         }
 
+        $response = ["test"];
+
         // switch ($requestFunction) {
         //     case "query-acception":
         //         $resp = $this->api->handleQueryAcception($requestData);
