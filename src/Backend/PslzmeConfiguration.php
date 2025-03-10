@@ -18,18 +18,16 @@ class PslzmeConfiguration extends BackendModule {
 
     private $dbPslzmeStmtExecutor;
 
-    public function __construct($dbPslzmeStmtExecutor = null) {
+    public function __construct() {
         parent::__construct();
     }
 
 
-    public function setContainer($container) {
-        parent::setContainer($container);
+    public function setDatabasePslzmeStmtExecutor(DatabasePslzmeConfigStmtExecutor $dbPslzmeStmtExecutor)
+    {
+        $this->dbPslzmeStmtExecutor = $dbPslzmeStmtExecutor;
 
-        // Retrieve the service from the container
-        $this->dbPslzmeStmtExecutor = $this->container->get('RobinDort\\PslzmeLinks\\Service\\Backend\\DatabasePslzmeConfigStmtExecutor');
-
-        $databaseData = $this->dbPslzmeStmtExecutor->selectCurrentDatabaseConfigurationData();
+        $databaseData = $dbPslzmeStmtExecutor->selectCurrentDatabaseConfigurationData();
         if (!empty($databaseData)) {
             $this->pslzmeDBName = $databaseData["databaseName"];
             $this->pslzmeDBUser = $databaseData["databaseUser"];

@@ -15,10 +15,8 @@ services:
     public: true
 
   RobinDort\PslzmeLinks\Backend\PslzmeConfiguration:
-    arguments:
-      $dbPslzmeStmtExecutor: "@RobinDort\\PslzmeLinks\\Service\\Backend\\DatabasePslzmeConfigStmtExecutor"
     calls:
-      - [setContainer, ["@service_container"]]
+      - [setDatabasePslzmeStmtExecutor, ['@RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor']]
     public: true
 
   RobinDort\PslzmeLinks\Service\DatabaseStatementExecutor:
