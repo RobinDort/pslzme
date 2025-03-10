@@ -17,9 +17,11 @@ use RobinDort\PslzmeLinks\Service\DatabaseManager;
 class BackendRequestHandlerController {
 
     private $dbPslzmeStmtExecutor;
+    private $dbManager;
 
-    public function __construct(DatabasePslzmeConfigStmtExecutor $dbPslzmeStmtExecutor) {
+    public function __construct(DatabasePslzmeConfigStmtExecutor $dbPslzmeStmtExecutor, DatabaseManager $dbManager) {
         $this->dbPslzmeStmtExecutor = $dbPslzmeStmtExecutor;
+        $this->dbManager = $dbManager;
     }
 
 
