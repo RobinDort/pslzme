@@ -97,7 +97,7 @@ class DatabasePslzmeConfigStmtExecutor {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareUpdatePslzmeDBConfig();
 
         try {
-            $affectedRows = $stmt->executeStatement($databaseName, $databaseUser, $databasePW);
+            $affectedRows = $stmt->executeStatement([$databaseName, $databaseUser, $databasePW]);
         
             if ($affectedRows > 0) {
                 return "Sucessfully updated pslzme database data.";
@@ -115,7 +115,7 @@ class DatabasePslzmeConfigStmtExecutor {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareUpdateInternalPages();
 
         try {
-            $affectedRows =  $stmt->executeStatement($internalPages);
+            $affectedRows =  $stmt->executeStatement([$internalPages]);
         
             if ($affectedRows > 0) {
                 return "Sucessfully updated pslzme internal pages data.";
@@ -134,7 +134,7 @@ class DatabasePslzmeConfigStmtExecutor {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareInsertPslzmeDBConfig();
 
         try {
-            $affectedRows = $stmt->executeStatement($databaseName, $databaseUser, $databasePW, $timestamp);
+            $affectedRows = $stmt->executeStatement([$databaseName, $databaseUser, $databasePW, $timestamp]);
 
             if ($affectedRows > 0) {
                 return "Sucessfully inserted pslzme database data.";
