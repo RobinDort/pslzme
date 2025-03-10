@@ -56,7 +56,7 @@ class DatabaseConnection {
                 throw new DatabaseException("No correct pslzme database configuration specified.");
             } 
 
-            \System::log("DB DATA: " . $dbData, __METHOD__, "TL_ERROR");
+            \System::log("DB DATA: " . print_r($dbData), __METHOD__, "TL_ERROR");
             throw new Exception("DbData");
 
             $servername = "localhost";
