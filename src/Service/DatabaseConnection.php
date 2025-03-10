@@ -46,7 +46,7 @@ class DatabaseConnection {
     public function __construct() {
         //try {
             // Get the database data
-            $dbStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
+            $dbStmtExecutor = System::getContainer()->get(DatabasePslzmeConfigStmtExecutor::class);
             $dbData = $dbStmtExecutor->selectCurrentDatabaseConfigurationData();
 
             if(empty($dbData["databaseUser"]) || empty($dbData["databasePassword"]) || empty($dbData["databaseTimestamp"]) || empty($dbData["databaseName"])) {

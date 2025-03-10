@@ -7,6 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Attribute\AsController;
 use Contao\Database;
 use Contao\Message;
+use Contao\System;
 
 use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
 use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
@@ -19,7 +20,7 @@ class BackendRequestHandlerController {
     private $dbPslzmeStmtExecutor;
 
     public function __construct() {
-        $this->dbPslzmeStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
+        $this->dbPslzmeStmtExecutor = System::getContainer()->get(DatabasePslzmeConfigStmtExecutor::class);
     }
 
 
