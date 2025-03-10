@@ -33,6 +33,9 @@ class RequestHandlerController {
 
         $response = ["test"];
 
+        System::log("API: " . $this->api, __METHOD__, "TL_ERROR");
+        throw new \Exception("API TEST");
+
         // switch ($requestFunction) {
         //     case "query-acception":
         //         $resp = $this->api->handleQueryAcception($requestData);
