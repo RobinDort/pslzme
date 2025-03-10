@@ -1,6 +1,5 @@
 <?php
 namespace RobinDort\PslzmeLinks\Service;
-use Contao\Database;
 
 class StatementPreparer {
     private $conn;

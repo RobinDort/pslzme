@@ -7,10 +7,14 @@ services:
     public: true
 
   RobinDort\PslzmeLinks\Service\Api:
-    arguments:
     public: true
 
   RobinDort\PslzmeLinks\Controller\BackendRequestHandlerController:
+    public: true
+
+  RobinDort\PslzmeLinks\Service\DatabaseStatementExecutor:
+    arguments:
+      $db: "@RobinDort\\PslzmeLinks\\Service\\DatabaseConnection"
     public: true
 
   RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor:
