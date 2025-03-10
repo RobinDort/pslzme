@@ -74,18 +74,18 @@ class DatabasePslzmeConfigStmtExecutor {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareSelectPslzmeDBConfig();
 
         try {
-            $result = $stmt->execute();
+            $result = $stmt->executeQuery();
 
             if (!$result) {
                 throw new DatabaseException("Unable to execute statement prepareSelectPslzmeDBConfig.");
             } 
 
             // Fetch all rows
-            $rows = $result->fetchAllAssoc();
+            $rows = $result->fetchAllAssociative();
 
             return [
                 'rows' => $rows,
-                'numRows' => $result->numRows
+                'numRows' => count($rows)
             ];
         } catch (DatabaseException $dbe) {
             // rethrow 
@@ -97,9 +97,9 @@ class DatabasePslzmeConfigStmtExecutor {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareUpdatePslzmeDBConfig();
 
         try {
-            $stmt->execute($databaseName, $databaseUser, $databasePW);
+            $affectedRows = $stmt->executeStatement($databaseName, $databaseUser, $databasePW);
         
-            if ($stmt->affectedRows > 0) {
+            if ($affectedRows > 0) {
                 return "Sucessfully updated pslzme database data.";
             } else {
                 throw new DatabaseException("Statement prepareUpdatePslzmeDBConfig executed successful but rows affected = 0");
@@ -115,9 +115,9 @@ class DatabasePslzmeConfigStmtExecutor {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareUpdateInternalPages();
 
         try {
-            $stmt->execute($internalPages);
+            $affectedRows =  $stmt->executeStatement($internalPages);
         
-            if ($stmt->affectedRows > 0) {
+            if ($affectedRows > 0) {
                 return "Sucessfully updated pslzme internal pages data.";
             } else {
                 throw new DatabaseException("Statement prepareUpdateInternalPages executed successful but rows affected = 0");
@@ -134,9 +134,9 @@ class DatabasePslzmeConfigStmtExecutor {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareInsertPslzmeDBConfig();
 
         try {
-            $stmt->execute($databaseName, $databaseUser, $databasePW, $timestamp);
+            $affectedRows = $stmt->executeStatement($databaseName, $databaseUser, $databasePW, $timestamp);
 
-            if ($stmt->affectedRows > 0) {
+            if ($affectedRows > 0) {
                 return "Sucessfully inserted pslzme database data.";
             } else {
                 throw new DatabaseException("Statement prepareInsertPslzmeDBConfig executed successful but rows affected = 0");
