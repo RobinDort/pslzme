@@ -6,7 +6,8 @@ use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
 use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
 
 use Contao\System;
-use Doctrine\DBAL\Connection;
+use Contao\Database;
+//use Doctrine\DBAL\Connection;
 
 
 class DatabasePslzmeConfigStmtExecutor {
@@ -14,8 +15,8 @@ class DatabasePslzmeConfigStmtExecutor {
     private $dbPslzmeConfigStmtPreparer;
 
     public function __construct(Connection $connection) {
-        $this->connection = $connection;
-       // $this->connection = Database::getInstance();
+        //$this->connection = $connection;
+        $this->connection = Database::getInstance();
         $this->dbPslzmeConfigStmtPreparer = new DatabasePslzmeConfigStmtPreparer($this->connection);
     }
 
@@ -76,19 +77,19 @@ class DatabasePslzmeConfigStmtExecutor {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareSelectPslzmeDBConfig();
 
         try {
-            $result = $stmt->executeQuery();
+            $result = $stmt->execute();
 
             if (!$result) {
                 throw new DatabaseException("Unable to execute statement prepareSelectPslzmeDBConfig.");
             } 
 
             // Fetch all rows
-            $rows = $result->fetchAllAssociative();
+            $rows = $result->fetchAllAssoc();
 
 
             return [
                 'rows' => $rows,
-                'numRows' => count($rows)
+                'numRows' => $result->numRows
             ];
         } catch (DatabaseException $dbe) {
             // rethrow 
@@ -100,9 +101,9 @@ class DatabasePslzmeConfigStmtExecutor {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareUpdatePslzmeDBConfig();
 
         try {
-            $affectedRows = $stmt->executeStatement([$databaseName, $databaseUser, $databasePW]);
+            $stmt->execute($databaseName, $databaseUser, $databasePW);
         
-            if ($affectedRows > 0) {
+            if ($stmt->affectedRows > 0) {
                 return "Sucessfully updated pslzme database data.";
             } else {
                 throw new DatabaseException("Statement prepareUpdatePslzmeDBConfig executed successful but rows affected = 0");
@@ -118,9 +119,9 @@ class DatabasePslzmeConfigStmtExecutor {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareUpdateInternalPages();
 
         try {
-            $affectedRows =  $stmt->executeStatement([$internalPages]);
+            $stmt->execute($internalPages);
         
-            if ($affectedRows > 0) {
+            if ($stmt->affectedRows > 0) {
                 return "Sucessfully updated pslzme internal pages data.";
             } else {
                 throw new DatabaseException("Statement prepareUpdateInternalPages executed successful but rows affected = 0");
@@ -137,9 +138,9 @@ class DatabasePslzmeConfigStmtExecutor {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareInsertPslzmeDBConfig();
 
         try {
-            $affectedRows = $stmt->executeStatement([$databaseName, $databaseUser, $databasePW, $timestamp]);
+            $stmt->execute($databaseName, $databaseUser, $databasePW, $timestamp);
 
-            if ($affectedRows > 0) {
+            if ($stmt->affectedRows > 0) {
                 return "Sucessfully inserted pslzme database data.";
             } else {
                 throw new DatabaseException("Statement prepareInsertPslzmeDBConfig executed successful but rows affected = 0");

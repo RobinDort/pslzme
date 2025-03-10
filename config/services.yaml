@@ -3,11 +3,6 @@ services:
     autowire: true
     autoconfigure: true
 
-  RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor:
-    arguments:
-      $connection: "@database_connection"
-    public: true
-
   RobinDort\PslzmeLinks\Service\DatabaseConnection:
     public: true
 

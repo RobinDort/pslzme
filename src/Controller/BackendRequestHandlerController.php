@@ -20,7 +20,7 @@ class BackendRequestHandlerController {
     private $dbPslzmeStmtExecutor;
 
     public function __construct() {
-        $this->dbPslzmeStmtExecutor = System::getContainer()->get(DatabasePslzmeConfigStmtExecutor::class);
+        $this->dbPslzmeStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
     }
 
 
