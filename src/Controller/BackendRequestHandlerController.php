@@ -70,8 +70,8 @@ class BackendRequestHandlerController {
     #[Route('/createPslzmeTables', name: "create_pslzme_tables", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])] 
     public function createPslzmeTables():JsonResponse {
         try {
-            $dbm = new DatabaseManager();
-            $dbm->initTables();
+            //$dbm = new DatabaseManager();
+            $this->dbm->initTables();
             return new JsonResponse("Tables created successfully");
         } catch (Exception $e) {
             error_log($e->getMessage());
