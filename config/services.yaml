@@ -15,7 +15,7 @@ services:
 
   RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor:
     arguments:
-      $database: "@database_connection"
+      $connection: "@database_connection"
     public: true
 
   RobinDort\PslzmeLinks\Controller\RequestHandlerController:

@@ -1,7 +1,7 @@
 <?php
 namespace RobinDort\PslzmeLinks\Service\Backend;
 
-use Contao\Database;
+use Doctrine\DBAL\Connection;
 
 use RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtPreparer;
 use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
@@ -11,8 +11,8 @@ class DatabasePslzmeConfigStmtExecutor {
     private $connection;
     private $dbPslzmeConfigStmtPreparer;
 
-    public function __construct(Database $database) {
-        $this->connection = $database;
+    public function __construct(Connection $connection) {
+        $this->connection = $connection;
        // $this->connection = Database::getInstance();
         $this->dbPslzmeConfigStmtPreparer = new DatabasePslzmeConfigStmtPreparer($this->connection);
     }
