@@ -46,7 +46,7 @@ class DatabaseConnection {
 
 
     public function __construct(Connection $contaoConnection) {
-        try {
+        //try {
             $this->contaoConnection = $contaoConnection;
             // Get the database data
             $dbStmtExecutor = new DatabasePslzmeConfigStmtExecutor($this->contaoConnection);
@@ -55,6 +55,9 @@ class DatabaseConnection {
             if(empty($dbData["databaseUser"]) || empty($dbData["databasePassword"]) || empty($dbData["databaseTimestamp"]) || empty($dbData["databaseName"])) {
                 throw new DatabaseException("No correct pslzme database configuration specified.");
             } 
+
+            \System::log("DB DATA: " . $dbData, __METHOD__, "TL_ERROR");
+            throw new Exception("DbData");
 
             $servername = "localhost";
             $username =  $dbData["databaseUser"];
@@ -73,16 +76,16 @@ class DatabaseConnection {
                 throw new DatabaseException("Connection to database failed: " . $this->connection->connect_error);
             } 
 
-        } catch(InvalidDataException $ide) {
-            error_log($ide->getErrorMsg());
-            $this->closeConnection();
-        } catch(DatabaseException $dbe) {
-            error_log($dbe->getErrorMsg());
-            $this->closeConnection();
-        } catch(Exception $e) {
-            $this->closeConnection();
-            error_log($e->getMessage());
-        }
+        // } catch(InvalidDataException $ide) {
+        //     error_log($ide->getErrorMsg());
+        //     $this->closeConnection();
+        // } catch(DatabaseException $dbe) {
+        //     error_log($dbe->getErrorMsg());
+        //     $this->closeConnection();
+        // } catch(Exception $e) {
+        //     $this->closeConnection();
+        //     error_log($e->getMessage());
+        // }
     }
 
     public function getConnection() {

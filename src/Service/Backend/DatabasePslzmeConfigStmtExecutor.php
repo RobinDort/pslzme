@@ -72,7 +72,7 @@ class DatabasePslzmeConfigStmtExecutor {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareSelectPslzmeDBConfig();
 
         try {
-            $result = $stmt->execute();
+            $result = $stmt->executeQuery();
 
             if (!$result) {
                 throw new DatabaseException("Unable to execute statement prepareSelectPslzmeDBConfig.");
