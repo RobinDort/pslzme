@@ -62,6 +62,13 @@ class DatabaseConnection {
             $timestamp = $dbData["databaseTimestamp"];
             $dbname =  $dbData["databaseName"];
 
+            \System::log("DB DATA: " . $servername, __METHOD__, "TL_ERROR");
+            \System::log("DB DATA: " . $username, __METHOD__, "TL_ERROR");
+            \System::log("DB DATA: " . $encryptedPW, __METHOD__, "TL_ERROR");
+            \System::log("DB DATA: " . $timestamp, __METHOD__, "TL_ERROR");
+            \System::log("DB DATA: " . $dbname, __METHOD__, "TL_ERROR");
+            throw new Exception("DEBUG");
+
             // decrypt the password
             $decryptedPW = $this->decryptPassword($encryptedPW, $timestamp);
      

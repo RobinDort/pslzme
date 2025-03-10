@@ -56,14 +56,6 @@ class DatabasePslzmeConfigStmtExecutor {
                 $databaseIPR = $rows[0]["pslzme_ipr"];
                 $databaseTimestamp = $rows[0]["timestamp"];
 
-                \System::log($rows[0]["pslzme_db_name"], __METHOD__, "TL_ERROR");
-                \System::log($rows[0]["pslzme_db_user"], __METHOD__, "TL_ERROR");
-                \System::log($rows[0]["pslzme_db_pw"], __METHOD__, "TL_ERROR");
-                \System::log($rows[0]["pslzme_ipr"], __METHOD__, "TL_ERROR");
-                \System::log($rows[0]["timestamp"], __METHOD__, "TL_ERROR");
-
-                throw new \Exception("rows: ". $rows);
-
                 return [
                     "databaseName"      => $databaseName,
                     "databaseUser"      => $databaseUser,
