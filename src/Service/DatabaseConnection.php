@@ -85,6 +85,9 @@ class DatabaseConnection {
     }
 
     public function getConnection() {
+        if (!$this->connection) {
+            throw new DatabaseException("Database connection is not initialized.");
+        }
         return $this->connection;
     }
 
