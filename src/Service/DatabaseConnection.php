@@ -49,7 +49,7 @@ class DatabaseConnection {
             // Get the database data
             //$dbStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
             $this->dbStmtExecutor = $dbPslzmeCSE;
-            $dbData = $dbStmtExecutor->selectCurrentDatabaseConfigurationData();
+            $dbData = $this->dbStmtExecutor->selectCurrentDatabaseConfigurationData();
 
             if(empty($dbData["databaseUser"]) || empty($dbData["databasePassword"]) || empty($dbData["databaseTimestamp"]) || empty($dbData["databaseName"])) {
                 throw new DatabaseException("No correct pslzme database configuration specified.");
