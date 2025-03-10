@@ -18,16 +18,19 @@ class PslzmeConfiguration extends BackendModule {
 
     private $dbPslzmeStmtExecutor;
 
-    public function __construct(DatabasePslzmeConfigStmtExecutor $dbPslzmeStmtExecutor) {
+    public function __construct($dbPslzmeStmtExecutor = null) {
         parent::__construct();
 
-       $this->dbPslzmeStmtExecutor = $dbPslzmeStmtExecutor;
-        //$dbPslzmeStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
-        $databaseData = $dbPslzmeStmtExecutor->selectCurrentDatabaseConfigurationData();
-        if (!empty($databaseData)) {
-            $this->pslzmeDBName = $databaseData["databaseName"];
-            $this->pslzmeDBUser = $databaseData["databaseUser"];
-            $this->pslzmeDBIPR = $databaseData["databaseIPR"];
+        if ($dbPslzmeStmtExecutor instanceof DatabasePslzmeConfigStmtExecutor) {
+            //$dbPslzmeStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
+            $databaseData = $dbPslzmeStmtExecutor->selectCurrentDatabaseConfigurationData();
+            if (!empty($databaseData)) {
+                $this->pslzmeDBName = $databaseData["databaseName"];
+                $this->pslzmeDBUser = $databaseData["databaseUser"];
+                $this->pslzmeDBIPR = $databaseData["databaseIPR"];
+            }
+        } else {
+            $this->dbPslzmeStmtExecutor = null;
         }
       
     }
