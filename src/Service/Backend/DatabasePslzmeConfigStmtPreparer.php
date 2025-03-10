@@ -16,7 +16,7 @@ class DatabasePslzmeConfigStmtPreparer {
     }
 
     public function prepareUpdatePslzmeDBConfig() {
-        $sqlQuery = "UPDATE tl_pslzme_config SET pslzme_db_name = ?, pslzme_db_user = ?, pslzme_db_pw = ?";
+        $sqlQuery = "UPDATE tl_pslzme_config SET pslzme_db_name = ?, pslzme_db_user = ?, pslzme_db_pw = ?, timestamp = ?";
         $stmt = $this->connection->prepare($sqlQuery);
         return $stmt;
     }

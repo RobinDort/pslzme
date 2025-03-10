@@ -26,7 +26,7 @@ class DatabasePslzmeConfigStmtExecutor {
 
          if ($selectResult["numRows"] > 0) {
             // database data has been found. Update it.
-            $updateResult = $this->updateDatabaseConfiguration($databaseName, $databaseUser, $databasePW);
+            $updateResult = $this->updateDatabaseConfiguration($databaseName, $databaseUser, $databasePW, $timestamp);
             return $updateResult;
          } else {
             // no database data found. Insert the new data
@@ -97,11 +97,11 @@ class DatabasePslzmeConfigStmtExecutor {
         }
     }
 
-    private function updateDatabaseConfiguration($databaseName, $databaseUser, $databasePW) {
+    private function updateDatabaseConfiguration($databaseName, $databaseUser, $databasePW, $timestamp) {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareUpdatePslzmeDBConfig();
 
         try {
-            $stmt->execute($databaseName, $databaseUser, $databasePW);
+            $stmt->execute($databaseName, $databaseUser, $databasePW, $timestamp);
         
             if ($stmt->affectedRows > 0) {
                 return "Sucessfully updated pslzme database data.";
