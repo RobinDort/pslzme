@@ -57,7 +57,7 @@ class DatabaseConnection {
             } 
 
             \System::log("DB DATA: " . print_r($dbData), __METHOD__, "TL_ERROR");
-            throw new Exception("DbData");
+            throw new Exception("DbData: " . var_dump($dbData));
 
             $servername = "localhost";
             $username =  $dbData["databaseUser"];
