@@ -18,9 +18,11 @@ use RobinDort\PslzmeLinks\Service\DatabaseManager;
 class BackendRequestHandlerController {
 
     private $dbPslzmeStmtExecutor;
+    private $databaseManager;
 
     public function __construct() {
         $this->dbPslzmeStmtExecutor = System::getContainer()->get(DatabasePslzmeConfigStmtExecutor::class);
+        $this->databaseManager = System::getContainer()->get(DatabaseManager::class);
     }
 
 
@@ -69,8 +71,8 @@ class BackendRequestHandlerController {
     #[Route('/createPslzmeTables', name: "create_pslzme_tables", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])] 
     public function createPslzmeTables():JsonResponse {
         try {
-            $dbm = new DatabaseManager();
-            $dbm->initTables();
+            //$dbm = new DatabaseManager();
+            $this->databaseManager->initTables();
             return new JsonResponse("Tables created successfully");
         } catch (Exception $e) {
             error_log($e->getMessage());
