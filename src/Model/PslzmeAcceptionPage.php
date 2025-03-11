@@ -102,8 +102,6 @@ class PslzmeAcceptionPage extends PageModel implements CustomPageModel{
         $unixTime = time();
         $layoutID = $this->findMostUsedLayoutID();
         
-        // Set the sorting of the new page directly after the parent id.
-        $this->sorting = $this->pid + 1; 
         $this->tstamp = $unixTime;
         $this->title = self::PAGE_TITLE;
         $this->pageTitle = self::PAGE_TITLE;
@@ -158,6 +156,14 @@ class PslzmeAcceptionPage extends PageModel implements CustomPageModel{
 
         return $stmt["layout"] ?? -1;
     }
+
+
+    public function findLatestSorting($pid) {
+        $sqlQuery = `SELECT * FROM "tl_page" WHERE pid = ${$pid} GROUP BY sorting ORDER BY sorting DESC LIMIT 1;`;
+        $stmt = Database::getInstance()->execute($sqlQuery)->fetchAssoc();
+
+        return $stmt["sorting"] + 1 ?? 1;
+    }
   
     public function getTitle() {
         return $this->title;
@@ -170,6 +176,10 @@ class PslzmeAcceptionPage extends PageModel implements CustomPageModel{
     public function setParentPageID($parentPageID) {
         $this->pid = $parentPageID;
         $this->sorting = $this->pid + 1; 
+    }
+
+    public function setSorting($sorting) {
+        $this->sorting = $sorting;
     }
 }
 
