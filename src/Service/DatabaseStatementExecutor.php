@@ -268,13 +268,17 @@ class DatabaseStatementExecutor {
 
                 $stmtResult = $stmt->get_result();
                 $row = $stmtResult->fetch_assoc();
-                $cookieAccepted = $row["Accepted"];
-                $queryLocked = $row["Locked"];
-                if ($cookieAccepted === 1) {
-                    $convertedResponse->cookieAccepted = true;
-                }
-                if ($queryLocked === 1) {
-                    $convertedResponse->queryLocked = true;
+
+                // check if the query already exists in db
+                if ($row) {
+                    $cookieAccepted = $row["Accepted"];
+                    $queryLocked = $row["Locked"];
+                    if ($cookieAccepted === 1) {
+                        $convertedResponse->cookieAccepted = true;
+                    }
+                    if ($queryLocked === 1) {
+                        $convertedResponse->queryLocked = true;
+                    }
                 }
             
             } else {

@@ -26,7 +26,7 @@ const queryParamsSet = () => {
 		return {
 			isSet: true,
 			params: {
-				linkCreator: queryParams.get("q11") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q1")),
+				linkCreator: queryParams.get("q1") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q1")),
 				title: queryParams.get("q2") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q2")),
 				firstname: queryParams.get("q3") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q3")),
 				lastname: queryParams.get("q4") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q4")),
