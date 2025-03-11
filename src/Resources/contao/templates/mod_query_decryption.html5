@@ -16,10 +16,6 @@
     // Call the decrypt method
     $decryptFormData->decrypt();
 
-	$testCookieData = $decryptFormData->getTestCookieData();
-
-	var_dump($testCookieData);
-
 	// Init the vars for later use.
 	$decryptedLinkCreator = $decryptFormData->getDecryptedLinkCreator();
 	$decryptedTitle = $decryptFormData->getDecryptedTitle();
