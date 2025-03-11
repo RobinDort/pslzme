@@ -159,7 +159,7 @@ class PslzmeAcceptionPage extends PageModel implements CustomPageModel{
 
 
     public function findLatestSorting($pid) {
-        $sqlQuery = `SELECT * FROM "tl_page" WHERE pid = ${$pid} GROUP BY sorting ORDER BY sorting DESC LIMIT 1;`;
+        $sqlQuery = "SELECT * FROM 'l_page' WHERE pid = " . $pid . " GROUP BY sorting ORDER BY sorting DESC LIMIT 1;";
         $stmt = Database::getInstance()->execute($sqlQuery)->fetchAssoc();
 
         return $stmt["sorting"] + 1 ?? 1;
