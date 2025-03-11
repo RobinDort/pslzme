@@ -40,8 +40,6 @@ class DecryptFormData {
     private $decryptedFC = "";
 
 
-    private $testCookieData;
-
     public function __construct(DatabaseConnection $dbConn) {
          // create / inject database connection
          $this->db = $dbConn;
@@ -269,11 +267,6 @@ class DecryptFormData {
 
     public function getDecryptedFC() {
         return $this->decryptedFC;
-    }
-
-
-    public function getTestCookieData() {
-        return $this->testCookieData;
     }
 }
 
