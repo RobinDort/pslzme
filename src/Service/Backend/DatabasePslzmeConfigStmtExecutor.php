@@ -88,7 +88,7 @@ class DatabasePslzmeConfigStmtExecutor {
 
             return [
                 'rows' => $rows,
-                'numRows' => $result->numRows
+                'numRows' => count($rows)
             ];
         } catch (DatabaseException $dbe) {
             // rethrow 
