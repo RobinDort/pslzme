@@ -6,17 +6,17 @@ use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
 use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
 
 use Contao\System;
-use Contao\Database;
-//use Doctrine\DBAL\Connection;
+//use Contao\Database;
+use Doctrine\DBAL\Connection;
 
 
 class DatabasePslzmeConfigStmtExecutor {
-    private $connection;
+    //private $connection;
     private $dbPslzmeConfigStmtPreparer;
 
-    public function __construct() {
+    public function __construct(private readonly Connection $connection) {
         //$this->connection = $connection;
-        $this->connection = Database::getInstance();
+        //$this->connection = Database::getInstance();
         $this->dbPslzmeConfigStmtPreparer = new DatabasePslzmeConfigStmtPreparer($this->connection);
     }
 

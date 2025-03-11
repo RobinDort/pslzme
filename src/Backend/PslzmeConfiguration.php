@@ -21,7 +21,7 @@ class PslzmeConfiguration extends BackendModule {
     public function __construct() {
         parent::__construct();
 
-        $dbPslzmeStmtExecutor = new DatabasePslzmeConfigStmtExecutor();
+        $dbPslzmeStmtExecutor = System::getContainer()->get(DatabasePslzmeConfigStmtExecutor::class);
 
         $databaseData = $dbPslzmeStmtExecutor->selectCurrentDatabaseConfigurationData();
         if (!empty($databaseData)) {
