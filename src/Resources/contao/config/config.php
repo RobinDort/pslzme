@@ -53,6 +53,4 @@ $GLOBALS['TL_CTE']['pslzme']['pslzme_3D_content'] = Pslzme3DContentElement::clas
 
 // Run initial setup when installing the plugin
 $GLOBALS['TL_HOOKS']['initializeSystem'][] = [InitialSetup::class, 'runSetup'];
-//$GLOBALS['TL_HOOKS']['initializeSystem'][] = [InitialSetup::class, 'initDatabaseTables'];
-
 ?>
