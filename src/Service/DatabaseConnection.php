@@ -14,6 +14,7 @@ use Exception;
 
 class DatabaseConnection {
     private $connection;
+    private $dbStmtExecutor;
     // private $servername;
     // private $username;
     // private $password;
@@ -43,11 +44,11 @@ class DatabaseConnection {
     // }
 
 
-    public function __construct() {
+    public function __construct(DatabasePslzmeConfigStmtExecutor $dbStmtExecutor) {
         try {
             // Get the database data
-            $dbStmtExecutor = System::getContainer()->get(DatabasePslzmeConfigStmtExecutor::class);
-            $dbData = $dbStmtExecutor->selectCurrentDatabaseConfigurationData();
+            $this->dbStmtExecutor = $dbStmtExecutor;
+            $dbData = $this->dbStmtExecutor->selectCurrentDatabaseConfigurationData();
 
             if(empty($dbData["databaseUser"]) || empty($dbData["databasePassword"]) || empty($dbData["databaseTimestamp"]) || empty($dbData["databaseName"])) {
                 throw new DatabaseException("No correct pslzme database configuration specified.");
