@@ -117,88 +117,91 @@ class DecryptFormData {
                 $selectCookieResp = $this->sqlExecutor->selectQueryAcceptanceCustomerDB($cookieQueryData);
                 $cookieAccepted = $selectCookieResp["cookieAccepted"];
             
-                $cookie = $_COOKIE["consent_cookie"];
-                $cookieData = json_decode($cookie, true);
+                $cookie = isset($_COOKIE["consent_cookie"]) ? $_COOKIE["consent_cookie"] : null;
+
+                if ($cookie !== null) {
+                    $cookieData = json_decode($cookie, true);
+                    
+                    //only decrypt when the user has given permission and the cookie is set
+                    if ($selectCookieResp["cookieAccepted"] === true && $cookieData["accepted"] === true) {
+                        
+                        //decrypt the params
+                        $ciphering = "AES-128-CTR";
+                        $iv_length = openssl_cipher_iv_length($ciphering);
+                        $options = 0;
+                        $decryption_iv = $this->timestamp;
+                        $decryptionKeyBin = hex2bin($encryptionKey);
                 
-                //only decrypt when the user has given permission and the cookie is set
-                if ($selectCookieResp["cookieAccepted"] === true && $cookieData["accepted"] === true) {
-                    
-                    //decrypt the params
-                    $ciphering = "AES-128-CTR";
-                    $iv_length = openssl_cipher_iv_length($ciphering);
-                    $options = 0;
-                    $decryption_iv = $this->timestamp;
-                    $decryptionKeyBin = hex2bin($encryptionKey);
-            
-                    $this->decryptedLinkCreator = openssl_decrypt ($this->encryptedLinkCreator, $ciphering, 
-                                $decryptionKeyBin, $options, $decryption_iv);
+                        $this->decryptedLinkCreator = openssl_decrypt ($this->encryptedLinkCreator, $ciphering, 
+                                    $decryptionKeyBin, $options, $decryption_iv);
 
-                    if ($this->decryptedLinkCreator === false || !mb_check_encoding($this->decryptedLinkCreator, 'UTF-8')) {
-                        throw new InvalidDecryptionException("Unable to decrypt link creator option");
-                    }
-            
-                    $this->decryptedTitle = openssl_decrypt ($this->encryptedTitle, $ciphering, 
-                                $decryptionKeyBin, $options, $decryption_iv);
+                        if ($this->decryptedLinkCreator === false || !mb_check_encoding($this->decryptedLinkCreator, 'UTF-8')) {
+                            throw new InvalidDecryptionException("Unable to decrypt link creator option");
+                        }
+                
+                        $this->decryptedTitle = openssl_decrypt ($this->encryptedTitle, $ciphering, 
+                                    $decryptionKeyBin, $options, $decryption_iv);
 
-                    if ($this->decryptedTitle === false || !mb_check_encoding($this->decryptedTitle, 'UTF-8')) {
-                        throw new InvalidDecryptionException("Unable to decrypt title option");
-                    }
-            
-                    $this->decryptedFirstName = openssl_decrypt ($this->encryptedFirstName, $ciphering, 
-                                $decryptionKeyBin, $options, $decryption_iv);
+                        if ($this->decryptedTitle === false || !mb_check_encoding($this->decryptedTitle, 'UTF-8')) {
+                            throw new InvalidDecryptionException("Unable to decrypt title option");
+                        }
+                
+                        $this->decryptedFirstName = openssl_decrypt ($this->encryptedFirstName, $ciphering, 
+                                    $decryptionKeyBin, $options, $decryption_iv);
 
-                    if ($this->decryptedFirstName === false || !mb_check_encoding($this->decryptedFirstName, 'UTF-8')) {
-                        throw new InvalidDecryptionException("Unable to decrypt first name option");
-                    }
-            
-                    $this->decryptedLastName = openssl_decrypt ($this->encryptedLastName, $ciphering, 
-                                $decryptionKeyBin, $options, $decryption_iv);
+                        if ($this->decryptedFirstName === false || !mb_check_encoding($this->decryptedFirstName, 'UTF-8')) {
+                            throw new InvalidDecryptionException("Unable to decrypt first name option");
+                        }
+                
+                        $this->decryptedLastName = openssl_decrypt ($this->encryptedLastName, $ciphering, 
+                                    $decryptionKeyBin, $options, $decryption_iv);
 
-                    
-                    if ($this->decryptedLastName === false || !mb_check_encoding($this->decryptedLastName, 'UTF-8')) {
-                        throw new InvalidDecryptionException("Unable to decrypt last name option");
-                    }
-            
-                    $this->decryptedCompanyName = openssl_decrypt ($this->encryptedCompanyName, $ciphering, 
-                                $decryptionKeyBin, $options, $decryption_iv);
+                        
+                        if ($this->decryptedLastName === false || !mb_check_encoding($this->decryptedLastName, 'UTF-8')) {
+                            throw new InvalidDecryptionException("Unable to decrypt last name option");
+                        }
+                
+                        $this->decryptedCompanyName = openssl_decrypt ($this->encryptedCompanyName, $ciphering, 
+                                    $decryptionKeyBin, $options, $decryption_iv);
 
-                    if ($this->decryptedCompanyName === false || !mb_check_encoding($this->decryptedCompanyName, 'UTF-8')) {
-                        throw new InvalidDecryptionException("Unable to decrypt company name option");
-                    }
-            
-                    $this->decryptedCompanyGender = openssl_decrypt ($this->encryptedCompanyGender, $ciphering, 
-                                $decryptionKeyBin, $options, $decryption_iv);
-                                
-                    if ($this->decryptedCompanyGender === false || !mb_check_encoding($this->decryptedCompanyGender, 'UTF-8')) {
-                        throw new InvalidDecryptionException("Unable to decrypt company gender option");
-                    }
-            
-                    $this->decryptedGender = openssl_decrypt ($this->encryptedGender, $ciphering, 
-                                $decryptionKeyBin, $options, $decryption_iv);
+                        if ($this->decryptedCompanyName === false || !mb_check_encoding($this->decryptedCompanyName, 'UTF-8')) {
+                            throw new InvalidDecryptionException("Unable to decrypt company name option");
+                        }
+                
+                        $this->decryptedCompanyGender = openssl_decrypt ($this->encryptedCompanyGender, $ciphering, 
+                                    $decryptionKeyBin, $options, $decryption_iv);
+                                    
+                        if ($this->decryptedCompanyGender === false || !mb_check_encoding($this->decryptedCompanyGender, 'UTF-8')) {
+                            throw new InvalidDecryptionException("Unable to decrypt company gender option");
+                        }
+                
+                        $this->decryptedGender = openssl_decrypt ($this->encryptedGender, $ciphering, 
+                                    $decryptionKeyBin, $options, $decryption_iv);
 
-                    if ($this->decryptedGender === false || !mb_check_encoding($this->decryptedGender, 'UTF-8')) {
-                        throw new InvalidDecryptionException("Unable to decrypt gender option");
-                    }
-            
-                    $this->decryptedPosition = openssl_decrypt ($this->encryptedPosition, $ciphering, 
-                                $decryptionKeyBin, $options, $decryption_iv);
+                        if ($this->decryptedGender === false || !mb_check_encoding($this->decryptedGender, 'UTF-8')) {
+                            throw new InvalidDecryptionException("Unable to decrypt gender option");
+                        }
+                
+                        $this->decryptedPosition = openssl_decrypt ($this->encryptedPosition, $ciphering, 
+                                    $decryptionKeyBin, $options, $decryption_iv);
 
-                    if ($this->decryptedPosition === false || !mb_check_encoding($this->decryptedPosition, 'UTF-8')) {
-                        throw new InvalidDecryptionException("Unable to decrypt position option");
-                    }
-            
-                    $this->decryptedCurl = openssl_decrypt ($this->encryptedCurl, $ciphering, 
-                                $decryptionKeyBin, $options, $decryption_iv);
+                        if ($this->decryptedPosition === false || !mb_check_encoding($this->decryptedPosition, 'UTF-8')) {
+                            throw new InvalidDecryptionException("Unable to decrypt position option");
+                        }
+                
+                        $this->decryptedCurl = openssl_decrypt ($this->encryptedCurl, $ciphering, 
+                                    $decryptionKeyBin, $options, $decryption_iv);
 
-                    if ($this->decryptedCurl === false || !mb_check_encoding($this->decryptedCurl, 'UTF-8')) {
-                        throw new InvalidDecryptionException("Unable to decrypt url option");
-                    }
-            
-                    $this->decryptedFC = openssl_decrypt ($this->encryptedFC, $ciphering, 
-                                $decryptionKeyBin, $options, $decryption_iv);
+                        if ($this->decryptedCurl === false || !mb_check_encoding($this->decryptedCurl, 'UTF-8')) {
+                            throw new InvalidDecryptionException("Unable to decrypt url option");
+                        }
+                
+                        $this->decryptedFC = openssl_decrypt ($this->encryptedFC, $ciphering, 
+                                    $decryptionKeyBin, $options, $decryption_iv);
 
-                    if ($this->decryptedFC === false || !mb_check_encoding($this->decryptedFC, 'UTF-8')) {
-                        throw new InvalidDecryptionException("Unable to decrypt first contact option");
+                        if ($this->decryptedFC === false || !mb_check_encoding($this->decryptedFC, 'UTF-8')) {
+                            throw new InvalidDecryptionException("Unable to decrypt first contact option");
+                        }
                     }
                 }
             
