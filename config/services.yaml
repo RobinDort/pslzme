@@ -23,6 +23,11 @@ services:
       $db: "@RobinDort\\PslzmeLinks\\Service\\DatabaseConnection"
     public: true
 
+  RobinDort\PslzmeLinks\Module\PlszmeCookiebar:
+    arguments:
+      $dbc: "@RobinDort\\PslzmeLinks\\Service\\DatabaseConnection"
+    public: true
+
   RobinDort\PslzmeLinks\Controller\RequestHandlerController:
     tags: [controller.service_arguments]
     public: true
