@@ -24,13 +24,14 @@ class PslzmeCookiebar extends Module {
 
         try {
             $dbConfigData = $this->dbStmtExecutor->selectCurrentDatabaseConfigurationData();
+            $this->imprintID = $dbConfigData;
             $internalPageRefs = $dbConfigData["databaseIPR"];
 
-            if (!empty($internalPageRefs)) {
-                $internalPageRefs = json_decode($internalPageRefs, true);
-                $this->imprintID = $internalPageRefs["Imprint"] ?? null;
-                $this->privacyID = $internalPageRefs["Privacy"] ?? null;
-            }
+            // if (!empty($internalPageRefs)) {
+            //     $internalPageRefs = json_decode($internalPageRefs, true);
+            //     $this->imprintID = $internalPageRefs["Imprint"] ?? null;
+            //     $this->privacyID = $internalPageRefs["Privacy"] ?? null;
+            // }
         } catch (DatabaseException $dbe) {
             error_log($dbe->getErrorMsg());
         } catch (Exception $e) {
