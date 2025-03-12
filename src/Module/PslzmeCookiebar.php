@@ -1,18 +1,18 @@
 <?php
 namespace RobinDort\PslzmeLinks\Module;
 
-use RobinDort\PslzmeLinks\Service\DatabaseConnection;
+use RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor;
 
 use Contao\Module;
 
 class PslzmeCookiebar extends Module {
     protected $strTemplate = "mod_pslzme_cookiebar";
 
-    private $dbc;
+    private $dbStmtExecutor;
 
-    public function __construct(DatabaseConnection $dbc) {
+    public function __construct(DatabasePslzmeConfigStmtExecutor $dbStmtExecutor) {
         try {
-            $this->dbc = $dbc;
+            $this->dbStmtExecutor = $dbStmtExecutor;
         } catch (DatabaseException $dbe) {
             error_log($dbe->getErrorMsg());
         } catch (Exception $e) {
