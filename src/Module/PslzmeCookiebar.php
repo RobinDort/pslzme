@@ -9,7 +9,13 @@ class PslzmeCookiebar extends Module {
     private $dbc;
 
     public function __construct(DatabaseConnection $dbc) {
-        $this->dbc = $dbc;
+        try {
+            $this->dbc = $dbc;
+        } catch (DatabaseException $dbe) {
+            error_log($dbe->getErrorMsg());
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+        }
     }
 
     protected function compile() {}
