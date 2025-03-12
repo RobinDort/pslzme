@@ -10,8 +10,8 @@ class PslzmeCookiebar extends Module {
     protected $strTemplate = "mod_pslzme_cookiebar";
 
     private ?DatabasePslzmeConfigStmtExecutor $dbStmtExecutor = null;
-    private $imprintID;
-    private $privacyID;
+    private ?string $imprintID = null;
+    private ?string $privacyID = null;
 
 
     public function __construct(ModuleModel $objModule) {
