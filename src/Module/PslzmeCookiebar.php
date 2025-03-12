@@ -25,8 +25,8 @@ class PslzmeCookiebar extends Module {
 
         try {
             $dbConfigData = $this->dbStmtExecutor->selectCurrentDatabaseConfigurationData();
+            $this->testDBData = $dbConfigData;
             $internalPageRefs = $dbConfigData["databaseIPR"];
-            $this->testDBData = $internalPageRefs;
 
             if (!empty($internalPageRefs)) {
                 $internalPageRefs = json_decode($internalPageRefs, true);
