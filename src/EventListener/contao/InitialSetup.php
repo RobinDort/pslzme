@@ -32,8 +32,9 @@ class InitialSetup {
             // Set the parent page ID to the new page.
             $pslzmeAcceptionPage->setParentPageID($pid);
 
-            $latestSortingForPage = $pslzmeAcceptionPage->findLatestSorting($pid);
-            $pslzmeAcceptionPage->setSorting($latestSortingForPage);
+            // set the sorting so the page is at the bottom of the page tree
+            $latestSortingForAcceptionPage = $pslzmeAcceptionPage->findLatestSorting($pid);
+            $pslzmeAcceptionPage->setSorting($latestSortingForAcceptionPage);
 
             // Save the new page.
             $pslzmeAcceptionPage->save();
@@ -63,6 +64,10 @@ class InitialSetup {
 
             // Set the parent page ID to the new page.
             $pslzmeDeclinePage->setParentPageID($pid);
+
+            // set the sorting so the page is at the bottom of the page tree
+            $latestSortingForDeclinePage = $pslzmeDeclinePage->findLatestSorting($pid);
+            $pslzmeDeclinePage->setSorting($latestSortingForDeclinePage);
 
             // Save the new page.
             $pslzmeDeclinePage->save();
