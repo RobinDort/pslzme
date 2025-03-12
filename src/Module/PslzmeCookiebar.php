@@ -5,7 +5,7 @@ use RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor;
 
 use Contao\Module;
 use Contao\ModuleModel;
-use Contao\Exception;
+use Exception;
 
 class PslzmeCookiebar extends Module {
     protected $strTemplate = "mod_pslzme_cookiebar";
