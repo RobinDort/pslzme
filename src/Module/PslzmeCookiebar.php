@@ -45,12 +45,14 @@ class PslzmeCookiebar extends Module {
 
 
     public function generate() {
+        $output = parent::generate();
+
         $this->Template->testDBData = "test";
         // $this->Template->imprintID = $this->imprintID;
         // $this->Template->privacyID = $this->privacyID;
         $this->compile();
 
-        return $this->Template->parse();
+       return $output;
     }
 }
 
