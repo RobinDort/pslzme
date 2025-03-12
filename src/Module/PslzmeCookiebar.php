@@ -4,6 +4,7 @@ namespace RobinDort\PslzmeLinks\Module;
 use RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor;
 
 use Contao\Module;
+use Contao\ModuleModel;
 
 class PslzmeCookiebar extends Module {
     protected $strTemplate = "mod_pslzme_cookiebar";
@@ -11,6 +12,11 @@ class PslzmeCookiebar extends Module {
     private $dbStmtExecutor;
     private $imprintID;
     private $privacyID;
+
+
+    public function __construct(ModuleModel $objModule) {
+        parent::__construct($objModule);
+    }
 
 
     public function setDbStmtExecutor(DatabasePslzmeConfigStmtExecutor $dbStmtExecutor){
