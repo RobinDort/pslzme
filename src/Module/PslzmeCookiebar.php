@@ -1,6 +1,8 @@
 <?php
 namespace RobinDort\PslzmeLinks\Module;
 
+use RobinDort\PslzmeLinks\Service\DatabaseConnection;
+
 use Contao\Module;
 
 class PslzmeCookiebar extends Module {
