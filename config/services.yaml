@@ -17,7 +17,7 @@ services:
     calls:
       - method: setDbStmtExecutor
         arguments: ["@RobinDort\\PslzmeLinks\\Service\\Backend\\DatabasePslzmeConfigStmtExecutor"]
-    public: true
+  public: false
 
   RobinDort\PslzmeLinks\Service\DatabaseManager:
     arguments:
