@@ -12,7 +12,8 @@ class PslzmeCookiebar extends Module {
     private $imprintID;
     private $privacyID;
 
-    public function __construct(DatabasePslzmeConfigStmtExecutor $dbStmtExecutor) {
+
+    public function setDbStmtExecutor(DatabasePslzmeConfigStmtExecutor $dbStmtExecutor){
         try {
             $this->dbStmtExecutor = $dbStmtExecutor;
             $dbConfigData = $this->dbStmtExecutor->selectCurrentDatabaseConfigurationData();
