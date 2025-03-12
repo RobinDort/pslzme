@@ -12,6 +12,7 @@ class PslzmeCookiebar extends Module {
     private ?DatabasePslzmeConfigStmtExecutor $dbStmtExecutor = null;
     private ?string $imprintID = null;
     private ?string $privacyID = null;
+    private $testDBData;
 
 
     public function __construct(ModuleModel $objModule) {
@@ -25,6 +26,7 @@ class PslzmeCookiebar extends Module {
         try {
             $dbConfigData = $this->dbStmtExecutor->selectCurrentDatabaseConfigurationData();
             $internalPageRefs = $dbConfigData["databaseIPR"];
+            $this->testDBData = $internalPageRefs;
 
             if (!empty($internalPageRefs)) {
                 $internalPageRefs = json_decode($internalPageRefs, true);
@@ -43,8 +45,9 @@ class PslzmeCookiebar extends Module {
 
 
     public function generate() {
-        $this->Template->imprintID = $this->imprintID;
-        $this->Template->privacyID = $this->privacyID;
+        $this->Template->testDBData = $this->testDBData;
+        // $this->Template->imprintID = $this->imprintID;
+        // $this->Template->privacyID = $this->privacyID;
         $this->compile();
 
         return $this->Template->parse();

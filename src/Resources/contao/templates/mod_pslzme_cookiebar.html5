@@ -1,6 +1,7 @@
 <!-- indexer::stop -->
 
 	<div id="pslzme-cookiebar">
+		<?= $this->testDBData ?>
 		<div class="pslzme-cookiebar-inner">
 			<div class="block">
 				<button class="pslzme-cookiebar-close-btn btn-small icon-cancel" onClick="hideVisibility();"></button>
