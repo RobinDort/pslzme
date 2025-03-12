@@ -22,7 +22,7 @@ class PslzmeCookiebar extends Module {
     public function setDbStmtExecutor(DatabasePslzmeConfigStmtExecutor $dbStmtExecutor) {
         $this->dbStmtExecutor = $dbStmtExecutor;
 
-        try {
+        //try {
             $dbConfigData = $this->dbStmtExecutor->selectCurrentDatabaseConfigurationData();
             \System::log("configData: " . $dbConfigData);
             throw new Exception("DBCONFIG");
@@ -34,11 +34,11 @@ class PslzmeCookiebar extends Module {
             //     $this->imprintID = $internalPageRefs["Imprint"] ?? null;
             //     $this->privacyID = $internalPageRefs["Privacy"] ?? null;
             // }
-        } catch (DatabaseException $dbe) {
-            error_log($dbe->getErrorMsg());
-        } catch (Exception $e) {
-            error_log($e->getMessage());
-        }
+        // } catch (DatabaseException $dbe) {
+        //     error_log($dbe->getErrorMsg());
+        // } catch (Exception $e) {
+        //     error_log($e->getMessage());
+        // }
     }
 
 
