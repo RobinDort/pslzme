@@ -40,8 +40,13 @@
                 </section>					
 			</div>
 			<div class="pslzme-cookiebar-info space-top20 block">
-				<a href="https://www.alexanderdort.com/impressum.html" rel="norefferer noopener"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['imprint'] ?></a>
-				<a href="https://www.alexanderdort.com/datenschutz.html" rel="norefferer noopener"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['privacy'] ?></a>
+				<?php if($this->imprintID): ?>
+					<a href="{{link_url::<?= $this->imprintID ?>}}" rel="norefferer noopener"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['imprint'] ?></a>
+				<?php endif; ?>
+
+				<?php if($this->privacyID): ?>
+					<a href="{{link_url::<?= $this->privacyID ?>}}" rel="norefferer noopener"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['privacy'] ?></a>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
