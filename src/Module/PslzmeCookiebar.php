@@ -48,6 +48,11 @@ class PslzmeCookiebar extends Module {
     public function generate() {
         $output = parent::generate();
 
+        if (!$this->dbStmtExecutor) {
+            \System::log("DB Executor is NULL in generate()", __METHOD__, TL_ERROR);
+            throw new Exception("No dbStmtExecutor configured");
+        }
+
         $this->Template->imprintID = $this->imprintID;
         $this->Template->privacyID = $this->privacyID;
         $this->compile();
