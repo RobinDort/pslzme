@@ -12,8 +12,14 @@ class DatabaseStatementExecutor {
     private $statementPreparer;
 
     public function __construct(DatabaseConnection $db) {
-        $this->dbConn = $db;
-        $this->statementPreparer = new StatementPreparer($this->dbConn->getConnection());
+        try {
+            $this->dbConn = $db;
+            $this->statementPreparer = new StatementPreparer($this->dbConn->getConnection());
+        } catch (DatabaseException $dbe) {
+            error_log($dbe->getErrorMsg());
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+        }
     }
 
     /****************************************** PUBLIC FUNCTIONS ******************************************/
