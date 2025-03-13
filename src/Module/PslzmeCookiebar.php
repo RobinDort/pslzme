@@ -29,7 +29,6 @@ class PslzmeCookiebar extends Module {
 
         try {
             $dbConfigData = $this->dbStmtExecutor->selectCurrentDatabaseConfigurationData();
-            $this->imprintID = $dbConfigData;
             $internalPageRefs = $dbConfigData["databaseIPR"];
 
             if (!empty($internalPageRefs)) {
