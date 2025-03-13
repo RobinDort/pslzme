@@ -1,12 +1,5 @@
 function pslzmeRedirection() {
-	const noPslzmeCookiebannerPages = [
-		"/imprint.html",
-		"/impressum.html",
-		"/datenschutz,html",
-		"/privacy-statement.html",
-		"pslzme-query-gesperrt.html",
-		"pslzme-query-locked.html",
-	];
+	const noPslzmeCookiebannerPages = ["pslzme-query-gesperrt.html", "pslzme-query-locked.html"];
 	const currentLocation = window.location.pathname;
 
 	// DONT redirect when the user visits one of the pages included inside the noPslzmeCookiebannerPages array.

@@ -41,11 +41,11 @@
 			</div>
 			<div class="pslzme-cookiebar-info space-top20 block">
 				<?php if($this->imprintID): ?>
-					<a href="{{link_url::<?= $this->imprintID ?>}}" rel="norefferer noopener"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['imprint'] ?></a>
+					<a href="{{link_url::<?= $this->imprintID ?>}}" target="_blank" rel="norefferer noopener"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['imprint'] ?></a>
 				<?php endif; ?>
 
 				<?php if($this->privacyID): ?>
-					<a href="{{link_url::<?= $this->privacyID ?>}}" rel="norefferer noopener"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['privacy'] ?></a>
+					<a href="{{link_url::<?= $this->privacyID ?>}}" target="_blank" rel="norefferer noopener"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['privacy'] ?></a>
 				<?php endif; ?>
 			</div>
 		</div>
