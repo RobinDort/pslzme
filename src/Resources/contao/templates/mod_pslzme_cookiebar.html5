@@ -11,7 +11,6 @@
 			<div class="pslzme-cookiebar-description ce_text block">
 				<p><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['cookiebar_fh'] ?></p>
 				<p><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['cookiebar_sh'] ?>		
-				<p><?= $this->imprintID ?></p>
 
 			</div>
 			<div class="pslzme-cookiebar-footer block">
