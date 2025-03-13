@@ -20,7 +20,7 @@ class PslzmeCookiebar extends Module {
         parent::__construct($objModule);
 
         $container = System::getContainer();
-        $this->dbStmtExecutor = $container->get(RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor::class);
+        $this->dbStmtExecutor = $this->dbStmtExecutor = $container->get(DatabasePslzmeConfigStmtExecutor::class);
 
         if (!$this->dbStmtExecutor) {
             \System::log("DB Executor is NULL in generate()", __METHOD__, TL_ERROR);
