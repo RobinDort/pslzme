@@ -8,7 +8,13 @@ function pslzmeQueryClickListener() {
 			const eventTarget = event.target;
 
 			if (eventTarget.matches("a[href$='.html']") || eventTarget.matches("a img") || eventTarget.matches("a canvas")) {
-				//event.preventDefault();
+				// Check if the anchor has target = _blank. In this case the function does not need to pass the pslzme queries.
+				const linkElement = eventTarget.closest("a");
+				if (linkElement && linkElement.target === "_blank") {
+					return;
+				}
+
+				event.preventDefault();
 
 				let hrefOfEventTarget;
 
