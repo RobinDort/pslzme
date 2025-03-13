@@ -5,6 +5,7 @@ use RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor;
 
 use Contao\Module;
 use Contao\ModuleModel;
+use Contao\System;
 use Exception;
 
 class PslzmeCookiebar extends Module {
@@ -20,7 +21,7 @@ class PslzmeCookiebar extends Module {
 
         $container = System::getContainer();
         $this->dbStmtExecutor = $container->get(RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor::class);
-        
+
         if (!$this->dbStmtExecutor) {
             \System::log("DB Executor is NULL in generate()", __METHOD__, TL_ERROR);
             throw new Exception("No dbStmtExecutor configured");
