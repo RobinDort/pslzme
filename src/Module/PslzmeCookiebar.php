@@ -27,7 +27,7 @@ class PslzmeCookiebar extends Module {
             throw new Exception("No dbStmtExecutor configured");
         }
 
-        // try {
+        try {
             $dbConfigData = $this->dbStmtExecutor->selectCurrentDatabaseConfigurationData();
             $internalPageRefs = $dbConfigData["databaseIPR"];
 
@@ -36,11 +36,11 @@ class PslzmeCookiebar extends Module {
                 $this->imprintID = $internalPageRefs["Imprint"] ?? null;
                 $this->privacyID = $internalPageRefs["Privacy"] ?? null;
             }
-        // } catch (DatabaseException $dbe) {
-        //     error_log($dbe->getErrorMsg());
-        // } catch (Exception $e) {
-        //     error_log($e->getMessage());
-        // }
+        } catch (DatabaseException $dbe) {
+            error_log($dbe->getErrorMsg());
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+        }
     }
 
 
