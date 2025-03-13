@@ -12,8 +12,8 @@ class PslzmeCookiebar extends Module {
     protected $strTemplate = "mod_pslzme_cookiebar";
 
     private ?DatabasePslzmeConfigStmtExecutor $dbStmtExecutor = null;
-    private ?string $imprintID = null;
-    private ?string $privacyID = null;
+    private $imprintID;
+    private $privacyID;
 
 
     public function __construct(ModuleModel $objModule) {
@@ -33,8 +33,8 @@ class PslzmeCookiebar extends Module {
 
             if (!empty($internalPageRefs)) {
                 $internalPageRefs = json_decode($internalPageRefs,true);
-                $this->imprintID = $internalPageRefs["Imprint"] ?? null;
-                $this->privacyID = $internalPageRefs["Privacy"] ?? null;
+                $this->imprintID = $internalPageRefs["Imprint"];
+                $this->privacyID = $internalPageRefs["Privacy"];
             }
         } catch (DatabaseException $dbe) {
             error_log($dbe->getErrorMsg());
