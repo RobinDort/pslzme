@@ -8,6 +8,8 @@ use RobinDort\PslzmeLinks\EventListener\contao\InitialSetup;
 use RobinDort\PslzmeLinks\EventListener\InstallListener;
 use RobinDort\PslzmeLinks\Backend\PslzmeConfiguration;
 use Contao\System;
+use Contao\Database;
+use Contao\Controller;
 
 
 // load language file
@@ -30,6 +32,22 @@ $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/pslzme-cookiebar-
 $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/cookie-acception.js|static";
 $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/main.js|static";
 //$GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/pslzme.min.js|static";
+
+$GLOBALS["TL_HEAD"][] = static function() {
+    $db = Database::getInstance();
+    $result = $db->prepare("SELECT pslzme_ipr FROM tl_pslzme_config WHERE id = 1")->execute();
+    if (!$result->numRows) {
+        return;
+    }
+    // Decode the JSON string into an array
+    $jsonData = json_decode($result->pslzme_excluded_pages, true);
+    $imprintID = $jsonData["Imprint"];
+
+    if (!empty($imprintID)) {
+        $urlLink = Controller::replaceInsertTags('{{link_url::' . $imprintID . '}}');
+        echo "<script>var imprintPage = " . $urlLink . ";</script>\n";
+    }
+};
 
 
 // Init Frontend Modules
