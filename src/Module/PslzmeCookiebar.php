@@ -30,7 +30,7 @@ class PslzmeCookiebar extends Module {
 
         //try {
             $dbConfigData = $this->dbStmtExecutor->selectCurrentDatabaseConfigurationData();
-            \System::log("configData: " . $dbConfigData);
+            \System::log("configData: " . $dbConfigData["databaseIPR"]);
             throw new Exception("DBCONFIG");
             $this->imprintID = $dbConfigData;
             $internalPageRefs = $dbConfigData["databaseIPR"];
