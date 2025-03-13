@@ -32,22 +32,6 @@ $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/cookie-acception.
 $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/main.js|static";
 //$GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/pslzme.min.js|static";
 
-$GLOBALS["TL_MOOTOOLS"][] = static function() {
-    $db = Database::getInstance();
-    $result = $db->prepare("SELECT pslzme_ipr FROM tl_pslzme_config WHERE id = 1")->execute();
-    if (!$result->numRows) {
-        return;
-    }
-    // Decode the JSON string into an array
-    $jsonData = json_decode($result->pslzme_excluded_pages, true);
-    $imprintID = $jsonData["Imprint"];
-
-    if (!empty($imprintID)) {
-        $urlLink = '{{link_url::' . $imprintID . '}}';
-        echo "<script>var imprintPage = " . $urlLink . ";</script>\n";
-    }
-};
-
 
 // Init Frontend Modules
 $GLOBALS['FE_MOD']['pslzme']['query_decryption'] = QueryDecryption::class;
