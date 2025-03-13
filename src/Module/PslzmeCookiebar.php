@@ -50,6 +50,9 @@ class PslzmeCookiebar extends Module {
     public function generate() {
         $output = parent::generate();
 
+        System::Log("imprint id: " .$this->imprintID, __METHOD__, "TL_ERROR");
+        throw new Exception("imprint ID");
+
         $this->Template->imprintID = $this->imprintID;
         $this->Template->privacyID = $this->privacyID;
         $this->compile();
