@@ -32,7 +32,7 @@ class PslzmeCookiebar extends Module {
             $internalPageRefs = $dbConfigData["databaseIPR"];
 
             if (!empty($internalPageRefs)) {
-                $internalPageRefs = json_decode($internalPageRefs, true);
+                $internalPageRefs = $internalPageRefs;
                 \System::log(var_dump($internalPageRefs), __METHOD__, "TL_ERROR");
                 throw new Exception("page refs!");
                 $this->imprintID = $internalPageRefs["Imprint"] ?? null;
