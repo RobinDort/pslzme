@@ -9,7 +9,6 @@ use RobinDort\PslzmeLinks\EventListener\InstallListener;
 use RobinDort\PslzmeLinks\Backend\PslzmeConfiguration;
 use Contao\System;
 use Contao\Database;
-use Contao\Controller;
 
 
 // load language file
@@ -44,7 +43,7 @@ $GLOBALS["TL_MOOTOOLS"][] = static function() {
     $imprintID = $jsonData["Imprint"];
 
     if (!empty($imprintID)) {
-        $urlLink = Controller::replaceInsertTags('{{link_url::' . $imprintID . '}}');
+        $urlLink = '{{link_url::' . $imprintID . '}}';
         echo "<script>var imprintPage = " . $urlLink . ";</script>\n";
     }
 };
