@@ -13,11 +13,6 @@ services:
       $dbStmtExecutor: "@RobinDort\\PslzmeLinks\\Service\\Backend\\DatabasePslzmeConfigStmtExecutor"
     public: true
 
-  RobinDort\PslzmeLinks\Module\PslzmeCookiebar:
-    public: false
-    calls:
-      - setDbStmtExecutor: ['@RobinDort\\PslzmeLinks\\Service\\Backend\\DatabasePslzmeConfigStmtExecutor']
-
   RobinDort\PslzmeLinks\Service\DatabaseManager:
     arguments:
       $dbc: "@RobinDort\\PslzmeLinks\\Service\\DatabaseConnection"

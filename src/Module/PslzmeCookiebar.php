@@ -17,11 +17,15 @@ class PslzmeCookiebar extends Module {
 
     public function __construct(ModuleModel $objModule) {
         parent::__construct($objModule);
-    }
 
+        $container = System::getContainer();
+        $this->dbStmtExecutor = $container->get(RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor::class);
+        
+        if (!$this->dbStmtExecutor) {
+            \System::log("DB Executor is NULL in generate()", __METHOD__, TL_ERROR);
+            throw new Exception("No dbStmtExecutor configured");
+        }
 
-    public function setDbStmtExecutor(DatabasePslzmeConfigStmtExecutor $dbStmtExecutor) {
-        $this->dbStmtExecutor = $dbStmtExecutor;
 
         //try {
             $dbConfigData = $this->dbStmtExecutor->selectCurrentDatabaseConfigurationData();
@@ -48,11 +52,6 @@ class PslzmeCookiebar extends Module {
 
     public function generate() {
         $output = parent::generate();
-
-        if (!$this->dbStmtExecutor) {
-            \System::log("DB Executor is NULL in generate()", __METHOD__, TL_ERROR);
-            throw new Exception("No dbStmtExecutor configured");
-        }
 
         $this->Template->imprintID = $this->imprintID;
         $this->Template->privacyID = $this->privacyID;
