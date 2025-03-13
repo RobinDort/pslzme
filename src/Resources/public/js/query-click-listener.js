@@ -8,7 +8,7 @@ function pslzmeQueryClickListener() {
 			const eventTarget = event.target;
 
 			if (eventTarget.matches("a[href$='.html']") || eventTarget.matches("a img") || eventTarget.matches("a canvas")) {
-				event.preventDefault();
+				//event.preventDefault();
 
 				let hrefOfEventTarget;
 
