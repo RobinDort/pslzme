@@ -16,6 +16,7 @@ class PslzmeConfiguration extends BackendModule {
     private $pslzmeDBName;
     private $pslzmeDBUser;
     private $pslzmeDBIPR;
+    private $urlLicensed;
 
 
     public function __construct() {
@@ -28,6 +29,7 @@ class PslzmeConfiguration extends BackendModule {
             $this->pslzmeDBName = $databaseData["databaseName"];
             $this->pslzmeDBUser = $databaseData["databaseUser"];
             $this->pslzmeDBIPR = $databaseData["databaseIPR"];
+            $this->urlLicensed = $databaseData["urlLicensed"];
         }
     }
 
@@ -41,6 +43,7 @@ class PslzmeConfiguration extends BackendModule {
         $this->Template = new BackendTemplate($this->strTemplate);
         $this->Template->pslzmeDBName = $this->pslzmeDBName;
         $this->Template->pslzmeDBUser = $this->pslzmeDBUser;
+        $this->Template->urlLicensed = $this->urlLicensed;
 
         if(!empty($this->pslzmeDBIPR)) {
             $decodedPages = json_decode($this->pslzmeDBIPR,true);
