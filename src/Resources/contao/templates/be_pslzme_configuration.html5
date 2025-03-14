@@ -162,7 +162,9 @@
 <script>
 
     function registerDomain() {
-        
+        const domainName = window.location.origin;
+        console.log(domainName);
+
     }
 
     function savePslzmeDBConfiguration(configuration) {
