@@ -174,7 +174,7 @@
         };
 
         return new Request.JSON({
-            url: "https://www.pslzme.com/files/pslzme/php/request-handler.php",
+            url: "https://www.pslzme.com/files/pslzme/php/domain-registration-handler.php",
             method: "post",
             data: requestObject,
             onSuccess: function (response) {
