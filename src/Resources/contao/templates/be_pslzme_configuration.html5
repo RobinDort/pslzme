@@ -163,7 +163,32 @@
 
     function registerDomain() {
         const domainName = window.location.origin;
-        console.log(domainName);
+
+        const requestObj = {
+            "domain": domainName
+        };
+
+        const requestObject = {
+           data: JSON.stringify(requestObj),
+           request: "domain-registration"
+        };
+
+        return new Request.JSON({
+            url: "https://www.pslzme.com/files/pslzme/php/request-handler.php",
+            method: "post",
+            data: requestObject,
+            onSuccess: function (response) {
+                console.log(response);
+                // setTimeout(function() {
+                //     window.location.reload();
+                // }, 1000);
+                
+            },
+            onFailure: function (xhr) { 
+                console.log("Action failed: " + requestObject.request);
+                console.log("XHR Response:", xhr.responseText);
+            }
+        }).send();
 
     }
 
