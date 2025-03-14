@@ -13,7 +13,7 @@
 <!-- indexer::continue -->
 
 <?php else :?>
-	<?php if ($this->showUnpersonalizedText && $this->showUnpersonalizedText === true): ?>
+	<?php if ($this->showUnpersonalizedText && $this->showUnpersonalizedText === "1"): ?>
 		<div class="ce_text block">
 			<?= $this->unpersonalizedText ?>
 		</div>

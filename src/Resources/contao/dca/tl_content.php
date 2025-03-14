@@ -34,7 +34,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedText'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['showUnpersonalizedText'] = [
-    'label'     => ["Show Unpersonalized Text", 'Show Text'],
+    'label'     => ["Show Unpersonalized Text", 'Choose selection'],
     'exclude'   => true,
     'inputType' => 'radio',
     'options'   => ['1' => 'Yes', '0' => 'No'],
