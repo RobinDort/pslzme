@@ -42,6 +42,11 @@ $GLOBALS['TL_DCA']['tl_pslzme_config'] = [
             'inputType' => 'number',
             'eval'      => ['mandatory' => true, 'rgxp' => 'digit'],
             'sql'       => "INT(10) UNSIGNED NOT NULL"
+        ],
+        'url_licenced' => [
+            'inputType' => 'checkbox',  
+            'eval' => ['tl_class' => 'w50'],
+            'sql' => "TINYINT(1) NOT NULL DEFAULT '0'"
         ]
     ]
 ];
