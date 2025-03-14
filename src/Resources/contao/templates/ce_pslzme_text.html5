@@ -13,9 +13,11 @@
 <!-- indexer::continue -->
 
 <?php else :?>
-	<div class="ce_text block">
-		<?= $this->unpersonalizedText ?>
-	</div>
+	<?php if ($this->showUnpersonalizedText && $this->showUnpersonalizedText === true): ?>
+		<div class="ce_text block">
+			<?= $this->unpersonalizedText ?>
+		</div>
+	<?php endif; ?>
 <?php endif; ?>
 
 <?php $this->endblock(); ?>
