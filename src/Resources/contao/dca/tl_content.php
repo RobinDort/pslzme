@@ -4,7 +4,7 @@
  * Configuration for pslzme_text element
  */
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_text'] = '{type_legend},type,headline;{text_legend},personalizedText,unpersonalizedText;{expert_legend:hide},cssID';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_text'] = '{type_legend},type,headline;{text_legend},personalizedText,unpersonalizedText;{expert_legend:hide},showUnpersonalizedText,cssID';
 
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedTextGroup'] = [
@@ -31,6 +31,16 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedText'] = [
     'inputType' => 'textarea',
     'eval'      => ['rte' => 'tinyMCE', 'helpwizard' => true, 'mandatory' => true],
     'sql' => "TEXT NULL"
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['showUnpersonalizedText'] = [
+    'label'     => ["Show Unpersonalized Text", 'Show Text'],
+    'exclude'   => true,
+    'inputType' => 'radio',
+    'options'   => ['1' => 'Yes', '0' => 'No'],
+    'default'   => '1',
+    'eval'      => ['mandatory' => true, 'tl_class' => 'w50'],
+    'sql'       => "char(1) NOT NULL default '1'"
 ];
 
 
