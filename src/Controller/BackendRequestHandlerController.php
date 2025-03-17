@@ -71,11 +71,17 @@ class BackendRequestHandlerController {
     #[Route('/registerCustomer', name: "register_customer", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])]
     public function registerCustomer(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
-        $customer = $requestData->customer;
-        $key = $requestData->key;
-        $resp = array(
-            $customer, $key
-        );
+        try {
+            $requestData = json_decode($requestData, false);
+            $customer = $requestData->customer;
+            $key = $requestData->key;
+            $resp = array(
+                $customer, $key
+            );
+
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+        }
 
         return new JsonResponse($resp);
     }
