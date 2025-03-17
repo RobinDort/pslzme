@@ -82,10 +82,16 @@ class BackendRequestHandlerController {
 
             // start transaction so both value are made sure to be saved into the db.
             $databaseConnection->getConnection()->begin_transaction();
-            $result = $dbStmtExcecutor->insertCustomer($requestData);
-            $databaseConnection->getConnection()->commit();
-    
+            $insertCustomerResult = $dbStmtExcecutor->insertCustomer($requestData);
 
+            if ($insertCustomerResult["customerID"] === 0) {
+                $databaseConnection->getConnection()->commit();
+                return new JsonResponse($result["response"]);
+            }
+
+            $customerID = $insertCustomerResult["customerID"];
+            $insertKeyResult = $dbStmtExcecutor->insertCustomerKey($customerID);
+            $databaseConnection->getConnection()->commit();
             return new JsonResponse($result);
 
         } catch (InvalidDataException $ide) { 
@@ -106,6 +112,10 @@ class BackendRequestHandlerController {
             }
             error_log($e->getMessage());
             return new JsonResponse($e->getMessage());
+        } finally {
+            if ($databaseConnection) {
+                $databaseConnection->closeConnection();
+            }
         }
 
     }

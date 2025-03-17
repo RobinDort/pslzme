@@ -111,6 +111,15 @@ class DatabaseStatementExecutor {
         return $resp;
     }
 
+    public function insertCustomerKey($customerID) {
+        if ($customerID === null) {
+            throw new InvalidDataException("Unable to extract customer ID");
+        }
+
+        $insertCustomerKeyQueryResult = $this->insertCustomerKeyQuery($customerID);
+
+    }
+
 
    public function insertCustomerDBQuery($data) {
         $resp = "";
