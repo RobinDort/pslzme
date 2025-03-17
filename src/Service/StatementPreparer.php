@@ -55,6 +55,14 @@ class StatementPreparer {
         return $stmt;
     }
 
+    public function prepareInsertCustomerKey($queryParamEncryptionKey, $queryParamCustomerID) {
+        $sqlQuery = "INSERT INTO encrypt_info (EncryptionKey, PslzmeKundenID) VALUES (?,?)";
+        $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->bind_param("ss", $queryParamEncryptionKey, $queryParamCustomerID);
+
+        return $stmt;
+    }
+
     public function prepareInsertCustomerQuery($queryParamQuery, $queryParamTimestamp, $queryParamAcceptedOn, $queryParamCookieAccepted, $queryParamCustomerID, $queryParamEncryptionID, $queryParamQueryLocked) {
         $sqlQuery = "INSERT INTO query_link (QueryString, CreationTime, AcceptionTime, Accepted, Locked, PslzmeKundenID, EncryptInfoID) VALUES(?,?,?,?,?,?,?)"; 
         $stmt = $this->conn->prepare($sqlQuery);

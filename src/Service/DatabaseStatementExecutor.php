@@ -359,6 +359,12 @@ class DatabaseStatementExecutor {
     }
 
 
+    private function insertCustomerKeyQuery($customerID) {
+        $response = "";
+        $stmt = $this->statementPreparer->prepareInsertCustomerKey($customerID);
+    }
+
+
     private function insertCustomerDBQueryString($query, $timestamp, $acceptedOn, $cookieAccepted, $customerID, $encryptID, $queryLocked) {
         $response = array(
             "response" => "",
