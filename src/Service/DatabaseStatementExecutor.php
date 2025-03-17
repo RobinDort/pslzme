@@ -28,6 +28,10 @@ class DatabaseStatementExecutor {
         $resp = "";
         $selectCustomerDBCustomerResp = $this->selectCustomerDBCustomer();
 
+        if (empty($selectCustomerDBCustomerResp->presentCustomer)) {
+            throw new DatabaseException("Customer has not been initialized yet");
+        }
+
         $resp .= $selectCustomerDBCustomerResp->response;
         $customerID = $selectCustomerDBCustomerResp->presentCustomer->KundenID;
 
@@ -210,7 +214,7 @@ class DatabaseStatementExecutor {
             if ($stmt->execute()) {
                 $stmtResult = $stmt->get_result();
                 if ($stmtResult->num_rows === 0) {
-                    throw new DatabaseException("selectAllCustomer returned rows = 0. Customer has not been initialized yet");
+                    $convertedResponse->response = "No Customer has been initialized yet";
                 } else {
                     $convertedResponse->response = "Customer has been found";
                     $convertedResponse->presentCustomer = $stmtResult->fetch_object();
