@@ -111,12 +111,19 @@ class DatabaseStatementExecutor {
         return $resp;
     }
 
-    public function insertCustomerKey($customerID) {
+    public function insertCustomerKey($data) {
+        $key = $data["key"];
+        if ($key === null) {
+            throw new InvalidDataException("Unable to extract key out of data array");
+        }
+
+        $customerID = $data["customerID"];
         if ($customerID === null) {
             throw new InvalidDataException("Unable to extract customer ID");
         }
 
-        $insertCustomerKeyQueryResult = $this->insertCustomerKeyQuery($customerID);
+        $insertCustomerKeyQueryResult = $this->insertCustomerKeyQuery($key, $customerID);
+        return $insertCustomerKeyQueryResult;
 
     }
 
@@ -359,9 +366,23 @@ class DatabaseStatementExecutor {
     }
 
 
-    private function insertCustomerKeyQuery($customerID) {
+    private function insertCustomerKeyQuery($key, $customerID) {
         $response = "";
-        $stmt = $this->statementPreparer->prepareInsertCustomerKey($customerID);
+        $stmt = $this->statementPreparer->prepareInsertCustomerKey($key, $customerID);
+        try {
+            if ($stmt->execute()) {
+                $response = "Successfully inserted customer key";
+            } else {
+                throw new DatabaseException("Unable to execute query prepareInsertCustomerKey with customerID: " . $customerID);
+            }
+
+        } catch (Exception $e) {
+            throw $e;
+        } finally {
+            if ($stmt) $stmt->close();
+        }
+
+        return $response;
     }
 
 

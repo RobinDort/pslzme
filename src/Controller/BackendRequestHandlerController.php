@@ -90,7 +90,12 @@ class BackendRequestHandlerController {
             }
 
             $customerID = $insertCustomerResult["customerID"];
-            $insertKeyResult = $dbStmtExcecutor->insertCustomerKey($customerID);
+            $insertKeyData = array(
+                "key"           => $requestData->key,
+                "customerID"    => $customerID
+            );
+
+            $insertKeyResult = $dbStmtExcecutor->insertCustomerKey($insertKeyData);
             $databaseConnection->getConnection()->commit();
             return new JsonResponse($result);
 
