@@ -76,33 +76,32 @@ class BackendRequestHandlerController {
         try {
             $requestData = json_decode($requestData, true);
 
+            // get the database connection to the pslzme database
+            $databaseConnection = new DatabaseConnection($this->dbPslzmeStmtExecutor);
+            $dbStmtExcecutor = new DatabaseStatementExecutor($databaseConnection);
 
-            // // get the database connection to the pslzme database
-            // $databaseConnection = new DatabaseConnection($this->dbPslzmeStmtExecutor);
-            // $dbStmtExcecutor = new DatabaseStatementExecutor($databaseConnection);
+            $resp = "";
 
-            // $resp = "";
+            // start transaction so both value are made sure to be saved into the db.
+            $databaseConnection->getConnection()->begin_transaction();
+            $insertCustomerResult = $dbStmtExcecutor->insertCustomer($requestData);
 
-            // // start transaction so both value are made sure to be saved into the db.
-            // $databaseConnection->getConnection()->begin_transaction();
-            // $insertCustomerResult = $dbStmtExcecutor->insertCustomer($requestData);
+            if ($insertCustomerResult["customerID"] === 0) {
+                $databaseConnection->getConnection()->commit();
+                return new JsonResponse($insertCustomerResult["response"]);
+            }
 
-            // if ($insertCustomerResult["customerID"] === 0) {
-            //     $databaseConnection->getConnection()->commit();
-            //     return new JsonResponse($insertCustomerResult["response"]);
-            // }
+            $resp .= $insertCustomerResult["response"];
+            $customerID = $insertCustomerResult["customerID"];
+            $insertKeyData = array(
+                "key"           => $requestData["key"],
+                "customerID"    => $customerID
+            );
 
-            // $resp .= $insertCustomerResult["response"];
-            // $customerID = $insertCustomerResult["customerID"];
-            // $insertKeyData = array(
-            //     "key"           => $requestData->key,
-            //     "customerID"    => $customerID
-            // );
-
-            // $insertKeyResult = $dbStmtExcecutor->insertCustomerKey($insertKeyData);
-            // $resp .= $insertKeyResult;
-            // $databaseConnection->getConnection()->commit();
-            return new JsonResponse($requestData);
+            $insertKeyResult = $dbStmtExcecutor->insertCustomerKey($insertKeyData);
+            $resp .= $insertKeyResult;
+            $databaseConnection->getConnection()->commit();
+            return new JsonResponse($resp);
 
         } catch (InvalidDataException $ide) { 
             if (isset($databaseConnection)) {
