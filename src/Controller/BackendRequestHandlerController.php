@@ -68,8 +68,22 @@ class BackendRequestHandlerController {
         }
     }
 
+    #[Route('/registerCustomer', name: "register_customer", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])]
+    public function registerCustomer():JsonResponse {
+        $requestData = $request->request->get('data');
+        $customer = $requestData->customer;
+        $key = $requestData->key;
+        $resp = array(
+            $customer, $key
+        );
+
+        return new JsonResponse($resp);
+    }
+
+
+
     #[Route('/createPslzmeTables', name: "create_pslzme_tables", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])] 
-    public function createPslzmeTables():JsonResponse {
+    public function createPslzmeTables(): JsonResponse {
         try {
             //$dbm = new DatabaseManager();
             $this->databaseManager->initTables();
