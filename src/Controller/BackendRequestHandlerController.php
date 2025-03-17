@@ -69,7 +69,7 @@ class BackendRequestHandlerController {
     }
 
     #[Route('/registerCustomer', name: "register_customer", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])]
-    public function registerCustomer():JsonResponse {
+    public function registerCustomer(): JsonResponse {
         $requestData = $request->request->get('data');
         $customer = $requestData->customer;
         $key = $requestData->key;
