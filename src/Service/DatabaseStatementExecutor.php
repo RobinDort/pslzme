@@ -94,15 +94,16 @@ class DatabaseStatementExecutor {
             throw new InvalidDataException("Unable to extract customer out of data array");
         }
 
-        $key = $data["key"];
-        if ($key === null) {
-            throw new InvalidDataException("Unable to extract key out of data array");
+        $resp = "";
+
+        // check if customer already exists
+        $selectCustomerResp = $this->selectCustomerDBCustomer();
+        if (!empty($selectCustomerResp->presentCustomer)) {
+            $resp = "Customer has already been saved to the database";
+            return $resp;
         }
 
-        $resp = array(
-            $customer,
-            $key
-        );
+        $insertQueryResp = $this->insertCustomerQuery($customer);
 
         return $resp;
     }
@@ -318,6 +319,16 @@ class DatabaseStatementExecutor {
             if ($stmt) $stmt->close();
         }
         return $convertedResponse;
+    }
+
+
+    private function insertCustomerQuery($customer) {
+        $response = array(
+            "response" => "",
+        );
+        $convertedResponse = (object)$response;
+        $stmt = $this->statementPreparer->prepareInsertCustomer($customer);
+
     }
 
 

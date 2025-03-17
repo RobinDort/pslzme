@@ -47,6 +47,14 @@ class StatementPreparer {
 
     /******************************* INSERT FUNCTIONS *******************************/
 
+    public function prepareInsertCustomer($queryParamCustomer) {
+        $sqlQuery = "INSERT INTO pslzme_kunde (Name) VALUES (?)";
+        $stmt = $this->conn->prepare($sqlQuery);
+        $stmt->bind_param("s", $queryParamCustomer);
+
+        return $stmt;
+    }
+
     public function prepareInsertCustomerQuery($queryParamQuery, $queryParamTimestamp, $queryParamAcceptedOn, $queryParamCookieAccepted, $queryParamCustomerID, $queryParamEncryptionID, $queryParamQueryLocked) {
         $sqlQuery = "INSERT INTO query_link (QueryString, CreationTime, AcceptionTime, Accepted, Locked, PslzmeKundenID, EncryptInfoID) VALUES(?,?,?,?,?,?,?)"; 
         $stmt = $this->conn->prepare($sqlQuery);
