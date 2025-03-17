@@ -178,10 +178,30 @@
             method: "post",
             data: requestObject,
             onSuccess: function (response) {
-                console.log(response);
-                // setTimeout(function() {
-                //     window.location.reload();
-                // }, 1000);
+                const customer = response.customer;
+                const key = response.key;
+
+                const secondRequestData = {
+                    customer,
+                    key
+                };
+
+                const secondRequestObj = {
+                    data: JSON.stringify(secondRequestData),
+                };
+
+                new Request.JSON({
+                    url: "".
+                    method: "post",
+                    data: secondRequestObj,
+                    onSuccess: function(response) {
+                        console.log(response);
+                    },
+                    onFailure: function(xhr) {
+                        console.log("Action failed: " + secondRequestObj.request);
+                        console.log("XHR Response:", xhr.responseText);
+                    }
+                })
                 
             },
             onFailure: function (xhr) { 
