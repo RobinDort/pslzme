@@ -190,7 +190,7 @@
                     data: JSON.stringify(secondRequestData),
                 };
 
-                new Request.JSON({
+                return new Request.JSON({
                     url: "/registerCustomer",
                     method: "post",
                     data: secondRequestObj,
