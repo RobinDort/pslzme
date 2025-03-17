@@ -191,7 +191,7 @@
                 };
 
                 new Request.JSON({
-                    url: "/registerCustomer".
+                    url: "/registerCustomer",
                     method: "post",
                     data: secondRequestObj,
                     onSuccess: function(response) {
