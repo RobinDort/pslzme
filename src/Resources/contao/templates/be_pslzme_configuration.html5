@@ -190,7 +190,7 @@
                     data: JSON.stringify(secondRequestData),
                 };
 
-                return new Request.JSON({
+                new Request.JSON({
                     url: "/registerCustomer",
                     method: "post",
                     data: secondRequestObj,
@@ -201,7 +201,7 @@
                         console.log("Action failed: " + secondRequestObj.request);
                         console.log("XHR Response:", xhr.responseText);
                     }
-                })
+                }).send();
                 
             },
             onFailure: function (xhr) { 
