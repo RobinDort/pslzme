@@ -88,13 +88,18 @@ class BackendRequestHandlerController {
 
             return new JsonResponse($result);
 
-        } catch (InvalidDataException $ide) { {
+        } catch (InvalidDataException $ide) { 
             if (isset($databaseConnection)) {
                 $databaseConnection->getConnection()->rollback();
             }
             error_log($ide->getErrorMsg());
             return new JsonResponse($ide->getErrorMsg());
-        }
+        } catch (DatabaseException $dbe) { 
+            if (isset($databaseConnection)) {
+                $databaseConnection->getConnection()->rollback();
+            }
+            error_log($dbe->getErrorMsg());
+            return new JsonResponse($dbe->getErrorMsg());
         } catch (Exception $e) {
             if (isset($databaseConnection)) {
                 $databaseConnection->getConnection()->rollback();

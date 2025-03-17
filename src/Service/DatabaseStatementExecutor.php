@@ -329,6 +329,18 @@ class DatabaseStatementExecutor {
         $convertedResponse = (object)$response;
         $stmt = $this->statementPreparer->prepareInsertCustomer($customer);
 
+        try {
+            if ($stmt->execute()) {
+
+            } else {
+                throw new DatabaseException("Unable to execute prepareInsertCustomer query with customer = " . $customer);
+            }
+        } catch (Exception $e) {
+            throw $e;
+        } finally {
+            if ($stmt) $stmt->close();
+        }
+
     }
 
 
