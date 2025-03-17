@@ -28,7 +28,7 @@ class DatabaseStatementExecutor {
         $resp = "";
         $selectCustomerDBCustomerResp = $this->selectCustomerDBCustomer();
 
-        if (empty($selectCustomerDBCustomerResp->presentCustomer)) {
+        if ($selectCustomerDBCustomerResp->presentCustomer === null) {
             throw new DatabaseException("Customer has not been initialized yet");
         }
 
@@ -105,7 +105,7 @@ class DatabaseStatementExecutor {
 
         // check if customer already exists
         $selectCustomerResp = $this->selectCustomerDBCustomer();
-        if (!empty($selectCustomerResp->presentCustomer)) {
+        if ($selectCustomerResp->presentCustomer !== null) {
             $resp["response"] = "Customer has already been saved to the database";
             return $resp;
         }
@@ -201,10 +201,9 @@ class DatabaseStatementExecutor {
 /****************************************** INTERNAL PRIVATE FUNCTIONS ******************************************/
 
    private function selectCustomerDBCustomer() {
-        $presentCustomer = (object)[];
         $response = array(
             "response" => "",
-            "presentCustomer" => $presentCustomer
+            "presentCustomer" => null
         );
 
         $convertedResponse = (object)$response;
