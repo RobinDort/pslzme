@@ -80,15 +80,18 @@ class BackendRequestHandlerController {
             $databaseConnection = new DatabaseConnection($this->dbPslzmeStmtExecutor);
             $dbStmtExcecutor = new DatabaseStatementExecutor($databaseConnection);
 
+            $resp = "";
+
             // start transaction so both value are made sure to be saved into the db.
             $databaseConnection->getConnection()->begin_transaction();
             $insertCustomerResult = $dbStmtExcecutor->insertCustomer($requestData);
 
             if ($insertCustomerResult["customerID"] === 0) {
                 $databaseConnection->getConnection()->commit();
-                return new JsonResponse($result["response"]);
+                return new JsonResponse($insertCustomerResult["response"]);
             }
 
+            $resp .= $insertCustomerResult["response"];
             $customerID = $insertCustomerResult["customerID"];
             $insertKeyData = array(
                 "key"           => $requestData->key,
@@ -96,8 +99,9 @@ class BackendRequestHandlerController {
             );
 
             $insertKeyResult = $dbStmtExcecutor->insertCustomerKey($insertKeyData);
+            $resp .= $insertKeyResult;
             $databaseConnection->getConnection()->commit();
-            return new JsonResponse($result);
+            return new JsonResponse($resp);
 
         } catch (InvalidDataException $ide) { 
             if (isset($databaseConnection)) {
