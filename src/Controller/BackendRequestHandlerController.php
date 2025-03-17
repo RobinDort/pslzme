@@ -11,8 +11,10 @@ use Contao\System;
 
 use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
 use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
+use RobinDort\PslzmeLinks\Service\DatabaseStatementExecutor;
 use RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor;
 use RobinDort\PslzmeLinks\Service\DatabaseManager;
+use RobinDort\PslzmeLinks\Service\DatabaseConnection;
 
 #[AsController]
 class BackendRequestHandlerController {
@@ -72,18 +74,35 @@ class BackendRequestHandlerController {
     public function registerCustomer(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
         try {
-            $requestData = json_decode($requestData, false);
-            $customer = $requestData->customer;
-            $key = $requestData->key;
-            $resp = array(
-                $customer, $key
-            );
+            $requestData = json_decode($requestData, true);
 
+            // get the database connection to the pslzme database
+            $databaseConnection = new DatabaseConnection($this->dbPslzmeStmtExecutor);
+            $dbStmtExcecutor = new DatabaseStatementExecutor($databaseConnection);
+
+            // start transaction so both value are made sure to be saved into the db.
+            $databaseConnection->getConnection()->begin_transaction();
+            $result = $dbStmtExcecutor->insertCustomer($requestData);
+            $databaseConnection->getConnection()->commit();
+    
+
+            return new JsonResponse($result);
+
+        } catch (InvalidDataException $ide) { {
+            if (isset($databaseConnection)) {
+                $databaseConnection->getConnection()->rollback();
+            }
+            error_log($ide->getErrorMsg());
+            return new JsonResponse($ide->getErrorMsg());
+        }
         } catch (Exception $e) {
+            if (isset($databaseConnection)) {
+                $databaseConnection->getConnection()->rollback();
+            }
             error_log($e->getMessage());
+            return new JsonResponse($e->getMessage());
         }
 
-        return new JsonResponse($resp);
     }
 
 

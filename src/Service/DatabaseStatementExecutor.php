@@ -88,6 +88,26 @@ class DatabaseStatementExecutor {
     }
 
 
+    public function insertCustomer($data) {
+        $customer = $data["customer"];
+        if ($customer === null) {
+            throw new InvalidDataException("Unable to extract customer out of data array");
+        }
+
+        $key = $data["key"];
+        if ($key === null) {
+            throw new InvalidDataException("Unable to extract key out of data array");
+        }
+
+        $resp = array(
+            $customer,
+            $key
+        );
+
+        return $resp;
+    }
+
+
    public function insertCustomerDBQuery($data) {
         $resp = "";
 
