@@ -94,16 +94,19 @@ class DatabaseStatementExecutor {
             throw new InvalidDataException("Unable to extract customer out of data array");
         }
 
-        $resp = "";
+        $resp = array (
+            "response" => "",
+            "customerID" => 0
+        );
 
         // check if customer already exists
         $selectCustomerResp = $this->selectCustomerDBCustomer();
         if (!empty($selectCustomerResp->presentCustomer)) {
-            $resp = "Customer has already been saved to the database";
+            $resp["response"] = "Customer has already been saved to the database";
             return $resp;
         }
-
         $insertQueryResp = $this->insertCustomerQuery($customer);
+        $resp["customerID"] = $insertQueryResp->customerID;
 
         return $resp;
     }
@@ -325,12 +328,15 @@ class DatabaseStatementExecutor {
     private function insertCustomerQuery($customer) {
         $response = array(
             "response" => "",
+            "customerID" => null
         );
         $convertedResponse = (object)$response;
         $stmt = $this->statementPreparer->prepareInsertCustomer($customer);
 
         try {
             if ($stmt->execute()) {
+                $convertedResponse->response = "Successfully inserted new customer with name: " . $customer;
+                $convertedResponse->customerID = $stmt->insert_id;
 
             } else {
                 throw new DatabaseException("Unable to execute prepareInsertCustomer query with customer = " . $customer);
@@ -340,7 +346,7 @@ class DatabaseStatementExecutor {
         } finally {
             if ($stmt) $stmt->close();
         }
-
+        return $convertedResponse;
     }
 
 
