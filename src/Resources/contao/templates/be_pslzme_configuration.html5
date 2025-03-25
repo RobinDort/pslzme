@@ -192,7 +192,10 @@
                     method: "post",
                     data: secondRequestObj,
                     onSuccess: function(response) {
-                        console.log(response);
+                        alert(response);
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 1000);
                     },
                     onFailure: function(xhr) {
                         console.log("Action failed: " + secondRequestObj.request);
