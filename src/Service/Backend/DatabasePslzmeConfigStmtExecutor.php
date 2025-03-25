@@ -73,6 +73,26 @@ class DatabasePslzmeConfigStmtExecutor {
             }
     }
 
+
+    public function updateUrlLicenseRegistration() {
+        $stmt = $this->dbPslzmeConfigStmtPreparer->prepareUpdatePlszmeUrlLicense();
+
+        try {
+            $affectedRows = $stmt->executeStatement([true]);
+
+            if ($affectedRows > 0) {
+                return "Sucessfully updated url registration license.";
+            } else {
+                throw new DatabaseException("Unable to execute query prepareUpdatePlszmeUrlLicense");
+            }
+
+            
+        } catch (DatabaseException $dbe) {
+            //rethrow 
+            throw $dbe;
+        }
+    }
+
     private function selectDatabaseConfiguration() {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareSelectPslzmeDBConfig();
 

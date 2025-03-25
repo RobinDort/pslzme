@@ -28,6 +28,12 @@ class DatabasePslzmeConfigStmtPreparer {
     }
 
 
+    public function prepareUpdatePlszmeUrlLicense() {
+        $sqlQuery = "UPDATE tl_pslzme_config SET url_licensed = ?";
+        $stmt = $this->connection->prepare($sqlQuery);
+        return $stmt;
+    }
+
     public function prepareInsertPslzmeDBConfig() {
         $sqlQuery = "INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, timestamp) VALUES (?,?,?,?)";
         $stmt = $this->connection->prepare($sqlQuery);

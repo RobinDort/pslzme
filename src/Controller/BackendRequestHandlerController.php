@@ -20,11 +20,15 @@ use RobinDort\PslzmeLinks\Service\DatabaseConnection;
 class BackendRequestHandlerController {
 
     private $dbPslzmeStmtExecutor;
+    private $dbPslzmeConfigStmtExecutor;
     private $databaseManager;
 
     public function __construct() {
         $this->dbPslzmeStmtExecutor = System::getContainer()->get(DatabasePslzmeConfigStmtExecutor::class);
         $this->databaseManager = System::getContainer()->get(DatabaseManager::class);
+
+        $doctrineConnection = System::getContainer()->get("database_connection");
+        $this->dbPslzmeConfigStmtExecutor = new DatabasePslzmeConfigStmtExecutor($doctrineConnection);
     }
 
 
@@ -100,6 +104,10 @@ class BackendRequestHandlerController {
 
             $insertKeyResult = $dbStmtExcecutor->insertCustomerKey($insertKeyData);
             $resp .= $insertKeyResult;
+
+            // update the config db to set the license configuration to true
+            $this->dbPslzmeConfigStmtExecutor->updateUrlLicenseRegistration();
+            
             $databaseConnection->getConnection()->commit();
             return new JsonResponse($resp);
 
