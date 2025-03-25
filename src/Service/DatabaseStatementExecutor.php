@@ -110,6 +110,7 @@ class DatabaseStatementExecutor {
             return $resp;
         }
         $insertQueryResp = $this->insertCustomerQuery($customer);
+        $resp["response"] = "Customer has been saved to the database";
         $resp["customerID"] = $insertQueryResp->customerID;
 
         return $resp;
