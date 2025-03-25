@@ -58,8 +58,14 @@ $GLOBALS['TL_LANG']['pslzme_configuration']['db_pw'] = 'Datenbank Passwort:';
 $GLOBALS['TL_LANG']['pslzme_configuration']['config_step_three'] = '<span>Schritt 3:</span> pslz<strong>me</strong> Tabellen konfigurieren';
 $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_six'] = 'Zuletzt müssen die benötigten pslz<strong>me</strong> Datenbanktabellen angelegt werden. Dies erfolgt vollständig automatisiert nach Bestätigung des nachstehenden Buttons. Bitte prüfen Sie erneut, ob die Angaben im vorherigen Schritt keine Fehler enthalten.';
 $GLOBALS['TL_LANG']['pslzme_configuration']['create_tables'] = 'Tabellen anlegen';
-$GLOBALS['TL_LANG']['pslzme_configuration']['second_config_container_h2'] = '2: Interne Seiten Konfiguration';
-$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_seven'] = "<p>Für einen reibungslosen und DSGVO-Konformen Ablauf nutzt pslz<strong>me</strong> interne Weiterleitungen zu bestimmten Unterseiten Ihrer Webseite.</p>
+$GLOBALS['TL_LANG']['pslzme_configuration']['second_config_container_h2'] = '2: Domain lizensieren';
+$GLOBALS['TL_LANG']['pslzme_configuration']['third_config_container_h2'] = '3: Interne Seiten Konfiguration';
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_seven'] = ' <p>Für die Nutzung von pslz<strong>me</strong> ist eine Lizenzierung Ihrer Domain erforderlich. Zunächst ist ein zugewiesener pslz<strong>me</strong>-Account erforderlich.
+                Sollten Sie noch keinen Account besitzen, können Sie diesen unter <a href="https://www.pslzme.com/de/login" target="_blank" rel="norefferer noopener">https://www.pslzme.com/de/login</a> anfordern.
+                </p>';
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_eight'] = '<p>Nachdem Ihr Account bereitgestellt wurde, bestätigen Sie bitte abschließend den nachfolgenden Button zur Lizenzierung dieser Domain.</p>';
+
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_nine'] = "<p>Für einen reibungslosen und DSGVO-Konformen Ablauf nutzt pslz<strong>me</strong> interne Weiterleitungen zu bestimmten Unterseiten Ihrer Webseite.</p>
                 <p>Beispielsweise benötigt der pslz<strong>me</strong> Cookiebanner, welcher als essentielles Bestandsteil fungiert, Angaben zu Impressum und Datenschutz.</p>
                 <p>Damit die interne Weiterleitung problemlos genutzt werden kann, weissen Sie bitte die in den nachstehenden Feldern beschriebenen Seiten mit der entprechenden ID der passenden internen Seite zu. Die ID der jeweiligen Seite finden Sie im contao backend unter <b>&lt;Seiten&gt;</b> durch Aufruf der Detailinformation der jeweiligen Seite.</p>";
 $GLOBALS['TL_LANG']['pslzme_configuration']['imprint_id'] = "ID der Impressumsseite:";
@@ -68,6 +74,7 @@ $GLOBALS['TL_LANG']['pslzme_configuration']['home_id'] = "ID der Homeseite:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['current_id'] = "Aktuelle Impressum ID:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['current_privacy_id'] = "Aktuelle Datenschutz ID:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['current_home_id'] = "Aktuelle Home ID:";
+$GLOBALS['TL_LANG']['pslzme_configuration']['register_domain'] = "Domain registrieren";
 $GLOBALS['TL_LANG']['pslzme_configuration']['no_id'] = "Keine aktuelle ID";
 $GLOBALS['TL_LANG']['pslzme_configuration']['save'] = "Speichern";
 

@@ -82,7 +82,7 @@ class BackendRequestHandlerController {
 
             $resp = "";
 
-            // start transaction so both value are made sure to be saved into the db.
+            // start transaction so all operations are made sure to be saved into the db.
             $databaseConnection->getConnection()->begin_transaction();
             $insertCustomerResult = $dbStmtExcecutor->insertCustomer($requestData);
 

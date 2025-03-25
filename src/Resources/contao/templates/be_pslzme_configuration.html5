@@ -3,19 +3,6 @@
         <h1><?= $GLOBALS['TL_LANG']['pslzme_configuration']['main_heading'] ?></h1>
 
         <div class="pslzme-configuration-container">
-            <h2>1: Domain lizensieren</h2>
-
-            <div class="pslzme-explanation">
-                <p>Für die Nutzung von pslz<strong>me</strong> ist eine Lizenzierung Ihrer Domain erforderlich. Zunächst ist ein zugewiesener pslz<strong>me</strong>-Account erforderlich.
-                Sollten Sie noch keinen Account besitzen, können Sie diesen unter <a href="https://www.pslzme.com/de/login" target="_blank" rel="norefferer noopener">https://www.pslzme.com/de/login</a> anfordern.
-                </p>
-                <p>Nachdem Ihr Account bereitgestellt wurde, bestätigen Sie bitte abschließend den nachfolgenden Button zur Lizenzierung dieser Domain.</p>
-
-                <button type="submit" onclick="event.preventDefault(); registerDomain();">Domain registrieren</button>
-            </div>
-        </div>
-
-        <div class="pslzme-configuration-container">
             <h2><?= $GLOBALS['TL_LANG']['pslzme_configuration']['first_config_container_h2'] ?></h2>
 
             <div class="pslzme-explanation">
@@ -93,11 +80,21 @@
             <p></p>
         </div>
 
+
         <div class="pslzme-configuration-container">
             <h2><?= $GLOBALS['TL_LANG']['pslzme_configuration']['second_config_container_h2'] ?></h2>
-
             <div class="pslzme-explanation">
                 <?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_seven'] ?>
+                <?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_eight'] ?>
+                <button type="submit" onclick="event.preventDefault(); registerDomain();"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['register_domain'] ?></button>
+            </div>
+        </div>
+
+        <div class="pslzme-configuration-container">
+            <h2><?= $GLOBALS['TL_LANG']['pslzme_configuration']['third_config_container_h2'] ?></h2>
+
+            <div class="pslzme-explanation">
+                <?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_nine'] ?>
 
                 <div class="tl_formbody_edit">
                     <form id="internal-page-form" onsubmit="event.preventDefault(); saveInternalPageConfiguration(this);">
