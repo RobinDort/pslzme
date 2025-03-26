@@ -37,9 +37,11 @@
 }
 
 #urlLicensedInfo {
+	width: 200px;
+	text-align: center;
 	padding: 20px;
-	background-color: "#00ff00";
-	color: "#ffffff";
+	background-color: #3bb143;
+	color: #ffffff;
 	border: 1px solid #ededed;
 	border-radius: 10px;
 }
