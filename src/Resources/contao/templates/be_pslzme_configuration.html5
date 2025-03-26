@@ -81,81 +81,85 @@
         </div>
 
 
-        <div class="pslzme-configuration-container">
-            <h2><?= $GLOBALS['TL_LANG']['pslzme_configuration']['second_config_container_h2'] ?></h2>
-            <div class="pslzme-explanation">
-                <?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_seven'] ?>
-                <?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_eight'] ?>
-                <?php if ($this->urlLicensed === '0'): ?>
-                    <button type="submit" onclick="event.preventDefault(); registerDomain();"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['register_domain'] ?></button>
-                <?php else: ?>
-                    <div id="urlLicensedInfo"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['urlLicensedDone'] ?></div>
-                <?php endif; ?>
-            </div>
-        </div>
-
-        <div class="pslzme-configuration-container">
-            <h2><?= $GLOBALS['TL_LANG']['pslzme_configuration']['third_config_container_h2'] ?></h2>
-
-            <div class="pslzme-explanation">
-                <?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_nine'] ?>
-
-                <div class="tl_formbody_edit">
-                    <form id="internal-page-form" onsubmit="event.preventDefault(); saveInternalPageConfiguration(this);">
-
-                        <div class="pslzme-db-configuration">
-                            <div>
-                                <label for="imprint-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['imprint_id'] ?></label>
-                                <input name="imprint-id" type="text" required/>
-                            </div>
-
-                            <div>
-                                <label for="current-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['current_id'] ?></label>
-                                <?php if($this->imprintID): ?>
-                                    <input name="current-id" type="text" value="<?= $this->imprintID ?>" readonly/>
-                                <?php else: ?>
-                                    <input name="current-id" type="text" value="<?= $GLOBALS['TL_LANG']['pslzme_configuration']['no_id'] ?>" readonly/>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-
-                        <div class="pslzme-db-configuration">
-                            <div>
-                                <label for="privacy-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['privacy_id'] ?></label>
-                                <input name="privacy-id" type="text" required/>
-                            </div>
-
-                            <div>
-                                <label for="current-privacy-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['current_privacy_id'] ?></label>
-                                <?php if($this->privacyID): ?>
-                                    <input name="current-privacy-id" type="text" value="<?= $this->privacyID ?>" readonly/>
-                                <?php else: ?>
-                                    <input name="current-privacy-id" type="text" value="<?= $GLOBALS['TL_LANG']['pslzme_configuration']['no_id'] ?>" readonly/>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-
-                        <div class="pslzme-db-configuration">
-                            <div>
-                                <label for="home-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['home_id'] ?></label>
-                                <input name="home-id" type="text" required/>
-                            </div>
-
-                            <div>
-                                <label for="current-home-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['current_home_id'] ?></label>
-                                <?php if($this->homeID): ?>
-                                    <input name="current-home-id" type="text" value="<?= $this->homeID ?>" readonly/>
-                                <?php else: ?>
-                                    <input name="current-home-id" type="text" value="<?= $GLOBALS['TL_LANG']['pslzme_configuration']['no_id'] ?>" readonly/>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-
-                        <button type="submit"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['save'] ?></button>
-                    </form>
+        <?php if ($this->pslzmeDBName !== null): ?>
+            <div class="pslzme-configuration-container">
+                <h2><?= $GLOBALS['TL_LANG']['pslzme_configuration']['second_config_container_h2'] ?></h2>
+                <div class="pslzme-explanation">
+                    <?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_seven'] ?>
+                    <?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_eight'] ?>
+                    <?php if (isset($this->urlLicensed) && $this->urlLicensed === '0'): ?>
+                        <button type="submit" onclick="event.preventDefault(); registerDomain();"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['register_domain'] ?></button>
+                    <?php else: ?>
+                        <div id="urlLicensedInfo"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['urlLicensedDone'] ?></div>
+                    <?php endif; ?>
                 </div>
             </div>
-        </div>
+        <?php endif; ?>
+
+        <?php if (isset($this->urlLicensed) && $this->urlLicensed === '1'): ?>
+            <div class="pslzme-configuration-container">
+                <h2><?= $GLOBALS['TL_LANG']['pslzme_configuration']['third_config_container_h2'] ?></h2>
+
+                <div class="pslzme-explanation">
+                    <?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_nine'] ?>
+
+                    <div class="tl_formbody_edit">
+                        <form id="internal-page-form" onsubmit="event.preventDefault(); saveInternalPageConfiguration(this);">
+
+                            <div class="pslzme-db-configuration">
+                                <div>
+                                    <label for="imprint-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['imprint_id'] ?></label>
+                                    <input name="imprint-id" type="text" required/>
+                                </div>
+
+                                <div>
+                                    <label for="current-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['current_id'] ?></label>
+                                    <?php if($this->imprintID): ?>
+                                        <input name="current-id" type="text" value="<?= $this->imprintID ?>" readonly/>
+                                    <?php else: ?>
+                                        <input name="current-id" type="text" value="<?= $GLOBALS['TL_LANG']['pslzme_configuration']['no_id'] ?>" readonly/>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+
+                            <div class="pslzme-db-configuration">
+                                <div>
+                                    <label for="privacy-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['privacy_id'] ?></label>
+                                    <input name="privacy-id" type="text" required/>
+                                </div>
+
+                                <div>
+                                    <label for="current-privacy-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['current_privacy_id'] ?></label>
+                                    <?php if($this->privacyID): ?>
+                                        <input name="current-privacy-id" type="text" value="<?= $this->privacyID ?>" readonly/>
+                                    <?php else: ?>
+                                        <input name="current-privacy-id" type="text" value="<?= $GLOBALS['TL_LANG']['pslzme_configuration']['no_id'] ?>" readonly/>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+
+                            <div class="pslzme-db-configuration">
+                                <div>
+                                    <label for="home-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['home_id'] ?></label>
+                                    <input name="home-id" type="text" required/>
+                                </div>
+
+                                <div>
+                                    <label for="current-home-id"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['current_home_id'] ?></label>
+                                    <?php if($this->homeID): ?>
+                                        <input name="current-home-id" type="text" value="<?= $this->homeID ?>" readonly/>
+                                    <?php else: ?>
+                                        <input name="current-home-id" type="text" value="<?= $GLOBALS['TL_LANG']['pslzme_configuration']['no_id'] ?>" readonly/>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+
+                            <button type="submit"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['save'] ?></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
 <?php $this->endblock(); ?>
 
