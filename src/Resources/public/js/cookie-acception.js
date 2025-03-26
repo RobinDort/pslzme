@@ -8,7 +8,7 @@ function handleCookie(accepted, queryLocked = false) {
 	secondInput.value = "";
 	thirdInput.value = "";
 
-	//only works with IMPORT UrlQueryFilter.js!! -> js file must be imported inside the using file before the use of this function
+	//only works with IMPORT url-query-data-filter.js!! -> js file must be imported before the use of this function
 	const urlParams = queryParamsSet();
 
 	if (urlParams !== undefined) {
@@ -45,8 +45,7 @@ function handleCookie(accepted, queryLocked = false) {
 				request: "query-acception",
 			};
 
-			handleAPIRequest(requestObject).then((response) => {
-				console.log(response);
+			handleAPIRequest(requestObject).then(() => {
 				const noQueryFollowPage = urlParams.params.acceptionParam;
 
 				// user does not want to be personalized. The "no" answer has been saved to the database.
@@ -62,7 +61,7 @@ function handleCookie(accepted, queryLocked = false) {
 }
 
 function handleCookieDeclined(noQueryFollowPage) {
-	//delete the cookie -> user has accepted the cookie before and declined.
+	//delete the cookie -> user has accepted the cookie before and now declined it.
 	document.cookie = "consent_cookie" + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 
 	// redirect to the page he wanted to navigate to but without the plszme params.
@@ -78,7 +77,7 @@ function handleCookieDeclined(noQueryFollowPage) {
 }
 
 function handleCookieAccepted(noQueryFollowPage, requestData) {
-	// link to the actual page he wanted to navigate to. At the moment for checking consent the user
+	// link to the actual page he wanted to navigate to. At the moment to check for consent, the user
 	// got redirected to the plsze-acception.html page.
 	const paramQuery =
 		"?q1=" +

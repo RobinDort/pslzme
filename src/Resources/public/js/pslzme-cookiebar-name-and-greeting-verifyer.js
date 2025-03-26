@@ -44,7 +44,6 @@ function handleCustomerNameVerification(queryData) {
 
 async function extractGreetingDataRequest(requestObject) {
 	handleAPIRequest(requestObject).then((response) => {
-		console.log(response);
 		const firstContactSpan = document.getElementById("pslzme-cookiebar-first-contact");
 		const linkCreatorSpan = document.getElementById("pslzme-cookiebar-link-creator");
 
@@ -81,8 +80,6 @@ async function compareName(queryData) {
 		data: JSON.stringify(requestData),
 		request: "compare-link-owner",
 	};
-
-	console.log(requestObject);
 
 	await compareLinkOwnerRequest(requestObject, firstInput, secondInput, thirdInput, acceptBtn);
 }

@@ -26,7 +26,6 @@ function pslzmeRedirection() {
 
 function handleRedirectionToLockedPage(actualTargetPage) {
 	// the query is locked -> redirect to the QueryDeclined page.
-
 	window.location.href = window.location.origin + "/pslzme-decline.html?pslzme-follow=" + actualTargetPage;
 	return;
 }
@@ -39,7 +38,7 @@ function handleRedirectionToAcceptionPage(userCameFromPslzmeLink, actualTargetPa
 		consentCookieAccepted = false;
 	}
 
-	// This checks if the user used another link instead of the one he may have accepted before
+	// This checks if the user used another/new pslzme link instead of the one he may have accepted before
 	if (consentCookie !== undefined) {
 		const decodedCookie = JSON.parse(consentCookie);
 		if (decodedCookie.queryTime !== userCameFromPslzmeLink.params.timestamp) {
@@ -57,7 +56,6 @@ function handleRedirectionToAcceptionPage(userCameFromPslzmeLink, actualTargetPa
 
 function checkQueryIsLocked(urlParams) {
 	// send a request to check wether the current query link is locked or not.
-
 	const requestData = {
 		timestamp: urlParams.params.timestamp,
 	};
@@ -67,7 +65,7 @@ function checkQueryIsLocked(urlParams) {
 		request: "query-lock-check",
 	};
 
-	return new Promise(function (resolve, reject) {
+	return new Promise(function (resolve) {
 		handleAPIRequest(requestObject).then((response) => {
 			resolve(response.queryIsLocked);
 		});
