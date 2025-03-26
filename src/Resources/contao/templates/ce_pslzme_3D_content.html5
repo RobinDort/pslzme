@@ -8,7 +8,6 @@
 
 	<?php if($this->html): ?>
 		<div id="gallery-row" class="block">
-			<!--<div id="3D" style="height:500px; width: 90%;"></div>-->
 			<div class="ce_image gly-image block">
 				<figure class="image_container">
 					<a class="ce_hyperlink block" href="{{link_url::<?= $this->pageLink ?>}}">
