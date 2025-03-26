@@ -76,6 +76,7 @@ $GLOBALS['TL_LANG']['pslzme_configuration']['current_privacy_id'] = "Aktuelle Da
 $GLOBALS['TL_LANG']['pslzme_configuration']['current_home_id'] = "Aktuelle Home ID:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['register_domain'] = "Domain registrieren";
 $GLOBALS['TL_LANG']['pslzme_configuration']['no_id'] = "Keine aktuelle ID";
+$GLOBALS['TL_LANG']['pslzme_configuration']['urlLicensedDone'] = "URL erfolgreich lizensiert";
 $GLOBALS['TL_LANG']['pslzme_configuration']['save'] = "Speichern";
 
 

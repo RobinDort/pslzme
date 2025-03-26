@@ -86,7 +86,11 @@
             <div class="pslzme-explanation">
                 <?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_seven'] ?>
                 <?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_eight'] ?>
-                <button type="submit" onclick="event.preventDefault(); registerDomain();"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['register_domain'] ?></button>
+                <?php if ($this->urlLicensed): ?>
+                    <button type="submit" onclick="event.preventDefault(); registerDomain();"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['register_domain'] ?></button>
+                <?php else: ?>
+                    <div id="urlLicensedInfo"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['urlLicensedDone'] ?></div>
+                <?php endif; ?>
             </div>
         </div>
 
