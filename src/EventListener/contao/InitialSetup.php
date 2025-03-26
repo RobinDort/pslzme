@@ -90,11 +90,6 @@ class InitialSetup {
 
         $this->ranOnce = true;
     }
-
-    public function initDatabaseTables() {
-        $dbmanager = new DatabaseManager();
-        $dbmanager->initTables();
-    }
 }
 
 ?>
