@@ -4,6 +4,9 @@ namespace RobinDort\PslzmeLinks\Elements;
 use Contao\ContentElement;
 use Contao\FilesModel;
 
+/**
+ * Custom contao element that represents the pslzme 3D content.
+ */
 class Pslzme3DContentElement extends ContentElement {
 
     protected $strTemplate = 'ce_pslzme_3D_content';
