@@ -16,6 +16,9 @@ use RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor;
 use RobinDort\PslzmeLinks\Service\DatabaseManager;
 use RobinDort\PslzmeLinks\Service\DatabaseConnection;
 
+/**
+ * Class that handles backend request from the pslzme configuration module
+ */
 #[AsController]
 class BackendRequestHandlerController {
 
@@ -23,6 +26,10 @@ class BackendRequestHandlerController {
     private $dbPslzmeConfigStmtExecutor;
     private $databaseManager;
 
+
+    /**
+     * constructor 
+     */
     public function __construct() {
         $this->dbPslzmeStmtExecutor = System::getContainer()->get(DatabasePslzmeConfigStmtExecutor::class);
         $this->databaseManager = System::getContainer()->get(DatabaseManager::class);
@@ -32,6 +39,11 @@ class BackendRequestHandlerController {
     }
 
 
+    /**
+     * function will save the users database information assigned in the backend module to the contao database pslzme_config table.
+     * @request: request object that contains the users previously created database name, username and password.
+     * @returns An JsonResponse object containing messages from the different database functions.  
+     */
     #[Route('/saveDatabaseData', name: "save_database_data", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])] 
     public function saveDatabaseData(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
@@ -74,6 +86,12 @@ class BackendRequestHandlerController {
         }
     }
 
+    /**
+     * function will insert a new pslzme customer to the pslzme database that has been created manually by the user.
+     * NOTE: This database is NOT the usual contao database but a seperate one manually created.
+     * @request: request object containing information about the pslzme customer like his company name e.g
+     * @returns An JsonResponse object containing messages from the different database functions.  
+     */
     #[Route('/registerCustomer', name: "register_customer", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])]
     public function registerCustomer(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
@@ -137,12 +155,13 @@ class BackendRequestHandlerController {
 
     }
 
-
-
+    /**
+     * function that will initialize all needed database tables for the manually from the user created pslzme database.
+     * @returns An JsonResponse informing about the successful creation of the tables. 
+     */
     #[Route('/createPslzmeTables', name: "create_pslzme_tables", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])] 
     public function createPslzmeTables(): JsonResponse {
         try {
-            //$dbm = new DatabaseManager();
             $this->databaseManager->initTables();
             return new JsonResponse("Tables created successfully");
         } catch (Exception $e) {
@@ -152,7 +171,11 @@ class BackendRequestHandlerController {
 
     }
 
-
+    /**
+     * function that saves IDs from the users website that link to the imprint as well as the privacy policy into the pslzme_config table from the contao database 
+     * @request: request object containing the IDs.
+     * @returns An JsonResponse object containing messages from the different database functions.  
+     */
     #[Route('/saveInternalPages', name: "save_internal_pages", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])] 
     public function saveInternalPages(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
@@ -198,6 +221,11 @@ class BackendRequestHandlerController {
     }
 
 
+    /**
+     * function that encrypts the users database password for the manually created pslzme database so that the password will not be readable.
+     * @password: the users database password
+     * @timestamp: a unix timestamp used to encrypt the password.
+     */
     private function encryptPassword($password, $timestamp) {
         $secretKey = hash('sha256', $timestamp, true); // Create a key from the timestamp
         $iv = random_bytes(16); // Generate IV

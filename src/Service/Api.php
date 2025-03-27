@@ -7,7 +7,6 @@ use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
 use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
 use RobinDort\PslzmeLinks\Exceptions\InvalidDecryptionException;
 
-
 use Exception;
 
 class Api {
@@ -28,17 +27,6 @@ class Api {
         $this->ivLength = openssl_cipher_iv_length($this->ciphering);
         $this->options = 0;
     }
-
-
-    // public function __construct() {
-    //     // create / inject database connection
-    //     $this->db = new DatabaseConnection();
-    //     // $this->sqlExecutor = new DatabaseStatementExecutor($this->db);
-
-    //     // $this->ciphering = "AES-128-CTR";
-    //     // $this->ivLength = openssl_cipher_iv_length($this->ciphering);
-    //     // $this->options = 0;
-    // }
 
 
     function handleQueryAcception($requestData) {

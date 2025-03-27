@@ -7,6 +7,9 @@ use Contao\PageTree;
 use Contao\Input;
 use Contao\System;
 
+/**
+ * Class that handles the backend configuration module for plszme
+ */
 use RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor;
 
 class PslzmeConfiguration extends BackendModule {
@@ -19,6 +22,9 @@ class PslzmeConfiguration extends BackendModule {
     private $urlLicensed;
 
 
+    /**
+     * constructor 
+     */
     public function __construct() {
         parent::__construct();
 
@@ -39,6 +45,9 @@ class PslzmeConfiguration extends BackendModule {
      */
     public function compile() {}
 
+    /**
+     * generate function to assign template variables
+     */
     public function generate() {
         $this->Template = new BackendTemplate($this->strTemplate);
         $this->Template->pslzmeDBName = $this->pslzmeDBName;
