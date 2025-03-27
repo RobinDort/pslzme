@@ -1,5 +1,5 @@
 {
-	"name": "robindort/pslzme",
+	"name": "alexanderdortgmbh/pslzme",
 	"description": "A contao bundle that handles custom logic for generated links by pslzme.com",
 	"type": "contao-bundle",
 	"autoload": {
