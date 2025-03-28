@@ -24,12 +24,6 @@ class RequestHandlerController {
         $this->api = $api;
     }
 
-    /**
-     * function that gets called when a request to the /requestHandler route is sent.
-     * depending on the requestFunction object a different api function will be called.
-     * @request: request object containing requestData and requestFunction to handle different requests by a single route
-     * @returns a JsonResponse object containing information about the functionality used decided by the requestFunction object.
-     */
     public function __invoke(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
         $requestFunction = $request->request->get('request');
