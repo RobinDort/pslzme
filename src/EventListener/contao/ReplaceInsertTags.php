@@ -17,7 +17,7 @@ class ReplaceInsertTags {
         $usedTemplateTag = substr($tag,7);
         $fileContent;
 
-        try {
+        // try {
             switch ($usedTemplateTag) {
                 case "firstname":
                     $templateFile = "print-firstname.html5";
@@ -31,11 +31,11 @@ class ReplaceInsertTags {
                     }
                 break;
             }
-        } catch (InvalidFileException $ife) {
-            error_log($ife->getErrorMsg());
-        } catch (Exception $e) {
-            error_log($e->getMessage());
-        }
+        // } catch (InvalidFileException $ife) {
+        //     error_log($ife->getErrorMsg());
+        // } catch (Exception $e) {
+        //     error_log($e->getMessage());
+        // }
 
         return $fileContent;
     }
