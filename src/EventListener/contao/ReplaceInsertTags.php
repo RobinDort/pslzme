@@ -4,6 +4,7 @@ namespace RobinDort\PslzmeLinks\EventListener\contao;
 use RobinDort\PslzmeLinks\Exceptions\InvalidFileException;
 
 use Exception;
+use Contao\System;
 
 class ReplaceInsertTags {
     public function replacePslzmeInsertTags($tag) {
