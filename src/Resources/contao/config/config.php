@@ -57,5 +57,5 @@ $GLOBALS['TL_CTE']['pslzme']['pslzme_3D_content'] = Pslzme3DContentElement::clas
 $GLOBALS['TL_HOOKS']['initializeSystem'][] = [InitialSetup::class, 'runSetup'];
 
 // Listen to insert tags to initialize the pslzme tags
-// $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = [ReplaceInsertTags::class, 'replacePslzmeInsertTags'];
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = [ReplaceInsertTags::class, 'replacePslzmeInsertTags'];
 ?>
