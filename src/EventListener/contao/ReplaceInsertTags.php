@@ -21,7 +21,7 @@ class ReplaceInsertTags {
             switch ($usedTemplateTag) {
                 case "firstname":
                     $templateFile = "print-firstname.html5";
-                    $templatePath =  System::getContainer()->getParameter('kernel.project_dir') . "/templates/outputs/$templateFile.html5";
+                    $templatePath =  System::getContainer()->getParameter('kernel.project_dir') . "/templates/pslzme/" . $templateFile;
 
                     // If the file exists, return its content
                     if (file_exists($templatePath)) {
