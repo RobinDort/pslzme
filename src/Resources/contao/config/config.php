@@ -5,6 +5,7 @@ use RobinDort\PslzmeLinks\Module\PslzmeCookieCaller;
 use RobinDort\PslzmeLinks\Elements\PslzmeTextElement;
 use RobinDort\PslzmeLinks\Elements\Pslzme3DContentElement;
 use RobinDort\PslzmeLinks\EventListener\contao\InitialSetup;
+use RobinDort\PslzmeLinks\EventListener\contao\ReplaceInsertTags;
 use RobinDort\PslzmeLinks\EventListener\InstallListener;
 use RobinDort\PslzmeLinks\Backend\PslzmeConfiguration;
 use Contao\System;
@@ -54,4 +55,7 @@ $GLOBALS['TL_CTE']['pslzme']['pslzme_3D_content'] = Pslzme3DContentElement::clas
 
 // Run initial setup when installing the plugin
 $GLOBALS['TL_HOOKS']['initializeSystem'][] = [InitialSetup::class, 'runSetup'];
+
+// Listen to insert tags to initialize the pslzme tags
+$GLOBALS['TL_HOOKS']['replaceInsertTags'][] = [ReplaceInsertTags::class, 'replacePslzmeInsertTags'];
 ?>
