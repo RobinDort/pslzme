@@ -5,6 +5,10 @@
 	--pslzme-red: #ff0000;
 }
 
+#tl_navigation .group-pslzme {
+	background: url("bundles/robindortpslzmelinks/images/pslzme_fingerprint_red.svg");
+}
+
 #pslzme-configuration {
 	padding: 20px;
 }
