@@ -58,11 +58,9 @@ class PslzmeConfiguration extends BackendModule {
             $decodedPages = json_decode($this->pslzmeDBIPR,true);
             $imprintID = $decodedPages["Imprint"];
             $privacyID = $decodedPages["Privacy"];
-            $homeID = $decodedPages["Home"];
 
             $this->Template->imprintID = $imprintID;
             $this->Template->privacyID = $privacyID;
-            $this->Template->homeID = $homeID;
         }
 
         $this->compile();
