@@ -58,10 +58,8 @@ $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_nine'] = "<
                 <p>To ensure that internal forwarding can be used without any problems, please assign the pages described in the fields below with the corresponding ID to the appropriate internal page. You can find the ID of the respective page in the contao backend under <b>&lt;Pages&gt;</b> by calling up the detailed information of the respective page.</p>";
 $GLOBALS['TL_LANG']['pslzme_configuration']['imprint_id'] = "ID of the imprint page:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['privacy_id'] = "ID of the privacy statement page:";
-$GLOBALS['TL_LANG']['pslzme_configuration']['home_id'] = "ID of the home page:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['current_id'] = "Current imprint ID:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['current_privacy_id'] = "Current privacy statement ID:";
-$GLOBALS['TL_LANG']['pslzme_configuration']['current_home_id'] = "Current home ID:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['register_domain'] = "Domain registrieren";
 $GLOBALS['TL_LANG']['pslzme_configuration']['no_id'] = "No current ID";
 $GLOBALS['TL_LANG']['pslzme_configuration']['urlLicensedDone'] = "URL successfully licensed";
