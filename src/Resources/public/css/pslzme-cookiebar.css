@@ -123,15 +123,14 @@
 
 .ce_accordion .toggler  {
 	padding: 6px 10px;
+	text-transform: uppercase;
+	font-size: 15px;
+	font-weight: 400;
 }
 
 .ce_accordion .toggler::before {
-	display: inline-block;
-	width: 1.5rem;
-	font-family: icons;
-	content: "\e81d";
-	padding-right: 2em;
-	background: none;
+	position: absolute;
+	left: 0;
 }
 
 .icon-cancel::before {
