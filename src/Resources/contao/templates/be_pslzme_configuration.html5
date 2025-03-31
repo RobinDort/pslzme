@@ -87,7 +87,7 @@
                 <div class="pslzme-explanation">
                     <?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_seven'] ?>
                     <?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_eight'] ?>
-                    <?php if ($this->urlLicensed === false): ?>
+                    <?php if ($this->urlLicensed === 0): ?>
                         <button type="submit" onclick="event.preventDefault(); registerDomain();"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['register_domain'] ?></button>
                     <?php else: ?>
                         <div id="urlLicensedInfo"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['urlLicensedDone'] ?></div>
@@ -96,7 +96,7 @@
             </div>
         <?php endif; ?>
 
-        <?php if (isset($this->urlLicensed) && $this->urlLicensed === '1'): ?>
+        <?php if (isset($this->urlLicensed) && $this->urlLicensed === 1): ?>
             <div class="pslzme-configuration-container">
                 <h2><?= $GLOBALS['TL_LANG']['pslzme_configuration']['third_config_container_h2'] ?></h2>
 

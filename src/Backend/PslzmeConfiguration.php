@@ -35,7 +35,7 @@ class PslzmeConfiguration extends BackendModule {
             $this->pslzmeDBName = $databaseData["databaseName"];
             $this->pslzmeDBUser = $databaseData["databaseUser"];
             $this->pslzmeDBIPR = $databaseData["databaseIPR"];
-            $this->urlLicensed = $databaseData["urlLicensed"];
+            $this->urlLicensed = (int) $databaseData["urlLicensed"];
         }
     }
 
