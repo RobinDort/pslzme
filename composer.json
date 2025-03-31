@@ -2,6 +2,7 @@
 	"name": "alexanderdortgmbh/pslzme",
 	"description": "A contao bundle that handles custom logic for generated links by pslzme.com",
 	"type": "contao-bundle",
+	"homepage": "https://www.alexanderdort.com",
 	"autoload": {
 		"psr-4": {
 			"Robindort\\PslzmeLinks\\": "src/"
@@ -13,8 +14,12 @@
 			"homepage": "https://www.alexanderdort.com"
 		}
 	],
+	"support": {
+		"issues": "https://github.com/RobinDort/pslzme/issues"
+	},
 	"require": {
-		"contao/core-bundle": "^4.13"
+		"contao/core-bundle": "^4.13",
+		"php": ">=8.0"
 	},
 	"require-dev": {
 		"contao/manager-plugin": "^2.0"
