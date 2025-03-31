@@ -29,8 +29,7 @@ class ReplaceInsertTags {
                         ob_start();
                         include $templatePath; // This will execute PHP inside the template
                         $templateContent = ob_get_clean(); // Get the output and clean the buffer
-                        System::log("Template content: " . $templateContent, __METHOD__, "TL_ERROR");
-                        throw new Exception("Template content: " . $templateContent);
+                        return $templateContent;
                     } else {
                         throw new InvalidFileException("File with path: " . $fileContent . " does not exist");
                     }
@@ -41,8 +40,6 @@ class ReplaceInsertTags {
         // } catch (Exception $e) {
         //     error_log($e->getMessage());
         // }
-
-        return $fileContent;
     }
 }
 
