@@ -25,7 +25,10 @@ class ReplaceInsertTags {
 
                     // If the file exists, return its content
                     if (file_exists($templatePath)) {
-                        $fileContent = file_get_contents($templatePath);
+                       // Start output buffering
+                        ob_start();
+                        include $templatePath; // This will execute PHP inside the template
+                        $templateContent = ob_get_clean(); // Get the output and clean the buffer
                     } else {
                         throw new InvalidFileException("File with path: " . $fileContent . " does not exist");
                     }
