@@ -122,7 +122,7 @@ class PslzmeAcceptionPage extends PageModel implements CustomPageModel{
             8 => "g6"
         ));
         $this->sitemap = self::PAGE_SITEMAP;
-        $this->hide = false;
+        $this->hide = true;
         $this->published = true;
 
         // include layout when one is present
