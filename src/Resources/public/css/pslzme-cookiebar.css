@@ -128,9 +128,11 @@
 	font-weight: 400;
 }
 
-.ce_accordion .toggler::before {
+.ce_accordion .toggler::before,
+.ce_accordion .toggler::after {
 	position: absolute;
-	left: 0;
+	left: -10px;
+	background-size: 25px;
 }
 
 .icon-cancel::before {
