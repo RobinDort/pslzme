@@ -170,33 +170,35 @@
                 const customer = response.customer;
                 const key = response.key;
 
-                console.log(response);
-                return;
+                if (customer === "" || key === "") {
+                    alert("No pslzme customer registered for this URL. Please visit www.pslzme.com to register.");
+                    return;
+                }
 
-                // const secondRequestData = {
-                //     customer,
-                //     key
-                // };
+                const secondRequestData = {
+                    customer,
+                    key
+                };
 
-                // const secondRequestObj = {
-                //     data: JSON.stringify(secondRequestData),
-                // };
+                const secondRequestObj = {
+                    data: JSON.stringify(secondRequestData),
+                };
 
-                // return new Request.JSON({
-                //     url: "/registerCustomer",
-                //     method: "post",
-                //     data: secondRequestObj,
-                //     onSuccess: function(response) {
-                //         alert(response);
-                //     setTimeout(function() {
-                //         window.location.reload();
-                //     }, 1000);
-                //     },
-                //     onFailure: function(xhr) {
-                //         console.log("Action failed: " + secondRequestObj.request);
-                //         console.log("XHR Response:", xhr.responseText);
-                //     }
-                // }).send();
+                return new Request.JSON({
+                    url: "/registerCustomer",
+                    method: "post",
+                    data: secondRequestObj,
+                    onSuccess: function(response) {
+                        alert(response);
+                    setTimeout(function() {
+                        window.location.reload();
+                    }, 1000);
+                    },
+                    onFailure: function(xhr) {
+                        console.log("Action failed: " + secondRequestObj.request);
+                        console.log("XHR Response:", xhr.responseText);
+                    }
+                }).send();
                 
             },
             onFailure: function (xhr) { 
