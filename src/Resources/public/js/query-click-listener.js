@@ -15,12 +15,6 @@ function pslzmeQueryClickListener() {
 				}
 				event.preventDefault();
 
-				// check if the user clicked on the page logo and thus would be redirected to the base url without a pathname.
-				if (linkElement.href === window.location.origin + "/") {
-					// redirect the user to the homepage
-					//linkElement.href = window.location.origin + "/home.html";
-				}
-
 				if (isSameDomain(linkElement.href)) {
 					window.location.href =
 						linkElement.href +
