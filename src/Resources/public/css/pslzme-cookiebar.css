@@ -52,6 +52,10 @@
 	gap: 20px;
 }
 
+#pslzme-cookiebar #pslzme-logo {
+	width: 100%;
+}
+
 #pslzme-cookiebar .pslzme-cookiebar-info a,
 .contao-cookiebar .cc-info > a {
 	font-size: 12px;
