@@ -8,14 +8,13 @@ use Contao\System;
 
 class ReplaceInsertTags {
     public function replacePslzmeInsertTags($tag) {
-        // Check if the tag starts with "pslzme-"
+        // Check if the tag starts with "pslzme:"
         if (!str_starts_with($tag, 'pslzme:')) {
             return;
         }
 
         // Everything after 'pslzme:'
         $usedTemplateTag = substr($tag,7);
-        $fileContent;
 
         try {
             $templatePath =  System::getContainer()->getParameter('kernel.project_dir') . "/templates/pslzme/" . $usedTemplateTag . ".html5";
@@ -27,7 +26,7 @@ class ReplaceInsertTags {
                  $templateContent = ob_get_clean(); // Get the output and clean the buffer
                  return $templateContent;
              } else {
-                 throw new InvalidFileException("File with path: " . $fileContent . " does not exist");
+                 throw new InvalidFileException("File with path: " . $templatePath . " does not exist");
              }
         } catch (InvalidFileException $ife) {
             error_log($ife->getErrorMsg());
