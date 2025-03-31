@@ -46,6 +46,7 @@ $GLOBALS['BE_MOD']['pslzme'][$GLOBALS['TL_LANG']['MOD']['pslzme_configuration']]
         'tl_pslzme_config'
     ], 
     'callback' => PslzmeConfiguration::class,
+    'icon' => "bundles/robindortpslzmelinks/images/pslzme_fingerprint_red.svg"
 ];
 
 
