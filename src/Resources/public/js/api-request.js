@@ -1,6 +1,5 @@
 function handleAPIRequest(requestObject) {
 	try {
-		console.log(requestObject);
 		return new Promise(function (resolve, reject) {
 			// Send the second AJAX request
 			$.ajax({

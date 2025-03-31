@@ -13,29 +13,17 @@ function pslzmeQueryClickListener() {
 				if (linkElement && linkElement.target === "_blank") {
 					return;
 				}
-				console.log(linkElement.href);
-
 				event.preventDefault();
 
-				let hrefOfEventTarget;
-
-				if (eventTarget.matches("a canvas")) {
-					hrefOfEventTarget = eventTarget.parentElement.parentElement.parentElement.href;
-				} else if (eventTarget.matches("a img")) {
-					hrefOfEventTarget = eventTarget.parentElement.href;
-				} else {
-					hrefOfEventTarget = event.target.href;
-				}
-
 				// check if the user clicked on the page logo and thus would be redirected to the base url without a pathname.
-				if (hrefOfEventTarget === window.location.origin + "/") {
+				if (linkElement.href === window.location.origin + "/") {
 					// redirect the user to the homepage
-					hrefOfEventTarget = window.location.origin + "/home.html";
+					//linkElement.href = window.location.origin + "/home.html";
 				}
 
 				if (isSameDomain(hrefOfEventTarget)) {
 					window.location.href =
-						hrefOfEventTarget +
+						linkElement.href +
 						"?q1=" +
 						queryParams.params.linkCreator +
 						"&q2=" +
