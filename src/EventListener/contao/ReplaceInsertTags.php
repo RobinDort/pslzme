@@ -17,29 +17,23 @@ class ReplaceInsertTags {
         $usedTemplateTag = substr($tag,7);
         $fileContent;
 
-        // try {
-            switch ($usedTemplateTag) {
-                case "firstname":
-                    $templateFile = "print-firstname.html5";
-                    $templatePath =  System::getContainer()->getParameter('kernel.project_dir') . "/templates/pslzme/" . $templateFile;
+        try {
+            $templatePath =  System::getContainer()->getParameter('kernel.project_dir') . "/templates/pslzme/" . $usedTemplateTag . ".html5";
 
-                    // If the file exists, return its content
-                    if (file_exists($templatePath)) {
-                       // Start output buffering
-                        ob_start();
-                        include $templatePath; // This will execute PHP inside the template
-                        $templateContent = ob_get_clean(); // Get the output and clean the buffer
-                        return $templateContent;
-                    } else {
-                        throw new InvalidFileException("File with path: " . $fileContent . " does not exist");
-                    }
-                break;
-            }
-        // } catch (InvalidFileException $ife) {
-        //     error_log($ife->getErrorMsg());
-        // } catch (Exception $e) {
-        //     error_log($e->getMessage());
-        // }
+            if (file_exists($templatePath)) {
+                // Start output buffering
+                 ob_start();
+                 include $templatePath; // This will execute PHP inside the template
+                 $templateContent = ob_get_clean(); // Get the output and clean the buffer
+                 return $templateContent;
+             } else {
+                 throw new InvalidFileException("File with path: " . $fileContent . " does not exist");
+             }
+        } catch (InvalidFileException $ife) {
+            error_log($ife->getErrorMsg());
+        } catch (Exception $e) {
+            error_log($e->getMessage());
+        }
     }
 }
 
