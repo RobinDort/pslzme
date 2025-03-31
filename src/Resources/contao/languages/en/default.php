@@ -47,7 +47,7 @@ $GLOBALS['TL_LANG']['pslzme_configuration']['db_pw'] = 'Database password:';
 $GLOBALS['TL_LANG']['pslzme_configuration']['config_step_three'] = '<span>Step 3:</span> configure pslz<strong>me</strong> tables';
 $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_six'] = 'Finally, the required pslz<strong>me</strong> database tables must be created. This is fully automated after confirming the button below. Please check again that the details in the previous step do not contain any errors.';
 $GLOBALS['TL_LANG']['pslzme_configuration']['create_tables'] = 'Create tables';
-$GLOBALS['TL_LANG']['pslzme_configuration']['second_config_container_h2'] = '2: license domain';
+$GLOBALS['TL_LANG']['pslzme_configuration']['second_config_container_h2'] = '2: License domain';
 $GLOBALS['TL_LANG']['pslzme_configuration']['third_config_container_h2'] = '3: Internal page configuration';
 $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_seven'] = ' <p>Your domain must be licensed in order to use pslz<strong>me</strong>. First of all, an assigned pslz<strong>me</strong> account is required.
                 If you do not yet have an account, you can request one at <a href="https://www.pslzme.com/de/login" target="_blank" rel="norefferer noopener">https://www.pslzme.com/de/login</a>.
