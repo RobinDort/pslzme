@@ -87,6 +87,10 @@
 }
 
 #name-verifiyer > div input {
+	width: 80px;
+	height: 80px;
+	max-width: 80px;
+	max-height: 80px;
 	margin: 0;
 	text-align: center;
 	border: 2px solid rgba(153, 153, 153, 1);
@@ -117,16 +121,17 @@
 	border-radius: 5px;
 }
 
-.ce_accordion .ui-accordion-header  {
+.ce_accordion .toggler  {
 	padding: 6px 10px;
 }
 
-.ce_accordion .ui-accordion-header::before {
+.ce_accordion .toggler::before {
 	display: inline-block;
 	width: 1.5rem;
 	font-family: icons;
 	content: "\e81d";
 	padding-right: 2em;
+	background: none;
 }
 
 .icon-cancel::before {
