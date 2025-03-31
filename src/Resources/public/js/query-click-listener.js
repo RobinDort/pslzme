@@ -13,7 +13,7 @@ function pslzmeQueryClickListener() {
 				if (linkElement && linkElement.target === "_blank") {
 					return;
 				}
-				console.log(linkElement);
+				console.log(linkElement.href);
 
 				event.preventDefault();
 
