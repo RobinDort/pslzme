@@ -9,7 +9,7 @@ use Contao\Controller;
 			<div class="block">
 				<button class="pslzme-cookiebar-close-btn btn-small icon-cancel" onClick="hideVisibility();"></button>
 			</div>
-			<div class="space-bottom20 block" style="text-align: center;">
+			<div class="space-bottom20 block" style="text-align: center; width:100%">
 				<img src="<?= $this->asset('bundles/robindortpslzmelinks/images/pslzme_logo.svg') ?>" style="max-height: 80px;"/>
 			</div>
 			<div class="pslzme-cookiebar-description ce_text block">
