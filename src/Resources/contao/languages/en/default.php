@@ -30,11 +30,11 @@ $GLOBALS['TL_LANG']['CTE']['pslzme_3D_content'] = ['Pslzme 3D content', 'Persona
 $GLOBALS['TL_LANG']['MOD']['pslzme_configuration'] = 'Configuration';
 $GLOBALS['TL_LANG']['pslzme_configuration']['main_heading'] = 'pslz<span>me</span> configuration';
 $GLOBALS['TL_LANG']['pslzme_configuration']['first_config_container_h2'] = '1: Database configuration';
-$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_one'] = 'To successfully use pslz<strong>me</strong> a database connection is required.';
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_one'] = 'To successfully use pslz<strong>me</strong> a seperate independent database connection is required.';
 $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_two'] = 'To make the configuration as easy as possible for you, you will find a detailed description of the steps required to create and configure the database in the following section.';
 $GLOBALS['TL_LANG']['pslzme_configuration']['config_step_one'] = 'Step 1:</span> Creation of the database';
 $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_three'] = 'To create a database, please log in to your chosen server hosting tool and navigate to the <span>&lt;Databases&gt;</span> section provided. Then select the <span>&lt;Create new database&gt;</span> option and enter your desired configuration data for the database name, username and password.';
-$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_four'] = 'If you have not yet created a database user, this should ideally be done before the database is created. However, this can also be created later and assigned to the database. To create the user, navigate to the <span>&lt;Create database user&gt;</span> section and then enter the required configuration data such as user name and password. Once both have been created, the created user must finally be assigned to the database if this has not already been done.';
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_four'] = 'If you have not yet created a database user, this should ideally be done before the database is created. However, this can also be created later and assigned to the database. To create the user, navigate to the <span>&lt;Create database user&gt;</span> section and then enter the required configuration data such as username and password. Once both the database and the user have been created, the created user must finally be assigned to the database if this has not already been done.';
 $GLOBALS['TL_LANG']['pslzme_configuration']['config_step_two'] = '<span>Step 2:</span> Connect database to plsz<strong>me</strong> plugin';
 $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_five'] = 'Next, please enter the connection data of the database you have just created in the fields below and confirm this by clicking the Save button.';
 $GLOBALS['TL_LANG']['pslzme_configuration']['db_name'] = "Database name:";
@@ -44,15 +44,15 @@ $GLOBALS['TL_LANG']['pslzme_configuration']['db_user'] = "Database user:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['current_db_user'] = 'Current database user:';
 $GLOBALS['TL_LANG']['pslzme_configuration']['no_db_user'] = 'No database user configured';
 $GLOBALS['TL_LANG']['pslzme_configuration']['db_pw'] = 'Database password:';
-$GLOBALS['TL_LANG']['pslzme_configuration']['config_step_three'] = '<span>Step 3:</span> configure pslz<strong>me</strong> tables';
-$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_six'] = 'Finally, the required pslz<strong>me</strong> database tables must be created. This is fully automated after confirming the button below. Please check again that the details in the previous step do not contain any errors.';
+$GLOBALS['TL_LANG']['pslzme_configuration']['config_step_three'] = '<span>Step 3:</span> Configure pslz<strong>me</strong> tables';
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_six'] = 'Finally, the required pslz<strong>me</strong> database tables must be created. This is fully automated after clicking the button below. Please check again that the details in the previous step do not contain any errors.';
 $GLOBALS['TL_LANG']['pslzme_configuration']['create_tables'] = 'Create tables';
 $GLOBALS['TL_LANG']['pslzme_configuration']['second_config_container_h2'] = '2: License domain';
 $GLOBALS['TL_LANG']['pslzme_configuration']['third_config_container_h2'] = '3: Internal page configuration';
-$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_seven'] = ' <p>Your domain must be licensed in order to use pslz<strong>me</strong>. First of all, an assigned pslz<strong>me</strong> account is required.
-                If you do not yet have an account, you can request one at <a href="https://www.pslzme.com/de/login" target="_blank" rel="norefferer noopener">https://www.pslzme.com/de/login</a>.
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_seven'] = ' <p>Your domain must be licensed in order to use pslz<strong>me</strong>. First of all, <b>an assigned pslz<strong>me</strong> account</b> is required.
+                If you do not yet have an account, you can request one at <b><a href="https://www.pslzme.com/de/login" target="_blank" rel="norefferer noopener">https://www.pslzme.com/de/login</a></b>.
                 </p>';
-$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_eight'] = '<p>Nachdem Ihr Account bereitgestellt wurde, bestätigen Sie bitte abschließend den nachfolgenden Button zur Lizenzierung dieser Domain.</p>';
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_eight'] = '<p>After your account has been provided, please confirm the following button to license this domain.</p>';
 $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_nine'] = "<p>For a smooth and GDPR-compliant process, pslz<strong>me</strong> uses internal redirects to certain subpages of your website.</p>
                 <p>For example, the pslzme cookie banner, which functions as an essential component, requires information on the site's legal notice and data protection.</p>
                 <p>To ensure that internal forwarding can be used without any problems, please assign the pages described in the fields below with the corresponding ID to the appropriate internal page. You can find the ID of the respective page in the contao backend under <b>&lt;Pages&gt;</b> by calling up the detailed information of the respective page.</p>";

@@ -33,7 +33,7 @@ $GLOBALS['TL_LANG']['CTE']['pslzme_3D_content'] = ['Pslzme 3D content', 'Persona
 $GLOBALS['TL_LANG']['MOD']['pslzme_configuration'] = 'Konfiguration';
 $GLOBALS['TL_LANG']['pslzme_configuration']['main_heading'] = 'pslz<span>me</span> Konfiguration';
 $GLOBALS['TL_LANG']['pslzme_configuration']['first_config_container_h2'] = '1: Datenbank Konfiguration';
-$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_one'] = 'Zur erfolgreichen Nutzung von pslz<strong>me</strong> ist eine Datenbankanbindung notwendig.';
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_one'] = 'Zur erfolgreichen Nutzung von pslz<strong>me</strong> ist eine separate unabhängige Datenbankanbindung notwendig.';
 $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_two'] = 'Um Ihnen die Konfiguration so einfach wie möglich zu gestalten, finden Sie im weiteren Abschnitt eine detaillierte Beschreibung
                     der benötigten Schritte zur Erstellung und Konfiguration der Datenbank.';
 $GLOBALS['TL_LANG']['pslzme_configuration']['config_step_one'] = 'Schritt 1:</span> Erstellung der Datenbank';
@@ -60,8 +60,8 @@ $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_six'] = 'Zu
 $GLOBALS['TL_LANG']['pslzme_configuration']['create_tables'] = 'Tabellen anlegen';
 $GLOBALS['TL_LANG']['pslzme_configuration']['second_config_container_h2'] = '2: Domain lizensieren';
 $GLOBALS['TL_LANG']['pslzme_configuration']['third_config_container_h2'] = '3: Interne Seiten Konfiguration';
-$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_seven'] = ' <p>Für die Nutzung von pslz<strong>me</strong> ist eine Lizenzierung Ihrer Domain erforderlich. Zunächst ist ein zugewiesener pslz<strong>me</strong>-Account erforderlich.
-                Sollten Sie noch keinen Account besitzen, können Sie diesen unter <a href="https://www.pslzme.com/de/login" target="_blank" rel="norefferer noopener">https://www.pslzme.com/de/login</a> anfordern.
+$GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_seven'] = ' <p>Für die Nutzung von pslz<strong>me</strong> ist eine Lizenzierung Ihrer Domain erforderlich. Hierfür ist ein <b>zugewiesener pslz<strong>me</strong>-Account</b> erforderlich.
+                Sollten Sie noch keinen Account besitzen, können Sie diesen unter <b><a href="https://www.pslzme.com/de/login" target="_blank" rel="norefferer noopener">https://www.pslzme.com/de/login</a></b> anfordern.
                 </p>';
 $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_eight'] = '<p>Nachdem Ihr Account bereitgestellt wurde, bestätigen Sie bitte abschließend den nachfolgenden Button zur Lizenzierung dieser Domain.</p>';
 
