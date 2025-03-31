@@ -21,7 +21,7 @@ function pslzmeQueryClickListener() {
 					//linkElement.href = window.location.origin + "/home.html";
 				}
 
-				if (isSameDomain(hrefOfEventTarget)) {
+				if (isSameDomain(linkElement.href)) {
 					window.location.href =
 						linkElement.href +
 						"?q1=" +
