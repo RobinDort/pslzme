@@ -121,15 +121,19 @@
 	border-radius: 5px;
 }
 
-.ce_accordion .toggler  {
+#plszme-cookiebar .ce_accordion {
+	display: inline-block;
+}
+
+#plszme-cookiebar .ce_accordion .toggler  {
 	padding: 6px 10px;
 	text-transform: uppercase;
 	font-size: 15px;
 	font-weight: 400;
 }
 
-.ce_accordion .toggler::before,
-.ce_accordion .toggler::after {
+#plszme-cookiebar .ce_accordion .toggler::before,
+#plszme-cookiebar .ce_accordion .toggler::after {
 	position: absolute;
 	left: -10px;
 	background-size: 25px;
