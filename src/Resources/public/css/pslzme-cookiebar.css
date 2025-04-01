@@ -175,10 +175,6 @@
 	gap: 20px;
 }
 
-.icon-cancel:before {
-	content: "\e81a";
-}
-
 .space-bottom20 {
 	margin-bottom: 20px;
 }
