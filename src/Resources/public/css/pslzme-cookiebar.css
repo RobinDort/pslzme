@@ -138,6 +138,11 @@
 	text-transform: uppercase;
 	font-size: 15px;
 	font-weight: 400;
+}
+
+#plszme-cookiebar .ce_accordion .ui-accordion-header,
+#plszme-cookiebar .ce_accordion .ui-accordion-header:hover {
+	color: black;
 	display: inline-block;
 }
 
