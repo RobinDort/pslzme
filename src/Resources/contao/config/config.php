@@ -17,7 +17,6 @@ System::loadLanguageFile("default");
 
 // Init all css / js files
 $GLOBALS['TL_CSS'][] = "bundles/robindortpslzmelinks/css/animations.css|static";
-$GLOBALS['TL_CSS'][] = "bundles/robindortpslzmelinks/css/fonts.css|static";
 $GLOBALS['TL_CSS'][] = "bundles/robindortpslzmelinks/css/pslzme-cookiebar.css|static";
 $GLOBALS['TL_CSS'][] = "bundles/robindortpslzmelinks/css/pslzme-cookie-caller.css|static";
 $GLOBALS['TL_CSS'][] = "bundles/robindortpslzmelinks/css/pslzme-configuration.css|static";

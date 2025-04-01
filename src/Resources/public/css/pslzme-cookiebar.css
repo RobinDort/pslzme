@@ -154,7 +154,7 @@
 }
 
 .icon-cancel::before {
-	content: "\e81a";
+	background: url("../images/x.svg");
 }
 
 .btn-small {
