@@ -48,7 +48,7 @@ function compareUpdatedQueryTimestampWithCookie(alreadySetConsentCookie, queryPa
 function switchCloseBtnVisibility(cookieIsSet) {
 	const closeBtn = document.querySelector(".pslzme-cookiebar-close-btn");
 
-	if (!cookieIsSet) {
+	if (cookieIsSet === false) {
 		// hide the close btn
 		closeBtn.style.display = "none";
 	} else {
