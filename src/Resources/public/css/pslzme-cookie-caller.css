@@ -36,6 +36,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	padding: 0;
 }
 
 #pslzme-cookie-caller li {
@@ -46,6 +47,7 @@
 	background-repeat: no-repeat;
 	font-size: 2.1rem;
 	color: inherit;
+	list-style: none;
 }
 
 /** MEDIA QUERIES */
