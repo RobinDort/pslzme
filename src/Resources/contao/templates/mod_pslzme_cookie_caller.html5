@@ -1,5 +1,5 @@
 <div id="pslzme-cookie-caller">
 	<ul class="level_1">
-		<li style="background-image: url('<?= $this->asset('bundles/robindortpslzmelinks/images/pslzme_fingerprint.svg') ?>');">[nbsp]</li>
+		<li style="background-image: url('<?= $this->asset('bundles/robindortpslzmelinks/images/pslzme_fingerprint_red.svg') ?>');">[nbsp]</li>
 	</ul>
 </div>
