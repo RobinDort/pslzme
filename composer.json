@@ -3,6 +3,7 @@
 	"description": "A contao bundle that handles custom logic for generated links by pslzme.com",
 	"type": "contao-bundle",
 	"homepage": "https://www.pslzme.com",
+	"version": "1.0.0",
 	"autoload": {
 		"psr-4": {
 			"Robindort\\PslzmeLinks\\": "src/"
