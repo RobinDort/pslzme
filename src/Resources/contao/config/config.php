@@ -3,7 +3,7 @@ use RobinDort\PslzmeLinks\Module\QueryDecryption;
 use RobinDort\PslzmeLinks\Module\PslzmeCookiebar;
 use RobinDort\PslzmeLinks\Module\PslzmeCookieCaller;
 use RobinDort\PslzmeLinks\Elements\PslzmeTextElement;
-use RobinDort\PslzmeLinks\Elements\Pslzme3DContentElement;
+use RobinDort\PslzmeLinks\Elements\PslzmeContentElement;
 use RobinDort\PslzmeLinks\EventListener\contao\InitialSetup;
 use RobinDort\PslzmeLinks\EventListener\contao\ReplaceInsertTags;
 use RobinDort\PslzmeLinks\EventListener\InstallListener;
@@ -41,7 +41,7 @@ $GLOBALS['BE_MOD']['pslzme'][$GLOBALS['TL_LANG']['MOD']['pslzme_configuration']]
 
 // Init Content Elements
 $GLOBALS['TL_CTE']['pslzme']['pslzme_text'] = PslzmeTextElement::class;
-$GLOBALS['TL_CTE']['pslzme']['pslzme_content'] = Pslzme3DContentElement::class;
+$GLOBALS['TL_CTE']['pslzme']['pslzme_content'] = PslzmeContentElement::class;
 
 // Run initial setup when installing the plugin
 $GLOBALS['TL_HOOKS']['initializeSystem'][] = [InitialSetup::class, 'runSetup'];

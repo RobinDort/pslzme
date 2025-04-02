@@ -7,7 +7,7 @@ use Contao\FilesModel;
 /**
  * Custom contao element that represents the pslzme 3D content.
  */
-class Pslzme3DContentElement extends ContentElement {
+class PslzmeContentElement extends ContentElement {
 
     protected $strTemplate = 'ce_pslzme_content';
 
