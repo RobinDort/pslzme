@@ -56,11 +56,11 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'contentType';
 
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['contentType_image'] =
-    'personalizedImage,unpersonalizedImage;';
+    'personalizedImage,unpersonalizedImage';
 
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['contentType_video'] =
-    'personalizedVideo,unpersonalizedVideo;';
+    'personalizedVideo,unpersonalizedVideo';
 
 
 // $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = '
