@@ -59,12 +59,12 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['showUnpersonalizedText'] = [
         ',
     ],
     'subpalettes' => [
-        'content_type_image' => '
+        'contentType_image' => '
             {Image Content},
             personalizedImage;
             unpersonalizedImage,alt,size,imagemargin,imageUrl,fullsize,caption,floating;
         ',
-        'content_type_video' => '
+        'contentType_video' => '
             {Video Content},personalizedVideo,unpersonalizedVideo;
         '
     ]
