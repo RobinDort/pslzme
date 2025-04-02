@@ -49,15 +49,10 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['showUnpersonalizedText'] = [
  * Configuration for pslzme_content element
  */
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] =
- '{type_legend},type,headline;{content_type_legend},contentType;{expert_legend:hide},cssID;';
- 
-// Define different main palettes based on contentType
-$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content_image'] =
-    '{type_legend},type,headline;{content_type_legend},contentType;{image_legend},personalizedImage,unpersonalizedImage,alt,size,imagemargin,imageUrl,fullsize,caption,floating;{expert_legend:hide},cssID;';
-
-$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content_video'] =
-    '{type_legend},type,headline;{content_type_legend},contentType;{video_legend},personalizedVideo,unpersonalizedVideo;{expert_legend:hide},cssID;';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = [
+    '__selector__' => ['contentType'],
+    'default' => '{type_legend},type,headline;{Content Type},contentType;{expert_legend:hide},cssID;'
+];
 
 
 // $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = '
