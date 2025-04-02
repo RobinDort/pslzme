@@ -46,20 +46,88 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['showUnpersonalizedText'] = [
 
 
 /**
- * Configuration for pslzme_3D_content element
+ * Configuration for pslzme_content element
  */
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_3D_content'] = '
+$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = '
     {type_legend},type,headline;
-    {3D Image},singleSRC,alt,size,imagemargin,imageUrl,fullsize,caption,floating;
-    {3D PlayGround},pageLink,html;
+    {Content Type},contentType;
     {expert_legend:hide},cssID';
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['pageLink'] = [
-    'label' => array('Link address'),
-    'inputType' => 'pageTree',
-    'eval'      => ['mandatory' => false, 'fieldType' => 'radio', 'tl_class' => 'clr'],
-    'sql'       => "int(10) unsigned NOT NULL default 0"
+$GLOBALS['TL_DCA']['tl_content']['subpalettes']['content_type_image'] = '
+    {Image Content},
+    personalizedImage;
+    unpersonalizedImage,alt,size,imagemargin,imageUrl,fullsize,caption,floating;';
+
+$GLOBALS['TL_DCA']['tl_content']['subpalettes']['content_type_video'] = '
+    {Video Content},personalizedVideo,unpersonalizedVideo;';
+
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['contentType'] = [
+    'label'     => ['Content Type', 'Select whether you want to show a personalized/unpersonalized video or image'],
+    'inputType' => 'radio',
+    'options'   => ['image' => 'Image', 'video' => 'Video'],
+    'eval'      => ['mandatory' => true, 'submitOnChange' => true, 'tl_class' => 'clr'],
+    'sql'       => "varchar(10) NOT NULL default 'image'"
 ];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['personalizedImage'] = [
+    'label'     => ['Personalized Image', 'Show a personalized image.'],
+    'inputType' => 'fileTree',
+    'eval'      => [
+        'mandatory' => false, 
+        'filesOnly' => true, 
+        'fieldType' => 'radio', 
+        'extensions' => 'jpg,jpeg,png,gif,webp', 
+        'tl_class' => 'clr',
+        'dependsOn' => ['field' => 'contentType', 'value' => 'image']
+    ],
+    'sql'       => "binary(16) NULL"
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedImage'] = [
+    'label'     => ['Unpersonalized Image', 'Show an unpersonalized image.'],
+    'inputType' => 'fileTree',
+    'eval'      => [
+        'mandatory' => true, 
+        'filesOnly' => true, 
+        'fieldType' => 'radio', 
+        'extensions' => 'jpg,jpeg,png,gif,webp', 
+        'tl_class' => 'clr',
+        'dependsOn' => ['field' => 'contentType', 'value' => 'image']
+    ],
+    'sql'       => "binary(16) NULL"
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['personalizedVideo'] = [
+    'label'     => ['Personalized Video', 'Show a personalized video.'],
+    'inputType' => 'fileTree',
+    'eval'      => [
+        'mandatory' => false, 
+        'filesOnly' => true, 
+        'fieldType' => 'radio', 
+        'extensions' => 'mp4,webm', 
+        'tl_class' => 'clr',
+        'dependsOn' => ['field' => 'contentType', 'value' => 'video']
+    ],
+    'sql'       => "binary(16) NULL"
+];
+
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedVideo'] = [
+    'label'     => ['Unpersonalized Video', 'Show an unpersonalized video.'],
+    'inputType' => 'fileTree',
+    'eval'      => [
+        'mandatory' => true, 
+        'filesOnly' => true, 
+        'fieldType' => 'radio', 
+        'extensions' => 'mp4,webm', 
+        'tl_class' => 'clr',
+        'dependsOn' => ['field' => 'contentType', 'value' => 'video']
+    ],
+    'sql'       => "binary(16) NULL"
+];
+
+
 
 ?>

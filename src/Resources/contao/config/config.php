@@ -41,7 +41,7 @@ $GLOBALS['BE_MOD']['pslzme'][$GLOBALS['TL_LANG']['MOD']['pslzme_configuration']]
 
 // Init Content Elements
 $GLOBALS['TL_CTE']['pslzme']['pslzme_text'] = PslzmeTextElement::class;
-$GLOBALS['TL_CTE']['pslzme']['pslzme_3D_content'] = Pslzme3DContentElement::class;
+$GLOBALS['TL_CTE']['pslzme']['pslzme_content'] = Pslzme3DContentElement::class;
 
 // Run initial setup when installing the plugin
 $GLOBALS['TL_HOOKS']['initializeSystem'][] = [InitialSetup::class, 'runSetup'];
