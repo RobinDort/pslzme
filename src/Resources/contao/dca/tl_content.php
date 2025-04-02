@@ -79,7 +79,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['contentType'] = [
     'inputType' => 'radio',
     'options'   => ['image' => 'Image', 'video' => 'Video'],
     'eval'      => ['mandatory' => true, 'submitOnChange' => true, 'tl_class' => 'clr'],
-    'sql'       => "varchar(32) NOT NULL default ''"
+    'sql'       => "varchar(32) NOT NULL default 'image'"
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedImage'] = [
