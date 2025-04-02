@@ -70,7 +70,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['showUnpersonalizedText'] = [
 //     ]
 // ];
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'] = ['contentType'];
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = '
     {type_legend},type,headline;
