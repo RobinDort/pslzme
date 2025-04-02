@@ -9,7 +9,7 @@ use Contao\FilesModel;
  */
 class Pslzme3DContentElement extends ContentElement {
 
-    protected $strTemplate = 'ce_pslzme_3D_content';
+    protected $strTemplate = 'ce_pslzme_content';
 
     protected function compile() {
         $this->Template->pageLink = $this->pageLink;
