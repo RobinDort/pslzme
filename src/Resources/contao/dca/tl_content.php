@@ -49,22 +49,29 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['showUnpersonalizedText'] = [
  * Configuration for pslzme_content element
  */
 
- $GLOBALS['TL_DCA']['tl_content'] = [
-    'palettes' => [
-        '__selector__' => ['contentType'],
-        'default' => '{type_legend},type,headline;{Content Type},contentType;{expert_legend:hide},cssID'
-    ],
-    'subpalettes' => [
-        'contentType_image' => '{Image Content},personalizedImage,unpersonalizedImage,alt,size,imagemargin,imageUrl,fullsize,caption,floating',
-        'contentType_video' => '{Video Content},personalizedVideo,unpersonalizedVideo'
-    ]
+//  $GLOBALS['TL_DCA']['tl_content'] = [
+//     'palettes' => [
+//         '__selector__' => ['contentType'],
+//         'default' => '{type_legend},type,headline;{Content Type},contentType;{expert_legend:hide},cssID'
+//     ],
+//     'subpalettes' => [
+//         'contentType_image' => '{Image Content},personalizedImage,unpersonalizedImage,alt,size,imagemargin,imageUrl,fullsize,caption,floating',
+//         'contentType_video' => '{Video Content},personalizedVideo,unpersonalizedVideo'
+//     ]
+// ];
+
+
+$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = [
+    '__selector__' => ['contentType'],
+    'default' => 
+    '
+        {type_legend},type,headline;
+        {Content Type},contentType;
+        {expert_legend:hide},cssID
+    ',
+    'image' => '{Image Content},personalizedImage;unpersonalizedImage,alt,size,imagemargin,imageUrl,fullsize,caption,floating;',
+    'video' => '{Video Content},personalizedVideo,unpersonalizedVideo;'
 ];
-
-
-// $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = '
-//     {type_legend},type,headline;
-//     {Content Type},contentType;
-//     {expert_legend:hide},cssID';
 
 // $GLOBALS['TL_DCA']['tl_content']['subpalettes']['contentType_image'] = '
 //     {Image Content},
