@@ -2,34 +2,12 @@
 
 <?php $this->block('content'); ?>
 
-<?php if ($GLOBALS['decryptedVars']['varsSet'] === true) :?>
 
-<!-- indexer::stop -->
-
-	<?php if($this->html): ?>
-		<div id="gallery-row" class="block">
-			<div class="ce_image gly-image block">
-				<figure class="image_container">
-					<a class="ce_hyperlink block" href="{{link_url::<?= $this->pageLink ?>}}">
-						<?= $this->html ?>
-					</a>
-				</figure>
-			</div>
-		</div>
-	<?php else: ?>
-		<?php if($this->imageContent): ?>
-			<div id="gallery-row" class="block">
-				<div class="ce_image">
-					<?php $this->insert('image', $this->arrData); ?>
-		      </div>
-		    </div>
-	    <?php endif; ?>
-    <?php endif; ?>
-
-
-	
-<!-- indexer::continue -->
-
+<?php if($this->unpersonalizedImage): ?>
+	<div class="ce_image">
+		<?php $this->insert('image', $this->arrData) ?>
+	</div>
 <?php endif; ?>
+
 
 <?php $this->endblock(); ?>

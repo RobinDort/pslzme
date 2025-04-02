@@ -12,13 +12,11 @@ class PslzmeContentElement extends ContentElement {
     protected $strTemplate = 'ce_pslzme_content';
 
     protected function compile() {
-        $this->Template->pageLink = $this->pageLink;
-        $this->Template->html = $this->html;
-        
-        if ($this->singleSRC) {
-            $image = FilesModel::findByUuid($this->singleSRC);
+        if ($this->unpersonalizedImage) {
+            $unpersonalizedImage = FilesModel::findByUuid($this->unpersonalizedImage);
+            // Add personalized image to the template
             $this->addImageToTemplate($this->Template, [
-                'singleSRC'     => $image->path,
+                'singleSRC'     => $unpersonalizedImage->path,
                 'size'          => $this->size,
                 'imagemargin'   => $this->imagemargin,
                 'fullsize'      => $this->fullsize,
@@ -27,7 +25,24 @@ class PslzmeContentElement extends ContentElement {
                 'caption'       => $this->caption,
                 'alt'           => $this->alt
             ]);
-        }        
+        }
+
+        // $this->Template->pageLink = $this->pageLink;
+        // $this->Template->html = $this->html;
+        
+        // if ($this->singleSRC) {
+        //     $image = FilesModel::findByUuid($this->singleSRC);
+        //     $this->addImageToTemplate($this->Template, [
+        //         'singleSRC'     => $image->path,
+        //         'size'          => $this->size,
+        //         'imagemargin'   => $this->imagemargin,
+        //         'fullsize'      => $this->fullsize,
+        //         'imageUrl'      => $this->imageUrl,
+        //         'floating'      => $this->floating,
+        //         'caption'       => $this->caption,
+        //         'alt'           => $this->alt
+        //     ]);
+        // }        
     }
 
 }

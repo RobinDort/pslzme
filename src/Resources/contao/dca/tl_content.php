@@ -58,6 +58,7 @@ $GLOBALS['TL_DCA']['tl_content']['subpalettes']['content_type_image'] = '
     {Image Content},
     personalizedImage;
     unpersonalizedImage,alt,size,imagemargin,imageUrl,fullsize,caption,floating;';
+    
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['content_type_video'] = '
     {Video Content},personalizedVideo,unpersonalizedVideo;';
