@@ -49,10 +49,16 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['showUnpersonalizedText'] = [
  * Configuration for pslzme_content element
  */
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = [
-    '__selector__' => ['contentType'],
-    'default' => '{type_legend},type,headline;{Content Type},contentType;{expert_legend:hide},cssID;'
-];
+$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = 
+    '{type_legend},type,headline;{Content Type},contentType;{expert_legend:hide},cssID;';
+
+
+$GLOBALS['TL_DCA']['tl_content']['subpalettes']['contentType_image'] =
+    '{type_legend},type,headline;{Content Type},contentType;{expert_legend:hide},cssID;';
+
+
+$GLOBALS['TL_DCA']['tl_content']['subpalettes']['contentType_video'] =
+    '{Video Content},personalizedVideo,unpersonalizedVideo;';
 
 
 // $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = '
@@ -68,8 +74,8 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = [
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['contentType'] = [
     'label'     => ['Content Type', 'Select whether you want to show a personalized/unpersonalized video or image'],
-    'inputType' => 'select',
-    'options'   => ['image', 'video'],
+    'inputType' => 'radio',
+    'options'   => ['image' => 'Image', 'video' => 'Video'],
     'eval'      => ['mandatory' => true, 'submitOnChange' => true, 'tl_class' => 'clr'],
     'sql'       => "varchar(32) NOT NULL default ''"
 ];
