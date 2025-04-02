@@ -56,11 +56,11 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'contentType';
 
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['contentType_image'] =
-    '{type_legend},type,headline;{Content Type},contentType;{expert_legend:hide},cssID;';
+    'personalizedImage,unpersonalizedImage;';
 
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['contentType_video'] =
-    '{Video Content},personalizedVideo,unpersonalizedVideo;';
+    'personalizedVideo,unpersonalizedVideo;';
 
 
 // $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = '
@@ -91,7 +91,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedImage'] = [
         'fieldType' => 'radio', 
         'extensions' => 'jpg,jpeg,png,gif,webp', 
         'tl_class' => 'clr',
-        'dependsOn' => ['field' => 'contentType', 'value' => 'image']
     ],
     'sql'       => "binary(16) NULL"
 ];
@@ -105,7 +104,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedImage'] = [
         'fieldType' => 'radio', 
         'extensions' => 'jpg,jpeg,png,gif,webp', 
         'tl_class' => 'clr',
-        'dependsOn' => ['field' => 'contentType', 'value' => 'image']
     ],
     'sql'       => "binary(16) NULL"
 ];
@@ -119,7 +117,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedVideo'] = [
         'fieldType' => 'radio', 
         'extensions' => 'mp4,webm', 
         'tl_class' => 'clr',
-        'dependsOn' => ['field' => 'contentType', 'value' => 'video']
     ],
     'sql'       => "binary(16) NULL"
 ];
@@ -134,7 +131,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedVideo'] = [
         'fieldType' => 'radio', 
         'extensions' => 'mp4,webm', 
         'tl_class' => 'clr',
-        'dependsOn' => ['field' => 'contentType', 'value' => 'video']
     ],
     'sql'       => "binary(16) NULL"
 ];
