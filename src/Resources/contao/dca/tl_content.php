@@ -49,7 +49,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['showUnpersonalizedText'] = [
  * Configuration for pslzme_content element
  */
 
- $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = [
+ $GLOBALS['TL_DCA']['tl_content'] = [
     'palettes' => [
         '__selector__' => ['contentType'],
         'default' => '{type_legend},type,headline;{Content Type},contentType;{expert_legend:hide},cssID'
