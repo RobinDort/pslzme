@@ -14,7 +14,7 @@ class PslzmeContentElement extends ContentElement {
 
     protected function compile() {
 
-        $pimageData = [];
+        $pImageData = [];
         $upImageData = [];
 
         if ($this->unpersonalizedImage) {
@@ -40,7 +40,7 @@ class PslzmeContentElement extends ContentElement {
             $personalizedImage = FilesModel::findByUuid($this->personalizedImage);
 
             // Add personalized image to the template
-            $pimageData['personalizedImage'] = [
+            $pImageData['personalizedImage'] = [
                 'singleSRC'     => $personalizedImage->path,
                 'size'          => $this->size,
                 'alt'           => $this->alt,
