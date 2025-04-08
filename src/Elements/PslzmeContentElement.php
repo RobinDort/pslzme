@@ -30,9 +30,13 @@ class PslzmeContentElement extends ContentElement {
             $upImageData['unpersonalizedImage'] = [
                 'singleSRC'     => $unpersonalizedImage->path,
                 'size'          => $this->upSize,
-                'alt'           => $this->upAlt,
-                'imageUrl'      => $unpersonalizedImageLink ?? '',
-                'caption'       => $this->upCaption,
+                'config' => [
+                    'metadata' => [
+                        'alt' => $this->upAlt,
+                        'caption' => $this->upCaption,
+                    ],
+                    'linkHref' => $unpersonalizedImageLink ?? '',
+                ],
             ];
         }
 
@@ -43,9 +47,13 @@ class PslzmeContentElement extends ContentElement {
             $pImageData['personalizedImage'] = [
                 'singleSRC'     => $personalizedImage->path,
                 'size'          => $this->size,
-                'alt'           => $this->alt,
-                'imageUrl'      => $this->imageUrl,
-                'caption'       => $this->caption,
+                'config' => [
+                    'metadata' => [
+                        'alt' => $this->alt,
+                        'caption' => $this->caption,
+                    ],
+                    'linkHref' => $this->imageUrl,
+                ],
             ];
         }
 
