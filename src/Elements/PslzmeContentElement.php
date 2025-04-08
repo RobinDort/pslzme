@@ -31,20 +31,20 @@ class PslzmeContentElement extends ContentElement {
                 'imageUrl'      => $unpersonalizedImageLink ?? '',
                 'caption'       => $this->upCaption,
             ]);
-        }
+        } else {
+            if ($this->personalizedImage) {
+                $personalizedImage = FilesModel::findByUuid($this->personalizedImage);
 
-        if ($this->personalizedImage) {
-            $personalizedImage = FilesModel::findByUuid($this->personalizedImage);
+                // Add personalized image to the template
+                $this->addImageToTemplate($this->Template, [
+                    'singleSRC'     => $personalizedImage->path,
+                    'size'          => $this->size,
+                    'alt'           => $this->alt,
+                    'imageUrl'      => $this->imageUrl,
+                    'caption'       => $this->caption,
+                ]);
 
-            // Add personalized image to the template
-            $this->addImageToTemplate($this->Template, [
-                'singleSRC'     => $personalizedImage->path,
-                'size'          => $this->size,
-                'alt'           => $this->alt,
-                'imageUrl'      => $this->imageUrl,
-                'caption'       => $this->caption,
-            ]);
-
+            }
         }
 
         // $this->Template->pageLink = $this->pageLink;
