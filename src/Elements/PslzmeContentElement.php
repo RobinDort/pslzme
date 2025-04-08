@@ -14,12 +14,15 @@ class PslzmeContentElement extends ContentElement {
     protected function compile() {
         if ($this->unpersonalizedImage) {
             $unpersonalizedImage = FilesModel::findByUuid($this->unpersonalizedImage);
+            if ($this->upImageUrl) {
+                $unpersonalizedImageLink = FilesModel::findByUuid($this->upImageUrl);
+            }
             // Add personalized image to the template
             $this->addImageToTemplate($this->Template, [
                 'singleSRC'     => $unpersonalizedImage->path,
                 'size'          => $this->upSize,
                 'alt'           => $this->upAlt,
-                'imageUrl'      => $this->upImageUrl,
+                'imageUrl'      => $unpersonalizedImageLink ?? $unpersonalizedImageLink->path,
             ]);
         }
 
