@@ -50,7 +50,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['showUnpersonalizedText'] = [
  */
 
  $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = 
- '{type_legend},type,headline;{content_type_legend},contentType;{expert_legend:hide},cssID;';
+ '{type_legend},type,headline;{Content Type},contentType;{expert_legend:hide},cssID;';
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'contentType';  
 
@@ -76,7 +76,7 @@ $GLOBALS['TL_DCA']['tl_content']['subpalettes']['contentType_video'] =
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['contentType'] = [
     'label'     => ['Content Type', 'Select whether you want to show a personalized/unpersonalized video or image'],
-    'inputType' => 'radio',
+    'inputType' => 'select',
     'options'   => ['image', 'video'],
     'default'   => 'image',
     'eval'      => ['mandatory' => true, 'submitOnChange' => true, 'tl_class' => 'clr'],
