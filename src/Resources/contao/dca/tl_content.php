@@ -57,7 +57,7 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'selectedConten
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_image-content'] =
     '{Personalized Image Content:hide},personalizedImage,alt,size,imagemargin,imageUrl,fullsize,caption,floating;
-     {Unpersonalized Image content:hide},unpersonalizedImage,upAlt,upSize';
+     {Unpersonalized Image content:hide},unpersonalizedImage,upAlt,upSize,upImageUrl';
 
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_video-content'] =
@@ -112,8 +112,19 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['upSize'] = [
 $GLOBALS['TL_DCA']['tl_content']['fields']['upAlt'] = [
     'label'     => ['Unpersonalized alternative text', 'Enter an alternative text for the image.'],
     'inputType' => 'text',
-    'eval'      => ['maxlength' => 255, 'tl_class' => 'clr'],
+    'eval'      => ['maxlength' => 255, 'tl_class' => 'w50'],
     'sql'       => "varchar(255) NOT NULL"
+];
+
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['upImageUrl'] = [
+    'label'     => ['Unpersonalized image url', 'Select a url where the image will link to'],
+    'inputType' => 'pageTree',
+    'eval'      => [
+        'fieldType' => 'radio',
+        'tl_class' => 'w50',
+    ],
+    'sql'       => "text NOT NULL"
 ];
 
 

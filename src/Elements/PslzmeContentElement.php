@@ -18,7 +18,8 @@ class PslzmeContentElement extends ContentElement {
             $this->addImageToTemplate($this->Template, [
                 'singleSRC'     => $unpersonalizedImage->path,
                 'size'          => $this->upSize,
-                'alt'           => $this->upAlt
+                'alt'           => $this->upAlt,
+                'imageUrl'      => $this->upImageUrl,
             ]);
         }
 
