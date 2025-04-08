@@ -8,7 +8,7 @@
 		<!-- indexer::stop -->
 
 		<div class="ce_image">
-			<?= $this->figure($this->pImageData['personalizedImage']['singleSRC'], $this->pImageData['personalizedImage']['size'], $this->pImageData['personalizedImage']) ?>
+			<?= $this->figure($this->pImageData['personalizedImage']['singleSRC'], $this->pImageData['personalizedImage']['size']) ?>
 		</div>
 
 		<!-- indexer::continue -->
@@ -17,7 +17,7 @@
 <?php else: ?>
 	<?php if($this->unpersonalizedImage): ?>
 		<div class="ce_image">
-			<?= $this->figure($this->upImageData['unpersonalizedImage']['singleSRC'], $this->upImageData['unpersonalizedImage']['size'], $this->upImageData['unpersonalizedImage']) ?>
+			<?= $this->figure($this->upImageData['unpersonalizedImage']['singleSRC'], $this->upImageData['unpersonalizedImage']['size']) ?>
 		</div>
 	<?php endif; ?>
 <?php endif;?>
