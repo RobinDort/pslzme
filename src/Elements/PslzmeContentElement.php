@@ -49,9 +49,6 @@ class PslzmeContentElement extends ContentElement {
 
         // Pass the data to the template and insert images using the 'image' template part
         $this->arrData = $arrData;
-        
-        // Call the insert method to render the images using the template part
-        $this->insert('image', $this->arrData);
 
         // $this->Template->pageLink = $this->pageLink;
         // $this->Template->html = $this->html;
