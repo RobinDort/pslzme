@@ -58,7 +58,6 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'contentType';
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes'] = [
     'contentType_image' => 'personalizedImage,unpersonalizedImage',
-    'contentType_video' => 'personalizedVideo,unpersonalizedVideo',
 ];
 
 
