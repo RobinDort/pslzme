@@ -3,6 +3,7 @@ namespace RobinDort\PslzmeLinks\Elements;
 
 use Contao\ContentElement;
 use Contao\FilesModel;
+use Contao\Model\Collection;
 
 /**
  * Custom contao element that represents the pslzme 3D content.
@@ -14,15 +15,19 @@ class PslzmeContentElement extends ContentElement {
     protected function compile() {
         if ($this->unpersonalizedImage) {
             $unpersonalizedImage = FilesModel::findByUuid($this->unpersonalizedImage);
+
             if ($this->upImageUrl) {
-                $unpersonalizedImageLink = FilesModel::findByUuid($this->upImageUrl);
+                $unpersonalizedImagePage = Collection::findById($this->upImageUrl);
+                if ($unpersonalizedImagePage) {
+                    $unpersonalizedImageLink = $unpersonalizedImagePage->getFrontendUrl();  // Get the URL of the page
+                }
             }
             // Add personalized image to the template
             $this->addImageToTemplate($this->Template, [
                 'singleSRC'     => $unpersonalizedImage->path,
                 'size'          => $this->upSize,
                 'alt'           => $this->upAlt,
-                'imageUrl'      => $unpersonalizedImageLink ?? $unpersonalizedImageLink->path,
+                'imageUrl'      => $unpersonalizedImageLink ?? '',
             ]);
         }
 
