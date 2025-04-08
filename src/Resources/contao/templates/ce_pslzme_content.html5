@@ -2,17 +2,19 @@
 
 <?php $this->block('content'); ?>
 
-<?php if($this->unpersonalizedImage): ?>
-	<div class="ce_image">
-		<?php $this->insert('image', $this->arrData) ?>
-	</div>
-<?php else: ?>
+<?php if ($GLOBALS['decryptedVars']['varsSet'] === true) :?>
 	<?php if ($this->personalizedImage): ?> 
 		<div class="ce_image">
 			<?php $this->insert('image', $this->arrData) ?>
 		</div>
 	<?php endif; ?>
-<?php endif; ?>
+<?php else: ?>
+	<?php if($this->unpersonalizedImage): ?>
+		<div class="ce_image">
+			<?php $this->insert('image', $this->arrData) ?>
+		</div>
+	<?php endif; ?>
+<?php endif;?>
 
 
 <?php $this->endblock(); ?>
