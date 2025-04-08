@@ -4,9 +4,15 @@
 
 <?php if ($GLOBALS['decryptedVars']['varsSet'] === true) :?>
 	<?php if ($this->personalizedImage): ?> 
+
+		<!-- indexer::stop -->
+
 		<div class="ce_image">
 			<?php $this->insert('image', $this->arrData) ?>
 		</div>
+
+		<!-- indexer::continue -->
+
 	<?php endif; ?>
 <?php else: ?>
 	<?php if($this->unpersonalizedImage): ?>
