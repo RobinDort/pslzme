@@ -59,11 +59,11 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'selectedConten
 // ];
 
 
-$GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_image'] =
+$GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_image-content'] =
     'personalizedImage,unpersonalizedImage';
 
 
-$GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_video'] =
+$GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_video-content'] =
     'personalizedVideo,unpersonalizedVideo';
 
 
@@ -81,8 +81,8 @@ $GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_video'] =
 $GLOBALS['TL_DCA']['tl_content']['fields']['selectedContent'] = [
     'label'     => ['Content Type', 'Select whether you want to show a personalized/unpersonalized video or image'],
     'inputType' => 'radio',
-    'options'   => ['image', 'video'],
-    'default'   => 'image',
+    'options'   => ['image-content', 'video-content'],
+    'default'   => 'image-content',
     'eval'      => ['mandatory' => true, 'submitOnChange' => true, 'tl_class' => 'clr'],
     'sql'       => "varchar(32) default NULL"
 ];
