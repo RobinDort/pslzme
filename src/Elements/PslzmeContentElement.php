@@ -13,7 +13,6 @@ class PslzmeContentElement extends ContentElement {
     protected $strTemplate = 'ce_pslzme_content';
 
     protected function compile() {
-        $arrData = [];
 
         if ($this->unpersonalizedImage) {
             $unpersonalizedImage = FilesModel::findByUuid($this->unpersonalizedImage);
@@ -25,30 +24,28 @@ class PslzmeContentElement extends ContentElement {
                 }
             }
             // Add unpersonalized image to the template
-            $arrData['unpersonalizedImage'] = [
+            $this->addImageToTemplate($this->Template, [
                 'singleSRC'     => $unpersonalizedImage->path,
                 'size'          => $this->upSize,
                 'alt'           => $this->upAlt,
                 'imageUrl'      => $unpersonalizedImageLink ?? '',
                 'caption'       => $this->upCaption,
-            ];
+            ]);
         }
 
         if ($this->personalizedImage) {
             $personalizedImage = FilesModel::findByUuid($this->personalizedImage);
 
             // Add personalized image to the template
-            $arrData['personalizedImage'] = [
+            $this->addImageToTemplate($this->Template, [
                 'singleSRC'     => $personalizedImage->path,
                 'size'          => $this->size,
                 'alt'           => $this->alt,
                 'imageUrl'      => $this->imageUrl,
                 'caption'       => $this->caption,
-            ];
-        }
+            ]);
 
-        // Pass the data to the template and insert images using the 'image' template part
-        $this->Template->arrData = $arrData;
+        }
 
         // $this->Template->pageLink = $this->pageLink;
         // $this->Template->html = $this->html;

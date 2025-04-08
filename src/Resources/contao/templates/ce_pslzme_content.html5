@@ -2,11 +2,16 @@
 
 <?php $this->block('content'); ?>
 
-
 <?php if($this->unpersonalizedImage): ?>
 	<div class="ce_image">
-		<?php $this->insert('image', $this->arrData['unpersonalizedImage']) ?>
+		<?php $this->insert('image', $this->arrData) ?>
 	</div>
+<?php else: ?>
+	<?php if ($this->personalizedImage): ?> 
+		<div class="ce_image">
+			<?php $this->insert('image', $this->arrData) ?>
+		</div>
+	<?php endif; ?>
 <?php endif; ?>
 
 
