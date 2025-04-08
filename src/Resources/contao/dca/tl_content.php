@@ -13,7 +13,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedTextGroup'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedText'] = [
-    'label'     => ['Personalized Text', 'Enter personalized text'],
     'exclude'   => true,
     'inputType' => 'textarea',
     'eval'      => ['rte' => 'tinyMCE', 'helpwizard' => true, 'mandatory' => false],
