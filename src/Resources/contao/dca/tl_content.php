@@ -101,7 +101,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedImage'] = [
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['upSize'] = [
     'label'     => ['Unpersonalized image size', 'Set the size for the image.'],
-    'inputType' => 'select',
+    'inputType' => 'imageSize',
     'options_callback' => function () {
         return System::getContainer()->get('contao.image.sizes')->getAllOptions();
     },
