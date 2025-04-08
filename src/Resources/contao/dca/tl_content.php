@@ -83,7 +83,7 @@ $GLOBALS['TL_DCA']['tl_content']['subpalettes'] = [
 $GLOBALS['TL_DCA']['tl_content']['fields']['contentType'] = [
     'label'     => ['Content Type', 'Select whether you want to show a personalized/unpersonalized video or image'],
     'inputType' => 'radio',
-    'options'   => ['image', 'video'],
+    'options'   => ['image'],
     'default'   => 'image',
     'eval'      => ['mandatory' => true, 'submitOnChange' => true, 'tl_class' => 'clr'],
     'sql'       => "varchar(32) default NULL"
