@@ -1,4 +1,5 @@
 <?php
+use Contao\System;
 
 /**
  * Configuration for pslzme_text element
@@ -48,8 +49,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['showUnpersonalizedText'] = [
 /**
  * Configuration for pslzme_content element
  */
-
-$imageSizes = array_keys($GLOBALS['TL_CONFIG']['imageSizes']);
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = 
  '{type_legend},type,headline;{Content Type},selectedContent;{expert_legend:hide},cssID;';
@@ -103,9 +102,11 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedImage'] = [
 $GLOBALS['TL_DCA']['tl_content']['fields']['upSize'] = [
     'label'     => ['Unpersonalized image size', 'Set the size for the image.'],
     'inputType' => 'select',
-    'options'   => $imageSizes,
-    'eval'      => ['tl_class' => 'clr'],
-    'sql'       => "varchar(128) NOT NULL"
+    'options_callback' => function () {
+        return System::getContainer()->get('contao.image.sizes')->getAllOptions();
+    },
+    'eval'      => array('rgxp'=>'digit', 'includeBlankOption'=>true, 'tl_class'=>'w50'),
+    'sql'       => "varchar(128) NOT NULL default ''"
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['upAlt'] = [
