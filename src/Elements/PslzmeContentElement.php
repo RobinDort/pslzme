@@ -28,6 +28,7 @@ class PslzmeContentElement extends ContentElement {
                 'size'          => $this->upSize,
                 'alt'           => $this->upAlt,
                 'imageUrl'      => $unpersonalizedImageLink ?? '',
+                'caption'       => $this->upCaption,
             ]);
         }
 

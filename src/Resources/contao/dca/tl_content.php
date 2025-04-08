@@ -57,7 +57,7 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'selectedConten
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_image-content'] =
     '{Personalized Image Content:hide},personalizedImage,alt,size,imagemargin,imageUrl,fullsize,caption,floating;
-     {Unpersonalized Image content:hide},unpersonalizedImage,upAlt,upSize,upImageUrl';
+     {Unpersonalized Image content:hide},unpersonalizedImage,upAlt,upSize,upImageUrl,upCaption';
 
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_video-content'] =
@@ -100,7 +100,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedImage'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['upSize'] = [
-    'label'     => ['Unpersonalized image size', 'Set the size for the image.'],
+    'label'     => ['Image size', 'Set the size for the image.'],
     'inputType' => 'imageSize',
     'options_callback' => function () {
         return System::getContainer()->get('contao.image.sizes')->getAllOptions();
@@ -110,7 +110,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['upSize'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['upAlt'] = [
-    'label'     => ['Unpersonalized alternative text', 'Enter an alternative text for the image.'],
+    'label'     => ['Alternative text', 'Enter an alternative text for the image.'],
     'inputType' => 'text',
     'eval'      => ['maxlength' => 255, 'tl_class' => 'w50'],
     'sql'       => "varchar(255) NOT NULL"
@@ -118,7 +118,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['upAlt'] = [
 
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['upImageUrl'] = [
-    'label'     => ['Unpersonalized image url', 'Select a url where the image will link to'],
+    'label'     => ['Image link address', 'Select a url where the image will link to'],
     'inputType' => 'pageTree',
     'eval'      => [
         'fieldType' => 'radio',
@@ -126,6 +126,14 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['upImageUrl'] = [
     ],
     'sql'       => "text NOT NULL"
 ];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['upCaption'] = [
+    'label'     => ['Image Caption', 'Enter a caption for the image.'],
+    'inputType' => 'text',
+    'eval'      => ['maxlength' => 255, 'tl_class' => 'clr'],
+    'sql'       => "varchar(255) NOT NULL default ''"
+];
+
 
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedVideo'] = [
