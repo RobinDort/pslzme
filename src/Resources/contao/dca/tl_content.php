@@ -55,13 +55,13 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] =
 $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'contentType';  
 
 
-$GLOBALS['TL_DCA']['tl_content']['subpalettes'] = [
-    'contentType_image' => 'personalizedImage,unpersonalizedImage',
-];
+// $GLOBALS['TL_DCA']['tl_content']['subpalettes'] = [
+//     'contentType_image' => 'personalizedImage,unpersonalizedImage',
+// ];
 
 
-// $GLOBALS['TL_DCA']['tl_content']['subpalettes']['contentType_image'] =
-//     'personalizedImage,unpersonalizedImage';
+$GLOBALS['TL_DCA']['tl_content']['subpalettes']['contentType_image'] =
+    'personalizedImage,unpersonalizedImage';
 
 
 // $GLOBALS['TL_DCA']['tl_content']['subpalettes']['contentType_video'] =
