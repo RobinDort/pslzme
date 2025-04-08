@@ -52,7 +52,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['showUnpersonalizedText'] = [
 $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = 
  '{type_legend},type,headline;{Content Type},contentType;{expert_legend:hide},cssID;';
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'contentType';  
+$GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__']['pslzme_content'] = 'contentType';  
 
 
 // $GLOBALS['TL_DCA']['tl_content']['subpalettes'] = [
@@ -64,8 +64,8 @@ $GLOBALS['TL_DCA']['tl_content']['subpalettes']['contentType_image'] =
     'personalizedImage,unpersonalizedImage';
 
 
-// $GLOBALS['TL_DCA']['tl_content']['subpalettes']['contentType_video'] =
-//     'personalizedVideo,unpersonalizedVideo';
+$GLOBALS['TL_DCA']['tl_content']['subpalettes']['contentType_video'] =
+    'personalizedVideo,unpersonalizedVideo';
 
 
 // $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = '
