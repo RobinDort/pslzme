@@ -26,8 +26,8 @@ $GLOBALS['TL_LANG']['CTE']['pslzme_text'] = ['Pslzme Text', 'Personalizable text
 $GLOBALS['TL_LANG']['CTE']['pslzme_content'] = ['Pslzme Content', 'Personalizable content element'];
 
 /** Element fields */
-$GLOBALS['TL_DCA']['tl_content']['personalizedTextGroup'] = ["Personalized text options"];
-$GLOBALS['TL_DCA']['tl_content']['personalizedText'] = ['Personalized Text', 'Enter personalized text'];
+$GLOBALS['TL_LANG']['tl_content']['personalizedTextGroup'] = ["Personalized text options"];
+$GLOBALS['TL_LANG']['tl_content']['personalizedText'] = ['Personalized Text', 'Enter personalized text'];
 
 
 /** Backend module */

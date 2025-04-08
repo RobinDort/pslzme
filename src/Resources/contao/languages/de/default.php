@@ -28,8 +28,8 @@ $GLOBALS['TL_LANG']['CTE']['pslzme_text'] = ['Pslzme Text', 'Personalisierbares 
 $GLOBALS['TL_LANG']['CTE']['pslzme_content'] = ['Pslzme Content', 'Personalisierbares Content Element'];
 
 /** Element fields */
-$GLOBALS['TL_DCA']['tl_content']['personalizedTextGroup'] = ["Personalisierte Texteigenschaften"];
-$GLOBALS['TL_DCA']['tl_content']['personalizedText'] = ['Personalisierter Text', 'Persönlichen Text eingeben'];
+$GLOBALS['TL_LANG']['tl_content']['personalizedTextGroup'] = ["Personalisierte Texteigenschaften"];
+$GLOBALS['TL_LANG']['tl_content']['personalizedText'] = ['Personalisierter Text', 'Persönlichen Text eingeben'];
 
 
 /** Backend module */
