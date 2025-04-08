@@ -50,20 +50,20 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['showUnpersonalizedText'] = [
  */
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = 
- '{type_legend},type,headline;{Content Type},contentType;{expert_legend:hide},cssID;';
+ '{type_legend},type,headline;{Content Type},selectedContent;{expert_legend:hide},cssID;';
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'contentType';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'selectedContent';
 
 // $GLOBALS['TL_DCA']['tl_content']['subpalettes'] = [
 //     'contentType_image' => 'personalizedImage,unpersonalizedImage',
 // ];
 
 
-$GLOBALS['TL_DCA']['tl_content']['subpalettes']['contentType_image'] =
+$GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_image'] =
     'personalizedImage,unpersonalizedImage';
 
 
-$GLOBALS['TL_DCA']['tl_content']['subpalettes']['contentType_video'] =
+$GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_video'] =
     'personalizedVideo,unpersonalizedVideo';
 
 
@@ -78,7 +78,7 @@ $GLOBALS['TL_DCA']['tl_content']['subpalettes']['contentType_video'] =
 //     {Video Content},personalizedVideo,unpersonalizedVideo;';
 
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['contentType'] = [
+$GLOBALS['TL_DCA']['tl_content']['fields']['selectedContent'] = [
     'label'     => ['Content Type', 'Select whether you want to show a personalized/unpersonalized video or image'],
     'inputType' => 'radio',
     'options'   => ['image', 'video'],
@@ -139,7 +139,4 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedVideo'] = [
     ],
     'sql'       => "binary(16) NULL"
 ];
-
-
-
 ?>
