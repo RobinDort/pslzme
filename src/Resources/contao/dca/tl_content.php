@@ -56,7 +56,7 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] =
 $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'selectedContent';
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_image-content'] =
-    '{Personalized Image Content:hide},personalizedImage,alt,size,imagemargin,imageUrl,fullsize,caption,floating;
+    '{Personalized Image Content:hide},personalizedImage,alt,size,imageUrl,caption;
      {Unpersonalized Image content:hide},unpersonalizedImage,upAlt,upSize,upImageUrl,upCaption';
 
 

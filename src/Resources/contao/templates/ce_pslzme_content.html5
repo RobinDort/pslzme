@@ -5,7 +5,7 @@
 
 <?php if($this->unpersonalizedImage): ?>
 	<div class="ce_image">
-		<?php $this->insert('image', $this->arrData) ?>
+		<?php $this->insert('image', $this->arrData['unpersonalizedImage']) ?>
 	</div>
 <?php endif; ?>
 
