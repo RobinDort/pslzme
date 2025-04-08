@@ -49,6 +49,8 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['showUnpersonalizedText'] = [
  * Configuration for pslzme_content element
  */
 
+$imageSizes = array_keys($GLOBALS['TL_CONFIG']['imageSizes']);
+
 $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = 
  '{type_legend},type,headline;{Content Type},selectedContent;{expert_legend:hide},cssID;';
 
@@ -56,7 +58,7 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'selectedConten
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_image-content'] =
     '{Personalized Image Content:hide},personalizedImage,alt,size,imagemargin,imageUrl,fullsize,caption,floating;
-     {Unpersonalized Image content:hide},unpersonalizedImage,alt,size,imagemargin,imageUrl,fullsize,caption,floating';
+     {Unpersonalized Image content:hide},unpersonalizedImage,upAlt,upSize';
 
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_video-content'] =
@@ -91,12 +93,28 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedImage'] = [
     'eval'      => [
         'mandatory' => true, 
         'filesOnly' => true, 
-        'fieldType' => 'radio', 
+        'fieldType' => 'radio',
         'extensions' => 'jpg,jpeg,png,gif,webp', 
         'tl_class' => 'clr',
     ],
     'sql'       => "binary(16) NULL"
 ];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['upSize'] = [
+    'label'     => ['Unpersonalized image size', 'Set the size for the image.'],
+    'inputType' => 'select',
+    'options'   => $imageSizes,
+    'eval'      => ['tl_class' => 'clr'],
+    'sql'       => "varchar(128) NOT NULL"
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['upAlt'] = [
+    'label'     => ['Unpersonalized alternative text', 'Enter an alternative text for the image.'],
+    'inputType' => 'text',
+    'eval'      => ['maxlength' => 255, 'tl_class' => 'clr'],
+    'sql'       => "varchar(255) NOT NULL"
+];
+
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedVideo'] = [
     'label'     => ['Personalized Video', 'Show a personalized video.'],
