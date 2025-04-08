@@ -9,7 +9,6 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_text'] = '{type_legend},typ
 
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedTextGroup'] = [
-    'label' => array('Personalized Text/HTML/Code'),
     'inputType' => 'group',
 ];
 

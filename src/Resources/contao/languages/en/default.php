@@ -25,6 +25,11 @@ $GLOBALS['TL_LANG']['robindort_pslzme_links']['no'] = 'No';
 $GLOBALS['TL_LANG']['CTE']['pslzme_text'] = ['Pslzme Text', 'Personalizable text element'];
 $GLOBALS['TL_LANG']['CTE']['pslzme_content'] = ['Pslzme Content', 'Personalizable content element'];
 
+/** Element fields */
+$GLOBALS['TL_DCA']['tl_content']['personalizedTextGroup'] = ["Personalized text options"];
+$GLOBALS['TL_DCA']['tl_content']['personalizedText'] = ['Personalized Text', 'Enter personalized text'];
+
+
 /** Backend module */
 
 $GLOBALS['TL_LANG']['MOD']['pslzme_configuration'] = 'Configuration';
