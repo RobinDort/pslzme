@@ -55,7 +55,7 @@ $GLOBALS['TL_LANG']['tl_content']['upPlayerPreload'] = ['Preloading', 'Hier kön
 
 
 /** Pages */
-$GLOBALS['TL_LANG']['tl_page']['type']['pslzme_page'] = 'pslzme Seite';
+$GLOBALS['TL_LANG']['PTY']['pslzme'] = ['pslzme Seite', "Personaliserte Seite"];
 
 
 /** Backend module */
@@ -106,7 +106,4 @@ $GLOBALS['TL_LANG']['pslzme_configuration']['register_domain'] = "Domain registr
 $GLOBALS['TL_LANG']['pslzme_configuration']['no_id'] = "Keine aktuelle ID";
 $GLOBALS['TL_LANG']['pslzme_configuration']['urlLicensedDone'] = "URL erfolgreich lizensiert";
 $GLOBALS['TL_LANG']['pslzme_configuration']['save'] = "Speichern";
-
-
-
 ?>

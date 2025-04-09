@@ -55,7 +55,7 @@ $GLOBALS['TL_LANG']['tl_content']['upPlayerPreload'] = ['Preloading', 'Here you 
 
 
 /** Pages */
-$GLOBALS['TL_LANG']['tl_page']['type']['pslzme_page'] = 'pslzme page';
+$GLOBALS['TL_LANG']['PTY']['pslzme'] = ['pslzme Page', "Personalized page"];
 
 
 /** Backend module */
