@@ -62,22 +62,50 @@ class PslzmeContentElement extends ContentElement {
                 ],
             ];
         }
-
         $this->Template->upImageData = $upImageData;
         $this->Template->pImageData = $pImageData;
 
 
         /** Videos */
+        $map = [
+            'player_autoplay'     => 'autoplay',
+            'player_loop'         => 'loop',
+            'player_playsinline'  => 'playsinline',
+            'player_muted'        => 'muted',
+        ];
+        if ($this->unpersonalizedVideo) {
+            $unpersonalizedVideo = FilesModel::findByUuid($this->unpersonalizedVideo);
+
+            $upPlayerOptions = deserialize($this->upPlayerOptions, true);
+            $upVideoDataOptions = [];
+
+             // Add only selected options
+             foreach ($map as $key => $attribute) {
+                if (in_array($key, $upPlayerOptions)) {
+                    $upVideoDataOptions[] = $attribute;
+                }
+            }
+            // Add controls only if NOT hidden
+            if (!in_array('player_nocontrols', $playerOptions)) {
+                $upVideoDataOptions[] = 'controls';
+            }
+
+            $upVideoData = [
+                "src"           => $unpersonalizedVideo ? $unpersonalizedVideo->path : "",
+                "size"          => deserialize($this->upPlayerSize),
+                "preload"       => $this->upPlayerPreload,
+                "caption"       => $this->upPlayerCaption,
+            ];
+
+            $this->Template->upVideoData = $upVideoData;
+            $this->Template->upVideoDataOptions = $upVideoDataOptions;
+        }
+
+
         if ($this->personalizedVideo) {
             $personalizedVideo = FilesModel::findByUuid($this->personalizedVideo);
 
             $playerOptions = deserialize($this->playerOptions, true);
-            $map = [
-                'player_autoplay'     => 'autoplay',
-                'player_loop'         => 'loop',
-                'player_playsinline'  => 'playsinline',
-                'player_muted'        => 'muted',
-            ];
             
             $pVideoDataOptions = [];
             

@@ -42,6 +42,16 @@
 
 		<?php endif; ?>
 	<?php else: ?>
+		<?php if ($this->unpersonalizedVideo): ?>
+			<div class="ce_video">
+			<video 
+					src="<?=$this->upVideoData["src"]?>"
+					width="<?=$this->upVideoData["size"][0]?>"
+					height="<?=$this->upVideoData["size"][1]?>"
+					<?= implode(' ', $this->upVideoDataOptions) ?>
+					></video>
+			</div>
+		<?php endif; ?>
 	<?php endif;?>
 
 <?php endif; ?>
