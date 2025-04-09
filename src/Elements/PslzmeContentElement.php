@@ -130,25 +130,7 @@ class PslzmeContentElement extends ContentElement {
             $this->Template->pVideoData = $pVideoData;
             $this->Template->pVideoDataOptions = $pVideoDataOptions;
         }
-
-        // $this->Template->pageLink = $this->pageLink;
-        // $this->Template->html = $this->html;
-        
-        // if ($this->singleSRC) {
-        //     $image = FilesModel::findByUuid($this->singleSRC);
-        //     $this->addImageToTemplate($this->Template, [
-        //         'singleSRC'     => $image->path,
-        //         'size'          => $this->size,
-        //         'imagemargin'   => $this->imagemargin,
-        //         'fullsize'      => $this->fullsize,
-        //         'imageUrl'      => $this->imageUrl,
-        //         'floating'      => $this->floating,
-        //         'caption'       => $this->caption,
-        //         'alt'           => $this->alt
-        //     ]);
-        // }        
     }
-
 }
 
 
