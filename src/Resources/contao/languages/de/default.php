@@ -47,6 +47,8 @@ $GLOBALS['TL_LANG']['tl_content']['upImageUrl'] = ['Bildlinkadresse', 'URL angeb
 $GLOBALS['TL_LANG']['tl_content']['upCaption'] = ['Bildunterschrift', 'Bildunterschrift angeben'];
 $GLOBALS['TL_LANG']['tl_content']['personalizedVideo'] = ['Personalisiertes Video', 'Personalisiertes Video anzeigen'];
 $GLOBALS['TL_LANG']['tl_content']['unpersonalizedVideo'] = ['Unpersonalisiertes Video', 'Unpersonalisiertes Video anzeigen'];
+$GLOBALS['TL_LANG']['tl_content']['personalized_video_content_legend'] = 'Personalisierter Video Inhalt';
+
 
 
 /** Backend module */
