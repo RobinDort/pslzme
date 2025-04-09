@@ -20,12 +20,10 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedText'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedTextGroup'] = [
-    'label' => array('Unpersonalized Text/HTML/Code'),
     'inputType' => 'group',
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedText'] = [
-    'label'     => ['Unpersonalized Text', 'Enter unpersonalized text'],
     'exclude'   => true,
     'inputType' => 'textarea',
     'eval'      => ['rte' => 'tinyMCE', 'helpwizard' => true, 'mandatory' => true],
@@ -33,7 +31,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedText'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['showUnpersonalizedText'] = [
-    'label'     => ["Show Unpersonalized Text", 'Choose selection'],
     'exclude'   => true,
     'inputType' => 'radio',
     'options'   => ['1' => 'Yes', '0' => 'No'],

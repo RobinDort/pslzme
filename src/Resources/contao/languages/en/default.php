@@ -27,7 +27,10 @@ $GLOBALS['TL_LANG']['CTE']['pslzme_content'] = ['Pslzme Content', 'Personalizabl
 
 /** Element fields */
 $GLOBALS['TL_LANG']['tl_content']['personalizedTextGroup'] = ["Personalized text options"];
+$GLOBALS['TL_LANG']['tl_content']['unpersonalizedTextGroup'] = ["Unpersonalized text options"];
 $GLOBALS['TL_LANG']['tl_content']['personalizedText'] = ['Personalized Text', 'Enter personalized text'];
+$GLOBALS['TL_LANG']['tl_content']['unpersonalizedText'] = ['Unpersonalized Text', 'Enter unpersonalized text'];
+$GLOBALS['TL_LANG']['tl_content']['showUnpersonalizedText'] = ["Show unpersonalized text", 'Choose selection'];
 
 
 /** Backend module */
