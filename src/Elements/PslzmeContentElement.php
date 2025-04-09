@@ -74,7 +74,6 @@ class PslzmeContentElement extends ContentElement {
                 $personalizedVideoPoster = FilesModel::findByUuid(($this->posterSRC));
             }
 
-            \System::log("Autoplay: " . $this->playerOptions['player_autoplay'], __METHOD__, "TL_ERROR");
             throw new Exception("Player Options:" . var_dump($this->playerOptions));
 
             $pVideoData = [
