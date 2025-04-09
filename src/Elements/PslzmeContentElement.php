@@ -74,14 +74,14 @@ class PslzmeContentElement extends ContentElement {
             }
 
             $pVideoData = [
-                "src"           => $personalizedVideo ?? $personalizedVideo->path,
+                "src"           => $personalizedVideo ? $personalizedVideo->path : "",
                 "size"          => $this->playerSize,
                 "poster"        => $personalizedVideoPoster ?? $this->personalizedVideoPoster->path,
-                "autoplay"      => $this->playerOptions ?? $this->playerOptions["player_autoplay"],
-                "loop"          => $this->playerOptions ?? $this->playerOptions["player_loop"],
-                "muted"         => $this->playerOptions ?? $this->playerOptions["player_muted"],
-                "inline"        => $this->playerOptions ?? $this->playerOptions["player_playsinline"],
-                "noControls"    => $this->playerOptions ?? $this->playerOptions["player_nocontrols"],
+                "autoplay"      => $this->playerOptions['player_autoplay'] ?? false,
+                "loop"          => $this->playerOptions['player_loop'] ?? false,
+                "muted"         => $this->playerOptions['player_muted'] ?? false,
+                "inline"        => $this->playerOptions['player_playsinline'] ?? false,
+                "noControls"    => $this->playerOptions['player_nocontrols'] ?? false,
                 "preload"       => $this->playerPreload,
                 "caption"       => $this->playerCaption,
             ];
