@@ -86,7 +86,7 @@ class PslzmeContentElement extends ContentElement {
                 }
             }
             // Add controls only if NOT hidden
-            if (!in_array('player_nocontrols', $playerOptions)) {
+            if (!in_array('player_nocontrols', $upPlayerOptions)) {
                 $upVideoDataOptions[] = 'controls';
             }
 
