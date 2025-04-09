@@ -56,8 +56,8 @@ $GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_image-content']
 
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_video-content'] =
-    '{personalized_video_content_legend:hide},personalizedVideo,playerSize,playerOptions,playerCaption,playerPreload,{poster_legend:hide};
-     {unpersonalized_video_content_legend:hide},unpersonalizedVideo';
+    '{personalized_video_content_legend:hide},personalizedVideo,playerSize,playerOptions,playerCaption,playerPreload;
+     {unpersonalized_video_content_legend:hide},unpersonalizedVideo, upPlayerSize, upPlayerOptions, upPlayerCaption, upPlayerPreload;';
 
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['selectedContent'] = [
@@ -149,4 +149,37 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedVideo'] = [
     ],
     'sql'       => "binary(16) NULL"
 ];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['upPlayerSize'] = [
+    'exclude'       => true,
+    'inputType'     => 'text',
+    'eval'          => array('multiple'=>true, 'size'=>2, 'rgxp'=>'natural', 'nospace'=>true, 'tl_class'=>'w50'),
+    'sql'           => "varchar(64) COLLATE ascii_bin NOT NULL default ''"
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['upPlayerOptions'] = [
+    'exclude'                 => true,
+    'inputType'               => 'checkbox',
+    'options'                 => array('player_autoplay', 'player_nocontrols', 'player_loop', 'player_playsinline', 'player_muted'),
+    'reference'               => &$GLOBALS['TL_LANG']['tl_content'],
+    'eval'                    => array('multiple'=>true, 'tl_class'=>'clr'),
+    'sql'                     => "text NULL"
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['upPlayerCaption'] = [
+    'exclude'                 => true,
+    'inputType'               => 'text',
+    'eval'                    => array('tl_class'=>'w50'),
+    'sql'                     => "varchar(255) NOT NULL default ''"
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['upPlayerPreload'] = [
+    'exclude'                 => true,
+    'inputType'               => 'select',
+    'options'                 => array('auto', 'metadata', 'none'),
+    'reference'               => &$GLOBALS['TL_LANG']['tl_content']['player_preload'],
+    'eval'                    => array('includeBlankOption' => true, 'nospace'=>true, 'tl_class'=>'w50'),
+    'sql'                     => "varchar(8) COLLATE ascii_bin NOT NULL default ''"
+];
+
 ?>
