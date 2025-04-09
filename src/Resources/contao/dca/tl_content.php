@@ -52,7 +52,7 @@ $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'selectedConten
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_image-content'] =
     '{personalized_image_content_legend:hide},personalizedImage,alt,size,imageUrl,caption;
-     {unpersonalized_image_content_legend:hide},unpersonalizedImage,upAlt,upSize,upImageUrl,upCaption';
+     {unpersonalized_image_content_legend},unpersonalizedImage,upAlt,upSize,upImageUrl,upCaption';
 
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_video-content'] =
