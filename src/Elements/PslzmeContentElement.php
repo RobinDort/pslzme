@@ -75,6 +75,7 @@ class PslzmeContentElement extends ContentElement {
             }
 
             $playerOptions = deserialize($this->playerOptions);
+            throw new Exception("Options: " . var_dump($playerOptions));
             $pVideoData = [
                 "src"           => $personalizedVideo ? $personalizedVideo->path : "",
                 "size"          => deserialize($this->playerSize),
