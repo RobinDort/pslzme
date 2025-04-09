@@ -4,6 +4,7 @@ namespace RobinDort\PslzmeLinks\Elements;
 use Contao\ContentElement;
 use Contao\FilesModel;
 use Contao\PageModel;
+use Exception;
 
 /**
  * Custom contao element that represents the pslzme 3D content.
@@ -72,6 +73,9 @@ class PslzmeContentElement extends ContentElement {
             if ($this->posterSRC) {
                 $personalizedVideoPoster = FilesModel::findByUuid(($this->posterSRC));
             }
+
+            \System::log("Autoplay: " . $this->playerOptions['player_autoplay'], __METHOD__, "TL_ERROR");
+            throw new Exception("Player Options:" . var_dump($this->playerOptions));
 
             $pVideoData = [
                 "src"           => $personalizedVideo ? $personalizedVideo->path : "",
