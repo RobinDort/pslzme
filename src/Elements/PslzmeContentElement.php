@@ -75,6 +75,7 @@ class PslzmeContentElement extends ContentElement {
             }
 
             $playerOptions = deserialize($this->playerOptions, true);
+            throw new Exception("Options: " . var_dump($playerOptions));
             $map = [
                 'player_autoplay'     => 'autoplay',
                 'player_loop'         => 'loop',
