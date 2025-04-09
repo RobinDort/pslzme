@@ -75,12 +75,11 @@ class PslzmeContentElement extends ContentElement {
             }
 
             $playerOptions = deserialize($this->playerOptions, true);
-            throw new Exception("Options: " . var_dump($playerOptions));
             $map = [
                 'player_autoplay'     => 'autoplay',
                 'player_loop'         => 'loop',
                 'player_playsinline'  => 'playsinline',
-                'player_muted'        => 'muted'
+                'player_muted'        => 'muted',
             ];
             
             $pVideoDataOptions = [];
@@ -90,6 +89,10 @@ class PslzmeContentElement extends ContentElement {
                 if (in_array($key, $playerOptions)) {
                     $pVideoDataOptions[] = $attribute;
                 }
+            }
+            // Add controls only if NOT hidden
+            if (!in_array('player_nocontrols', $playerOptions)) {
+                $pVideoDataOptions[] = 'controls';
             }
 
             $pVideoData = [
