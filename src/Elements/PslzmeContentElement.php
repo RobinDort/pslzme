@@ -75,16 +75,15 @@ class PslzmeContentElement extends ContentElement {
             }
 
             $playerOptions = deserialize($this->playerOptions);
-            throw new Exception("Options: " . var_dump($playerOptions));
             $pVideoData = [
                 "src"           => $personalizedVideo ? $personalizedVideo->path : "",
                 "size"          => deserialize($this->playerSize),
                 "poster"        => $personalizedVideoPoster ?? $this->personalizedVideoPoster->path,
-                "autoplay"      => $playerOptions[0] ?? false,
-                "loop"          => $playerOptions[2] ?? false,
-                "muted"         => $playerOptions[4] ?? false,
-                "inline"        => $playerOptions[3] ?? false,
-                "noControls"    => $playerOptions[1] ?? false,
+                "autoplay"      => $playerOptions[0] ? true :  false,
+                "loop"          => $playerOptions[2] ? true : false,
+                "muted"         => $playerOptions[4] ? true : false,
+                "inline"        => $playerOptions[3] ? true : false,
+                "noControls"    => $playerOptions[1] ? true : false,
                 "preload"       => $this->playerPreload,
                 "caption"       => $this->playerCaption,
             ];
