@@ -35,12 +35,12 @@
 					width="<?=$this->pVideoData["size"][0]?>"
 					height="<?=$this->pVideoData["size"][1]?>"
 					poster="<?=$this->pVideoData["poster"]?>"
-					<?= $this->pVideoData["autoplay"] ? "autoplay='true'" : "" ?>
-					<?= $this->pVideoData["preload"] ? "preload='true'" : "" ?>
-					<?= $this->pVideoData["muted"] ? "muted='true'" : "" ?>
-					<?= $this->pVideoData["loop"] ? "loop='true'" : "" ?>
-					<?= $this->pVideoData["inline"] ? "playsinline='true'" : "" ?>
-					<?= $this->pVideoData["noControls"] ? "" : "controls='true'" ?>
+					<?= $this->pVideoData["autoplay"] ? "autoplay=''" : "" ?>
+					<?= $this->pVideoData["preload"] ? "preload=''" : "" ?>
+					<?= $this->pVideoData["muted"] ? "muted=''" : "" ?>
+					<?= $this->pVideoData["loop"] ? "loop=''" : "" ?>
+					<?= $this->pVideoData["inline"] ? "playsinline=''" : "" ?>
+					<?= $this->pVideoData["noControls"] ? "controls='true'" : "" ?>
 					></video>
 				</div>
 
