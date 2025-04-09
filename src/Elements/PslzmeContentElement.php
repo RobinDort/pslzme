@@ -74,6 +74,7 @@ class PslzmeContentElement extends ContentElement {
                 $personalizedVideoPoster = FilesModel::findByUuid(($this->posterSRC));
             }
 
+            $playerOptions = deserialize($this->playerOptions);
             $attributeMap = [
                 'player_autoplay'     => 'autoplay',
                 'player_loop'         => 'loop',
