@@ -30,8 +30,10 @@
 			<!-- indexer::stop -->
 
 				<div class="ce_video">
-					<video <?= $this->size ?>
+					<video 
 					src="<?=$this->pVideoData["src"]?>"
+					width="<?=$this->pVideoData["size"][0]?>"
+					height="<?=$this->pVideoData["size"][1]?>"
 					poster="<?=$this->pVideoData["poster"]?>"
 					<?= $this->pVideoData["autoplay"] ? "autoplay" : "" ?>
 					<?= $this->pVideoData["preload"] ? "preload" : "" ?>
