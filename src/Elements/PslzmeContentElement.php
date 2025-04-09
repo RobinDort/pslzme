@@ -70,9 +70,6 @@ class PslzmeContentElement extends ContentElement {
         /** Videos */
         if ($this->personalizedVideo) {
             $personalizedVideo = FilesModel::findByUuid($this->personalizedVideo);
-            if ($this->posterSRC) {
-                $personalizedVideoPoster = FilesModel::findByUuid(($this->posterSRC));
-            }
 
             $playerOptions = deserialize($this->playerOptions, true);
             $map = [
@@ -98,7 +95,6 @@ class PslzmeContentElement extends ContentElement {
             $pVideoData = [
                 "src"           => $personalizedVideo ? $personalizedVideo->path : "",
                 "size"          => deserialize($this->playerSize),
-                "poster"        => $personalizedVideoPoster ?? $this->personalizedVideoPoster->path,
                 "preload"       => $this->playerPreload,
                 "caption"       => $this->playerCaption,
             ];
