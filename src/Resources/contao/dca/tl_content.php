@@ -46,7 +46,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['showUnpersonalizedText'] = [
  */
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = 
- '{type_legend},type,headline;{content_type_legend},selectedContent;{content_legend},;{expert_legend:hide},cssID;';
+ '{type_legend},type,headline;{content_type_legend},selectedContent;{expert_legend:hide},cssID;';
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'selectedContent';
 
@@ -130,7 +130,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedVideo'] = [
         'mandatory' => false, 
         'filesOnly' => true, 
         'fieldType' => 'radio', 
-        'extensions' => 'mp4,webm', 
+        'extensions' => 'mp4,webm',
         'tl_class' => 'clr',
     ],
     'sql'       => "binary(16) NULL"

@@ -17,6 +17,9 @@ class PslzmeContentElement extends ContentElement {
         $pImageData = [];
         $upImageData = [];
 
+
+        /** Images */
+
         if ($this->unpersonalizedImage) {
             $unpersonalizedImage = FilesModel::findByUuid($this->unpersonalizedImage);
 
@@ -59,6 +62,30 @@ class PslzmeContentElement extends ContentElement {
 
         $this->Template->upImageData = $upImageData;
         $this->Template->pImageData = $pImageData;
+
+
+        /** Videos */
+        if ($this->personalizedVideo) {
+            $personalizedVideo = FilesModel::findByUuid($this->personalizedVideo);
+            if ($this->posterSRC) {
+                $personalizedVideoPoster = FilesModel::findByUuid(($this->posterSRC));
+            }
+
+            $pVideoData = [
+                "src"           => $personalizedVideo ?? $personalizedVideo->path,
+                "size"          => $this->playerSize,
+                "poster"        => $personalizedVideoPoster ?? $this->personalizedVideoPoster->path,
+                "autoplay"      => $this->playerOptions ?? $this->playerOptions["player_autoplay"],
+                "loop"          => $this->playerOptions ?? $this->playerOptions["player_loop"],
+                "muted"         => $this->playerOptions ?? $this->playerOptions["player_muted"],
+                "inline"        => $this->playerOptions ?? $this->playerOptions["player_playsinline"],
+                "noControls"    => $this->playerOptions ?? $this->playerOptions["player_nocontrols"],
+                "preload"       => $this->playerPreload,
+                "caption"       => $this->playerCaption,
+            ];
+
+            $this->Template->pVideoData = $pVideoData;
+        }
 
         // $this->Template->pageLink = $this->pageLink;
         // $this->Template->html = $this->html;

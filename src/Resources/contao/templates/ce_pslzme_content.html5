@@ -13,6 +13,25 @@
 
 		<!-- indexer::continue -->
 
+	<?php elseif ($this->personalizedVideo): ?>
+		<!-- indexer::stop -->
+
+		 <div class="ce_video">
+			<video 
+			src="<?=$this->pVideoData["src"]?>"
+			width="<?=$this->pVideoData["size"][0]?>"
+			height="<?=$this->pVideoData["size"][1]?>"
+			poster="<?=$this->pVideoData["poster"]?>"
+			<?= $this->pVideoData["autoplay"] ? "autoplay" : "" ?>
+			<?= $this->pVideoData["preload"] ? "preload" : "" ?>
+			<?= $this->pVideoData["muted"] ? "muted" : "" ?>
+			<?= $this->pVideoData["loop"] ? "loop" : "" ?>
+			<?= $this->pVideoData["inline"] ? "playsinline" : "" ?>
+			<?= $this->pVideoData["noControls"] ? "" : "controls" ?>
+			></video>
+		 </div>
+
+		<!-- indexer::continue -->
 	<?php endif; ?>
 <?php else: ?>
 	<?php if($this->unpersonalizedImage): ?>
