@@ -2,44 +2,55 @@
 
 <?php $this->block('content'); ?>
 
-<?php if ($GLOBALS['decryptedVars']['varsSet'] === true) :?>
-	<?php if ($this->personalizedImage): ?> 
+<?php if ($this->selectedContent === "image-content"): ?>
 
-		<!-- indexer::stop -->
+	<?php if ($GLOBALS['decryptedVars']['varsSet'] === true) :?>
+		<?php if ($this->personalizedImage): ?> 
 
-		<div class="ce_image">
-			<?= $this->figure($this->pImageData['personalizedImage']['singleSRC'], $this->pImageData['personalizedImage']['size'], $this->pImageData['personalizedImage']['config']) ?>
-		</div>
+			<!-- indexer::stop -->
 
-		<!-- indexer::continue -->
+			<div class="ce_image">
+				<?= $this->figure($this->pImageData['personalizedImage']['singleSRC'], $this->pImageData['personalizedImage']['size'], $this->pImageData['personalizedImage']['config']) ?>
+			</div>
 
-	<?php elseif ($this->personalizedVideo): ?>
-		<!-- indexer::stop -->
+			<!-- indexer::continue -->
+			
+		<?php endif; ?>
+	<?php else: ?>
+		<?php if($this->unpersonalizedImage): ?>
+			<div class="ce_image">
+				<?= $this->figure($this->upImageData['unpersonalizedImage']['singleSRC'], $this->upImageData['unpersonalizedImage']['size'], $this->upImageData['unpersonalizedImage']['config']) ?>
+			</div>
+		<?php endif; ?>
+	<?php endif;?>
 
-		 <div class="ce_video">
-			<video 
-			src="<?=$this->pVideoData["src"]?>"
-			width="<?=$this->pVideoData["size"][0]?>"
-			height="<?=$this->pVideoData["size"][1]?>"
-			poster="<?=$this->pVideoData["poster"]?>"
-			<?= $this->pVideoData["autoplay"] ? "autoplay" : "" ?>
-			<?= $this->pVideoData["preload"] ? "preload" : "" ?>
-			<?= $this->pVideoData["muted"] ? "muted" : "" ?>
-			<?= $this->pVideoData["loop"] ? "loop" : "" ?>
-			<?= $this->pVideoData["inline"] ? "playsinline" : "" ?>
-			<?= $this->pVideoData["noControls"] ? "" : "controls" ?>
-			></video>
-		 </div>
+<?php elseif($this->selectedContent === "video-content"): ?>
+	<?php if ($GLOBALS['decryptedVars']['varsSet'] === true) :?>
+		<?php if($this->personalizedVideo): ?>
+			<!-- indexer::stop -->
 
-		<!-- indexer::continue -->
-	<?php endif; ?>
-<?php else: ?>
-	<?php if($this->unpersonalizedImage): ?>
-		<div class="ce_image">
-			<?= $this->figure($this->upImageData['unpersonalizedImage']['singleSRC'], $this->upImageData['unpersonalizedImage']['size'], $this->upImageData['unpersonalizedImage']['config']) ?>
-		</div>
-	<?php endif; ?>
-<?php endif;?>
+				<div class="ce_video">
+					<video 
+					src="<?=$this->pVideoData["src"]?>"
+					width="<?=$this->pVideoData["size"][0]?>"
+					height="<?=$this->pVideoData["size"][1]?>"
+					poster="<?=$this->pVideoData["poster"]?>"
+					<?= $this->pVideoData["autoplay"] ? "autoplay" : "" ?>
+					<?= $this->pVideoData["preload"] ? "preload" : "" ?>
+					<?= $this->pVideoData["muted"] ? "muted" : "" ?>
+					<?= $this->pVideoData["loop"] ? "loop" : "" ?>
+					<?= $this->pVideoData["inline"] ? "playsinline" : "" ?>
+					<?= $this->pVideoData["noControls"] ? "" : "controls" ?>
+					></video>
+				</div>
+
+			<!-- indexer::continue -->
+
+		<?php endif; ?>
+	<?php else: ?>
+	<?php endif;?>
+
+<?php endif; ?>
 
 
 <?php $this->endblock(); ?>

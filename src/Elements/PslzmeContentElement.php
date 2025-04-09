@@ -17,6 +17,8 @@ class PslzmeContentElement extends ContentElement {
         $pImageData = [];
         $upImageData = [];
 
+        $this->Template->selectedContent = $this->selectedContent;
+
 
         /** Images */
 
