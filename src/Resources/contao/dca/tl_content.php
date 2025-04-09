@@ -56,7 +56,7 @@ $GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_image-content']
 
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_video-content'] =
-    '{personalized_video_content_legend:hide},personalizedVideo,playerSize,playerOptions,playerCaption,playerPreload,{poster_legend:hide},posterSRC;
+    '{personalized_video_content_legend:hide},personalizedVideo,playerSize,playerOptions,playerCaption,playerPreload,{poster_legend:hide};
      {unpersonalized_video_content_legend:hide},unpersonalizedVideo';
 
 
