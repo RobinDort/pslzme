@@ -74,17 +74,16 @@ class PslzmeContentElement extends ContentElement {
                 $personalizedVideoPoster = FilesModel::findByUuid(($this->posterSRC));
             }
 
-            throw new Exception("Player Options:" . var_dump($this->playerOptions));
-
+            $playerOptions = deserialize($this->playerOptions);
             $pVideoData = [
                 "src"           => $personalizedVideo ? $personalizedVideo->path : "",
                 "size"          => deserialize($this->playerSize),
                 "poster"        => $personalizedVideoPoster ?? $this->personalizedVideoPoster->path,
-                "autoplay"      => $this->playerOptions['player_autoplay'] ?? false,
-                "loop"          => $this->playerOptions['player_loop'] ?? false,
-                "muted"         => $this->playerOptions['player_muted'] ?? false,
-                "inline"        => $this->playerOptions['player_playsinline'] ?? false,
-                "noControls"    => $this->playerOptions['player_nocontrols'] ?? false,
+                "autoplay"      => $playerOptions['player_autoplay'] ?? false,
+                "loop"          => $playerOptions['player_loop'] ?? false,
+                "muted"         => $playerOptions['player_muted'] ?? false,
+                "inline"        => $playerOptions['player_playsinline'] ?? false,
+                "noControls"    => $playerOptions['player_nocontrols'] ?? false,
                 "preload"       => $this->playerPreload,
                 "caption"       => $this->playerCaption,
             ];
