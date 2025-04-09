@@ -75,15 +75,22 @@ class PslzmeContentElement extends ContentElement {
             }
 
             $playerOptions = deserialize($this->playerOptions);
-            $attributeMap = [
+            $map = [
                 'player_autoplay'     => 'autoplay',
                 'player_loop'         => 'loop',
                 'player_playsinline'  => 'playsinline',
                 'player_muted'        => 'muted'
             ];
             
-            // Add attributes if they're in $playerOptions
-            $pVideoDataOptions = array_values(array_intersect_key($attributeMap, array_flip($playerOptions)));
+            $pVideoDataOptions = [];
+            
+            // Add only selected options
+            foreach ($map as $key => $attribute) {
+                if (in_array($key, $playerOptions)) {
+                    $pVideoDataOptions[] = $attribute;
+                }
+            }
+            
             $pVideoData = [
                 "src"           => $personalizedVideo ? $personalizedVideo->path : "",
                 "size"          => deserialize($this->playerSize),
