@@ -1,0 +1,3 @@
+<?php if ($GLOBALS['decryptedVars']['varsSet'] === true) :?>
+    <?php $this->extend('fe_page'); ?>
+<?php endif; ?>
