@@ -54,6 +54,10 @@ $GLOBALS['TL_LANG']['tl_content']['upPlayerCaption'] = ['Caption', 'Enter a capt
 $GLOBALS['TL_LANG']['tl_content']['upPlayerPreload'] = ['Preloading', 'Here you can recommend how the browser should preload the video.'];
 
 
+/** Pages */
+$GLOBALS['TL_LANG']['tl_page']['type']['pslzme_page'] = 'pslzme page';
+
+
 /** Backend module */
 
 $GLOBALS['TL_LANG']['MOD']['pslzme_configuration'] = 'Configuration';

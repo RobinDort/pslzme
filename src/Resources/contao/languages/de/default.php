@@ -28,7 +28,6 @@ $GLOBALS['TL_LANG']['CTE']['pslzme_text'] = ['Pslzme Text', 'Personalisierbares 
 $GLOBALS['TL_LANG']['CTE']['pslzme_content'] = ['Pslzme Content', 'Personalisierbares Content Element'];
 
 
-
 /** Element fields */
 $GLOBALS['TL_LANG']['tl_content']['personalizedTextGroup'] = ["Personalisierte Texteigenschaften"];
 $GLOBALS['TL_LANG']['tl_content']['unpersonalizedTextGroup'] = ["Unpersonalisierte Texteigenschaften"];
@@ -53,6 +52,10 @@ $GLOBALS['TL_LANG']['tl_content']['upPlayerSize'] = ['Player-Größe', 'Breite u
 $GLOBALS['TL_LANG']['tl_content']['upPlayerOptions'] = ['Player-Optionen', 'Optionen wählen'];
 $GLOBALS['TL_LANG']['tl_content']['upPlayerCaption'] = ['Untertitel', 'Hier können Sie einen Untertitel eingeben.'];
 $GLOBALS['TL_LANG']['tl_content']['upPlayerPreload'] = ['Preloading', 'Hier können Sie empfehlen, wie der Browser das Video vorab laden soll.'];
+
+
+/** Pages */
+$GLOBALS['TL_LANG']['tl_page']['type']['pslzme_page'] = 'pslzme Seite';
 
 
 /** Backend module */
