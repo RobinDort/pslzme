@@ -48,6 +48,10 @@ $GLOBALS['TL_LANG']['tl_content']['personalizedVideo'] = ['Personalized Video', 
 $GLOBALS['TL_LANG']['tl_content']['unpersonalizedVideo'] = ['Unpersonalized Video', 'Show an unpersonalized video.'];
 $GLOBALS['TL_LANG']['tl_content']['personalized_video_content_legend'] = 'Personalized Video Content';
 $GLOBALS['TL_LANG']['tl_content']['unpersonalized_video_content_legend'] = 'Unpersonalized Video Content';
+$GLOBALS['TL_LANG']['tl_content']['upPlayerSize'] = ['Player-Size', 'Width and height of the media player in pixel (e.g. 640x480).'];
+$GLOBALS['TL_LANG']['tl_content']['upPlayerOptions'] = 'Player-Options';
+$GLOBALS['TL_LANG']['tl_content']['upPlayerCaption'] = ['Caption', 'Enter a caption here.'];
+$GLOBALS['TL_LANG']['tl_content']['upPlayerPreload'] = ['Preloading', 'Here you can recommend how the browser should preload the video.'];
 
 
 /** Backend module */
