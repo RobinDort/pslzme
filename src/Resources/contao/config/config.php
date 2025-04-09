@@ -7,6 +7,7 @@ use RobinDort\PslzmeLinks\Elements\PslzmeContentElement;
 use RobinDort\PslzmeLinks\EventListener\contao\InitialSetup;
 use RobinDort\PslzmeLinks\EventListener\contao\ReplaceInsertTags;
 use RobinDort\PslzmeLinks\EventListener\InstallListener;
+use RobinDort\PslzmeLinks\EventListener\PageLayoutListener;
 use RobinDort\PslzmeLinks\Backend\PslzmeConfiguration;
 use Contao\System;
 use Contao\Database;
@@ -48,4 +49,7 @@ $GLOBALS['TL_HOOKS']['initializeSystem'][] = [InitialSetup::class, 'runSetup'];
 
 // Listen to insert tags to initialize the pslzme tags
 $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = [ReplaceInsertTags::class, 'replacePslzmeInsertTags'];
+
+// Listen to getPageLayout hook and assign correct template for page type pslzme
+$GLOBALS['TL_HOOKS']['getPageLayout'][] = [ageLayoutListener::class, '__invoke'];
 ?>
