@@ -20,17 +20,32 @@ $GLOBALS['TL_LANG']['robindort_pslzme_links']['privacy'] = 'Privacy statement';
 $GLOBALS['TL_LANG']['robindort_pslzme_links']['yes'] = 'Yes';
 $GLOBALS['TL_LANG']['robindort_pslzme_links']['no'] = 'No';
 
+
 /** Custom elements */
 
 $GLOBALS['TL_LANG']['CTE']['pslzme_text'] = ['Pslzme Text', 'Personalizable text element'];
 $GLOBALS['TL_LANG']['CTE']['pslzme_content'] = ['Pslzme Content', 'Personalizable content element'];
 
+
 /** Element fields */
+
 $GLOBALS['TL_LANG']['tl_content']['personalizedTextGroup'] = ["Personalized text options"];
 $GLOBALS['TL_LANG']['tl_content']['unpersonalizedTextGroup'] = ["Unpersonalized text options"];
 $GLOBALS['TL_LANG']['tl_content']['personalizedText'] = ['Personalized Text', 'Enter personalized text'];
 $GLOBALS['TL_LANG']['tl_content']['unpersonalizedText'] = ['Unpersonalized Text', 'Enter unpersonalized text'];
 $GLOBALS['TL_LANG']['tl_content']['showUnpersonalizedText'] = ["Show unpersonalized text", 'Choose selection'];
+$GLOBALS['TL_LANG']['tl_content']['content_type_legend'] = 'Content Type';
+$GLOBALS['TL_LANG']['tl_content']['personalized_image_content_legend'] = 'Personalized Image Content';
+$GLOBALS['TL_LANG']['tl_content']['unpersonalized_image_content_legend'] = 'Unpersonalized Image Content';
+$GLOBALS['TL_LANG']['tl_content']['selectedContent'] = ['Content Type', 'Select whether you want to show a personalized/unpersonalized video or image'];
+$GLOBALS['TL_LANG']['tl_content']['personalizedImage'] = ['Personalized Image', 'Show a personalized image.'];
+$GLOBALS['TL_LANG']['tl_content']['unpersonalizedImage'] = ['Unpersonalized Image', 'Show an unpersonalized image.'];
+$GLOBALS['TL_LANG']['tl_content']['upSize'] = ['Image size', 'Set the size for the image.'];
+$GLOBALS['TL_LANG']['tl_content']['upAlt'] = ['Alternative text', 'Enter an alternative text for the image.'];
+$GLOBALS['TL_LANG']['tl_content']['upImageUrl'] = ['Image link address', 'Select a URL where the image will link to'];
+$GLOBALS['TL_LANG']['tl_content']['upCaption'] = ['Image Caption', 'Enter a caption for the image.'];
+$GLOBALS['TL_LANG']['tl_content']['personalizedVideo'] = ['Personalized Video', 'Show a personalized video.'];
+$GLOBALS['TL_LANG']['tl_content']['unpersonalizedVideo'] = ['Unpersonalized Video', 'Show an unpersonalized video.'];
 
 
 /** Backend module */
@@ -72,8 +87,4 @@ $GLOBALS['TL_LANG']['pslzme_configuration']['register_domain'] = "Domain registr
 $GLOBALS['TL_LANG']['pslzme_configuration']['no_id'] = "No current ID";
 $GLOBALS['TL_LANG']['pslzme_configuration']['urlLicensedDone'] = "URL successfully licensed";
 $GLOBALS['TL_LANG']['pslzme_configuration']['save'] = "Save";
-
-
-
-
 ?>

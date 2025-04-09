@@ -46,13 +46,13 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['showUnpersonalizedText'] = [
  */
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_content'] = 
- '{type_legend},type,headline;{Content Type},selectedContent;{expert_legend:hide},cssID;';
+ '{type_legend},type,headline;{content_type_legend},selectedContent;{expert_legend:hide},cssID;';
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'selectedContent';
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_image-content'] =
-    '{Personalized Image Content:hide},personalizedImage,alt,size,imageUrl,caption;
-     {Unpersonalized Image content:hide},unpersonalizedImage,upAlt,upSize,upImageUrl,upCaption';
+    '{personalized_image_content_legend:hide},personalizedImage,alt,size,imageUrl,caption;
+     {unpersonalized_image_content_legend:hide},unpersonalizedImage,upAlt,upSize,upImageUrl,upCaption';
 
 
 $GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_video-content'] =
@@ -60,7 +60,6 @@ $GLOBALS['TL_DCA']['tl_content']['subpalettes']['selectedContent_video-content']
 
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['selectedContent'] = [
-    'label'     => ['Content Type', 'Select whether you want to show a personalized/unpersonalized video or image'],
     'inputType' => 'radio',
     'options'   => ['image-content' => 'Image', 'video-content' => 'Video'],
     'default'   => 'image-content',
@@ -69,7 +68,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['selectedContent'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedImage'] = [
-    'label'     => ['Personalized Image', 'Show a personalized image.'],
     'inputType' => 'fileTree',
     'eval'      => [
         'mandatory' => false, 
@@ -82,7 +80,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedImage'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedImage'] = [
-    'label'     => ['Unpersonalized Image', 'Show an unpersonalized image.'],
     'inputType' => 'fileTree',
     'eval'      => [
         'mandatory' => true, 
@@ -95,7 +92,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedImage'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['upSize'] = [
-    'label'     => ['Image size', 'Set the size for the image.'],
     'inputType' => 'imageSize',
     'options_callback' => function () {
         return System::getContainer()->get('contao.image.sizes')->getAllOptions();
@@ -105,7 +101,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['upSize'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['upAlt'] = [
-    'label'     => ['Alternative text', 'Enter an alternative text for the image.'],
     'inputType' => 'text',
     'eval'      => ['maxlength' => 255, 'tl_class' => 'w50'],
     'sql'       => "varchar(255) NOT NULL"
@@ -113,7 +108,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['upAlt'] = [
 
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['upImageUrl'] = [
-    'label'     => ['Image link address', 'Select a url where the image will link to'],
     'inputType' => 'pageTree',
     'eval'      => [
         'fieldType' => 'radio',
@@ -123,7 +117,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['upImageUrl'] = [
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['upCaption'] = [
-    'label'     => ['Image Caption', 'Enter a caption for the image.'],
     'inputType' => 'text',
     'eval'      => ['maxlength' => 255, 'tl_class' => 'clr'],
     'sql'       => "varchar(255) NOT NULL default ''"
@@ -132,7 +125,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['upCaption'] = [
 
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedVideo'] = [
-    'label'     => ['Personalized Video', 'Show a personalized video.'],
     'inputType' => 'fileTree',
     'eval'      => [
         'mandatory' => false, 
@@ -146,7 +138,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedVideo'] = [
 
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedVideo'] = [
-    'label'     => ['Unpersonalized Video', 'Show an unpersonalized video.'],
     'inputType' => 'fileTree',
     'eval'      => [
         'mandatory' => true, 

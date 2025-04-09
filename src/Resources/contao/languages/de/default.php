@@ -27,13 +27,26 @@ $GLOBALS['TL_LANG']['robindort_pslzme_links']['no'] = 'Nein';
 $GLOBALS['TL_LANG']['CTE']['pslzme_text'] = ['Pslzme Text', 'Personalisierbares Text element'];
 $GLOBALS['TL_LANG']['CTE']['pslzme_content'] = ['Pslzme Content', 'Personalisierbares Content Element'];
 
+
+
 /** Element fields */
 $GLOBALS['TL_LANG']['tl_content']['personalizedTextGroup'] = ["Personalisierte Texteigenschaften"];
 $GLOBALS['TL_LANG']['tl_content']['unpersonalizedTextGroup'] = ["Unpersonalisierte Texteigenschaften"];
 $GLOBALS['TL_LANG']['tl_content']['personalizedText'] = ['Personalisierter Text', 'Persönlichen Text eingeben'];
 $GLOBALS['TL_LANG']['tl_content']['unpersonalizedText'] = ['Unpersonalisierter Text', 'Unpersönlichen Text eingeben'];
 $GLOBALS['TL_LANG']['tl_content']['showUnpersonalizedText'] = ["Unpersonalisierten Text anzeigen", 'Auswahl treffen'];
-
+$GLOBALS['TL_LANG']['tl_content']['content_type_legend'] = 'Inhaltstyp';
+$GLOBALS['TL_LANG']['tl_content']['personalized_image_content_legend'] = 'Personalisierter Bild Inhalt';
+$GLOBALS['TL_LANG']['tl_content']['unpersonalized_image_content_legend'] = 'Unpersonalisierter Bild Inhalt';
+$GLOBALS['TL_LANG']['tl_content']['selectedContent'] = ['Inhaltstyp', 'Wählen Sie, ob Sie ein personalisiertes/unpersonalisiertes Bild oder Video anzeigen möchten'];
+$GLOBALS['TL_LANG']['tl_content']['personalizedImage'] = ['Personalisiertes Bild', 'Personalisiertes Bild anzeigen'];
+$GLOBALS['TL_LANG']['tl_content']['unpersonalizedImage'] = ['Unpersonalisiertes Bild', 'Unpersonalisiertes Bild anzeigen'];
+$GLOBALS['TL_LANG']['tl_content']['upSize'] = ['Bildgröße', 'Größe des Bildes angeben'];
+$GLOBALS['TL_LANG']['tl_content']['upAlt'] = ['Alternativer Text', 'Altenativen Text des Bildes angeben'];
+$GLOBALS['TL_LANG']['tl_content']['upImageUrl'] = ['Bildlinkadresse', 'URL angeben zu der das Bild verlinken soll'];
+$GLOBALS['TL_LANG']['tl_content']['upCaption'] = ['Bildunterschrift', 'Bildunterschrift angeben'];
+$GLOBALS['TL_LANG']['tl_content']['personalizedVideo'] = ['Personalisiertes Video', 'Personalisiertes Video anzeigen'];
+$GLOBALS['TL_LANG']['tl_content']['unpersonalizedVideo'] = ['Unpersonalisiertes Video', 'Unpersonalisiertes Video anzeigen'];
 
 
 /** Backend module */
