@@ -35,6 +35,3 @@ services:
       $kernel: "@kernel"
     tags:
       - { name: contao.hook, hook: initializeSystem, method: copyTemplates }
-
-  RobinDort\PslzmeLinks\Controller\Page\PslzmePageController:
-    tags: [contao.page]
