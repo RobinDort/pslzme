@@ -7,8 +7,14 @@ use Contao\PageModel;
 class PslzmeNavigation extends ModuleNavigation {
 
     protected function compile(): void {
-        $this->navigationTpl = 'nav_pslzme';
         parent::compile();
+    }
+
+    public function generate() {
+        $this->navigationTpl = 'nav_pslzme';
+        $this->compile();
+
+        return $this->Template->parse();
     }
 }
 
