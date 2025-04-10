@@ -14,7 +14,7 @@ class PslzmePageController
     {
         $template = new FrontendTemplate('fe_page_pslzme');
 
-        if ($GLOBALS['decryptedVars']['varsSet'] === false) {
+        if (!$GLOBALS['decryptedVars'] || $GLOBALS['decryptedVars']['varsSet'] === false) {
             $homepage = PageModel::findFirstPublishedRootByHostAndLanguage($request->getHost(), $pageModel->language);
 
             if ($homepage !== null) {
