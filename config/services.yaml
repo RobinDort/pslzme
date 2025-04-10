@@ -36,6 +36,6 @@ services:
     tags:
       - { name: contao.hook, hook: initializeSystem, method: copyTemplates }
 
-  RobinDort\PslzmeLinks\Module\PslzmePageModuleController:
+  RobinDort\PslzmeLinks\Controller\Page\PslzmePageController:
     tags:
-      - { name: "contao.frontend_module", type: "pslzmepage", category: "pslzme", template: "mod_fe_page_pslzme" }
+      - { name: "contao.page", type: "pslzme" }
