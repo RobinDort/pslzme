@@ -12,16 +12,22 @@ class PslzmePageController
 {
     public function __invoke(Request $request, PageModel $pageModel): Response
     {
-        if (empty($GLOBALS['decryptedVars']) || $GLOBALS['decryptedVars']['varsSet'] === false) {
-            $homepage = PageModel::findFirstPublishedRootByHostAndLanguage($request->getHost(), $pageModel->language);
+        $requiredParams = ['q1', 'q3', 'q4', 'q5', 'q6', 'q7', 'q9', 'q11'];
 
-            if ($homepage !== null) {
-                return new RedirectResponse($homepage->getFrontendUrl());
+        // Check if any required parameter is missing
+        foreach ($requiredParams as $param) {
+            if (!$request->query->has($param)) {
+                $homepage = PageModel::findFirstPublishedRootByHostAndLanguage(
+                    $request->getHost(),
+                    $pageModel->language
+                );
+            
+                return new RedirectResponse(
+                    $homepage !== null ? $homepage->getFrontendUrl() : '/'
+                );
             }
-
-             // Fallback: redirect to root slash if homepage not found
-             return new RedirectResponse('/');
         }
+
         return (new FrontendIndex())->renderPage($pageModel);
     }
 }
