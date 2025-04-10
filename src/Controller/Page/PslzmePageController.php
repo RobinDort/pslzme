@@ -14,7 +14,7 @@ class PslzmePageController
     {
         $template = new FrontendTemplate('fe_page_pslzme');
 
-        throw new Exception("GLobal: " . print_r($GLOBALS));
+        throw new \Exception("GLobal: " . print_r($GLOBALS));
 
         if (!$GLOBALS['decryptedVars'] || $GLOBALS['decryptedVars']['varsSet'] === false) {
             $homepage = PageModel::findFirstPublishedRootByHostAndLanguage($request->getHost(), $pageModel->language);
