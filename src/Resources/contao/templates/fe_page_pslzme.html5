@@ -1,4 +1,5 @@
 <?= var_dump($GLOBALS['decryptedVars']) ?>
 <?php if ($GLOBALS['decryptedVars']['varsSet'] === true) :?>
+    <?= var_dump($GLOBALS['decryptedVars']) ?>
     <?php $this->extend('fe_page'); ?>
 <?php endif; ?>
