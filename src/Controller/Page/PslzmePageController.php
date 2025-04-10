@@ -14,16 +14,16 @@ class PslzmePageController
     {
         $template = new FrontendTemplate('fe_page_pslzme');
 
-        if (!$GLOBALS['decryptedVars'] || $GLOBALS['decryptedVars']['varsSet'] === false) {
-            $homepage = PageModel::findFirstPublishedRootByHostAndLanguage($request->getHost(), $pageModel->language);
+        // if (!$GLOBALS['decryptedVars'] || $GLOBALS['decryptedVars']['varsSet'] === false) {
+        //     $homepage = PageModel::findFirstPublishedRootByHostAndLanguage($request->getHost(), $pageModel->language);
 
-            if ($homepage !== null) {
-                return new RedirectResponse($homepage->getFrontendUrl());
-            }
+        //     if ($homepage !== null) {
+        //         return new RedirectResponse($homepage->getFrontendUrl());
+        //     }
 
-             // Fallback: redirect to root slash if homepage not found
-             return new RedirectResponse('/');
-        }
+        //      // Fallback: redirect to root slash if homepage not found
+        //      return new RedirectResponse('/');
+        // }
         return (new FrontendIndex())->renderPage($pageModel);
     }
 }
