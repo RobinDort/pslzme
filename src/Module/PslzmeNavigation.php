@@ -13,6 +13,10 @@ class PslzmeNavigation extends ModuleNavigation {
         $this->Template->items = $this->Template->items; 
         var_dump($this->pages);
     }
+
+    public function generate() {
+        parent::generate();
+    }
 }
 
 
