@@ -11,7 +11,7 @@ class PslzmeNavigation extends ModuleNavigation {
     protected function compile(): void {
         parent::compile();
         $this->Template->items = $this->Template->items; 
-        var_dump($this->Template->items);
+        var_dump($this->pages);
     }
 }
 
