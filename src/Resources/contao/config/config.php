@@ -2,6 +2,7 @@
 use RobinDort\PslzmeLinks\Module\QueryDecryption;
 use RobinDort\PslzmeLinks\Module\PslzmeCookiebar;
 use RobinDort\PslzmeLinks\Module\PslzmeCookieCaller;
+use RobinDort\PslzmeLinks\Module\PslzmeNavigation;
 use RobinDort\PslzmeLinks\Elements\PslzmeTextElement;
 use RobinDort\PslzmeLinks\Elements\PslzmeContentElement;
 use RobinDort\PslzmeLinks\EventListener\contao\InitialSetup;
@@ -29,6 +30,8 @@ $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/pslzme.min.js|sta
 $GLOBALS['FE_MOD']['pslzme']['query_decryption'] = QueryDecryption::class;
 $GLOBALS['FE_MOD']['pslzme']['pslzme_cookiebar'] = PslzmeCookiebar::class;
 $GLOBALS['FE_MOD']['pslzme']['pslzme_cookie_caller'] = PslzmeCookieCaller::class;
+$GLOBALS['FE_MOD']['pslzme']['pslzme_navigation'] = PslzmeNavigation::class;
+
 
 
 // Init Backend Modules
