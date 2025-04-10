@@ -10,7 +10,6 @@ class PslzmeNavigation extends ModuleNavigation {
 
     protected function compile(): void {
         parent::compile();
-        throw new \Exception("Items: " . print_r($this->Template->items));
     }
 }
 
