@@ -6,16 +6,9 @@ use Contao\PageModel;
 
 class PslzmeNavigation extends ModuleNavigation {
 
-    protected $strTemplate = "mod_pslzme_navbar";
-
     protected function compile(): void {
+        $this->navigationTpl = 'nav_pslzme';
         parent::compile();
-        $this->Template->items = $this->Template->items; 
-        var_dump($this->pages);
-    }
-
-    public function generate() {
-        parent::generate();
     }
 }
 
