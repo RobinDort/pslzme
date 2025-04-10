@@ -1,6 +1,7 @@
 <?php $this->extend('mod_navigation') ?>
 
 <?php foreach ($this->items as $item): ?>
+    <?php var_dump($item); ?>
     <?php if ($item['type'] !== 'pslzme'): ?>
         <?= $item ?>
     <?php else: ?>
