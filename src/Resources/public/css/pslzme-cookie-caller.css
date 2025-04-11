@@ -11,10 +11,6 @@
 	align-items: center;
 	text-align: center;
 	background-color: rgba(51, 51, 51, 1);
-	border-top: 1px solid rgba(164, 221, 70, 1);
-	border-right: 0px solid rgba(164, 221, 70, 1);
-	border-bottom: 1px solid rgba(164, 221, 70, 1);
-	border-left: 1px solid rgba(164, 221, 70, 1);
 	color: rgba(255, 255, 255, 1);
 	z-index: 1000;
 	box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
@@ -42,6 +38,7 @@
 #pslzme-cookie-caller li {
 	width: 100%;
 	height: 75%;
+	left: 3px;
 	position: relative;
 	background-position: center center;
 	background-repeat: no-repeat;
