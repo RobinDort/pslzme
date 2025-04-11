@@ -9,7 +9,7 @@
 
 			<!-- indexer::stop -->
 
-			<div class="ce_image">
+			<div class="ce_image pslzme-image">
 				<?= $this->figure($this->pImageData['personalizedImage']['singleSRC'], $this->pImageData['personalizedImage']['size'], $this->pImageData['personalizedImage']['config']) ?>
 			</div>
 
@@ -18,7 +18,7 @@
 		<?php endif; ?>
 	<?php else: ?>
 		<?php if($this->unpersonalizedImage): ?>
-			<div class="ce_image">
+			<div class="ce_image pslzme-image">
 				<?= $this->figure($this->upImageData['unpersonalizedImage']['singleSRC'], $this->upImageData['unpersonalizedImage']['size'], $this->upImageData['unpersonalizedImage']['config']) ?>
 			</div>
 		<?php endif; ?>
@@ -29,7 +29,7 @@
 		<?php if($this->personalizedVideo): ?>
 			<!-- indexer::stop -->
 
-				<div class="ce_video">
+				<div class="ce_video pslzme-video">
 					<video 
 					src="<?=$this->pVideoData["src"]?>"
 					width="<?=$this->pVideoData["size"][0]?>"
@@ -43,7 +43,7 @@
 		<?php endif; ?>
 	<?php else: ?>
 		<?php if ($this->unpersonalizedVideo): ?>
-			<div class="ce_video">
+			<div class="ce_video pslzme-video">
 			<video 
 					src="<?=$this->upVideoData["src"]?>"
 					width="<?=$this->upVideoData["size"][0]?>"
