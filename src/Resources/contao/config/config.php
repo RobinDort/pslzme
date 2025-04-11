@@ -10,8 +10,6 @@ use RobinDort\PslzmeLinks\EventListener\contao\ReplaceInsertTags;
 use RobinDort\PslzmeLinks\EventListener\InstallListener;
 use RobinDort\PslzmeLinks\Backend\PslzmeConfiguration;
 use Contao\System;
-use Contao\Database;
-
 
 // load language file
 System::loadLanguageFile("default");
