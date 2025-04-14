@@ -5,7 +5,7 @@ use Contao\System;
  * Configuration for pslzme_text element
  */
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_text'] = '{type_legend},type,headline;{text_legend},personalizedText,unpersonalizedText;{expert_legend:hide},showUnpersonalizedText,cssID';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_text'] = '{type_legend},type,headline;{text_legend},personalizedTextGroup,personalizedText,unpersonalizedTextGroup,unpersonalizedText,showUnpersonalizedText;{expert_legend:hide},cssID';
 
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedTextGroup'] = [
