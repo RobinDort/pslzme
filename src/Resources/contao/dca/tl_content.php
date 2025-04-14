@@ -33,7 +33,11 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedText'] = [
 $GLOBALS['TL_DCA']['tl_content']['fields']['showUnpersonalizedText'] = [
     'exclude'   => true,
     'inputType' => 'radio',
-    'options'   => ['1' => 'Yes', '0' => 'No'],
+    'options'   => ['1', '0'],
+    'reference' => [
+        '1' => $GLOBALS['TL_LANG']['pslzme_configuration']['yes'],
+        '0' => $GLOBALS['TL_LANG']['pslzme_configuration']['no'],
+    ],
     'default'   => '1',
     'eval'      => ['mandatory' => true, 'tl_class' => 'w50'],
     'sql'       => "char(1) NOT NULL default '1'"

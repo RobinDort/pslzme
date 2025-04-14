@@ -97,4 +97,6 @@ $GLOBALS['TL_LANG']['pslzme_configuration']['register_domain'] = "Domain registr
 $GLOBALS['TL_LANG']['pslzme_configuration']['no_id'] = "No current ID";
 $GLOBALS['TL_LANG']['pslzme_configuration']['urlLicensedDone'] = "URL successfully licensed";
 $GLOBALS['TL_LANG']['pslzme_configuration']['save'] = "Save";
+$GLOBALS['TL_LANG']['pslzme_configuration']['yes'] = "Yes";
+$GLOBALS['TL_LANG']['pslzme_configuration']['no'] = "No";
 ?>
