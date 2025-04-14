@@ -104,7 +104,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['upSize'] = [
 $GLOBALS['TL_DCA']['tl_content']['fields']['upAlt'] = [
     'inputType' => 'text',
     'eval'      => ['maxlength' => 255, 'tl_class' => 'w50'],
-    'sql'       => "varchar(255) NOT NULL"
+    'sql'       => "varchar(255) NULL"
 ];
 
 
@@ -114,7 +114,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['upImageUrl'] = [
         'fieldType' => 'radio',
         'tl_class' => 'w50',
     ],
-    'sql'       => "text NOT NULL"
+    'sql'       => "text NULL"
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['upCaption'] = [
