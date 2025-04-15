@@ -60,7 +60,7 @@ $GLOBALS['TL_LANG']['PTY']['pslzme'] = ['pslzme Seite', "Personaliserte Seite"];
 
 /** Backend module */
 
-$GLOBALS['TL_LANG']['BE_MOD']['pslzme']['pslzme_configuration'] = 'Konfiguration';
+$GLOBALS['TL_LANG']['BE_MOD']['pslzme_configuration'] = 'Konfiguration';
 $GLOBALS['TL_LANG']['pslzme_configuration']['main_heading'] = 'pslz<span>me</span> Konfiguration';
 $GLOBALS['TL_LANG']['pslzme_configuration']['first_config_container_h2'] = '1: Datenbank Konfiguration';
 $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_one'] = 'Zur erfolgreichen Nutzung von pslz<strong>me</strong> ist eine separate unabhängige Datenbankanbindung notwendig.';
