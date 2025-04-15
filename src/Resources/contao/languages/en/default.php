@@ -60,7 +60,7 @@ $GLOBALS['TL_LANG']['PTY']['pslzme'] = ['pslzme Page', "Personalized page"];
 
 /** Backend module */
 
-$GLOBALS['TL_LANG']['BE_MOD']['pslzme_configuration'] = 'Configuration';
+$GLOBALS['TL_LANG']['MOD']['pslzme_configuration'] = ['Configuration', 'Here you can configure the settings.'];
 $GLOBALS['TL_LANG']['pslzme_configuration']['main_heading'] = 'pslz<span>me</span> configuration';
 $GLOBALS['TL_LANG']['pslzme_configuration']['first_config_container_h2'] = '1: Database configuration';
 $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_one'] = 'To successfully use pslz<strong>me</strong> a seperate independent database connection is required.';
