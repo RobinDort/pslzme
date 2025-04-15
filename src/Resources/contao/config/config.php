@@ -34,7 +34,7 @@ $GLOBALS['FE_MOD']['pslzme']['pslzme_navigation'] = PslzmeNavigation::class;
 
 
 // Init Backend Modules
-$GLOBALS['BE_MOD']['pslzme'][$GLOBALS['TL_LANG']['MOD']['pslzme_configuration']] = [
+$GLOBALS['BE_MOD']['pslzme']['pslzme_configuration'] = [
     'tables'    => [
         'tl_pslzme_config'
     ], 
