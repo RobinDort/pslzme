@@ -83,7 +83,7 @@ $GLOBALS['TL_LANG']['pslzme_configuration']['create_tables'] = 'Create tables';
 $GLOBALS['TL_LANG']['pslzme_configuration']['second_config_container_h2'] = '2: License domain';
 $GLOBALS['TL_LANG']['pslzme_configuration']['third_config_container_h2'] = '3: Internal page configuration';
 $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_seven'] = ' <p>Your domain must be licensed in order to use pslz<strong>me</strong>. First of all, <b>an assigned pslz<strong>me</strong> account</b> is required.
-                If you do not yet have an account, you can request one at <b><a href="https://www.pslzme.com/de/login" target="_blank" rel="norefferer noopener">https://www.pslzme.com/de/login</a></b>.
+                If you do not yet have an account, you can request one at <b><a href="https://www.pslzme.com/en/login" target="_blank" rel="norefferer noopener">https://www.pslzme.com/en/login</a></b>.
                 </p>';
 $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_eight'] = '<p>After your account has been provided, please confirm the following button to license this domain.</p>';
 $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_nine'] = "<p>For a smooth and GDPR-compliant process, pslz<strong>me</strong> uses internal redirects to certain subpages of your website.</p>
