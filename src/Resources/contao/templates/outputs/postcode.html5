@@ -1,0 +1,3 @@
+<?php if (isset($GLOBALS['decryptedVars']['postcode'])): ?>
+<?= $GLOBALS['decryptedVars']['postcode'] ?>
+<?php endif; ?>

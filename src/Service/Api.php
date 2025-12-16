@@ -39,6 +39,11 @@ class Api {
         $company = $requestData->company;
         $companyGender = $requestData->companyGender;
         $gender = $requestData->gender;
+        $address = $requestData->address;
+        $housenumber = $requestData->housenumber;
+        $postcode = $requestData->postcode;
+        $place = $requestData->place;
+        $country = $requestData->country;
         $position = $requestData->position;
         $curl = $requestData->curl;
         $fc = $requestData->fc;
@@ -64,7 +69,7 @@ class Api {
             $encryptID = $selectStmtResponse["encryptID"];
 
             $insertQueryData = array(
-                    "query" => "?q1=" . $linkCreator . "&q2=" . $title . "&q3=" . $firstname . "&q4=" . $lastname . "&q5=" . $company . "&q6=" . $gender . "&q7=" . $position . "&q8=" . $curl . "&q9=" . $fc . "&q10=" . $timestamp . "&q11=" . $companyGender,
+                    "query" => "?q1=" . $linkCreator . "&q2=" . $title . "&q3=" . $firstname . "&q4=" . $lastname . "&q5=" . $company . "&q6=" . $gender . "&q7=" . $position . "&q8=" . $curl . "&q9=" . $fc . "&q10=" . $timestamp . "&q11=" . $companyGender . "&q12=" . $address . "&q13=" . $housenumber . "&q14=" . $postcode . "&q15=" . $place . "&q16=" . $country,
                     "timestamp" => $timestamp,
                     "acceptedOn" => $acceptedOn,
                     "cookieAccepted" => $cookieAccepted,

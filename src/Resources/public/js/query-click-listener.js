@@ -42,7 +42,17 @@ function pslzmeQueryClickListener() {
 						"&q10=" +
 						queryParams.params.timestamp +
 						"&q11=" +
-						queryParams.params.companyGender;
+						queryParams.params.companyGender +
+						"&q12=" +
+						queryParams.params.address +
+						"&q13=" +
+						queryParams.params.housenumber +
+						"&q14=" +
+						queryParams.params.postcode +
+						"&q15=" +
+						queryParams.params.place +
+						"&q16=" +
+						queryParams.params.country;
 				} else {
 					// remove click listener
 					event.target.removeEventListener("click", arguments.callee);

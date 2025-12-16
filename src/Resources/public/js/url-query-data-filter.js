@@ -20,6 +20,11 @@ const queryParamsSet = () => {
 				fc: queryParams.get("q9") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q9")),
 				timestamp: queryParams.get("q10"),
 				companyGender: queryParams.get("q11") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q11")),
+				address: queryParams.get("q12") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q12")),
+				housenumber: queryParams.get("q13") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q13")),
+				postcode: queryParams.get("q14") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q14")),
+				place: queryParams.get("q15") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q15")),
+				country: queryParams.get("q16") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q16")),
 			},
 		};
 	} else {
@@ -32,6 +37,11 @@ const queryParamsSet = () => {
 				lastname: queryParams.get("q4") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q4")),
 				company: queryParams.get("q5") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q5")),
 				gender: queryParams.get("q6") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q6")),
+				address: queryParams.get("q12") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q12")),
+				housenumber: queryParams.get("q13") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q13")),
+				postcode: queryParams.get("q14") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q14")),
+				place: queryParams.get("q15") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q15")),
+				country: queryParams.get("q16") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q16")),
 				position: queryParams.get("q7") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q7")),
 				curl: queryParams.get("q8") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q8")),
 				fc: queryParams.get("q9") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q9")),

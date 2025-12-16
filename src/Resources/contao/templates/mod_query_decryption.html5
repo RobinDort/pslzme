@@ -24,6 +24,11 @@
 	$decryptedCompanyName = $decryptFormData->getDecryptedCompanyName();
 	$decryptedCompanyGender = $decryptFormData->getDecryptedCompanyGender();
 	$decryptedGender = $decryptFormData->getDecryptedGender();
+	$decryptedAddress = $decryptFormData->getDecryptedAddress();
+	$decryptedHousenumber = $decryptFormData->getDecryptedHousenumber();
+	$decryptedPostcode = $decryptFormData->getDecryptedPostcode();
+	$decryptedPlace = $decryptFormData->getDecryptedPlace();
+	$decryptedCountry = $decryptFormData->getDecryptedCountry();
 	$decryptedPosition = $decryptFormData->getDecryptedPosition();
 	$decryptedCurl = $decryptFormData->getDecryptedCURL();
 	$decryptedFC = $decryptFormData->getDecryptedFC();
@@ -57,6 +62,26 @@
 	
 	if ($decryptedGender !== null && $decryptedGender !== "") {
 		$GLOBALS['decryptedVars']['gender'] = $decryptedGender;  
+	}
+
+	if (isset($decryptedAddress) && $decryptedAddress !== "") {
+		$GLOBALS['decryptedVars']['address'] = $decryptedAddress;  
+	}
+	
+	if (isset($decryptedHousenumber) && $decryptedHousenumber !== "") {
+		$GLOBALS['decryptedVars']['housenumber'] = $decryptedHousenumber;  
+	}
+	
+	if (isset($decryptedPostcode) && $decryptedPostcode !== "") {
+		$GLOBALS['decryptedVars']['postcode'] = $decryptedPostcode;  
+	}
+	
+	if (isset($decryptedPlace) && $decryptedPlace !== "") {
+		$GLOBALS['decryptedVars']['place'] = $decryptedPlace;  
+	}
+	
+	if (isset($decryptedCountry) && $decryptedCountry !== "") {
+		$GLOBALS['decryptedVars']['country'] = $decryptedCountry;  
 	}
 	
 	if ($decryptedPosition !== null && $decryptedPosition !== "") {

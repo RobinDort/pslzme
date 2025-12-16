@@ -1,0 +1,3 @@
+<?php if (isset($GLOBALS['decryptedVars']['place'])): ?>
+<?= $GLOBALS['decryptedVars']['place'] ?>
+<?php endif; ?>

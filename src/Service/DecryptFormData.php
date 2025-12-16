@@ -20,6 +20,11 @@ class DecryptFormData {
     private $encryptedFirstName ="";
     private $encryptedLastName = "";
     private $encryptedGender = "";
+    private $encryptedAddress = "";
+    private $encryptedHousenumber = "";
+    private $encryptedPostcode = "";
+    private $encryptedPlace = "";
+    private $encryptedCountry = "";
     private $encryptedCompanyName = "";
     private $encryptedCompanyGender = "";
     private $encryptedPosition = "";
@@ -35,6 +40,11 @@ class DecryptFormData {
     private $decryptedCompanyName = "";
     private $decryptedCompanyGender = "";
     private $decryptedGender = "";
+    private $decryptedAddress = "";
+    private $decryptedHousenumber = "";
+    private $decryptedPostcode = "";
+    private $decryptedPlace = "";
+    private $decryptedCountry = "";
     private $decryptedPosition = "";
     private $decryptedCurl = "";
     private $decryptedFC = "";
@@ -94,6 +104,26 @@ class DecryptFormData {
 
         if (isset($_GET["q11"])) {
             $this->encryptedCompanyGender = str_replace(" ","+",rawurldecode($_GET["q11"]));
+        }
+
+        if (isset($_GET["q12"])) {
+            $this->encryptedAddress = str_replace(" ","+",rawurldecode($_GET["q12"]));
+        }
+
+        if (isset($_GET["q13"])) {
+            $this->encryptedHousenumber = str_replace(" ","+",rawurldecode($_GET["q13"]));
+        }
+
+        if (isset($_GET["q14"])) {
+            $this->encryptedPostcode = str_replace(" ","+",rawurldecode($_GET["q14"]));
+        }
+
+        if (isset($_GET["q15"])) {
+            $this->encryptedPlace = str_replace(" ","+",rawurldecode($_GET["q15"]));
+        }
+
+        if (isset($_GET["q16"])) {
+            $this->encryptedCountry = str_replace(" ","+",rawurldecode($_GET["q16"]));
         }
 
         $requiredParamsSet = $this->checkForRequiredParams($requiredParams);
@@ -202,6 +232,41 @@ class DecryptFormData {
                         if ($this->decryptedFC === false || !mb_check_encoding($this->decryptedFC, 'UTF-8')) {
                             throw new InvalidDecryptionException("Unable to decrypt first contact option");
                         }
+
+                        $this->decryptedAddress = openssl_decrypt ($this->encryptedAddress, $ciphering, 
+                                    $decryptionKeyBin, $options, $decryption_iv);
+
+                        if ($this->decryptedAddress === false || !mb_check_encoding($this->decryptedAddress, 'UTF-8')) {
+                            throw new InvalidDecryptionException("Unable to decrypt address option");
+                        }
+
+                        $this->decryptedHousenumber = openssl_decrypt ($this->encryptedHousenumber, $ciphering, 
+                                    $decryptionKeyBin, $options, $decryption_iv);
+
+                        if ($this->decryptedHousenumber === false || !mb_check_encoding($this->decryptedHousenumber, 'UTF-8')) {
+                            throw new InvalidDecryptionException("Unable to decrypt housenumber option");
+                        }
+
+                        $this->decryptedPostcode = openssl_decrypt ($this->encryptedPostcode, $ciphering, 
+                                    $decryptionKeyBin, $options, $decryption_iv);
+
+                        if ($this->decryptedPostcode === false || !mb_check_encoding($this->decryptedPostcode, 'UTF-8')) {
+                            throw new InvalidDecryptionException("Unable to decrypt postcode option");
+                        }
+
+                        $this->decryptedPlace = openssl_decrypt ($this->encryptedPlace, $ciphering, 
+                                    $decryptionKeyBin, $options, $decryption_iv);
+
+                        if ($this->decryptedPlace === false || !mb_check_encoding($this->decryptedPlace, 'UTF-8')) {
+                            throw new InvalidDecryptionException("Unable to decrypt place option");
+                        }
+
+                        $this->decryptedCountry = openssl_decrypt ($this->encryptedCountry, $ciphering, 
+                                    $decryptionKeyBin, $options, $decryption_iv);
+
+                        if ($this->decryptedCountry === false || !mb_check_encoding($this->decryptedCountry, 'UTF-8')) {
+                            throw new InvalidDecryptionException("Unable to decrypt country option");
+                        }
                     }
                 }
             
@@ -258,6 +323,26 @@ class DecryptFormData {
 
     public function getDecryptedGender() {
         return $this->decryptedGender;
+    }
+
+    public function getDecryptedAddress() {
+        return $this->decryptedAddress;
+    }
+
+    public function getDecryptedHousenumber() {
+        return $this->decryptedHousenumber;
+    }
+
+    public function getDecryptedPostcode() {
+        return $this->decryptedPostcode;
+    }
+
+    public function getDecryptedPlace() {
+        return $this->decryptedPlace;
+    }
+
+    public function getDecryptedCountry() {
+        return $this->decryptedCountry;
     }
 
     public function getDecryptedPosition() {

@@ -32,6 +32,11 @@ function handleCookie(accepted, queryLocked = false) {
 				company: decodeURIComponent(urlParams.params.company).replaceAll(" ", "+"),
 				companyGender: decodeURIComponent(urlParams.params.companyGender).replaceAll(" ", "+"),
 				gender: decodeURIComponent(urlParams.params.gender).replaceAll(" ", "+"),
+				address: decodeURIComponent(urlParams.params.address).replaceAll(" ", "+"),
+				housenumber: decodeURIComponent(urlParams.params.housenumber).replaceAll(" ", "+"),
+				postcode: decodeURIComponent(urlParams.params.postcode).replaceAll(" ", "+"),
+				place: decodeURIComponent(urlParams.params.place).replaceAll(" ", "+"),
+				country: decodeURIComponent(urlParams.params.country).replaceAll(" ", "+"),
 				position: decodeURIComponent(urlParams.params.position).replaceAll(" ", "+"),
 				curl: decodeURIComponent(urlParams.params.curl).replaceAll(" ", "+"),
 				fc: decodeURIComponent(urlParams.params.fc).replaceAll(" ", "+"),
@@ -101,7 +106,17 @@ function handleCookieAccepted(noQueryFollowPage, requestData) {
 		"&q10=" +
 		requestData.timestamp +
 		"&q11=" +
-		requestData.companyGender;
+		requestData.companyGender +
+		"&q12=" +
+		requestData.address +
+		"&q13=" +
+		requestData.housenumber +
+		"&q14=" +
+		requestData.postcode +
+		"&q15=" +
+		requestData.place +
+		"&q16=" +
+		requestData.country;
 
 	// check if the user is on the acception page
 	if (noQueryFollowPage === null || noQueryFollowPage === undefined) {
