@@ -83,7 +83,7 @@ function handleCookieDeclined(noQueryFollowPage) {
 
 function handleCookieAccepted(noQueryFollowPage, requestData) {
 	// link to the actual page he wanted to navigate to. At the moment to check for consent, the user
-	// got redirected to the plsze-acception.html page.
+	// got redirected to the plsmze-acception.html page.
 	const paramQuery =
 		"?q1=" +
 		requestData.linkCreator +
