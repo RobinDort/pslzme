@@ -31,10 +31,11 @@ class InstallListener
 
             if (!$this->filesystem->exists($targetDir)) {
                 $this->filesystem->mkdir($targetDir);
-
-                // Copy all template files
-                $this->filesystem->mirror($sourceDir, $targetDir);
             }
+
+            // Copy all template files
+            $this->filesystem->mirror($sourceDir, $targetDir, null, ['override' => false, 'delete' => false]);
+            
         } catch (InvalidFileException $ife) {
             System::log($ife->getErrorMsg(), __METHOD__, TL_ERROR);
         } catch (Exception $e) {
