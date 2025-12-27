@@ -34,8 +34,8 @@ class InstallListener
             }
 
             // Copy all template files
-            $this->filesystem->mirror($sourceDir, $targetDir, null, ['override' => false, 'delete' => false]);
-            
+            $this->filesystem->mirror($sourceDir, $targetDir);
+
         } catch (InvalidFileException $ife) {
             System::log($ife->getErrorMsg(), __METHOD__, TL_ERROR);
         } catch (Exception $e) {
