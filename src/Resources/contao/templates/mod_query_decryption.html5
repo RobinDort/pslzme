@@ -64,23 +64,23 @@
 		$GLOBALS['decryptedVars']['gender'] = $decryptedGender;  
 	}
 
-	if (isset($decryptedAddress) && $decryptedAddress !== "") {
+	if ($decryptedAddress !== null && $decryptedAddress !== "") {
 		$GLOBALS['decryptedVars']['address'] = $decryptedAddress;  
 	}
-	
-	if (isset($decryptedHousenumber) && $decryptedHousenumber !== "") {
+
+	if ($decryptedHousenumber !== null && $decryptedHousenumber !== "") {
 		$GLOBALS['decryptedVars']['housenumber'] = $decryptedHousenumber;  
 	}
 	
-	if (isset($decryptedPostcode) && $decryptedPostcode !== "") {
+	if ($decryptedPostcode !== null && $decryptedPostcode !== "") {
 		$GLOBALS['decryptedVars']['postcode'] = $decryptedPostcode;  
 	}
-	
-	if (isset($decryptedPlace) && $decryptedPlace !== "") {
+
+	if ($decryptedPlace !== null && $decryptedPlace !== "") {
 		$GLOBALS['decryptedVars']['place'] = $decryptedPlace;  
 	}
 	
-	if (isset($decryptedCountry) && $decryptedCountry !== "") {
+	if ($decryptedCountry !== null && $decryptedCountry !== "") {
 		$GLOBALS['decryptedVars']['country'] = $decryptedCountry;  
 	}
 	
