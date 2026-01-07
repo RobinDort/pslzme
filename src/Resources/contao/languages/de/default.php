@@ -52,6 +52,12 @@ $GLOBALS['TL_LANG']['tl_content']['upPlayerSize'] = ['Player-Größe', 'Breite u
 $GLOBALS['TL_LANG']['tl_content']['upPlayerOptions'] = ['Player-Optionen', 'Optionen wählen'];
 $GLOBALS['TL_LANG']['tl_content']['upPlayerCaption'] = ['Untertitel', 'Hier können Sie einen Untertitel eingeben.'];
 $GLOBALS['TL_LANG']['tl_content']['upPlayerPreload'] = ['Preloading', 'Hier können Sie empfehlen, wie der Browser das Video vorab laden soll.'];
+$GLOBALS['TL_LANG']['tl_content']['firstImageGroup'] = ['Hintergrundbild', 'Wählen Sie das Bild, welches im Hintergrund angezeigt werden soll.'];
+$GLOBALS['TL_LANG']['tl_content']['firstImage'] = ['Hintergrundbild'];
+$GLOBALS['TL_LANG']['tl_content']['firstImageSize'] = ['Hintergrundbildgröße', 'Größe des Hintergrundbildes angeben'];
+$GLOBALS['TL_LANG']['tl_content']['secondImageGroup'] = ['Vordergrundbild', 'Wählen Sie das Bild, welches im Vordergrund angezeigt werden soll.'];
+$GLOBALS['TL_LANG']['tl_content']['secondImage'] = ['Vordergrundbild'];
+$GLOBALS['TL_LANG']['tl_content']['secondImageSize'] = ['Vordergrundbildgröße', 'Größe des Vordergrundbildes angeben'];
 
 
 /** Pages */

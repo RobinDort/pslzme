@@ -52,6 +52,12 @@ $GLOBALS['TL_LANG']['tl_content']['upPlayerSize'] = ['Player-Size', 'Width and h
 $GLOBALS['TL_LANG']['tl_content']['upPlayerOptions'] = ['Player-Options', 'Choose options'];
 $GLOBALS['TL_LANG']['tl_content']['upPlayerCaption'] = ['Caption', 'Enter a caption here.'];
 $GLOBALS['TL_LANG']['tl_content']['upPlayerPreload'] = ['Preloading', 'Here you can recommend how the browser should preload the video.'];
+$GLOBALS['TL_LANG']['tl_content']['firstImageGroup'] = ['Background Image', 'Choose the image to be displayed in the background.'];
+$GLOBALS['TL_LANG']['tl_content']['firstImage'] = ['Background Image'];
+$GLOBALS['TL_LANG']['tl_content']['firstImageSize'] = ['Background Image Size', 'Set the size of the background image'];
+$GLOBALS['TL_LANG']['tl_content']['secondImageGroup'] = ['Foreground Image', 'Choose the image to be displayed in the foreground.'];
+$GLOBALS['TL_LANG']['tl_content']['secondImage'] = ['Foreground Image'];
+$GLOBALS['TL_LANG']['tl_content']['secondImageSize'] = ['Foreground Image Size', 'Set the size of the foreground image'];
 
 
 /** Pages */
