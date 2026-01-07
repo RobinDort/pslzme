@@ -1,0 +1,61 @@
+<?php
+use Contao\FilesModel;
+
+$backgroundImage = '';
+if ($this->firstImage) {
+    $file = FilesModel::findByUuid($this->firstImage);
+    if ($file !== null) {
+        $backgroundImage = $this->figure(
+            $file->path,
+            $this->firstImageSize ?? null
+        );
+    }
+}
+
+$foregroundImage = '';
+if ($this->secondImage) {
+    $file = FilesModel::findByUuid($this->secondImage);
+    if ($file !== null) {
+        $foregroundImage = $this->figure(
+            $file->path,
+            $this->secondImageSize ?? null
+        );
+    }
+}
+?>
+
+<?php $this->extend('block_searchable'); ?>
+
+<?php $this->block('content'); ?>
+
+<div class="pslzme_ov_image_container">
+
+    <?php if ($backgroundImage): ?>
+        <?= $backgroundImage ?>
+    <?php endif; ?>
+
+    <?php if ($this->personalizedText && $GLOBALS['decryptedVars']['varsSet'] === true) :?>
+
+    <!-- indexer::stop -->
+
+        <div class="ce_text block">
+            <?= $this->personalizedText ?>
+        </div>
+        
+    <!-- indexer::continue -->
+
+    <?php else :?>
+
+        <div class="ce_text block">
+            <?= $this->unpersonalizedText ?>
+        </div>
+
+    <?php endif; ?>
+
+    <?php if ($foregroundImage): ?>
+        <?= $foregroundImage ?>
+    <?php endif; ?>
+
+</div>
+
+<?php $this->endblock(); ?>
