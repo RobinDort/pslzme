@@ -221,7 +221,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['firstImageSize'] = [
     'options_callback' => function () {
         return System::getContainer()->get('contao.image.sizes')->getAllOptions();
     },
-    'sql'       => "binary(16) NULL"
+    'sql'       => "varchar(64) NOT NULL default ''"
 ];
 
 
@@ -250,7 +250,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['secondImageSize'] = [
     'options_callback' => function () {
         return System::getContainer()->get('contao.image.sizes')->getAllOptions();
     },
-    'sql'       => "binary(16) NULL"
+    'sql'       => "varchar(64) NOT NULL default ''"
 ];
 
 
