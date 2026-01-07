@@ -7,7 +7,10 @@ if ($this->firstImage) {
     if ($file !== null) {
         $backgroundImage = $this->figure(
             $file->path,
-            $this->firstImageSize ?? null
+            [
+                'size' => $this->firstImageSize ?? null,
+                'class' => 'pslzme-background-figure'
+            ]
         );
     }
 }
@@ -18,7 +21,10 @@ if ($this->secondImage) {
     if ($file !== null) {
         $foregroundImage = $this->figure(
             $file->path,
-            $this->secondImageSize ?? null
+             [
+                'size' => $this->secondImageSize ?? null,
+                'class' => 'pslzme-foreground-figure'
+            ]
         );
     }
 }
@@ -28,7 +34,7 @@ if ($this->secondImage) {
 
 <?php $this->block('content'); ?>
 
-<div class="pslzme_ov_image_container">
+<div class="pslzme-ov-image-container">
 
     <?php if ($backgroundImage): ?>
         <?= $backgroundImage ?>
@@ -38,7 +44,7 @@ if ($this->secondImage) {
 
     <!-- indexer::stop -->
 
-        <div class="ce_text block">
+        <div class="ce_text block layered-text">
             <?= $this->personalizedText ?>
         </div>
         
@@ -46,7 +52,7 @@ if ($this->secondImage) {
 
     <?php else :?>
 
-        <div class="ce_text block">
+        <div class="ce_text block layered-text">
             <?= $this->unpersonalizedText ?>
         </div>
 
