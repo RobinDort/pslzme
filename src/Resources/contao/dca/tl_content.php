@@ -186,4 +186,70 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['upPlayerPreload'] = [
     'sql'                     => "varchar(8) COLLATE ascii_bin NOT NULL default ''"
 ];
 
+
+
+/**
+ * Configuration for pslzme_image element
+ */
+
+$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_image'] = '{type_legend},type;{text_legend};personalizedTextGroup,personalizedText;unpersonalizedTextGroup,unpersonalizedText;firstImageGroup,firstImage,firstImageSize;secondImageGroup,secondImage,secondImageSize;{expert_legend:hide},cssID';
+
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['firstImageGroup'] = [
+    'inputType' => 'group',
+];
+
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['firstImage'] = [
+    'inputType' => 'fileTree',
+    'eval' => [
+        'filesOnly' => true,
+        'fieldType' => 'radio',
+        'extensions' => 'jpg,jpeg,png,webp',
+        'mandatory' => true,
+    ],
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['firstImageSize'] = [
+    'inputType' => 'imageSize',
+    'eval' => [
+        'mandatory' => true,
+        'rgxp' => 'digit',
+        'includeBlankOption' => true,
+    ],
+    'options_callback' => function () {
+        return System::getContainer()->get('contao.image.sizes')->getAllOptions();
+    },
+    'sql'       => "binary(16) NULL"
+];
+
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['secondImageGroup'] = [
+    'inputType' => 'group',
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['secondImage'] = [
+    'inputType' => 'fileTree',
+    'eval' => [
+        'filesOnly' => true,
+        'fieldType' => 'radio',
+        'extensions' => 'jpg,jpeg,png,webp',
+        'mandatory' => true,
+    ],
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['secondImageSize'] = [
+    'inputType' => 'imageSize',
+    'eval' => [
+        'mandatory' => true,
+        'rgxp' => 'digit',
+        'includeBlankOption' => true,
+    ],
+    'options_callback' => function () {
+        return System::getContainer()->get('contao.image.sizes')->getAllOptions();
+    },
+    'sql'       => "binary(16) NULL"
+];
+
+
 ?>
