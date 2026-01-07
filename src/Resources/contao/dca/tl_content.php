@@ -208,6 +208,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['firstImage'] = [
         'extensions' => 'jpg,jpeg,png,webp',
         'mandatory' => true,
     ],
+    'sql'       => "binary(16) NULL"
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['firstImageSize'] = [
@@ -236,6 +237,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['secondImage'] = [
         'extensions' => 'jpg,jpeg,png,webp',
         'mandatory' => true,
     ],
+    'sql'       => "binary(16) NULL"
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['secondImageSize'] = [
