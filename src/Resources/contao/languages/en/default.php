@@ -25,6 +25,7 @@ $GLOBALS['TL_LANG']['robindort_pslzme_links']['no'] = 'No';
 
 $GLOBALS['TL_LANG']['CTE']['pslzme_text'] = ['Pslzme Text', 'Personalizable text element'];
 $GLOBALS['TL_LANG']['CTE']['pslzme_content'] = ['Pslzme Content', 'Personalizable content element'];
+$GLOBALS['TL_LANG']['CTE']['pslzme_image'] = ['Pslzme Image', 'Personalizable image element'];
 
 
 /** Element fields */
