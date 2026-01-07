@@ -8,11 +8,11 @@
 	position: relative;
 }
 
-.pslzme-ov-image-container .pslzme-background-figure {
+.pslzme-ov-image-container .pslzme-background-figure figure {
 	z-index: 1;
 }
 
-.pslzme-ov-image-container .pslzme-foreground-figure {
+.pslzme-ov-image-container .pslzme-foreground-figure figure {
 	position: absolute;
 	top: 0;
 	left: 0;

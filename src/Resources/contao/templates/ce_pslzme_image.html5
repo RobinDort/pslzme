@@ -5,13 +5,11 @@ $backgroundImage = '';
 if ($this->firstImage) {
     $file = FilesModel::findByUuid($this->firstImage);
     if ($file !== null) {
-        $backgroundImage = $this->figure(
+        $html = $this->figure(
             $file->path,
-            [
-                'size' => $this->firstImageSize ?? null,
-                'class' => 'pslzme-background-figure'
-            ]
+            $this->firstImageSize ?? null
         );
+        $backgroundImage = '<div class="pslzme-background-figure">' . $html . '</div>';
     }
 }
 
@@ -19,13 +17,11 @@ $foregroundImage = '';
 if ($this->secondImage) {
     $file = FilesModel::findByUuid($this->secondImage);
     if ($file !== null) {
-        $foregroundImage = $this->figure(
+        $html = $this->figure(
             $file->path,
-             [
-                'size' => $this->secondImageSize ?? null,
-                'class' => 'pslzme-foreground-figure'
-            ]
+            $this->secondImageSize ?? null
         );
+        $foregroundImage = '<div class="pslzme-foreground-figure">' . $html . '</div>';
     }
 }
 ?>

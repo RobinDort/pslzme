@@ -215,7 +215,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['firstImageSize'] = [
     'inputType' => 'imageSize',
     'eval' => [
         'mandatory' => true,
-        'rgxp' => 'digit',
         'includeBlankOption' => true,
     ],
     'options_callback' => function () {
@@ -244,7 +243,6 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['secondImageSize'] = [
     'inputType' => 'imageSize',
     'eval' => [
         'mandatory' => true,
-        'rgxp' => 'digit',
         'includeBlankOption' => true,
     ],
     'options_callback' => function () {
