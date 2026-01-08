@@ -23,13 +23,11 @@
 
 .pslzme-ov-image-container .layered-text {
 	position: absolute;
-	top: 25%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	top: 0%;
+	left: 0%;
 	z-index: 2;
-	text-align: center;
-	width: 90%;
-	font-size: clamp(10vw, 100%, 100vw);
+	text-align: left;
+	width: 100%;
 	font-weight: bold;
 }
 
