@@ -4,13 +4,15 @@ namespace RobinDort\PslzmeLinks\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Attribute\AsController;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 use RobinDort\PslzmeLinks\Service\Api;
 
 /**
  * Class that handles all frontend requests from this extension
  */
+#[Route('/requestHandler', name: RequestHandlerController::class)] 
+#[AsController]
 class RequestHandlerController {
 
     private $api;
@@ -22,11 +24,6 @@ class RequestHandlerController {
         $this->api = $api;
     }
 
-    /**
-     * Handle frontend requests
-     *
-     * @Route("/requestHandler", name="request_handler", methods={"POST"})
-     */
     public function __invoke(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
         $requestFunction = $request->request->get('request');

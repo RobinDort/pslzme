@@ -3,7 +3,7 @@ namespace RobinDort\PslzmeLinks\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpKernel\Attribute\AsController;
 use Contao\Database;
 use Contao\Message;
@@ -19,6 +19,7 @@ use RobinDort\PslzmeLinks\Service\DatabaseConnection;
 /**
  * Class that handles backend request from the pslzme configuration module
  */
+#[AsController]
 class BackendRequestHandlerController {
 
     private $dbPslzmeStmtExecutor;
@@ -37,11 +38,7 @@ class BackendRequestHandlerController {
         $this->dbPslzmeConfigStmtExecutor = new DatabasePslzmeConfigStmtExecutor($doctrineConnection);
     }
 
-     /**
-     * Save database configuration data
-     *
-     * @Route("/saveDatabaseData", name="save_database_data", defaults={"_token_check": true, "_scope": "backend"}, methods={"POST"})
-     */
+    #[Route('/saveDatabaseData', name: "save_database_data", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])] 
     public function saveDatabaseData(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
 
@@ -83,11 +80,7 @@ class BackendRequestHandlerController {
         }
     }
 
-    /**
-     * Register a new customer
-     *
-     * @Route("/registerCustomer", name="register_customer", defaults={"_token_check": true, "_scope": "backend"}, methods={"POST"})
-     */
+    #[Route('/registerCustomer', name: "register_customer", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])]
     public function registerCustomer(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
         try {
@@ -151,11 +144,7 @@ class BackendRequestHandlerController {
     }
 
 
-    /**
-     * Create PSLZME database tables
-     *
-     * @Route("/createPslzmeTables", name="create_pslzme_tables", defaults={"_token_check": true, "_scope": "backend"}, methods={"POST"})
-     */
+    #[Route('/createPslzmeTables', name: "create_pslzme_tables", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])] 
     public function createPslzmeTables(): JsonResponse {
         try {
             $this->databaseManager->initTables();
@@ -167,12 +156,7 @@ class BackendRequestHandlerController {
 
     }
 
-
-    /**
-     * Save internal page IDs
-     *
-     * @Route("/saveInternalPages", name="save_internal_pages", defaults={"_token_check": true, "_scope": "backend"}, methods={"POST"})
-     */
+    #[Route('/saveInternalPages', name: "save_internal_pages", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])] 
     public function saveInternalPages(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
 
