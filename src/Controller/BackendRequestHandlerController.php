@@ -42,30 +42,31 @@ class BackendRequestHandlerController {
     public function saveDatabaseData(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
         try {
-            $requestData = json_decode($requestData, false);
+            return new JsonResponse($this->dbPslzmeConfigStmtExecutor);
+            // $requestData = json_decode($requestData, false);
 
-            if (!$requestData) {
-                throw new InvalidDataException("Unable to extract request data out of /saveDatabaseData object");
-            }
+            // if (!$requestData) {
+            //     throw new InvalidDataException("Unable to extract request data out of /saveDatabaseData object");
+            // }
 
-            $databaseName = $requestData->dbName;
-            $databaseUser = $requestData->dbUsername;
-            $databasePassword = $requestData->dbPW;
+            // $databaseName = $requestData->dbName;
+            // $databaseUser = $requestData->dbUsername;
+            // $databasePassword = $requestData->dbPW;
 
 
-            if (!$databaseName || !$databaseUser || !$databasePassword) {
-                throw new InvalidDataException("Unable to extract database information out of request object");
-            }
+            // if (!$databaseName || !$databaseUser || !$databasePassword) {
+            //     throw new InvalidDataException("Unable to extract database information out of request object");
+            // }
 
-            // encrypt the password before saving
-            $timestamp = time();
-            $encryptedPassword = $this->encryptPassword($databasePassword,$timestamp);
+            // // encrypt the password before saving
+            // $timestamp = time();
+            // $encryptedPassword = $this->encryptPassword($databasePassword,$timestamp);
 
-            // use database and insert or update the data
-            $result = $this->dbPslzmeStmtExecutor->initDatabaseConfigurationData($databaseName, $databaseUser, $encryptedPassword, $timestamp);
+            // // use database and insert or update the data
+            // $result = $this->dbPslzmeStmtExecutor->initDatabaseConfigurationData($databaseName, $databaseUser, $encryptedPassword, $timestamp);
 
-            Message::addConfirmation($result);
-            return new JsonResponse($result);
+            // Message::addConfirmation($result);
+            // return new JsonResponse($result);
 
         } catch (InvalidDataException $ide) {
             error_log($ide->getErrorMsg());
