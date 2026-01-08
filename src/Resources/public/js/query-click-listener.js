@@ -15,9 +15,6 @@ function pslzmeQueryClickListener() {
 				}
 				event.preventDefault();
 
-				console.log(linkElement);
-				console.log(linkElement.href);
-
 				if (isSameDomain(linkElement.href)) {
 					window.location.href =
 						linkElement.href +

@@ -1,7 +1,7 @@
 function controlPslzmeCookiebar() {
 	// check if the user used the pslzme link.
 	const queryParamsAreSet = queryParamsSet();
-	if (queryParamsAreSet !== undefined) {
+	if (queryParamsAreSet.isSet === true) {
 		// user came from the normal website link
 		const consentCookie = getCookie("consent_cookie");
 		if (consentCookie !== undefined) {
