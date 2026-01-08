@@ -233,6 +233,7 @@
             method: "post",
             data: requestObject,
             onSuccess: function (response) {
+                console.log(response);
                 alert(response);
                 setTimeout(function() {
                     window.location.reload();
