@@ -16,7 +16,7 @@ class DatabasePslzmeConfigStmtPreparer {
     }
 
     public function prepareUpdatePslzmeDBConfig() {
-        $sqlQuery = "UPDATE tl_pslzme_config SET pslzme_db_name = ?, pslzme_db_user = ?, pslzme_db_pw = ?, timestamp = ?";
+        $sqlQuery = "UPDATE tl_pslzme_config SET pslzme_db_name = ?, pslzme_db_user = ?, pslzme_db_pw = ?, createdAt = ?";
         $stmt = $this->connection->prepare($sqlQuery);
         return $stmt;
     }
@@ -35,7 +35,7 @@ class DatabasePslzmeConfigStmtPreparer {
     }
 
     public function prepareInsertPslzmeDBConfig() {
-        $sqlQuery = "INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, timestamp) VALUES (?,?,?,?)";
+        $sqlQuery = "INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, createdAt) VALUES (?,?,?,?)";
         $stmt = $this->connection->prepare($sqlQuery);
         return $stmt;
     }

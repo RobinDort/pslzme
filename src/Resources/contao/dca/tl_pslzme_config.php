@@ -38,7 +38,7 @@ $GLOBALS['TL_DCA']['tl_pslzme_config'] = [
             ],
             'sql'       => "TEXT NULL"
         ],
-        'timestamp' => [
+        'createdAt' => [
             'inputType' => 'number',
             'eval'      => ['mandatory' => true, 'rgxp' => 'digit'],
             'sql'       => "INT(10) UNSIGNED NOT NULL"
