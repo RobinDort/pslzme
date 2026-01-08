@@ -41,27 +41,27 @@ class BackendRequestHandlerController {
     #[Route('/saveDatabaseData', name: "save_database_data", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])] 
     public function saveDatabaseData(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
-        return new JsonResponse($requestData);
-
         try {
-            // $requestData = json_decode($requestData, false);
+            $requestData = json_decode($requestData, false);
 
-            // if (!$requestData) {
-            //     throw new InvalidDataException("Unable to extract request data out of /saveDatabaseData object");
-            // }
+            if (!$requestData) {
+                throw new InvalidDataException("Unable to extract request data out of /saveDatabaseData object");
+            }
 
-            // $databaseName = $requestData->dbName;
-            // $databaseUser = $requestData->dbUsername;
-            // $databasePassword = $requestData->dbPW;
+            $databaseName = $requestData->dbName;
+            $databaseUser = $requestData->dbUsername;
+            $databasePassword = $requestData->dbPW;
 
 
-            // if (!$databaseName || !$databaseUser || !$databasePassword) {
-            //     throw new InvalidDataException("Unable to extract database information out of request object");
-            // }
+            if (!$databaseName || !$databaseUser || !$databasePassword) {
+                throw new InvalidDataException("Unable to extract database information out of request object");
+            }
 
-            // // encrypt the password before saving
-            // $timestamp = time();
-            // $encryptedPassword = $this->encryptPassword($databasePassword,$timestamp);
+            // encrypt the password before saving
+            $timestamp = time();
+            $encryptedPassword = $this->encryptPassword($databasePassword,$timestamp);
+
+            return new JsonResponse($encryptedPassword);
 
             // // use database and insert or update the data
             // $result = $this->dbPslzmeStmtExecutor->initDatabaseConfigurationData($databaseName, $databaseUser, $encryptedPassword, $timestamp);
