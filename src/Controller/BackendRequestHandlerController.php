@@ -61,13 +61,11 @@ class BackendRequestHandlerController {
             $timestamp = time();
             $encryptedPassword = $this->encryptPassword($databasePassword,$timestamp);
 
-            return new JsonResponse($encryptedPassword);
+            // use database and insert or update the data
+            $result = $this->dbPslzmeStmtExecutor->initDatabaseConfigurationData($databaseName, $databaseUser, $encryptedPassword, $timestamp);
 
-            // // use database and insert or update the data
-            // $result = $this->dbPslzmeStmtExecutor->initDatabaseConfigurationData($databaseName, $databaseUser, $encryptedPassword, $timestamp);
-
-            // Message::addConfirmation($result);
-            // return new JsonResponse($result);
+            Message::addConfirmation($result);
+            return new JsonResponse($result);
 
         } catch (InvalidDataException $ide) {
             error_log($ide->getErrorMsg());
