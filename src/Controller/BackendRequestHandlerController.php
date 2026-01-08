@@ -19,7 +19,6 @@ use RobinDort\PslzmeLinks\Service\DatabaseConnection;
 /**
  * Class that handles backend request from the pslzme configuration module
  */
-#[AsController]
 class BackendRequestHandlerController {
 
     private $dbPslzmeStmtExecutor;
@@ -38,7 +37,11 @@ class BackendRequestHandlerController {
         $this->dbPslzmeConfigStmtExecutor = new DatabasePslzmeConfigStmtExecutor($doctrineConnection);
     }
 
-    #[Route('/saveDatabaseData', name: "save_database_data", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])] 
+     /**
+     * Save database configuration data
+     *
+     * @Route("/saveDatabaseData", name="save_database_data", defaults={"_token_check": true, "_scope": "backend"}, methods={"POST"})
+     */
     public function saveDatabaseData(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
 
@@ -80,7 +83,11 @@ class BackendRequestHandlerController {
         }
     }
 
-    #[Route('/registerCustomer', name: "register_customer", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])]
+    /**
+     * Register a new customer
+     *
+     * @Route("/registerCustomer", name="register_customer", defaults={"_token_check": true, "_scope": "backend"}, methods={"POST"})
+     */
     public function registerCustomer(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
         try {
@@ -144,7 +151,11 @@ class BackendRequestHandlerController {
     }
 
 
-    #[Route('/createPslzmeTables', name: "create_pslzme_tables", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])] 
+    /**
+     * Create PSLZME database tables
+     *
+     * @Route("/createPslzmeTables", name="create_pslzme_tables", defaults={"_token_check": true, "_scope": "backend"}, methods={"POST"})
+     */
     public function createPslzmeTables(): JsonResponse {
         try {
             $this->databaseManager->initTables();
@@ -156,7 +167,12 @@ class BackendRequestHandlerController {
 
     }
 
-    #[Route('/saveInternalPages', name: "save_internal_pages", defaults: ['_token_check' => true, '_scope' => 'backend'],  methods: ['POST'])] 
+
+    /**
+     * Save internal page IDs
+     *
+     * @Route("/saveInternalPages", name="save_internal_pages", defaults={"_token_check": true, "_scope": "backend"}, methods={"POST"})
+     */
     public function saveInternalPages(Request $request): JsonResponse {
         $requestData = $request->request->get('data');
 
