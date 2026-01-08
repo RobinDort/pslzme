@@ -23,7 +23,14 @@ $GLOBALS['TL_CSS'][] = "bundles/robindortpslzmelinks/css/pslzme-configuration.cs
 $GLOBALS['TL_CSS'][] = "bundles/robindortpslzmelinks/css/pslzme-elements.css|static";
 
 
-$GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/pslzme.min.js|static";
+if (defined(TL_MODE) && TL_MODE === 'FE') {
+    $GLOBALS['TL_JAVASCRIPT'][] = 'bundles/robindortpslzmelinks/js/pslzme.min.js|static';
+}
+
+/**
+ * legacy support for Contao 4.13
+ * $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/pslzme.min.js|static";
+ */
 
 
 // Init Frontend Modules
