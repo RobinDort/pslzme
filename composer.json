@@ -19,7 +19,7 @@
 		"issues": "https://github.com/RobinDort/pslzme/issues"
 	},
 	"require": {
-		"contao/core-bundle": "^4.13",
+		"contao/core-bundle": "^4.13 || ^5.0",
 		"php": ">=8.0"
 	},
 	"require-dev": {
