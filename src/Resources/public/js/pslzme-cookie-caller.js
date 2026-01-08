@@ -11,7 +11,10 @@ const addHiddenClassesToPslzmeElement = (element) => {
 };
 
 const addCookieCallerClickListener = () => {
-	$("#pslzme-cookie-caller").click(function (event) {
+	const $caller = $("#pslzme-cookie-caller");
+	if ($caller.length === 0) return;
+
+	$caller.click(function () {
 		$("#pslzme-cookiebar").css({
 			display: "flex",
 			"align-items": "center",
