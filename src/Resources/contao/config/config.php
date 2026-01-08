@@ -36,11 +36,19 @@ $GLOBALS['FE_MOD']['pslzme']['pslzme_navigation'] = PslzmeNavigation::class;
 
 // Init Backend Modules
 $GLOBALS['BE_MOD']['pslzme']['pslzme_configuration'] = [
-    'tables'    => [
-        'tl_pslzme_config'
-    ], 
     'callback' => PslzmeConfiguration::class,
 ];
+
+// legacy support for Contao 4.13
+/**
+ * $GLOBALS['BE_MOD']['pslzme']['pslzme_configuration'] = [
+ *   'tables'    => [
+ *       'tl_pslzme_config'
+ *   ], 
+ *   'callback' => PslzmeConfiguration::class,
+ *];
+ */
+
 
 
 // Init Content Elements
