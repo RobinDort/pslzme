@@ -159,10 +159,10 @@ class DatabasePslzmeConfigStmtExecutor {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareInsertPslzmeDBConfig();
 
         try {
-            $stmt->bindValue(1, $databaseName, \PDO::PARAM_STR);
-            $stmt->bindValue(2, $databaseUser, \PDO::PARAM_STR);
-            $stmt->bindValue(3, $databasePW, \PDO::PARAM_STR);
-            $stmt->bindValue(4, (int)$timestamp, \PDO::PARAM_INT);
+            $stmt->bindValue(1, $databaseName, "string");
+            $stmt->bindValue(2, $databaseUser, "string");
+            $stmt->bindValue(3, $databasePW, "string");
+            $stmt->bindValue(4, (int)$timestamp, "integer");
 
             $affectedRows = $stmt->executeStatement();
             if ($affectedRows > 0) {
