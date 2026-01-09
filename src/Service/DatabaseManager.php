@@ -2,6 +2,7 @@
 namespace RobinDort\PslzmeLinks\Service;
 
 use RobinDort\PslzmeLinks\Service\DatabaseConnection;
+use Psr\Log\LoggerInterface;
 use Contao\System;
 
 class DatabaseManager {
@@ -20,7 +21,7 @@ class DatabaseManager {
         $this->dbc = $dbc;
         $this->logger = $logger;
     }
-    
+
 
     public function initTables() {
 

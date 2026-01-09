@@ -16,7 +16,9 @@ services:
   RobinDort\PslzmeLinks\Service\DatabaseManager:
     arguments:
       $dbc: "@RobinDort\\PslzmeLinks\\Service\\DatabaseConnection"
-      $logger: "@logger"
+      $logger: "@?logger"
+    tags:
+      - { name: monolog.logger, channel: contao.cron }
     public: true
 
   RobinDort\PslzmeLinks\Service\DatabaseStatementExecutor:
