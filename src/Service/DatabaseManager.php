@@ -7,6 +7,7 @@ use Contao\System;
 class DatabaseManager {
 
     private $dbc;
+    private $logger;
 
     private const TABLE_REFERENCE = 
     [
@@ -15,11 +16,11 @@ class DatabaseManager {
         "query_link"    => "createQueryLinkTable"
     ];
 
-    public function __construct(DatabaseConnection $dbc) {
+    public function __construct(DatabaseConnection $dbc, LoggerInterface $logger) {
         $this->dbc = $dbc;
+        $this->logger = $logger;
     }
-
-
+    
 
     public function initTables() {
 
@@ -54,7 +55,7 @@ class DatabaseManager {
 
         $result = $this->dbc->getConnection()->query($sqlQuery);
         if ($result === true) {
-            System::log("Table pslzme_kunde created successfully",__METHOD__,TL_GENERAL);
+            $this->logger->info("Table pslzme_kunde created successfully");
         } else {
             throw new DatabaseException("Unable to create table pslzme_kunde");
         }
@@ -71,7 +72,7 @@ class DatabaseManager {
 
         $result = $this->dbc->getConnection()->query($sqlQuery);
         if ($result === true) {
-            System::log("Table encrypt_info created successfully",__METHOD__,TL_GENERAL);
+            $this->logger->info("Table encrypt_info created successfully");
         } else {
             throw new DatabaseException("Unable to create table encrypt_info");
         }
@@ -95,7 +96,7 @@ class DatabaseManager {
         
         $result = $this->dbc->getConnection()->query($sqlQuery);
         if ($result === true) {
-            System::log("Table query_link created successfully",__METHOD__,TL_GENERAL);
+            $this->logger->info("Table query_link created successfully");
         } else {
             throw new DatabaseException("Unable to create table query_link");
         }
