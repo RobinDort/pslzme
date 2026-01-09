@@ -159,7 +159,11 @@ class DatabasePslzmeConfigStmtExecutor {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareInsertPslzmeDBConfig();
 
         try {
-            $stmt->bind_param("sssi", $databaseName, $databaseUser, $databasePW, $timestamp);
+            $stmt->bindValue(1, $databaseName, \PDO::PARAM_STR);
+            $stmt->bindValue(2, $databaseUser, \PDO::PARAM_STR);
+            $stmt->bindValue(3, $databasePW, \PDO::PARAM_STR);
+            $stmt->bindValue(4, (int)$timestamp, \PDO::PARAM_INT);
+            
             $affectedRows = $stmt->executeStatement([$databaseName, $databaseUser, $databasePW, $timestamp]);
             if ($affectedRows > 0) {
                 return "Sucessfully inserted pslzme database data.";
