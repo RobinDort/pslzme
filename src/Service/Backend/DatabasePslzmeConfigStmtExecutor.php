@@ -22,18 +22,17 @@ class DatabasePslzmeConfigStmtExecutor {
     public function initDatabaseConfigurationData($databaseName, $databaseUser, $databasePW, $timestamp) {
          // check if database options are already saved
          $selectResult = $this->selectDatabaseConfiguration();
-         return $selectResult;
 
-        //  if ($selectResult["numRows"] > 0) {
-        //     // database data has been found. Update it.
-        //     $updateResult = $this->updateDatabaseConfiguration($databaseName, $databaseUser, $databasePW, $timestamp);
-        //     return $updateResult;
-        //  } else {
-        //     // no database data found. Insert the new data
-        //     // save the database data into the pslzme config table
-        //     $insertResult = $this->insertDatabaseConfiguration($databaseName, $databaseUser, $databasePW, $timestamp);
-        //     return $insertResult;
-        //  }
+         if ($selectResult["numRows"] > 0) {
+            // database data has been found. Update it.
+            $updateResult = $this->updateDatabaseConfiguration($databaseName, $databaseUser, $databasePW, $timestamp);
+            return $updateResult;
+         } else {
+            // no database data found. Insert the new data
+            // save the database data into the pslzme config table
+            $insertResult = $this->insertDatabaseConfiguration($databaseName, $databaseUser, $databasePW, $timestamp);
+            return $insertResult;
+         }
     }
 
 
@@ -158,28 +157,29 @@ class DatabasePslzmeConfigStmtExecutor {
 
     private function insertDatabaseConfiguration($databaseName, $databaseUser, $databasePW, $timestamp) {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareInsertPslzmeDBConfig();
+        return ["name" => $databaseName, "user" => $databaseUser, "pw" => $databasePW, "createdAt" => $timestamp];
 
-        try {
-            $affectedRows = $stmt->executeStatement(
-                [
-                    'name'      => $databaseName,
-                    'user'      => $databaseUser,
-                    'pw'        => $databasePW,
-                    'createdAt' => $timestamp
-                ],
-                [
-                    'createdAt' => ParameterType::INTEGER
-                ]
-        );
-            if ($affectedRows > 0) {
-                return "Sucessfully inserted pslzme database data.";
-            } else {
-                throw new DatabaseException("Statement prepareInsertPslzmeDBConfig executed successful but rows affected = 0");
-            }
-        } catch (DatabaseException $dbe) {
-            // rethrow 
-            throw $dbe;
-        }
+        // try {
+        //     $affectedRows = $stmt->executeStatement(
+        //         [
+        //             'name'      => $databaseName,
+        //             'user'      => $databaseUser,
+        //             'pw'        => $databasePW,
+        //             'createdAt' => $timestamp
+        //         ],
+        //         [
+        //             'createdAt' => ParameterType::INTEGER
+        //         ]
+        // );
+        //     if ($affectedRows > 0) {
+        //         return "Sucessfully inserted pslzme database data.";
+        //     } else {
+        //         throw new DatabaseException("Statement prepareInsertPslzmeDBConfig executed successful but rows affected = 0");
+        //     }
+        // } catch (DatabaseException $dbe) {
+        //     // rethrow 
+        //     throw $dbe;
+        // }
     }
 }
 ?>
