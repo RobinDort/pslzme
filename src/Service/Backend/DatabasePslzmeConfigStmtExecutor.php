@@ -7,6 +7,7 @@ use RobinDort\PslzmeLinks\Exceptions\InvalidDataException;
 
 use Contao\System;
 use Doctrine\DBAL\Connection;
+use \Doctrine\DBAL\ParameterType;
 
 
 class DatabasePslzmeConfigStmtExecutor {
@@ -158,8 +159,17 @@ class DatabasePslzmeConfigStmtExecutor {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareInsertPslzmeDBConfig();
 
         try {
-            $affectedRows = $stmt->executeStatement([$databaseName, $databaseUser, $databasePW, $timestamp]);
-
+            $affectedRows = $stmt->executeStatement(
+                [
+                    'name'      => $databaseName,
+                    'user'      => $databaseUser,
+                    'pw'        => $databasePW,
+                    'createdAt' => $timestamp
+                ],
+                [
+                    'createdAt' => ParameterType::INTEGER
+                ]
+        );
             if ($affectedRows > 0) {
                 return "Sucessfully inserted pslzme database data.";
             } else {
