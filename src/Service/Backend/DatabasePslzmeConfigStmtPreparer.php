@@ -34,8 +34,8 @@ class DatabasePslzmeConfigStmtPreparer {
         return $stmt;
     }
 
-   public function prepareInsertPslzmeDBConfig() {
-        $sqlQuery = "INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, createdAt) VALUES (:name, :user, :pw, :createdAt)";
+    public function prepareInsertPslzmeDBConfig() {
+        $sqlQuery = "INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, createdAt) VALUES (?, ?, ?, ?)";
 
         $stmt = $this->connection->prepare($sqlQuery);
 

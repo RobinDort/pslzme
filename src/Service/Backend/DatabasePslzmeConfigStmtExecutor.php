@@ -157,29 +157,19 @@ class DatabasePslzmeConfigStmtExecutor {
 
     private function insertDatabaseConfiguration($databaseName, $databaseUser, $databasePW, $timestamp) {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareInsertPslzmeDBConfig();
-        return ["name" => $databaseName, "user" => $databaseUser, "pw" => $databasePW, "createdAt" => $timestamp];
 
-        // try {
-        //     $affectedRows = $stmt->executeStatement(
-        //         [
-        //             'name'      => $databaseName,
-        //             'user'      => $databaseUser,
-        //             'pw'        => $databasePW,
-        //             'createdAt' => $timestamp
-        //         ],
-        //         [
-        //             'createdAt' => ParameterType::INTEGER
-        //         ]
-        // );
-        //     if ($affectedRows > 0) {
-        //         return "Sucessfully inserted pslzme database data.";
-        //     } else {
-        //         throw new DatabaseException("Statement prepareInsertPslzmeDBConfig executed successful but rows affected = 0");
-        //     }
-        // } catch (DatabaseException $dbe) {
-        //     // rethrow 
-        //     throw $dbe;
-        // }
+        try {
+            $stmt->bind_param("sssi", $databaseName, $databaseUser, $databasePW, $timestamp);
+            $affectedRows = $stmt->executeStatement([$databaseName, $databaseUser, $databasePW, $timestamp]);
+            if ($affectedRows > 0) {
+                return "Sucessfully inserted pslzme database data.";
+            } else {
+                throw new DatabaseException("Statement prepareInsertPslzmeDBConfig executed successful but rows affected = 0");
+            }
+        } catch (DatabaseException $dbe) {
+            // rethrow 
+            throw $dbe;
+        }
     }
 }
 ?>
