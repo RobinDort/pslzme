@@ -163,8 +163,8 @@ class DatabasePslzmeConfigStmtExecutor {
             $stmt->bindValue(2, $databaseUser, \PDO::PARAM_STR);
             $stmt->bindValue(3, $databasePW, \PDO::PARAM_STR);
             $stmt->bindValue(4, (int)$timestamp, \PDO::PARAM_INT);
-            
-            $affectedRows = $stmt->executeStatement([$databaseName, $databaseUser, $databasePW, $timestamp]);
+
+            $affectedRows = $stmt->executeStatement();
             if ($affectedRows > 0) {
                 return "Sucessfully inserted pslzme database data.";
             } else {
