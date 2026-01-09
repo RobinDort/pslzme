@@ -58,7 +58,7 @@ class DatabasePslzmeConfigStmtExecutor {
                 $databaseUser = $rows[0]["pslzme_db_user"];
                 $databasePassword = $rows[0]["pslzme_db_pw"];
                 $databaseIPR = $rows[0]["pslzme_ipr"];
-                $databaseTimestamp = $rows[0]["timestamp"];
+                $databaseTimestamp = $rows[0]["createdAt"];
                 $urlLicensed = $rows[0]["url_licensed"];
 
                 return [
