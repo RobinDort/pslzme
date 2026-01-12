@@ -6,12 +6,14 @@ use RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor;
 use Contao\Module;
 use Contao\ModuleModel;
 use Contao\System;
+use Contao\CoreBundle\InsertTag\InsertTagParser;
 use Exception;
 
 class PslzmeCookiebar extends Module {
     protected $strTemplate = "mod_pslzme_cookiebar";
 
     private ?DatabasePslzmeConfigStmtExecutor $dbStmtExecutor = null;
+    private ?InsertTagParser $insertTagParser = null;
     private $imprintID;
     private $privacyID;
 
@@ -21,6 +23,7 @@ class PslzmeCookiebar extends Module {
 
         $container = System::getContainer();
         $this->dbStmtExecutor = $this->dbStmtExecutor = $container->get(DatabasePslzmeConfigStmtExecutor::class);
+        $this->insertTagParser = $container->get(InsertTagParser::class);
 
         if (!$this->dbStmtExecutor) {
             \System::log("DB Executor is NULL in generate()", __METHOD__, TL_ERROR);
@@ -50,8 +53,12 @@ class PslzmeCookiebar extends Module {
     public function generate() {
         parent::generate();
 
-        $this->Template->imprintID = $this->imprintID;
-        $this->Template->privacyID = $this->privacyID;
+        $imprintUrl = $this->imprintID ? $this->insertTagParser->replace('{{link_url::' . $this->imprintID . '}}') : null;
+        $privacyUrl = $this->privacyID ? $this->insertTagParser->replace('{{link_url::' . $this->privacyID . '}}') : null;
+
+        $this->Template->imprintURL = $imprintUrl;
+        $this->Template->privacyURL = $privacyUrl;
+       
         $this->compile();
 
        return $this->Template->parse();

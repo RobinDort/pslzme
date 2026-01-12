@@ -1,8 +1,4 @@
 <!-- indexer::stop -->
-<?php
-use Contao\Controller;
-?>
-
 	<div id="pslzme-cookiebar">
 		<div class="pslzme-cookiebar-inner">
 			<div class="block">
@@ -43,14 +39,12 @@ use Contao\Controller;
                 </section>					
 			</div>
 			<div class="pslzme-cookiebar-info space-top20 block">
-				<?php if($this->imprintID): ?>
-					<?php $imprintUrl = Controller::replaceInsertTags('{{link_url::' . $this->imprintID . '}}'); ?>
-					<a href="<?= $imprintUrl ?>" target="_blank" rel="norefferer noopener"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['imprint'] ?></a>
+				<?php if($this->imprintUrl): ?>
+					<a href="<?= $this->imprintUrl ?>" target="_blank" rel="norefferer noopener"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['imprint'] ?></a>
 				<?php endif; ?>
 
-				<?php if($this->privacyID): ?>
-					<?php $privacyUrl = Controller::replaceInsertTags('{{link_url::' . $this->privacyID . '}}'); ?>
-					<a href="<?= $privacyUrl ?>" target="_blank" rel="norefferer noopener"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['privacy'] ?></a>
+				<?php if($this->privacyUrl): ?>
+					<a href="<?= $this->privacyUrl ?>" target="_blank" rel="norefferer noopener"><?= $GLOBALS['TL_LANG']['robindort_pslzme_links']['privacy'] ?></a>
 				<?php endif; ?>
 			</div>
 		</div>
