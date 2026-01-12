@@ -211,7 +211,8 @@ class DatabaseStatementExecutor {
         $stmt = $this->statementPreparer->prepareSelectAllCustomer();
 
         try {
-            $row = $stmt->fetchAssociative();
+            $result = $stmt->executeQuery();
+            $row = $result->fetchAssociative();
 
             if ($row === false) {
                 $convertedResponse->response = "No Customer has been initialized yet";
@@ -241,14 +242,15 @@ class DatabaseStatementExecutor {
         $stmt = $this->statementPreparer->prepareSelectCustomerKey($customerID);
 
         try {
-             $row = $stmt->fetchAssociative();
+            $result = $stmt->executeQuery();
+            $row = $result->fetchAssociative();
 
-             if ($row === false) {
+            if ($row === false) {
                 throw new DatabaseException("prepareSelectCustomerKey returned rows = 0. Encryption Key for customer with ID: " . $customerID . " does not exist");
-             } else {
+            } else {
                 $convertedResponse->response = "Encryption key for customer with ID: " . $customerID . " found";
                 $convertedResponse->queryWithKey = (object)$row;
-             }
+            }
 
         } catch(Exception $e) {
             // rethrow so api can handle catching.
@@ -268,7 +270,8 @@ class DatabaseStatementExecutor {
         $stmt = $this->statementPreparer->prepareSelectCustomerQuery($timestamp, $customerID, $encryptID);
 
         try {
-            $row = $stmt->fetchAssociative();
+            $result = $stmt->executeQuery();
+            $row = $result->fetchAssociative();
 
             if ($row === false) {
                 $convertedResponse->response = "No query found. new query can safely be inserted into the database";
@@ -296,7 +299,8 @@ class DatabaseStatementExecutor {
         $stmt = $this->statementPreparer->prepareSelectCustomerQuery($timestamp, $customerID, $encryptID);
 
         try {
-            $row = $stmt->fetchAssociative();
+            $result = $stmt->executeQuery();
+            $row = $result->fetchAssociative();
 
             if ($row === false) {
                 $convertedResponse->response = "No query found for customer ID: {$customerID} and encryption ID: {$encryptID}";
