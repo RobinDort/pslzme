@@ -18,7 +18,6 @@ class PslzmeCookiebar extends Module {
 
     public function __construct(ModuleModel $objModule) {
         parent::__construct($objModule);
-        $insertTagParser = System::getContainer()->get(InsertTagParser::class);
 
         $container = System::getContainer();
         $this->dbStmtExecutor = $this->dbStmtExecutor = $container->get(DatabasePslzmeConfigStmtExecutor::class);
