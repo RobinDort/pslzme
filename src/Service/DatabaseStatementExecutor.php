@@ -211,26 +211,22 @@ class DatabaseStatementExecutor {
         $stmt = $this->statementPreparer->prepareSelectAllCustomer();
 
         try {
-            if ($stmt->execute()) {
-                $stmtResult = $stmt->get_result();
-                if ($stmtResult->num_rows === 0) {
-                    $convertedResponse->response = "No Customer has been initialized yet";
-                } else {
-                    $convertedResponse->response = "Customer has been found";
-                    $convertedResponse->presentCustomer = $stmtResult->fetch_object();
-                }
+            $result = $stmt->executeQuery();
+            $row = $result->fetchAssociative();
 
+            if ($row === false) {
+                $convertedResponse->response = "No Customer has been initialized yet";
             } else {
-                throw new DatabaseException("Unable to execute statement selectAllCustomer");
-            } 
+                $convertedResponse->response = "Customer has been found";
+                $convertedResponse->presentCustomer = (object) $row;
+            }
+
+          return $convertedResponse;
 
         } catch(Exception $e) {
             // Rethrow so api can handle catching.
-            throw $e;
-        } finally {
-            if ($stmt) $stmt->close();
+            throw new DatabaseException('Unable to execute statement selectAllCustomer',0,$e);
         }
-        return $convertedResponse;
     }
 
 
@@ -354,17 +350,13 @@ class DatabaseStatementExecutor {
         $stmt = $this->statementPreparer->prepareInsertCustomer($customer);
 
         try {
-            if ($stmt->execute()) {
-                $convertedResponse->response = "Successfully inserted new customer with name: " . $customer;
-                $convertedResponse->customerID = $stmt->insert_id;
+            $stmt->execute();
+            $convertedResponse->customerID = (int)$this->dbConn->lastInsertId();
+            $convertedResponse->response = "Successfully inserted new customer with name: " . $customer;
 
-            } else {
-                throw new DatabaseException("Unable to execute prepareInsertCustomer query with customer = " . $customer);
-            }
+           
         } catch (Exception $e) {
-            throw $e;
-        } finally {
-            if ($stmt) $stmt->close();
+            throw new DatabaseException("Unable to execute prepareInsertCustomer query with customer = {$customer}: " . $e->getMessage(), 0, $e);
         }
         return $convertedResponse;
     }
