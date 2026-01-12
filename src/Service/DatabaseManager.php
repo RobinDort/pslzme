@@ -28,7 +28,7 @@ class DatabaseManager {
         try {
             // first check if the pslzme database tables exist. Create them only when not present
             // begin transaction to make sure all tables get created.
-            $this->dbc->getConnection()->begin_transaction();
+            $this->dbc->getConnection()->beginTransaction();
 
             $this->createPslzmeCustomerTable();
             $this->createEncryptionInfoTable();
@@ -37,12 +37,10 @@ class DatabaseManager {
             $this->dbc->getConnection()->commit();
         } catch(DatabaseException $dbe) {
             $this->$dbc->getConnection()->rollback();
-            $this->$dbc->getConnection()->closeConnection();
             error_log($dbe->getErrorMsg());
 
         } catch (Exception $e) {
             $this->$dbc->getConnection()->rollback();
-            $this->dbc->getConnection()->closeConnection();
             error_log($e->getMessage());
         }
 
