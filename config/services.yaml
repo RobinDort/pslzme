@@ -42,10 +42,3 @@ services:
   RobinDort\PslzmeLinks\Controller\Page\PslzmePageController:
     tags:
       - { name: "contao.page", type: "pslzme" }
-
-  RobinDort\PslzmeLinks\Module\PslzmeCookiebar:
-    arguments:
-      $insertTagParser: '@Contao\CoreBundle\InsertTag\InsertTagParser'
-    tags:
-      - { name: contao.module, type: "pslzme_cookiebar" }
-    public: true

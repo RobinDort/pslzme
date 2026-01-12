@@ -18,10 +18,10 @@ class PslzmeCookiebar extends Module {
     private $privacyID;
 
 
-    public function __construct(ModuleModel $objModule, InsertTagParser $insertTagParser) {
+    public function __construct(ModuleModel $objModule) {
         parent::__construct($objModule);
-        $this->insertTagParser = $insertTagParser;
-
+        $insertTagParser = System::getContainer()->get(InsertTagParser::class);
+        
         $container = System::getContainer();
         $this->dbStmtExecutor = $this->dbStmtExecutor = $container->get(DatabasePslzmeConfigStmtExecutor::class);
 
