@@ -3,6 +3,8 @@ namespace RobinDort\PslzmeLinks\Service;
 
 use mysqli;
 use Contao\System;
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\DriverManager;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 use RobinDort\PslzmeLinks\Exceptions\DatabaseException;
@@ -34,9 +36,23 @@ class DatabaseConnection {
 
             // decrypt the password
             $decryptedPW = $this->decryptPassword($encryptedPW, $timestamp);
+
+            $password = $this->decryptPassword($encryptedPW, $timestamp);
+
+            $connectionParams = [
+                'dbname'   => $dbname,
+                'user'     => $username,
+                'password' => $decryptedPW,
+                'host'     => $servername,
+                'driver'   => 'pdo_mysql',
+                'charset'  => 'utf8mb4',
+            ];
      
             // create connection to database
-            $this->connection = new mysqli($servername, $username, $decryptedPW, $dbname);
+            $this->connection = DriverManager::getConnection($connectionParams);
+            //$this->connection = new mysqli($servername, $username, $decryptedPW, $dbname);
+
+            $this->connection->connect();
 
             // check if connection was established
             if($this->connection->connect_error) {
@@ -63,7 +79,7 @@ class DatabaseConnection {
     }
 
     public function closeConnection() {
-        if ($this->connection !== null && $this->connection->ping()) {
+        if ($this->connection && $this->connection->isConnected()) {
             $this->connection->close();
         }
     }

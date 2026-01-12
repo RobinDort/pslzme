@@ -95,7 +95,7 @@ class BackendRequestHandlerController {
             $resp = "";
 
             // start transaction so all operations are made sure to be saved into the db.
-            $databaseConnection->getConnection()->begin_transaction();
+            $databaseConnection->getConnection()->beginTransaction();
             $insertCustomerResult = $dbStmtExcecutor->insertCustomer($requestData);
 
             if ($insertCustomerResult["customerID"] === 0) {
