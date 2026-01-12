@@ -242,25 +242,19 @@ class DatabaseStatementExecutor {
         $stmt = $this->statementPreparer->prepareSelectCustomerKey($customerID);
 
         try {
-            if ($stmt->execute()) {
-                $stmtResult = $stmt->get_result();
-                if ($stmtResult->num_rows === 0) {
-                    throw new DatabaseException("prepareSelectCustomerKey returned rows = 0. Encryption Key for customer with ID: " . $customerID . " does not exist");
-                } else {
-                    $convertedResponse->response = "Encryption key for customer with ID: " . $customerID . " found";
-                    $convertedResponse->queryWithKey = $stmtResult->fetch_object();
-                }
+             $row = $stmt->fetchAssociative();
 
-            } else {
-                throw new DatabaseException("Unable to execute statement selectCustomerKey with customer ID: " . $customerID);
-            } 
+             if ($row === false) {
+                throw new DatabaseException("prepareSelectCustomerKey returned rows = 0. Encryption Key for customer with ID: " . $customerID . " does not exist");
+             } else {
+                $convertedResponse->response = "Encryption key for customer with ID: " . $customerID . " found";
+                $convertedResponse->queryWithKey = (object)$row;
+             }
 
         } catch(Exception $e) {
             // rethrow so api can handle catching.
-            throw $e;
-        } finally {
-            if ($stmt) $stmt->close();
-        }
+            throw new DatabaseException("Unable to execute prepareSelectCustomerKey with customer ID: " . $customerID . ": " . $e->getMessage(), 0, $e);
+        } 
         return $convertedResponse;
     }
 
@@ -275,25 +269,19 @@ class DatabaseStatementExecutor {
         $stmt = $this->statementPreparer->prepareSelectCustomerQuery($timestamp, $customerID, $encryptID);
 
         try {
-            if ($stmt->execute()) {
-                $stmtResult = $stmt->get_result();
-                if ($stmtResult->num_rows === 0) {
-                    $convertedResponse->response = "No query found. new query can safely be inserted into the database";
-                } else {
-                    $convertedResponse->response = "Found already present query. Query needs to be overwritten.";
-                    $convertedResponse->overwriteQuery = true;
-                }
-            
+            $row = $stmt->fetchAssociative();
+
+            if ($row === false) {
+                $convertedResponse->response = "No query found. new query can safely be inserted into the database";
             } else {
-                throw new DatabaseException("Unable to execute statement selectCustomerQuery with timestamp: " . $timestamp . ", customer ID: " . $customerID . ", encryption ID: " . $encryptID);
-            } 
+                $convertedResponse->response = "Found already present query. Query needs to be overwritten.";
+                $convertedResponse->overwriteQuery = true;
+            }
 
         } catch(Exception $e) {
             // rethrow so api can handle catching.
-            throw $e;
-        } finally {
-            if ($stmt) $stmt->close();
-        }
+            throw new DatabaseException("Unable to execute prepareSelectCustomerQuery with timestamp: " . $timestamp . ", customer ID: " . $customerID . ", encryption ID: " . $encryptID . ": " . $e->getMessage(), 0, $e);
+        } 
         return $convertedResponse;
     }
 
@@ -309,34 +297,27 @@ class DatabaseStatementExecutor {
         $stmt = $this->statementPreparer->prepareSelectCustomerQuery($timestamp, $customerID, $encryptID);
 
         try {
-            if ($stmt->execute()) {
-                $convertedResponse->response = "Successfully selected customer query for customer ID: " . $customerID . " and encryption ID: " . $encryptID;
+            $row = $stmt->fetchAssociative();
 
-                $stmtResult = $stmt->get_result();
-                $row = $stmtResult->fetch_assoc();
-
-                // check if the query already exists in db
-                if ($row) {
-                    $cookieAccepted = $row["Accepted"];
-                    $queryLocked = $row["Locked"];
-                    if ($cookieAccepted === 1) {
-                        $convertedResponse->cookieAccepted = true;
-                    }
-                    if ($queryLocked === 1) {
-                        $convertedResponse->queryLocked = true;
-                    }
-                }
-            
+            if ($row === false) {
+                $convertedResponse->response = "No query found for customer ID: {$customerID} and encryption ID: {$encryptID}";
             } else {
-                throw new DatabaseException("Unable to execute statement selectCustomerQuery with customer ID: " . $customerID . ", encryption ID: " . $encryptID);
-            } 
+                $convertedResponse->response = "Successfully selected customer query for customer ID: {$customerID} and encryption ID: {$encryptID}";
+
+                if ((int)$row['Accepted'] === 1) {
+                    $convertedResponse->cookieAccepted = true;
+                }
+
+                if ((int)$row['Locked'] === 1) {
+                    $convertedResponse->queryLocked = true;
+                }
+            }
+            
 
         } catch(Exception $e) {
             //rethrow so api can handle catching
-            throw $e;
-        } finally {
-            if ($stmt) $stmt->close();
-        }
+            throw new DatabaseException("Unable to execute prepareSelectCustomerQuery with timestamp: " . $timestamp . ", customer ID: " . $customerID . ", encryption ID: " . $encryptID . ": " . $e->getMessage(), 0, $e);
+        } 
         return $convertedResponse;
     }
 
@@ -366,16 +347,10 @@ class DatabaseStatementExecutor {
         $response = "";
         $stmt = $this->statementPreparer->prepareInsertCustomerKey($key, $customerID);
         try {
-            if ($stmt->execute()) {
-                $response = "Successfully inserted customer key";
-            } else {
-                throw new DatabaseException("Unable to execute query prepareInsertCustomerKey with customerID: " . $customerID);
-            }
+            $stmt->executeStatement();
 
         } catch (Exception $e) {
-            throw $e;
-        } finally {
-            if ($stmt) $stmt->close();
+            throw new DatabaseException("Unable to execute prepareInsertCustomerKey query with key = {$key} and customerID = {$customerID}: " . $e->getMessage(), 0, $e);
         }
 
         return $response;
@@ -391,18 +366,13 @@ class DatabaseStatementExecutor {
         $stmt = $this->statementPreparer->prepareInsertCustomerQuery($query, $timestamp, $acceptedOn, $cookieAccepted, $customerID, $encryptID, $queryLocked);
 
         try {
-            if ($stmt->execute()) {
-                $convertedResponse->response = "Successfully inserted new query for customer ID: " . $customerID . " and encryption ID: " . $encryptID;            
-            } else {
-                throw new DatabaseException("Unable to execute query insertCustomerQuery with customer ID: " . $customerID . ", encryption ID: " . $encryptID);
-            } 
-
+            $stmt->executeStatement();
+        
         } catch(Exception $e) {
            // rethrow so api can handle catching.
-           throw $e;
-        } finally {
-            if ($stmt) $stmt->close();
-        }
+           throw new DatabaseException("Unable to execute prepareInsertCustomerQuery with timestamp: " . $timestamp . ", customer ID: " . $customerID . ", encryption ID: " . $encryptID . ": " . $e->getMessage(), 0, $e);
+        } 
+
         return $convertedResponse;
     }
 
@@ -416,18 +386,12 @@ class DatabaseStatementExecutor {
         $stmt = $this->statementPreparer->prepareUpdateCustomerQuery($timestamp, $acceptedOn, $cookieAccepted, $customerID, $encryptID, $queryLocked);
 
         try {
-            if ($stmt->execute()) {
-                $convertedResponse->response = "Successfully updated query for timestamp: " . $timestamp . "and customer ID: " . $customerID . " and encryption ID: " . $encryptID;
-            
-            } else {
-                throw new DatabaseException("Unable to execute statement updateCustomerQuery with timestamp: " . $timestamp . ", customer ID: " . $customerID . ", encryption ID: " . $encryptID);
-            } 
+            $stmt->executeStatement();
+            $convertedResponse->response = "Successfully updated query for timestamp: " . $timestamp . "and customer ID: " . $customerID . " and encryption ID: " . $encryptID;
 
         } catch(Exception $e) {
             // rethrow so api can handle catching.
-            throw $e;
-        } finally {
-            if ($stmt) $stmt->close();
+            throw new DatabaseException("Unable to execute prepareUpdateCustomerQuery with timestamp: " . $timestamp . ", customer ID: " . $customerID . ", encryption ID: " . $encryptID . ": " . $e->getMessage(), 0, $e);
         }
         return $convertedResponse;
     }
