@@ -59,7 +59,7 @@ class Api {
         
         try {
             // Start transaction to secure all operations.
-            $this->db->getConnection()->begin_transaction();
+            $this->db->getConnection()->beginTransaction();
 
             // Get the customer with its ID and its encrypt ID.
             $selectStmtResponse = $this->sqlExecutor->selectCustomerInformationCustomerDB();
@@ -93,11 +93,7 @@ class Api {
         } catch(Exception $e) {
             $this->db->getConnection()->rollback();
             error_log($e->getMessage());
-        } finally {
-            if (isset($this->db)) {
-                $this->db->closeConnection();
-            }
-        }
+        } 
 
         return $respArr;
     }
@@ -115,7 +111,7 @@ class Api {
 
         try {
             // Start transaction to secure all operations.
-            $this->db->getConnection()->begin_transaction();
+            $this->db->getConnection()->beginTransaction();
 
              // Get the customer with its ID and its encrypt ID.
              $selectStmtResponse = $this->sqlExecutor->selectCustomerInformationCustomerDB();
@@ -144,11 +140,7 @@ class Api {
             error_log($dbe->getErrorMsg());
         } catch(Exception $e) {
             $respArr["response"] .= "Error while trying to use database: " . $e;
-        } finally {
-            if (isset($this->db)) {
-                $this->db->closeConnection();
-            }
-        }
+        } 
 
         return $respArr;
     }
@@ -208,10 +200,6 @@ class Api {
             $respArr["response"] = $idece->getErrorMsg();
         } catch(Exception $e) {
             $respArr["response"] .= "Error while trying to use database: " . $e->getMessage();
-        } finally {
-            if (isset($this->db)) {
-                $this->db->closeConnection();
-            }
         }
 
         return $respArr;
@@ -261,11 +249,7 @@ class Api {
             error_log($dbe->getErrorMsg());
         } catch(Exception $e) {
             $respArr["response"] .= "Error while trying to use database: " . $e;
-        } finally {
-            if (isset($this->db)) {
-                $this->db->closeConnection();
-            }
-        }
+        } 
 
         return $respArr;
     }
