@@ -52,11 +52,13 @@ class DatabaseManager {
             Name varchar(255) NOT NULL
         )";
 
-        $result = $this->dbc->getConnection()->query($sqlQuery);
-        if ($result === true) {
+        try {
+            $result = $this->dbc->getConnection()->executeStatement($sqlQuery);
+        
             $this->logger->info("Table pslzme_kunde created successfully");
-        } else {
-            throw new DatabaseException("Unable to create table pslzme_kunde");
+
+        } catch(Exception $e) {
+            throw new DatabaseException("Unable to create table pslzme_kunde: " . $e->getMessage(),0,$e);
         }
     }
 
@@ -69,11 +71,13 @@ class DatabaseManager {
             CONSTRAINT fk_kunden_id FOREIGN KEY (PslzmeKundenID) REFERENCES pslzme_kunde(KundenID) ON DELETE CASCADE
         )";
 
-        $result = $this->dbc->getConnection()->query($sqlQuery);
-        if ($result === true) {
+        try {
+            $result = $this->dbc->getConnection()->executeStatement($sqlQuery);
+        
             $this->logger->info("Table encrypt_info created successfully");
-        } else {
-            throw new DatabaseException("Unable to create table encrypt_info");
+
+        } catch (Exception $e) {
+            throw new DatabaseException("Unable to create table encrypt_info: " . $e->getMessage(),0,$e);
         }
     }
 
@@ -92,12 +96,14 @@ class DatabaseManager {
             CONSTRAINT fk_ql_kunden_id FOREIGN KEY (PslzmeKundenID) REFERENCES pslzme_kunde(KundenID),
             CONSTRAINT fk_ql_encryption_id FOREIGN KEY (EncryptInfoID) REFERENCES encrypt_info(EncryptionID)
         )";
+
+        try {
+            $result = $this->dbc->getConnection()->executeStatement($sqlQuery);
         
-        $result = $this->dbc->getConnection()->query($sqlQuery);
-        if ($result === true) {
             $this->logger->info("Table query_link created successfully");
-        } else {
-            throw new DatabaseException("Unable to create table query_link");
+
+        } catch (Exception $e) {
+            throw new DatabaseException("Unable to create table query_link: " . $e->getMessage(),0,$e);
         }
     }
 }
