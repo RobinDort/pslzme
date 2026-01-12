@@ -351,7 +351,7 @@ class DatabaseStatementExecutor {
 
         try {
             $stmt->executeStatement();
-            $convertedResponse->customerID = (int)$this->dbConn->lastInsertId();
+            $convertedResponse->customerID = (int)$this->dbConn->getConnection()->lastInsertId();
             $convertedResponse->response = "Successfully inserted new customer with name: " . $customer;
 
            
