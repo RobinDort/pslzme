@@ -18,12 +18,12 @@ class PslzmeCookiebar extends Module {
     private $privacyID;
 
 
-    public function __construct(ModuleModel $objModule) {
+    public function __construct(ModuleModel $objModule, InsertTagParser $insertTagParser) {
         parent::__construct($objModule);
+        $this->insertTagParser = $insertTagParser;
 
         $container = System::getContainer();
         $this->dbStmtExecutor = $this->dbStmtExecutor = $container->get(DatabasePslzmeConfigStmtExecutor::class);
-        $this->insertTagParser = $container->get(InsertTagParser::class);
 
         if (!$this->dbStmtExecutor) {
             \System::log("DB Executor is NULL in generate()", __METHOD__, TL_ERROR);
