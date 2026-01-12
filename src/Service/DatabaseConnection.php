@@ -52,12 +52,10 @@ class DatabaseConnection {
             $this->connection = DriverManager::getConnection($connectionParams);
             //$this->connection = new mysqli($servername, $username, $decryptedPW, $dbname);
 
-            $this->connection->connect();
-
-            // check if connection was established
-            if($this->connection->connect_error) {
-                throw new DatabaseException("Connection to database failed: " . $this->connection->connect_error);
-            } 
+            // // check if connection was established
+            // if($this->connection->connect_error) {
+            //     throw new DatabaseException("Connection to database failed: " . $this->connection->connect_error);
+            // } 
 
         } catch(InvalidDataException $ide) {
             error_log($ide->getErrorMsg());
