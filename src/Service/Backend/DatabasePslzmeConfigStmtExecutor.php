@@ -79,7 +79,8 @@ class DatabasePslzmeConfigStmtExecutor {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareUpdatePlszmeUrlLicense();
 
         try {
-            $affectedRows = $stmt->executeStatement([true]);
+            $stmt->bindValue(1, true, "boolean");
+            $affectedRows = $stmt->executeStatement();
 
             if ($affectedRows > 0) {
                 return "Sucessfully updated url registration license.";
@@ -122,8 +123,12 @@ class DatabasePslzmeConfigStmtExecutor {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareUpdatePslzmeDBConfig();
 
         try {
-            $affectedRows = $stmt->executeStatement([$databaseName, $databaseUser, $databasePW, $timestamp]);
-        
+            $stmt->bindValue(1, $databaseName, "string");
+            $stmt->bindValue(2, $databaseUser, "string");
+            $stmt->bindValue(3, $databasePW, "string");
+            $stmt->bindValue(4, (int)$timestamp, "integer");
+            $affectedRows = $stmt->executeStatement();
+
             if ($affectedRows > 0) {
                 return "Sucessfully updated pslzme database data.";
             } else {
@@ -140,7 +145,9 @@ class DatabasePslzmeConfigStmtExecutor {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareUpdateInternalPages();
 
         try {
-            $affectedRows = $stmt->executeStatement([$internalPages]);
+            $internalPagesJson = json_encode($internalPages);
+            $stmt->bindValue(1, $internalPages, "string");
+            $affectedRows = $stmt->executeStatement();
         
             if ($affectedRows > 0) {
                 return "Sucessfully updated pslzme internal pages data.";

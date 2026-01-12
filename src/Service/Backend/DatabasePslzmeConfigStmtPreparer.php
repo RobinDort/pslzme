@@ -27,7 +27,6 @@ class DatabasePslzmeConfigStmtPreparer {
         return $stmt;
     }
 
-
     public function prepareUpdatePlszmeUrlLicense() {
         $sqlQuery = "UPDATE tl_pslzme_config SET url_licensed = ?";
         $stmt = $this->connection->prepare($sqlQuery);

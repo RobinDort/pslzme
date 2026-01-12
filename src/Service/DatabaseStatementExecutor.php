@@ -211,8 +211,7 @@ class DatabaseStatementExecutor {
         $stmt = $this->statementPreparer->prepareSelectAllCustomer();
 
         try {
-            $result = $stmt->executeQuery();
-            $row = $result->fetchAssociative();
+            $row = $stmt->fetchAssociative();
 
             if ($row === false) {
                 $convertedResponse->response = "No Customer has been initialized yet";
