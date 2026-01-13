@@ -1,5 +1,5 @@
 <?php
-namespace RobinDort\PslzmeLinks\EventListener;
+namespace RobinDort\PslzmeLinks\EventListener\contao;
 
 use Contao\CoreBundle\DependencyInjection\Attribute\AsInsertTag;
 use Contao\CoreBundle\InsertTag\InsertTagResult;
