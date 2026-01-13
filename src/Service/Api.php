@@ -170,7 +170,8 @@ class Api {
             $ciphering = "AES-128-CTR";
             $iv_length = openssl_cipher_iv_length($ciphering);
             $options = 0;
-            $decryption_iv = $timestamp;
+            //$decryption_iv = $timestamp;
+            $decryption_iv = substr(hash('sha256', $timestamp, true), 0, 16);
             $decryptionKeyBin = hex2bin($encryptionKey);
 
             $decryptedFirstContact = openssl_decrypt($encryptedFirstContact, $ciphering, 
@@ -230,7 +231,8 @@ class Api {
             $ciphering = "AES-128-CTR";
             $iv_length = openssl_cipher_iv_length($ciphering);
             $options = 0;
-            $decryption_iv = $timestamp;
+            //$decryption_iv = $timestamp;
+            $decryption_iv = substr(hash('sha256', $timestamp, true), 0, 16);
             $decryptionKeyBin = hex2bin($encryptionKey);
 
             $decryptedLastName = openssl_decrypt($encryptedLastName, $ciphering, 
