@@ -5,6 +5,7 @@ use Contao\CoreBundle\Controller\FrontendModule\AbstractFrontendModuleController
 use Contao\CoreBundle\DependencyInjection\Attribute\AsFrontendModule;
 use Contao\CoreBundle\Twig\FragmentTemplate;
 use Contao\ModuleModel;
+use Contao\CoreBundle\InsertTag\InsertTagParser;
 use RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class PslzmeCookiebarController extends AbstractFrontendModuleController {
 
-    public function __construct(private readonly DatabasePslzmeConfigStmtExecutor $dbStmtExecutor) {}
+    public function __construct(private readonly DatabasePslzmeConfigStmtExecutor $dbStmtExecutor, private readonly InsertTagParser $insertTagParser) {}
 
     protected function getResponse(FragmentTemplate $template, ModuleModel $model, Request $request): Response {
         $imprintID = null;
@@ -22,20 +23,20 @@ class PslzmeCookiebarController extends AbstractFrontendModuleController {
         $dbConfigData = $this->dbStmtExecutor->selectCurrentDatabaseConfigurationData();
         $internalPageRefs = json_decode($dbConfigData['databaseIPR'] ?? '', true) ?? [];
 
-        // if (!empty($internalPageRefs['Imprint'])) {
-        //     $imprintUrl = $template->insertTags->replace(
-        //         '{{link_url::' . $internalPageRefs['Imprint'] . '}}'
-        //     );
-        // }
+        if (!empty($internalPageRefs['Imprint'])) {
+            $imprintUrl = $insertTagParser->replace(
+                '{{link_url::' . $internalPageRefs['Imprint'] . '}}'
+            );
+        }
 
-        // if (!empty($internalPageRefs['Privacy'])) {
-        //     $privacyUrl = $template->insertTags->replace(
-        //         '{{link_url::' . $internalPageRefs['Privacy'] . '}}'
-        //     );
-        // }
+        if (!empty($internalPageRefs['Privacy'])) {
+            $privacyUrl = $insertTagParser->replace(
+                '{{link_url::' . $internalPageRefs['Privacy'] . '}}'
+            );
+        }
 
-        // $template->imprintURL = $imprintUrl;
-        // $template->privacyURL = $privacyUrl;
+        $template->imprintURL = $imprintUrl;
+        $template->privacyURL = $privacyUrl;
 
         return $template->getResponse();
     }
