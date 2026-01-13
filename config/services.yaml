@@ -55,4 +55,4 @@ services:
 
   RobinDort\PslzmeLinks\InsertTag\PslzmeInsertTag:
     tags:
-      - { name: contao.insert_tag, alias: pslzme }
+      - { name: contao.insert_tag }
