@@ -22,20 +22,20 @@ class PslzmeCookiebarController extends AbstractFrontendModuleController {
         $dbConfigData = $this->dbStmtExecutor->selectCurrentDatabaseConfigurationData();
         $internalPageRefs = json_decode($dbConfigData['databaseIPR'] ?? '', true) ?? [];
 
-        if (!empty($internalPageRefs['Imprint'])) {
-            $imprintUrl = $template->insertTags->replace(
-                '{{link_url::' . $internalPageRefs['Imprint'] . '}}'
-            );
-        }
+        // if (!empty($internalPageRefs['Imprint'])) {
+        //     $imprintUrl = $template->insertTags->replace(
+        //         '{{link_url::' . $internalPageRefs['Imprint'] . '}}'
+        //     );
+        // }
 
-        if (!empty($internalPageRefs['Privacy'])) {
-            $privacyUrl = $template->insertTags->replace(
-                '{{link_url::' . $internalPageRefs['Privacy'] . '}}'
-            );
-        }
+        // if (!empty($internalPageRefs['Privacy'])) {
+        //     $privacyUrl = $template->insertTags->replace(
+        //         '{{link_url::' . $internalPageRefs['Privacy'] . '}}'
+        //     );
+        // }
 
-        $template->imprintURL = $imprintUrl;
-        $template->privacyURL = $privacyUrl;
+        // $template->imprintURL = $imprintUrl;
+        // $template->privacyURL = $privacyUrl;
 
         return $template->getResponse();
     }
