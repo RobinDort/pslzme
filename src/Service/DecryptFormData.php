@@ -171,8 +171,6 @@ class DecryptFormData {
                         if ($this->decryptedLinkCreator === false || !mb_check_encoding($this->decryptedLinkCreator, 'UTF-8')) {
                             throw new InvalidDecryptionException("Unable to decrypt link creator option");
                         }
-
-                        throw new \Exception("Debugging ->" . $this->decryptedLinkCreator);
                 
                         $this->decryptedTitle = openssl_decrypt ($this->encryptedTitle, $ciphering, 
                                     $decryptionKeyBin, $options, $decryption_iv);
