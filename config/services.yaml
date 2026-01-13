@@ -53,6 +53,6 @@ services:
     tags:
       - { name: "contao.frontend_module", type: "pslzme_query_decryption", category: "pslzme", template: "mod_query_decryption" }
 
-  RobinDort\PslzmeLinks\EventListener\contao\ReplaceInsertTags:
+  RobinDort\PslzmeLinks\EventListener\Contao\ReplaceInsertTags:
     tags:
       - { name: contao.insert_tag, alias: pslzme }
