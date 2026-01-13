@@ -1,5 +1,5 @@
 <?php
-namespace RobinDort\PslzmeLinks\EventListener\contao;
+namespace RobinDort\PslzmeLinks\EventListener\Contao;
 
 use RobinDort\PslzmeLinks\Model\PslzmeAcceptionPage;
 use RobinDort\PslzmeLinks\Model\PslzmeDeclinePage;
