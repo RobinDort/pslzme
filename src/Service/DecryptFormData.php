@@ -147,7 +147,6 @@ class DecryptFormData {
                 $selectCookieResp = $this->sqlExecutor->selectQueryAcceptanceCustomerDB($cookieQueryData);
                 $cookieAccepted = $selectCookieResp["cookieAccepted"];
 
-                throw new \Exception("Debugging ->" . $customerID . " " . $encryptID . " " . $encryptionKey . " " . $cookieAccepted);
             
                 $cookie = isset($_COOKIE["consent_cookie"]) ? $_COOKIE["consent_cookie"] : null;
 
@@ -156,6 +155,8 @@ class DecryptFormData {
                     
                     //only decrypt when the user has given permission and the cookie is set
                     if ($selectCookieResp["cookieAccepted"] === true && $cookieData["accepted"] === true) {
+
+                        throw new \Exception("Debugging ->" . $customerID . " " . $encryptID . " " . $encryptionKey . " " . $cookieAccepted);
                         
                         //decrypt the params
                         $ciphering = "AES-128-CTR";
