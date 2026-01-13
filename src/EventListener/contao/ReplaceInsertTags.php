@@ -16,6 +16,8 @@ class ReplaceInsertTags {
        // Get the first parameter after the tag name
         $usedTemplateTag = $insertTag->getParameters()->get(0);
 
+        throw new \Exception("Debugging ->" . $usedTemplateTag);
+
         try {
             $templatePath = System::getContainer()->getParameter('kernel.project_dir') 
                 . "/templates/pslzme/" 
