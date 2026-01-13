@@ -132,10 +132,11 @@ class DecryptFormData {
             try {
                 // Get the customer with its ID and its encrypt ID.
                 $selectStmtResponse = $this->sqlExecutor->selectCustomerInformationCustomerDB();
-                    throw new \Exception("Debugging");
                 $customerID = $selectStmtResponse["customerID"];
                 $encryptID = $selectStmtResponse["encryptID"];
                 $encryptionKey = $selectStmtResponse["encryptKey"];
+
+                throw new \Exception("Debugging ->" . $customerID . " " . $encryptID . " " . $encryptionKey);
             
                 //check if the customer has given permission to decrypt his data.
                 $cookieQueryData = array(
