@@ -135,8 +135,6 @@ class DecryptFormData {
                 $customerID = $selectStmtResponse["customerID"];
                 $encryptID = $selectStmtResponse["encryptID"];
                 $encryptionKey = $selectStmtResponse["encryptKey"];
-
-                throw new \Exception("Debugging ->" . $customerID . " " . $encryptID . " " . $encryptionKey);
             
                 //check if the customer has given permission to decrypt his data.
                 $cookieQueryData = array(
@@ -148,6 +146,8 @@ class DecryptFormData {
                 
                 $selectCookieResp = $this->sqlExecutor->selectQueryAcceptanceCustomerDB($cookieQueryData);
                 $cookieAccepted = $selectCookieResp["cookieAccepted"];
+
+                throw new \Exception("Debugging ->" . $customerID . " " . $encryptID . " " . $encryptionKey . " " . $cookieAccepted);
             
                 $cookie = isset($_COOKIE["consent_cookie"]) ? $_COOKIE["consent_cookie"] : null;
 
