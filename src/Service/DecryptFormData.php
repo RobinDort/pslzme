@@ -279,11 +279,7 @@ class DecryptFormData {
                 error_log($idece->getErrorMsg());
             } catch(Exception $e) {
                 error_log("Error while trying to use database: " . $e->getMessage());
-            } finally {
-                if (isset($this->db)) {
-                    $this->db->closeConnection();
-                }
-            }
+            } 
         }
     }
 
