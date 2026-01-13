@@ -1,16 +1,17 @@
 <?php
-namespace RobinDort\PslzmeLinks\EventListener\Contao;
+namespace RobinDort\PslzmeLinks\InsertTag;
 
 use Contao\CoreBundle\DependencyInjection\Attribute\AsInsertTag;
 use Contao\CoreBundle\InsertTag\InsertTagResult;
 use Contao\CoreBundle\InsertTag\OutputType;
 use Contao\CoreBundle\InsertTag\ResolvedInsertTag;
 use RobinDort\PslzmeLinks\Exceptions\InvalidFileException;
+use Contao\CoreBundle\InsertTag\Resolver\InsertTagResolverNestedResolvedInterface;
 use Contao\System;
 use Exception;
 
 #[AsInsertTag('pslzme')]
-class ReplaceInsertTags {
+class PslzmeInsertTag implements InsertTagResolverNestedResolvedInterface {
 
     public function __invoke(ResolvedInsertTag $insertTag): InsertTagResult {
        // Get the first parameter after the tag name
