@@ -52,3 +52,7 @@ services:
       $conn: "@RobinDort\\PslzmeLinks\\Service\\DatabaseConnection"
     tags:
       - { name: "contao.frontend_module", type: "pslzme_query_decryption", category: "pslzme", template: "mod_query_decryption" }
+
+  RobinDort\PslzmeLinks\Controller\FrontendModule\PslzmeCookieCallerController:
+    tags:
+      - { name: "contao.frontend_module", type: "pslzme_cookie_caller", category: "pslzme", template: "mod_pslzme_cookie_caller" }
