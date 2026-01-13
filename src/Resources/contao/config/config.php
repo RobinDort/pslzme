@@ -6,7 +6,7 @@ use RobinDort\PslzmeLinks\Module\PslzmeNavigation;
 use RobinDort\PslzmeLinks\Elements\PslzmeTextElement;
 use RobinDort\PslzmeLinks\Elements\PslzmeContentElement;
 use RobinDort\PslzmeLinks\Elements\PslzmeImageElement;
-use RobinDort\PslzmeLinks\EventListener\Contao\InitialSetup;
+use RobinDort\PslzmeLinks\EventListener\contao\InitialSetup;
 use RobinDort\PslzmeLinks\EventListener\InstallListener;
 use RobinDort\PslzmeLinks\Backend\PslzmeConfiguration;
 use Contao\System;
