@@ -156,7 +156,6 @@ class DecryptFormData {
                     //only decrypt when the user has given permission and the cookie is set
                     if ($selectCookieResp["cookieAccepted"] === true && $cookieData["accepted"] === true) {
 
-                        throw new \Exception("Debugging ->" . $customerID . " " . $encryptID . " " . $encryptionKey . " " . $cookieAccepted);
                         
                         //decrypt the params
                         $ciphering = "AES-128-CTR";
@@ -172,6 +171,8 @@ class DecryptFormData {
                         if ($this->decryptedLinkCreator === false || !mb_check_encoding($this->decryptedLinkCreator, 'UTF-8')) {
                             throw new InvalidDecryptionException("Unable to decrypt link creator option");
                         }
+
+                        throw new \Exception("Debugging ->" . $this->decryptedLinkCreator);
                 
                         $this->decryptedTitle = openssl_decrypt ($this->encryptedTitle, $ciphering, 
                                     $decryptionKeyBin, $options, $decryption_iv);
