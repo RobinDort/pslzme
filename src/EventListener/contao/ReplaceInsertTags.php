@@ -9,11 +9,14 @@ use RobinDort\PslzmeLinks\Exceptions\InvalidFileException;
 use Contao\System;
 use Exception;
 
+#[AsInsertTag('pslzme')]
 class ReplaceInsertTags {
 
     public function __invoke(ResolvedInsertTag $insertTag): InsertTagResult {
        // Get the first parameter after the tag name
         $usedTemplateTag = $insertTag->getParameters()->get(0);
+
+        throw new Exception("Debugging ->" . $usedTemplateTag);
 
         try {
             $templatePath = System::getContainer()->getParameter('kernel.project_dir') 
