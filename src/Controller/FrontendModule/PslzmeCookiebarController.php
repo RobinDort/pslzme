@@ -24,13 +24,13 @@ class PslzmeCookiebarController extends AbstractFrontendModuleController {
         $internalPageRefs = json_decode($dbConfigData['databaseIPR'] ?? '', true) ?? [];
 
         if (!empty($internalPageRefs['Imprint'])) {
-            $imprintUrl = $insertTagParser->replace(
+            $imprintUrl = $this->insertTagParser->replace(
                 '{{link_url::' . $internalPageRefs['Imprint'] . '}}'
             );
         }
 
         if (!empty($internalPageRefs['Privacy'])) {
-            $privacyUrl = $insertTagParser->replace(
+            $privacyUrl = $this->insertTagParser->replace(
                 '{{link_url::' . $internalPageRefs['Privacy'] . '}}'
             );
         }
