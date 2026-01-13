@@ -49,6 +49,6 @@ services:
 
   RobinDort\PslzmeLinks\Controller\FrontendModule\QueryDecryptionController:
     arguments:
-      $conn: RobinDort\PslzmeLinks\Service\DatabaseConnection;
+      $conn: "@RobinDort\\PslzmeLinks\\Service\\DatabaseConnection"
     tags:
       - { name: "contao.frontend_module", type: "pslzme_query_decryption", category: "pslzme", template: "mod_query_decryption" }
