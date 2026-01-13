@@ -162,7 +162,7 @@ class DecryptFormData {
                         $iv_length = openssl_cipher_iv_length($ciphering);
                         $options = 0;
                         // $decryption_iv = $this->timestamp;
-                        $decryption_iv = substr(hash('sha256', $timestamp, true), 0, 16);
+                        $decryption_iv = substr(hash('sha256', $this->timestamp, true), 0, 16);
                         $decryptionKeyBin = hex2bin($encryptionKey);
                 
                         $this->decryptedLinkCreator = openssl_decrypt ($this->encryptedLinkCreator, $ciphering, 
