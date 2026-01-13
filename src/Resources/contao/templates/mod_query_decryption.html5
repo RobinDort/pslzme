@@ -5,10 +5,11 @@
     use Contao\System;
 
     // Access the Contao service container to get the DatabaseConnection service
-    $container = System::getContainer();
+    //$container = System::getContainer();
 
     // Get the DatabaseConnection service
-    $dbConnection = $container->get(RobinDort\PslzmeLinks\Service\DatabaseConnection::class); 
+    //$dbConnection = $container->get(RobinDort\PslzmeLinks\Service\DatabaseConnection::class); 
+	$dbConnection = $this->connection;
 
     // Instantiate the DecryptFormData service with the injected DatabaseConnection
     $decryptFormData = new DecryptFormData($dbConnection);
