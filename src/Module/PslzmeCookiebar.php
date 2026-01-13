@@ -50,8 +50,8 @@ class PslzmeCookiebar extends Module {
     public function generate() {
         parent::generate();
 
-        $imprintUrl = $this->imprintID ? System::getContainer()->get('contao.insert_tag.parser')->replace('{{link_url::' . $this->imprintID . '}}') : null;
-        $privacyUrl = $this->privacyID ? System::getContainer()->get('contao.insert_tag.parser')->replace('{{link_url::' . $this->privacyID . '}}') : null;
+        // $imprintUrl = $this->imprintID ? System::getContainer()->get('contao.insert_tag.parser')->replace('{{link_url::' . $this->imprintID . '}}') : null;
+        // $privacyUrl = $this->privacyID ? System::getContainer()->get('contao.insert_tag.parser')->replace('{{link_url::' . $this->privacyID . '}}') : null;
 
         $this->Template->imprintURL = $imprintUrl;
         $this->Template->privacyURL = $privacyUrl;
