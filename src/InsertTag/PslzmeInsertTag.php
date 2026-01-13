@@ -1,7 +1,6 @@
 <?php
 namespace RobinDort\PslzmeLinks\InsertTag;
 
-use Contao\CoreBundle\DependencyInjection\Attribute\AsInsertTag;
 use Contao\CoreBundle\InsertTag\InsertTagResult;
 use Contao\CoreBundle\InsertTag\OutputType;
 use Contao\CoreBundle\InsertTag\ResolvedInsertTag;
@@ -10,7 +9,6 @@ use Contao\CoreBundle\InsertTag\Resolver\InsertTagResolverNestedResolvedInterfac
 use Contao\System;
 use Exception;
 
-#[AsInsertTag('pslzme')]
 class PslzmeInsertTag implements InsertTagResolverNestedResolvedInterface {
 
     public function __invoke(ResolvedInsertTag $insertTag): InsertTagResult {
