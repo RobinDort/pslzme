@@ -15,13 +15,13 @@ class PslzmeInsertTag implements InsertTagResolverNestedResolvedInterface {
 
     public function __invoke(ResolvedInsertTag $insertTag): InsertTagResult {
        // Get the first parameter after the tag name
+       throw new Exception("Debugging ->" . $usedTemplateTag);
         $usedTemplateTag = $insertTag->getParameters()->get(0);
 
         if (!$usedTemplateTag) {
             return new InsertTagResult('', OutputType::text);
         }
 
-        throw new Exception("Debugging ->" . $usedTemplateTag);
 
         try {
             $templatePath = System::getContainer()->getParameter('kernel.project_dir') 
