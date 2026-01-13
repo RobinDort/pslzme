@@ -46,3 +46,7 @@ services:
   RobinDort\PslzmeLinks\Controller\FrontendModule\PslzmeCookiebarController:
     tags:
       - { name: "contao.frontend_module", type: "pslzme_cookiebar", category: "pslzme", template: "mod_pslzme_cookiebar" }
+
+  RobinDort\PslzmeLinks\Controller\FrontendModule\QueryDecryptionController:
+    tags:
+      - { name: "contao.frontend_module", type: "pslzme_query_decryption", category: "pslzme", template: "mod_query_decryption" }
