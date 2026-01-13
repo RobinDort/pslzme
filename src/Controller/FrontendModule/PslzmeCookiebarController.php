@@ -9,12 +9,7 @@ use RobinDort\PslzmeLinks\Service\Backend\DatabasePslzmeConfigStmtExecutor;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-#[AsFrontendModule(
-    name: 'contao.frontend_module',
-    type: 'pslzme_cookiebar',
-    category: 'pslzme',
-    template: 'mod_pslzme_cookiebar'
-)]
+
 class PslzmeCookiebarController extends AbstractFrontendModuleController {
 
     public function __construct(private readonly DatabasePslzmeConfigStmtExecutor $dbStmtExecutor) {}

@@ -42,3 +42,7 @@ services:
   RobinDort\PslzmeLinks\Controller\Page\PslzmePageController:
     tags:
       - { name: "contao.page", type: "pslzme" }
+
+  RobinDort\PslzmeLinks\Controller\FrontendModule\PslzmeCookiebarController:
+    tags:
+      - { name: "contao.frontend_module", type: "pslzme_cookiebar", category: "pslzme", template: "mod_pslzme_cookiebar" }
