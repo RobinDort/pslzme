@@ -16,23 +16,29 @@ class ReplaceInsertTags {
        // Get the first parameter after the tag name
         $usedTemplateTag = $insertTag->getParameters()->get(0);
 
+        if (!$usedTemplateTag) {
+            return new InsertTagResult('', OutputType::text);
+        }
+
         throw new Exception("Debugging ->" . $usedTemplateTag);
 
         try {
             $templatePath = System::getContainer()->getParameter('kernel.project_dir') 
                 . "/templates/pslzme/" 
-                . $usedTemplateTag 
+                . basename($usedTemplateTag) 
                 . ".html5";
 
-            if (file_exists($templatePath)) {
-                ob_start();
-                include $templatePath; // Execute PHP inside the template
-                $templateContent = ob_get_clean();
-
-                return new InsertTagResult($templateContent, OutputType::text);
-            } else {
-                throw new InvalidFileException("File with path: " . $templatePath . " does not exist");
+            if (!is_file($templatePath)) {
+                return new InsertTagResult('', OutputType::text);
             }
+
+         
+            ob_start();
+            include $templatePath; // Execute PHP inside the template
+            $templateContent = ob_get_clean();
+
+            return new InsertTagResult($templateContent, OutputType::text);
+                   
         } catch (InvalidFileException $ife) {
             error_log($ife->getErrorMsg());
         } catch (Exception $e) {
