@@ -9,7 +9,6 @@ use RobinDort\PslzmeLinks\Exceptions\InvalidFileException;
 use Contao\System;
 use Exception;
 
-#[AsInsertTag('pslzme')]
 class ReplaceInsertTags {
 
     public function __invoke(ResolvedInsertTag $insertTag): InsertTagResult {
