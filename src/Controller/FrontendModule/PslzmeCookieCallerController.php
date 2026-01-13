@@ -7,7 +7,7 @@ use Contao\ModuleModel;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class PslzmeCookieCaller extends AbstractFrontendModuleController {
+class PslzmeCookieCallerController extends AbstractFrontendModuleController {
 
      protected function getResponse(FragmentTemplate $template, ModuleModel $model, Request $request): Response {
         return $template->getResponse();
