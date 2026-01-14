@@ -30,7 +30,7 @@ $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/pslzme.min.js|sta
 // $GLOBALS['FE_MOD']['pslzme']['query_decryption'] = QueryDecryption::class;
 //$GLOBALS['FE_MOD']['pslzme']['pslzme_cookiebar'] = PslzmeCookiebar::class;
 //$GLOBALS['FE_MOD']['pslzme']['pslzme_cookie_caller'] = PslzmeCookieCaller::class;
-$GLOBALS['FE_MOD']['pslzme']['pslzme_navigation'] = PslzmeNavigation::class;
+//$GLOBALS['FE_MOD']['pslzme']['pslzme_navigation'] = PslzmeNavigation::class;
 
 
 
