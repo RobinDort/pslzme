@@ -1,13 +1,35 @@
 <?php
 use Contao\FilesModel;
 
+$unit = $this->contentSpaceUnit ?: 'px';
+$style = '';
+
+if ($this->contentSpaceTop !== '') {
+    $style .= 'margin-top:' . $this->contentSpaceTop . $unit . ';';
+}
+if ($this->contentSpaceRight !== '') {
+    $style .= 'margin-right:' . $this->contentSpaceRight . $unit . ';';
+}
+if ($this->contentSpaceBottom !== '') {
+    $style .= 'margin-bottom:' . $this->contentSpaceBottom . $unit . ';';
+}
+if ($this->contentSpaceLeft !== '') {
+    $style .= 'margin-left:' . $this->contentSpaceLeft . $unit . ';';
+}
+
 $backgroundImage = '';
 if ($this->firstImage) {
     $file = FilesModel::findByUuid($this->firstImage);
     if ($file !== null) {
-        $html = $this->figure(
+         $html = $this->figure(
             $file->path,
-            $this->firstImageSize ?? null
+            $this->firstImageSize ?? null,
+            [
+                'metadata' => [
+                    'alt'   => $this->firstImageAlt ?: null,
+                    'title' => $this->firstImageTitle ?: null,
+                ],
+            ]
         );
         $backgroundImage = '<div class="pslzme-background-figure">' . $html . '</div>';
     }
@@ -17,10 +39,33 @@ $foregroundImage = '';
 if ($this->secondImage) {
     $file = FilesModel::findByUuid($this->secondImage);
     if ($file !== null) {
+       $linkHref = null;
+		
+		if ($this->secondImageLink) {
+            $page = PageModel::findById($this->secondImageLink);
+
+            if ($page !== null) {
+                $linkHref = $page->getFrontendUrl();
+            }
+        }
+        
+        $options = [
+            'metadata' => [
+                'alt'   => $this->secondImageAlt ?: null,
+                'title' => $this->secondImageTitle ?: null,
+            ],
+        ];
+        
+        if ($linkHref) {
+            $options['linkHref'] = $linkHref;
+        }
+        
         $html = $this->figure(
             $file->path,
-            $this->secondImageSize ?? null
+            $this->secondImageSize ?? null,
+            $options
         );
+        
         $foregroundImage = '<div class="pslzme-foreground-figure">' . $html . '</div>';
     }
 }
@@ -30,7 +75,7 @@ if ($this->secondImage) {
 
 <?php $this->block('content'); ?>
 
-<div class="pslzme-ov-image-container">
+<div class="pslzme-ov-image-container <?= $this->class ?>" <?= !empty($style) ? 'style="' . $style . '"' : '' ?>>
 
     <?php if ($backgroundImage): ?>
         <?= $backgroundImage ?>
