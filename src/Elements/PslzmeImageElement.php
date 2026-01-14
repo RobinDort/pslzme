@@ -2,25 +2,85 @@
 namespace RobinDort\PslzmeLinks\Elements;
 
 use Contao\ContentElement;
+use Contao\FilesModel;
+use Contao\PageModel;
 
 class PslzmeImageElement extends ContentElement {
     protected $strTemplate = 'ce_pslzme_image';
 
     protected function compile() {
-        $this->Template->contenSpaceUnit = $this->contentSpaceUnit;
-        $this->Template->contentSpaceTop = $this->contentSpaceTop;
-        $this->Template->contentSpaceRight = $this->contentSpaceRight;
-        $this->Template->contentSpaceBottom = $this->contentSpaceBottom;
-        $this->Template->contentSpaceLeft = $this->contentSpaceLeft;
-        $this->Template->firstImage = $this->firstImage;
-        $this->Template->firstImageSize = $this->firstImageSize;
-        $this->Template->firstImageAlt = $this->firstImageAlt;
-        $this->Template->firstImageTitle = $this->firstImageTitle;
-        $this->Template->secondImage = $this->secondImage;
-        $this->Template->secondImageSize = $this->secondImageSize;
-        $this->Template->secondImageLink = $this->secondImageLink;
-        $this->Template->secondImageAlt = $this->secondImageAlt;
-        $this->Template->secondImageTitle = $this->secondImageTitle;
+        $unit = $this->contentSpaceUnit ?: 'px';
+        $style = '';
+
+        if ($this->contentSpaceTop !== '') {
+            $style .= 'margin-top:' . $this->contentSpaceTop . $unit . ';';
+        }
+        if ($this->contentSpaceRight !== '') {
+            $style .= 'margin-right:' . $this->contentSpaceRight . $unit . ';';
+        }
+        if ($this->contentSpaceBottom !== '') {
+            $style .= 'margin-bottom:' . $this->contentSpaceBottom . $unit . ';';
+        }
+        if ($this->contentSpaceLeft !== '') {
+            $style .= 'margin-left:' . $this->contentSpaceLeft . $unit . ';';
+        }
+
+        $backgroundImage = '';
+        if ($this->firstImage) {
+            $file = FilesModel::findByUuid($this->firstImage);
+            if ($file !== null) {
+                $html = $this->figure(
+                    $file->path,
+                    $this->firstImageSize ?? null,
+                    [
+                        'metadata' => [
+                            'alt'   => $this->firstImageAlt ?: null,
+                            'title' => $this->firstImageTitle ?: null,
+                        ],
+                    ]
+                );
+                $backgroundImage = '<div class="pslzme-background-figure">' . $html . '</div>';
+            }
+        }
+
+        $foregroundImage = '';
+        if ($this->secondImage) {
+            $file = FilesModel::findByUuid($this->secondImage);
+            if ($file !== null) {
+            $linkHref = null;
+                
+                if ($this->secondImageLink) {
+                    $page = PageModel::findById($this->secondImageLink);
+
+                    if ($page !== null) {
+                        $linkHref = $page->getFrontendUrl();
+                    }
+                }
+                
+                $options = [
+                    'metadata' => [
+                        'alt'   => $this->secondImageAlt ?: null,
+                        'title' => $this->secondImageTitle ?: null,
+                    ],
+                ];
+                
+                if ($linkHref) {
+                    $options['linkHref'] = $linkHref;
+                }
+                
+                $html = $this->figure(
+                    $file->path,
+                    $this->secondImageSize ?? null,
+                    $options
+                );
+                
+                $foregroundImage = '<div class="pslzme-foreground-figure">' . $html . '</div>';
+            }
+        }
+
+        $this->Template->style = $style;
+        $this->Template->backgroundImage = $backgroundImage;
+        $this->Template->foregroundImage = $foregroundImage;
         $this->Template->personalizedText = $this->personalizedText;
         $this->Template->unpersonalizedText = $this->unpersonalizedText;
     }

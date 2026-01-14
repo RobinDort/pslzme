@@ -1,85 +1,11 @@
-<?php
-use Contao\FilesModel;
-use Contao\PageModel;
-
-$unit = $this->contentSpaceUnit ?: 'px';
-$style = '';
-
-if ($this->contentSpaceTop !== '') {
-    $style .= 'margin-top:' . $this->contentSpaceTop . $unit . ';';
-}
-if ($this->contentSpaceRight !== '') {
-    $style .= 'margin-right:' . $this->contentSpaceRight . $unit . ';';
-}
-if ($this->contentSpaceBottom !== '') {
-    $style .= 'margin-bottom:' . $this->contentSpaceBottom . $unit . ';';
-}
-if ($this->contentSpaceLeft !== '') {
-    $style .= 'margin-left:' . $this->contentSpaceLeft . $unit . ';';
-}
-
-$backgroundImage = '';
-if ($this->firstImage) {
-    $file = FilesModel::findByUuid($this->firstImage);
-    if ($file !== null) {
-         $html = $this->figure(
-            $file->path,
-            $this->firstImageSize ?? null,
-            [
-                'metadata' => [
-                    'alt'   => $this->firstImageAlt ?: null,
-                    'title' => $this->firstImageTitle ?: null,
-                ],
-            ]
-        );
-        $backgroundImage = '<div class="pslzme-background-figure">' . $html . '</div>';
-    }
-}
-
-$foregroundImage = '';
-if ($this->secondImage) {
-    $file = FilesModel::findByUuid($this->secondImage);
-    if ($file !== null) {
-       $linkHref = null;
-		
-		if ($this->secondImageLink) {
-            $page = PageModel::findById($this->secondImageLink);
-
-            if ($page !== null) {
-                $linkHref = $page->getFrontendUrl();
-            }
-        }
-        
-        $options = [
-            'metadata' => [
-                'alt'   => $this->secondImageAlt ?: null,
-                'title' => $this->secondImageTitle ?: null,
-            ],
-        ];
-        
-        if ($linkHref) {
-            $options['linkHref'] = $linkHref;
-        }
-        
-        $html = $this->figure(
-            $file->path,
-            $this->secondImageSize ?? null,
-            $options
-        );
-        
-        $foregroundImage = '<div class="pslzme-foreground-figure">' . $html . '</div>';
-    }
-}
-?>
-
 <?php $this->extend('block_searchable'); ?>
 
 <?php $this->block('content'); ?>
 
-<div class="pslzme-ov-image-container <?= $this->class ?>" <?= !empty($style) ? 'style="' . $style . '"' : '' ?>>
+<div class="pslzme-ov-image-container <?= $this->class ?>" <?= !empty($this->style) ? 'style="' . $this->style . '"' : '' ?>>
 
-    <?php if ($backgroundImage): ?>
-        <?= $backgroundImage ?>
+    <?php if ($this->backgroundImage): ?>
+        <?= $this->backgroundImage ?>
     <?php endif; ?>
 
     <?php if ($this->personalizedText && $GLOBALS['decryptedVars']['varsSet'] === true) :?>
@@ -100,8 +26,8 @@ if ($this->secondImage) {
 
     <?php endif; ?>
 
-    <?php if ($foregroundImage): ?>
-        <?= $foregroundImage ?>
+    <?php if ($this->foregroundImage): ?>
+        <?= $this->foregroundImage ?>
     <?php endif; ?>
 
 </div>
