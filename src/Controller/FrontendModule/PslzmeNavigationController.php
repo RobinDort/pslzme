@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 
-class PslzmeNavigationController extends AbstactFrontendModuleController {
+class PslzmeNavigationController extends AbstractFrontendModuleController {
 
     protected function getResponse(FragmentTemplate $template, ModuleModel $model, Request $request): Response {
         $model->navigationTpl = 'nav_pslzme';
