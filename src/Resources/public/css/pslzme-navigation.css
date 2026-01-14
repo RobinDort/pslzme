@@ -1,0 +1,75 @@
+.mod_pslzme_navigation ul.level_1 {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 20px;
+
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.mod_pslzme_navigation ul.level_1 > li {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+.mod_pslzme_navigation ul.level_2 {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+
+	flex-direction: column;
+	gap: 8px;
+
+	list-style: none;
+	margin: 0;
+	padding: 10px 0;
+
+	background: #fff;
+	min-width: 200px;
+	z-index: 1000;
+}
+
+.mod_pslzme_navigation ul.level_1 > li:hover > ul.level_2 {
+	display: flex;
+}
+
+.mod_pslzme_navigation ul.level_2 > li {
+	position: relative;
+	display: flex;
+}
+
+.mod_pslzme_navigation ul.level_3 {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 100%;
+
+	flex-direction: column;
+	gap: 8px;
+
+	list-style: none;
+	margin: 0;
+	padding: 10px 0;
+
+	background: #fff;
+	min-width: 200px;
+}
+
+.mod_pslzme_navigation ul.level_2 > li:hover > ul.level_3 {
+	display: flex;
+}
+
+.mod_pslzme_navigation a,
+.mod_pslzme_navigation strong {
+	white-space: nowrap;
+	text-decoration: none;
+}
+
+.mod_pslzme_navigation li:hover > a {
+	text-decoration: underline;
+}
