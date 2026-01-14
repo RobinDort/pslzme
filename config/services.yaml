@@ -56,7 +56,3 @@ services:
   RobinDort\PslzmeLinks\Controller\FrontendModule\PslzmeCookieCallerController:
     tags:
       - { name: "contao.frontend_module", type: "pslzme_cookie_caller", category: "pslzme", template: "mod_pslzme_cookie_caller" }
-
-  RobinDort\PslzmeLinks\Controller\FrontendModule\PslzmeNavigationController:
-    tags:
-      - { name: "contao.frontend_module", type: "pslzme_navigation", category: "pslzme", template: "mod_navigation" }
