@@ -4,11 +4,13 @@ namespace RobinDort\PslzmeLinks\Elements;
 use Contao\ContentElement;
 use Contao\FilesModel;
 use Contao\PageModel;
+use Contao\CoreBundle\Image\Studio\FigureFactory;
 
 class PslzmeImageElement extends ContentElement {
     protected $strTemplate = 'ce_pslzme_image';
 
     protected function compile() {
+        $factory = System::getContainer()->get(FigureFactory::class);
         $unit = $this->contentSpaceUnit ?: 'px';
         $style = '';
 
@@ -29,7 +31,7 @@ class PslzmeImageElement extends ContentElement {
         if ($this->firstImage) {
             $file = FilesModel::findByUuid($this->firstImage);
             if ($file !== null) {
-                $html = $this->figure(
+                $figure = $factory->create(
                     $file->path,
                     $this->firstImageSize ?? null,
                     [
@@ -39,7 +41,7 @@ class PslzmeImageElement extends ContentElement {
                         ],
                     ]
                 );
-                $backgroundImage = '<div class="pslzme-background-figure">' . $html . '</div>';
+                $backgroundImage = '<div class="pslzme-background-figure">' . $figure->getHtml() . '</div>';
             }
         }
 
@@ -47,7 +49,7 @@ class PslzmeImageElement extends ContentElement {
         if ($this->secondImage) {
             $file = FilesModel::findByUuid($this->secondImage);
             if ($file !== null) {
-            $linkHref = null;
+                $linkHref = null;
                 
                 if ($this->secondImageLink) {
                     $page = PageModel::findById($this->secondImageLink);
@@ -68,13 +70,13 @@ class PslzmeImageElement extends ContentElement {
                     $options['linkHref'] = $linkHref;
                 }
                 
-                $html = $this->figure(
+                $figure = $factory->create(
                     $file->path,
                     $this->secondImageSize ?? null,
                     $options
                 );
                 
-                $foregroundImage = '<div class="pslzme-foreground-figure">' . $html . '</div>';
+                $foregroundImage = '<div class="pslzme-foreground-figure">' . $figure->getHtml() . '</div>';
             }
         }
 
