@@ -192,13 +192,71 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['upPlayerPreload'] = [
  * Configuration for pslzme_image element
  */
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_image'] = '{type_legend},type;{text_legend};personalizedTextGroup,personalizedText;unpersonalizedTextGroup,unpersonalizedText;firstImageGroup,firstImage,firstImageSize;secondImageGroup,secondImage,secondImageSize;{expert_legend:hide},cssID';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_image'] = '{type_legend},type;{text_legend};
+personalizedTextGroup,personalizedText;
+unpersonalizedTextGroup,unpersonalizedText;contentSpaceGroup,contentSpaceTop,contentSpaceRight,contentSpaceBottom,contentSpaceLeft,contentSpaceUnit;
+firstImageGroup,firstImage,firstImageSize,firstImageAlt,firstImageTitle;
+secondImageGroup,secondImage,secondImageSize,secondImageLink,secondImageAlt,secondImageTitle;{expert_legend:hide},cssID';
+
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['contentSpaceGroup'] = [
+    'inputType' => 'group',
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['contentSpaceTop'] = [
+    'inputType' => 'text',
+    'eval' => [
+        'maxlength' => 64,
+        'tl_class' => 'w25',
+    ],
+    'sql' => "varchar(64) NOT NULL default ''",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['contentSpaceRight'] = [
+    'inputType' => 'text',
+    'eval' => [
+        'maxlength' => 64,
+        'tl_class' => 'w25',
+    ],
+    'sql' => "varchar(64) NOT NULL default ''",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['contentSpaceBottom'] = [
+    'inputType' => 'text',
+    'eval' => [
+        'maxlength' => 64,
+        'tl_class' => 'w25',
+    ],
+    'sql' => "varchar(64) NOT NULL default ''",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['contentSpaceLeft'] = [
+    'inputType' => 'text',
+    'eval' => [
+        'maxlength' => 64,
+        'tl_class' => 'w25',
+    ],
+    'sql' => "varchar(64) NOT NULL default ''",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['contentSpaceUnit'] = [
+    'inputType' => 'select',
+    'options' => ['px', 'em', 'rem', '%', 'vh', 'vw'],
+    'default' => 'px',
+    'eval' => [
+        'maxlength' => 4,
+        'tl_class' => 'w25',
+    ],
+    'sql' => "varchar(4) NOT NULL default 'px'",
+];
 
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['firstImageGroup'] = [
     'inputType' => 'group',
+    'eval' => [
+        'tl_class' => 'clr',
+    ],
 ];
-
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['firstImage'] = [
     'inputType' => 'fileTree',
@@ -223,9 +281,34 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['firstImageSize'] = [
     'sql'       => "varchar(64) NOT NULL default ''"
 ];
 
+$GLOBALS['TL_DCA']['tl_content']['fields']['firstImageAlt'] = [
+    'inputType' => 'group',
+    'inputType' => 'text',
+    'eval' => [
+        'mandatory' => false,
+        'maxlength' => 255,
+        'tl_class' => 'w50'
+    ],
+    'sql' => "varchar(255) NOT NULL default ''",
+];
+
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['firstImageTitle'] = [
+    'inputType' => 'text',
+    'eval' => [
+        'mandatory' => false,
+        'maxlength' => 255,
+        'tl_class' => 'w50'
+    ],
+    'sql' => "varchar(255) NOT NULL default ''",
+];
+
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['secondImageGroup'] = [
     'inputType' => 'group',
+    'eval' => [
+        'tl_class' => 'clr',
+    ]
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['secondImage'] = [
@@ -249,6 +332,34 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['secondImageSize'] = [
         return System::getContainer()->get('contao.image.sizes')->getAllOptions();
     },
     'sql'       => "varchar(64) NOT NULL default ''"
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['secondImageLink'] = [
+    'inputType' => 'pageTree',
+    'eval' => [
+        'mandatory' => false,
+        'fieldType' => 'radio',
+        'extensions' => '',
+    ],
+    'sql' => "blob NULL",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['secondImageAlt'] = [
+    'inputType' => 'text',
+    'eval' => [
+        'mandatory' => false,
+        'maxlength' => 255
+    ],
+    'sql' => "varchar(255) NOT NULL default ''",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['secondImageTitle'] = [
+    'inputType' => 'text',
+    'eval' => [
+        'mandatory' => false,
+        'maxlength' => 255
+    ],
+    'sql' => "varchar(255) NOT NULL default ''",
 ];
 
 
