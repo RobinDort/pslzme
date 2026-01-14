@@ -194,9 +194,11 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['upPlayerPreload'] = [
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_image'] = '{type_legend},type;{text_legend};
 personalizedTextGroup,personalizedText;
-unpersonalizedTextGroup,unpersonalizedText;contentSpaceGroup,contentSpaceTop,contentSpaceRight,contentSpaceBottom,contentSpaceLeft,contentSpaceUnit;
+unpersonalizedTextGroup,unpersonalizedText;
+contentSpaceGroup,contentSpaceTop,contentSpaceRight,contentSpaceBottom,contentSpaceLeft,contentSpaceUnit;
 firstImageGroup,firstImage,firstImageSize,firstImageAlt,firstImageTitle;
-secondImageGroup,secondImage,secondImageSize,secondImageLink,secondImageAlt,secondImageTitle;{expert_legend:hide},cssID';
+secondImageGroup,secondImage,secondImageSize,secondImageLink,secondImageAlt,secondImageTitle;
+{expert_legend:hide},cssID';
 
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['contentSpaceGroup'] = [
