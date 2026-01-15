@@ -28,62 +28,17 @@ class PslzmeImageElement extends ContentElement {
             $style .= 'margin-left:' . $this->contentSpaceLeft . $unit . ';';
         }
 
-        $backgroundImage = '';
-        if ($this->firstImage) {
-            $file = FilesModel::findByUuid($this->firstImage);
-            if ($file !== null) {
-                $figure = $factory->create(
-                    $file->path,
-                    $this->firstImageSize ?? null,
-                    [
-                        'metadata' => [
-                            'alt'   => $this->firstImageAlt ?: null,
-                            'title' => $this->firstImageTitle ?: null,
-                        ],
-                    ]
-                );
-                $backgroundImage = '<div class="pslzme-background-figure">' . $figure->getHtml() . '</div>';
-            }
-        }
-
-        $foregroundImage = '';
-        if ($this->secondImage) {
-            $file = FilesModel::findByUuid($this->secondImage);
-            if ($file !== null) {
-                $linkHref = null;
-                
-                if ($this->secondImageLink) {
-                    $page = PageModel::findById($this->secondImageLink);
-
-                    if ($page !== null) {
-                        $linkHref = $page->getFrontendUrl();
-                    }
-                }
-                
-                $options = [
-                    'metadata' => [
-                        'alt'   => $this->secondImageAlt ?: null,
-                        'title' => $this->secondImageTitle ?: null,
-                    ],
-                ];
-                
-                if ($linkHref) {
-                    $options['linkHref'] = $linkHref;
-                }
-                
-                $figure = $factory->create(
-                    $file->path,
-                    $this->secondImageSize ?? null,
-                    $options
-                );
-                
-                $foregroundImage = '<div class="pslzme-foreground-figure">' . $figure->getHtml() . '</div>';
-            }
-        }
 
         $this->Template->style = $style;
-        $this->Template->backgroundImage = $backgroundImage;
-        $this->Template->foregroundImage = $foregroundImage;
+        $this->Template->firstImage = $this->firstImage;
+        $this->Template->firstImageSize = $this->firstImageSize;
+        $this->Template->firstImageAlt = $this->firstImageAlt;
+        $this->Template->firstImageTitle = $this->firstImageTitle;
+        $this->Template->secondImage = $this->secondImage;
+        $this->Template->secondImageLink = $this->secondImageLink;
+        $this->Template->secondImageSize = $this->secondImageSize;
+        $this->Template->secondImageAlt = $this->secondImageAlt;
+        $this->Template->secondImageTitle = $this->secondImageTitle;
         $this->Template->personalizedText = $this->personalizedText;
         $this->Template->unpersonalizedText = $this->unpersonalizedText;
     }
