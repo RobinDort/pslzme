@@ -65,8 +65,8 @@ if ($this->secondImage) {
 
 <div class="pslzme-ov-image-container <?= $this->class ?>" <?= !empty($this->style) ? 'style="' . $this->style . '"' : '' ?>>
 
-    <?php if ($this->backgroundImage): ?>
-        <?= $this->backgroundImage ?>
+    <?php if ($backgroundImage): ?>
+        <?= $backgroundImage ?>
     <?php endif; ?>
 
     <?php if ($this->personalizedText && $GLOBALS['decryptedVars']['varsSet'] === true) :?>
@@ -87,8 +87,8 @@ if ($this->secondImage) {
 
     <?php endif; ?>
 
-    <?php if ($this->foregroundImage): ?>
-        <?= $this->foregroundImage ?>
+    <?php if ($foregroundImage): ?>
+        <?= $foregroundImage ?>
     <?php endif; ?>
 
 </div>
