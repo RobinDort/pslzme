@@ -4,14 +4,12 @@ namespace RobinDort\PslzmeLinks\Elements;
 use Contao\ContentElement;
 use Contao\FilesModel;
 use Contao\PageModel;
-use Contao\CoreBundle\Image\Studio\FigureFactory;
 use Contao\System;
 
 class PslzmeImageElement extends ContentElement {
     protected $strTemplate = 'ce_pslzme_image';
 
     protected function compile() {
-        $factory = System::getContainer()->get(FigureFactory::class);
         $unit = $this->contentSpaceUnit ?: 'px';
         $style = '';
 
