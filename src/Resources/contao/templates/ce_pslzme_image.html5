@@ -1,4 +1,7 @@
 <?php
+use Contao\FilesModel;
+use Contao\PageModel;
+
 $backgroundImage = '';
 if ($this->firstImage) {
     $file = FilesModel::findByUuid($this->firstImage);
