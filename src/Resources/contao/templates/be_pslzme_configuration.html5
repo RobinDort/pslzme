@@ -154,17 +154,17 @@
         const domainName = window.location.origin;
 
         const requestObj = {
-            "domain": domainName
+            "domain": domainName,
+            "cms": "Contao"
         };
 
         const requestObject = {
            data: JSON.stringify(requestObj),
-           request: "domain-registration"
         };
 
         return new Request.JSON({
-            url: "https://www.pslzme.com/files/pslzme/php/domain-registration-handler.php",
-            method: "post",
+            url: "https://www.pslzme.com/api/v1/domains",
+            method: "POST",
             data: requestObject,
             onSuccess: function (response) {
                 const customer = response.customer;
