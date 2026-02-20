@@ -4,11 +4,11 @@ const queryParamsSet = () => {
 
 	if (!checkParams(queryParams)) return { isSet: false, params: {} };
 
-	if (queryParams.has("plszme-follow")) {
+	if (queryParams.has("pslzme-follow")) {
 		return {
 			isSet: true,
 			params: {
-				acceptionParam: queryParams.get("plszme-follow"),
+				acceptionParam: queryParams.get("pslzme-follow"),
 				linkCreator: queryParams.get("q1") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q1")),
 				title: queryParams.get("q2") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q2")),
 				firstname: queryParams.get("q3") === null ? encodeURIComponent("") : encodeURIComponent(queryParams.get("q3")),

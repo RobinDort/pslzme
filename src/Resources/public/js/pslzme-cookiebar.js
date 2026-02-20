@@ -47,6 +47,7 @@ function compareUpdatedQueryTimestampWithCookie(alreadySetConsentCookie, queryPa
 
 function switchCloseBtnVisibility(cookieIsSet) {
 	const closeBtn = document.querySelector(".pslzme-cookiebar-close-btn");
+	if (!closeBtn) return;
 
 	if (cookieIsSet === false) {
 		// hide the close btn
@@ -82,5 +83,5 @@ function saveConsentCookie(cookieAccepted) {
 	expirationDate.setTime(expirationDate.getTime() + 1 * 60 * 60 * 1000); // One hour from now
 	var expires = "expires=" + expirationDate.toUTCString();
 
-	document.cookie = "consent_cookie=" + JSON.stringify(cookieValue) + ";" + expires + ";secure;sameSite=Lax";
+	document.cookie = "consent_cookie=" + JSON.stringify(cookieValue) + ";" + expires + ";path=/;secure;sameSite=Lax";
 }

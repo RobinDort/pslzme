@@ -2,16 +2,31 @@ function pslzmeRedirection() {
 	const noPslzmeCookiebannerPages = ["pslzme-decline.html"];
 	const currentLocation = window.location.pathname;
 
-	// DONT redirect when the user visits one of the pages included inside the noPslzmeCookiebannerPages array.
-	if (!noPslzmeCookiebannerPages.includes(currentLocation)) {
-		const userCameFromPslzmeLink = queryParamsSet();
+	// DONT redirect when the user visits one of the pages included inside the noPslzmeCookiebannerPages array or the cookie is already set.
+	if (noPslzmeCookiebannerPages.includes(currentLocation)) return;
+	const userCameFromPslzmeLink = queryParamsSet();
 
-		if (userCameFromPslzmeLink.isSet === true) {
-			const actualTargetPage = window.location.pathname.replace("/", "");
+	if (userCameFromPslzmeLink.isSet === true) {
+		const actualTargetPage = window.location.pathname.replace("/", "");
+		const consentCookie = getCookie("consent_cookie");
+		if (!consentCookie) {
+			checkQueryIsLocked(userCameFromPslzmeLink).then((queryLocked) => {
+				if (queryLocked === 1 || queryLocked === "1") {
+					handleRedirectionToLockedPage(actualTargetPage);
+					return;
+				} else {
+					// query is not locked. Proceed to redirect to the acception page when the params are set, the cookie is still undefined and the acception page itself is not opened at the moment.
+					handleRedirectionToAcceptionPage(userCameFromPslzmeLink, actualTargetPage);
+					return;
+				}
+			});
+		} else {
+			const decodedCookie = JSON.parse(consentCookie);
+			if (decodedCookie.accepted === true && decodedCookie.queryTime === userCameFromPslzmeLink.params.timestamp) return;
 
 			//before anything else, check if the query is locked because someone has inserted the name wrongly for three times.
 			checkQueryIsLocked(userCameFromPslzmeLink).then((queryLocked) => {
-				if (queryLocked) {
+				if (queryLocked === 1 || queryLocked === "1") {
 					handleRedirectionToLockedPage(actualTargetPage);
 					return;
 				} else {
@@ -25,33 +40,27 @@ function pslzmeRedirection() {
 }
 
 function handleRedirectionToLockedPage(actualTargetPage) {
-	// the query is locked -> redirect to the QueryDeclined page.
+	// the query is locked -> redirect to the pslzme-decline page.
 	window.location.href = window.location.origin + "/pslzme-decline.html?pslzme-follow=" + actualTargetPage;
 	return;
 }
 
 function handleRedirectionToAcceptionPage(userCameFromPslzmeLink, actualTargetPage) {
-	const consentCookie = getCookie("consent_cookie");
-	let consentCookieAccepted = true;
-
-	if (consentCookie === undefined) {
-		consentCookieAccepted = false;
+	if (window.location.search.includes("pslzme-follow")) {
+		return; // already redirected once, stop
 	}
 
-	// This checks if the user used another/new pslzme link instead of the one he may have accepted before
-	if (consentCookie !== undefined) {
-		const decodedCookie = JSON.parse(consentCookie);
-		if (decodedCookie.queryTime !== userCameFromPslzmeLink.params.timestamp) {
-			consentCookieAccepted = false;
-		}
-	}
+	// Build redirect URL to accept page
+	const queryParamsString = window.location.search.substring(1); // preserve any extra params
+	const acceptRedirectUrl =
+		window.location.origin +
+		"/pslzme-accept.html" +
+		"?pslzme-follow=" +
+		encodeURIComponent(actualTargetPage) +
+		(queryParamsString ? "&" + queryParamsString : "");
 
-	if (userCameFromPslzmeLink.isSet === true && consentCookieAccepted === false && !userCameFromPslzmeLink.params.hasOwnProperty("acceptionParam")) {
-		const queryParamsString = window.location.search.substring(1);
-		const plszmeAcceptionParam = "?plszme-follow=" + actualTargetPage + "&" + queryParamsString;
-
-		window.location.href = window.location.origin + "/pslzme-accept.html" + plszmeAcceptionParam;
-	}
+	// Redirect to accept page
+	window.location.href = acceptRedirectUrl;
 }
 
 function checkQueryIsLocked(urlParams) {
