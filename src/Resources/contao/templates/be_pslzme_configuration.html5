@@ -169,7 +169,7 @@
                 headers: {
                     "Content-Type": "application/json" // ensures JSON is sent
                 },
-                body: requestObject
+                body: JSON.stringify(requestData)
             });
 
             if (!firstResponse.ok) {
