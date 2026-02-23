@@ -77,7 +77,7 @@ class PslzmeContentElement extends ContentElement {
         if ($this->unpersonalizedVideo) {
             $unpersonalizedVideo = FilesModel::findByUuid($this->unpersonalizedVideo);
 
-            $upPlayerOptions = deserialize($this->upPlayerOptions, true);
+            $upPlayerOptions = StringUtil::deserialize($this->upPlayerOptions, true);
             $upVideoDataOptions = [];
 
              // Add only selected options
@@ -93,7 +93,7 @@ class PslzmeContentElement extends ContentElement {
 
             $upVideoData = [
                 "src"           => $unpersonalizedVideo ? $unpersonalizedVideo->path : "",
-                "size"          => deserialize($this->upPlayerSize),
+                "size"          => StringUtil::deserialize($this->upPlayerSize),
                 "preload"       => $this->upPlayerPreload,
                 "caption"       => $this->upPlayerCaption,
             ];
@@ -106,7 +106,7 @@ class PslzmeContentElement extends ContentElement {
         if ($this->personalizedVideo) {
             $personalizedVideo = FilesModel::findByUuid($this->personalizedVideo);
 
-            $playerOptions = deserialize($this->playerOptions, true);
+            $playerOptions = StringUtil::deserialize($this->playerOptions, true);
             
             $pVideoDataOptions = [];
             
@@ -123,7 +123,7 @@ class PslzmeContentElement extends ContentElement {
 
             $pVideoData = [
                 "src"           => $personalizedVideo ? $personalizedVideo->path : "",
-                "size"          => deserialize($this->playerSize),
+                "size"          => StringUtil::deserialize($this->playerSize),
                 "preload"       => $this->playerPreload,
                 "caption"       => $this->playerCaption,
             ];
