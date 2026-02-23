@@ -183,34 +183,29 @@
             const customer = firstData.customer;
             const key = firstData.key;
 
-            console.log(customer);
-            console.log(key);
-
             if (!customer || !key) {
                 alert("No pslzme customer registered for this URL. Please visit www.pslzme.com to register.");
                 return;
             }
 
-            // const secondRequestData = {
-            //     customer,
-            //     key
-            // };
+            const secondRequestData = {
+                customer,
+                key
+            };
 
-            // // Second request to register customer locally
-            // const secondResponse = await fetch("/registerCustomer", {
-            //     method: "POST",
-            //     headers: {
-            //         "Content-Type": "application/json"
-            //     },
-            //     body: JSON.stringify(secondRequestData)
-            // });
+            // Second request to register customer locally
+            const secondResponse = await fetch("/registerCustomer", {
+                method: "POST",
+                body: JSON.stringify(secondRequestData)
+            });
 
-            // if (!secondResponse.ok) {
-            //     const text = await secondResponse.text();
-            //     throw new Error("Second request failed: " + text);
-            // }
+            if (!secondResponse.ok) {
+                const text = await secondResponse.text();
+                throw new Error("Second request failed: " + text);
+            }
 
-            // const secondData = await secondResponse.json();
+            const secondData = await secondResponse.json();
+            console.log(secondData);
             // alert("Customer registration successful!");
             // setTimeout(() => window.location.reload(), 1000);
 
