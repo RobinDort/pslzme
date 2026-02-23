@@ -153,14 +153,14 @@
     function registerDomain() {
         const domainName = window.location.origin;
 
-        const requestObj = {
-            "domain": domainName,
-            "cms": "Contao"
-        };
+       const request = {
+			domain: domainName,
+			cms: "Contao",
+		};
 
-        const requestObject = {
-           data: JSON.stringify(requestObj),
-        };
+		const requestObject = {
+			data: JSON.stringify(request),
+		};
 
         return new Request.JSON({
             url: "https://www.pslzme.com/api/v1/domains",
