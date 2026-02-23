@@ -150,7 +150,7 @@
 
 <script>
 
-    function registerDomain() {
+    async function registerDomain() {
         const domainName = window.location.origin;
 
         const requestData = {
@@ -159,48 +159,61 @@
         };
 
         const requestObject = {
-			data: JSON.stringify(requestData),
+			data: JSON.stringify(request),
 		};
 
-        // First request to your server API
-        $.ajax({
-            url: "https://www.pslzme.com/api/v1/domains",
-            method: "POST",
-            data: requestObject,
-            success: function(response) {
-                const customer = response.customer;
-                const key = response.key;
+        try {
+            // First request to your server API
+            const firstResponse = await fetch("https://www.pslzme.com/api/v1/domains", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json" // ensures JSON is sent
+                },
+                body: requestObject
+            });
 
-                if (!customer || !key) {
-                    alert("No pslzme customer registered for this URL. Please visit www.pslzme.com to register.");
-                    return;
-                }
-
-                const secondRequestData = {
-                    customer: customer,
-                    key: key
-                };
-
-                // Second request to register customer locally
-                $.ajax({
-                    url: "/registerCustomer",
-                    method: "POST",
-                    data: JSON.stringify(secondRequestData),
-                    success: function(response) {
-                        alert("Customer registration successful!");
-                        setTimeout(function() {
-                            window.location.reload();
-                        }, 1000);
-                    },
-                    error: function(xhr) {
-                        console.error("Second request failed:", xhr.responseText);
-                    }
-                });
-            },
-            error: function(xhr) {
-                console.error("First request failed:", xhr.responseText);
+            if (!firstResponse.ok) {
+                const text = await firstResponse.text();
+                throw new Error("First request failed: " + text);
             }
-        });
+
+            const firstData = await firstResponse.json();
+            console.log("First request response:", firstData);
+
+            const customer = firstData.customer;
+            const key = firstData.key;
+
+            if (!customer || !key) {
+                alert("No pslzme customer registered for this URL. Please visit www.pslzme.com to register.");
+                return;
+            }
+
+            const secondRequestData = {
+                customer,
+                key
+            };
+
+            // Second request to register customer locally
+            const secondResponse = await fetch("/registerCustomer", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(secondRequestData)
+            });
+
+            if (!secondResponse.ok) {
+                const text = await secondResponse.text();
+                throw new Error("Second request failed: " + text);
+            }
+
+            const secondData = await secondResponse.json();
+            alert("Customer registration successful!");
+            setTimeout(() => window.location.reload(), 1000);
+
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     function savePslzmeDBConfiguration(configuration) {
