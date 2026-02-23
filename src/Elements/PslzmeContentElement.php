@@ -4,6 +4,7 @@ namespace RobinDort\PslzmeLinks\Elements;
 use Contao\ContentElement;
 use Contao\FilesModel;
 use Contao\PageModel;
+use Contao\StringUtil;
 use Exception;
 
 /**
