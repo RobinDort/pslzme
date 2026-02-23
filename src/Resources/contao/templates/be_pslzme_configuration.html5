@@ -167,6 +167,8 @@
             method: "POST",
             data: requestObject,
             onSuccess: function (response) {
+                console.log(response);
+                return;
                 const customer = response.customer;
                 const key = response.key;
 
