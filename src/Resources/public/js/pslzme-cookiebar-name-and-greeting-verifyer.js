@@ -68,9 +68,9 @@ async function compareName(queryData) {
 	}
 
 	const requestData = {
-		firstInput: firstInput.val().toLowerCase(),
-		secondInput: secondInput.val().toLowerCase(),
-		thirdInput: thirdInput.val().toLowerCase(),
+		firstInput: firstInput.value.toLowerCase(),
+		secondInput: secondInput.value.toLowerCase(),
+		thirdInput: thirdInput.value.toLowerCase(),
 		encryptedLastName: queryData.lastname,
 		timestamp: queryData.timestamp,
 	};
