@@ -165,6 +165,9 @@
         return new Request.JSON({
             url: "https://www.pslzme.com/api/v1/domains",
             method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
             data: requestObject,
             onSuccess: function (response) {
                 console.log(response);
