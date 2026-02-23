@@ -150,8 +150,8 @@ function handleEnterEventListener(event) {
 }
 
 function switchInputClasses(element, oldClass, newClass) {
-	element.removeClass(oldClass);
-	element.addClass(newClass);
+	element.classList.remove(oldClass);
+	element.classList.add(newClass);
 }
 
 function checkEmptyInput(inputVal) {
