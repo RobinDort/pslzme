@@ -153,64 +153,54 @@
     function registerDomain() {
         const domainName = window.location.origin;
 
-       const request = {
-			domain: domainName,
-			cms: "Contao",
-		};
+        const requestData = {
+            domain: domainName,
+            cms: "Contao",
+        };
 
-		const requestObject = {
+        const requestObject = {
 			data: JSON.stringify(request),
 		};
 
-        return new Request.JSON({
+        // First request to your server API
+        $.ajax({
             url: "https://www.pslzme.com/api/v1/domains",
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
             data: requestObject,
-            onSuccess: function (response) {
-                console.log(response);
-                // const customer = response.customer;
-                // const key = response.key;
+            success: function(response) {
+                const customer = response.customer;
+                const key = response.key;
 
-                // if (customer === "" || key === "") {
-                //     alert("No pslzme customer registered for this URL. Please visit www.pslzme.com to register.");
-                //     return;
-                // }
+                if (!customer || !key) {
+                    alert("No pslzme customer registered for this URL. Please visit www.pslzme.com to register.");
+                    return;
+                }
 
-                // const secondRequestData = {
-                //     customer,
-                //     key
-                // };
+                const secondRequestData = {
+                    customer: customer,
+                    key: key
+                };
 
-                // const secondRequestObj = {
-                //     data: JSON.stringify(secondRequestData),
-                // };
-
-                // return new Request.JSON({
-                //     url: "/registerCustomer",
-                //     method: "post",
-                //     data: secondRequestObj,
-                //     onSuccess: function(response) {
-                //         alert(response);
-                //     setTimeout(function() {
-                //         window.location.reload();
-                //     }, 1000);
-                //     },
-                //     onFailure: function(xhr) {
-                //         console.log("Action failed: " + secondRequestObj.request);
-                //         console.log("XHR Response:", xhr.responseText);
-                //     }
-                // }).send();
-                
+                // Second request to register customer locally
+                $.ajax({
+                    url: "/registerCustomer",
+                    method: "POST",
+                    data: JSON.stringify(secondRequestData),
+                    success: function(response) {
+                        alert("Customer registration successful!");
+                        setTimeout(function() {
+                            window.location.reload();
+                        }, 1000);
+                    },
+                    error: function(xhr) {
+                        console.error("Second request failed:", xhr.responseText);
+                    }
+                });
             },
-            onFailure: function (xhr) { 
-                console.log("Action failed: " + requestObject.request);
-                console.log("XHR Response:", xhr.responseText);
+            error: function(xhr) {
+                console.error("First request failed:", xhr.responseText);
             }
-        }).send();
-
+        });
     }
 
     function savePslzmeDBConfiguration(configuration) {
