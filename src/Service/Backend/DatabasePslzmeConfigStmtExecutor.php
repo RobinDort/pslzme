@@ -76,7 +76,7 @@ class DatabasePslzmeConfigStmtExecutor {
 
 
     public function updateUrlLicenseRegistration() {
-        $stmt = $this->dbPslzmeConfigStmtPreparer->prepareUpdatePlszmeUrlLicense();
+        $stmt = $this->dbPslzmeConfigStmtPreparer->prepareUpdatePslzmeUrlLicense();
 
         try {
             $stmt->bindValue(1, true, "boolean");
