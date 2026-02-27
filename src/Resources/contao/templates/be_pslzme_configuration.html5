@@ -178,10 +178,9 @@
             }
 
             const firstData = await firstResponse.json();
-            console.log("First request response:", firstData);
-
             const customer = firstData.customer;
             const key = firstData.key;
+            const apiKey = firstData.apiKey;
 
             if (!customer || !key) {
                 alert("No pslzme customer registered for this URL. Please visit www.pslzme.com to register.");
@@ -190,7 +189,8 @@
 
             const secondRequestData = {
                 customer,
-                key
+                key,
+                apiKey
             };
 
             const secondRequestObj = {

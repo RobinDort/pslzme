@@ -38,6 +38,11 @@ $GLOBALS['TL_DCA']['tl_pslzme_config'] = [
             ],
             'sql'       => "TEXT NULL"
         ],
+        'pslzme_api_key' => [
+            'inputType' => "text",
+            'eval'      => ['maxLength' => 255],
+            'sql'       => "VARCHAR(255) NULL"
+        ],
         'createdAt' => [
             'inputType' => 'number',
             'eval'      => ['mandatory' => true, 'rgxp' => 'digit'],

@@ -45,7 +45,8 @@ class DatabaseManager {
     private function createPslzmeCustomerTable() {
         $sqlQuery = "CREATE TABLE IF NOT EXISTS pslzme_kunde (
             KundenID BIGINT AUTO_INCREMENT PRIMARY KEY,
-            Name varchar(255) NOT NULL
+            Name varchar(255) NOT NULL,
+            ApiKey varchar(255) NULL
         )";
 
         try {

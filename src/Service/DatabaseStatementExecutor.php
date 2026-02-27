@@ -94,13 +94,15 @@ class DatabaseStatementExecutor {
 
     public function insertCustomer($data) {
         $customer = $data["customer"];
-        if ($customer === null) {
-            throw new InvalidDataException("Unable to extract customer out of data array");
+        $apiKey = $data["apiKey"];
+        if ($customer === null || $apiKey === null) {
+            throw new InvalidDataException("Unable to extract customer or apiKey out of data array");
         }
 
         $resp = array (
             "response" => "",
-            "customerID" => 0
+            "customerID" => 0,
+            "customerApiKey" => $apiKey
         );
 
         // check if customer already exists
@@ -109,7 +111,7 @@ class DatabaseStatementExecutor {
             $resp["response"] = "Customer has already been saved to the database";
             return $resp;
         }
-        $insertQueryResp = $this->insertCustomerQuery($customer);
+        $insertQueryResp = $this->insertCustomerQuery($customer, $apiKey);
         $resp["response"] = "Customer has been saved to the database";
         $resp["customerID"] = $insertQueryResp->customerID;
 
@@ -325,13 +327,14 @@ class DatabaseStatementExecutor {
     }
 
 
-    private function insertCustomerQuery($customer) {
+    private function insertCustomerQuery($customer, $apiKey) {
         $response = array(
             "response" => "",
-            "customerID" => null
+            "customerID" => null,
+            "customerApiKey" => ""
         );
         $convertedResponse = (object)$response;
-        $stmt = $this->statementPreparer->prepareInsertCustomer($customer);
+        $stmt = $this->statementPreparer->prepareInsertCustomer($customer, $apiKey);
 
         try {
             $stmt->executeStatement();

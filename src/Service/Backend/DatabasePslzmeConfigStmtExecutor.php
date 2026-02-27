@@ -95,6 +95,25 @@ class DatabasePslzmeConfigStmtExecutor {
         }
     }
 
+    public function updateCustomerAPIKey($apiKey) {
+        $stmt = $this->dbPslzmeConfigStmtPreparer->prepareUpdatePslzmeCustomerApiKey();
+
+        try {
+            $stmt->bindValue(1, $apiKey, "string");
+            $affectedRows = $stmt->executeStatement();
+
+            if ($affectedRows > 0) {
+                return "Sucessfully updated pslzme database data.";
+            } else {
+                throw new DatabaseException("Statement prepareUpdatePslzmeCustomerApiKey executed successful but rows affected = 0");
+            }
+
+        } catch (DatabaseException $dbe) {
+            // rethrow 
+            throw $dbe;
+        }
+    }
+
     private function selectDatabaseConfiguration() {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareSelectPslzmeDBConfig();
 

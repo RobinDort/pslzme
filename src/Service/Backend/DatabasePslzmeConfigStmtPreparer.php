@@ -33,6 +33,12 @@ class DatabasePslzmeConfigStmtPreparer {
         return $stmt;
     }
 
+    public function prepareUpdatePslzmeCustomerApiKey() {
+        $sqlQuery = "UPDATE tl_pslzme_config SET pslzme_api_key = ?";
+        $stmt = $this->connection->prepare($sqlQuery);
+        return $stmt;
+    }
+
     public function prepareInsertPslzmeDBConfig() {
         $sqlQuery = "INSERT INTO tl_pslzme_config (pslzme_db_name, pslzme_db_user, pslzme_db_pw, createdAt) VALUES (?, ?, ?, ?)";
 

@@ -57,10 +57,11 @@ class StatementPreparer {
 
     /******************************* INSERT FUNCTIONS *******************************/
 
-    public function prepareInsertCustomer($queryParamCustomer) {
-        $sqlQuery = "INSERT INTO pslzme_kunde (Name) VALUES (?)";
+    public function prepareInsertCustomer($queryParamCustomer, $queryParamApiKey) {
+        $sqlQuery = "INSERT INTO pslzme_kunde (Name, ApiKey) VALUES (?,?)";
         $stmt = $this->conn->prepare($sqlQuery);
         $stmt->bindValue(1,$queryParamCustomer,"string");
+        $stmt->bindValue(2,$queryParamApiKey,"string");
 
         return $stmt;
     }

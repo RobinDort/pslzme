@@ -105,6 +105,7 @@ class BackendRequestHandlerController {
 
             $resp .= $insertCustomerResult["response"];
             $customerID = $insertCustomerResult["customerID"];
+            $customerApiKey = $insertCustomerResult["customerApiKey"];
             $insertKeyData = array(
                 "key"           => $requestData["key"],
                 "customerID"    => $customerID
@@ -115,6 +116,9 @@ class BackendRequestHandlerController {
 
             // update the config db to set the license configuration to true
             $this->dbPslzmeConfigStmtExecutor->updateUrlLicenseRegistration();
+
+            // update config db to set the customers api key
+            $this->dbPslzmeConfigStmtExecutor->updateCustomerAPIKey($customerApiKey);
             
             $databaseConnection->getConnection()->commit();
             return new JsonResponse($resp);
