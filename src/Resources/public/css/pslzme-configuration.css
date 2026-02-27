@@ -52,6 +52,12 @@
 	border-radius: 10px;
 }
 
+#pslzme-api-key {
+	min-width: 40%;
+	padding: 5px;
+	border-radius: 8px;
+}
+
 .pslzme-configuration-container {
 	margin-top: 2em;
 	border: 1px solid #ededed;
