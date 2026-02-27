@@ -107,6 +107,7 @@ $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_eight'] = '
 $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_nine'] = "<p>For a smooth and GDPR-compliant process, pslz<strong>me</strong> uses internal redirects to certain subpages of your website.</p>
                 <p>For example, the pslzme cookie banner, which functions as an essential component, requires information on the site's legal notice and data protection.</p>
                 <p>To ensure that internal forwarding can be used without any problems, please assign the pages described in the fields below with the corresponding ID to the appropriate internal page. You can find the ID of the respective page in the contao backend under <b>&lt;Pages&gt;</b> by calling up the detailed information of the respective page.</p>";
+$GLOBALS['TL_LANG']['pslzme_configuration']['fourth_config_container_h2'] = "Pslzme API Key";
 $GLOBALS['TL_LANG']['pslzme_configuration']['imprint_id'] = "ID of the imprint page:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['privacy_id'] = "ID of the privacy statement page:";
 $GLOBALS['TL_LANG']['pslzme_configuration']['current_id'] = "Current imprint ID:";

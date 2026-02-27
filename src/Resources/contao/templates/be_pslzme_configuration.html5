@@ -147,6 +147,12 @@
                     </div>
                 </div>
             </div>
+
+            <div class="pslzme-configuration-container">
+                <h2><?= $GLOBALS['TL_LANG']['pslzme_configuration']['fourth_config_container_h2'] ?></h2>
+                <label for="pslzme-api-key">API-Key:</label>
+                <input id="pslzme-api-key" name="pslzme-api-key" value="<?= $this->pslzmeApiKey ? $this->pslzmeApiKey : '' ?>" readonly/>
+            </div>
         <?php endif; ?>
     </div>
 <?php $this->endblock(); ?>

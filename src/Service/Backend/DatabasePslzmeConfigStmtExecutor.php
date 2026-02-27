@@ -59,6 +59,7 @@ class DatabasePslzmeConfigStmtExecutor {
                 $databasePassword = $rows[0]["pslzme_db_pw"];
                 $databaseIPR = $rows[0]["pslzme_ipr"];
                 $databaseTimestamp = $rows[0]["createdAt"];
+                $databaseApiKey = $rows[0]["pslzme_api_key"];
                 $urlLicensed = $rows[0]["url_licensed"];
                 $tablesRegistered = $rows[0]["tables_registered"];
 
@@ -68,6 +69,7 @@ class DatabasePslzmeConfigStmtExecutor {
                     "databasePassword"  => $databasePassword,
                     "databaseIPR"       => $databaseIPR,
                     "databaseTimestamp" => $databaseTimestamp,
+                    "apiKey"            => $databaseApiKey,
                     "urlLicensed"       => $urlLicensed,
                     "tablesRegistered"  => $tablesRegistered,
                 ];

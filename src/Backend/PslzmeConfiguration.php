@@ -19,6 +19,7 @@ class PslzmeConfiguration extends BackendModule {
     private $pslzmeDBName;
     private $pslzmeDBUser;
     private $pslzmeDBIPR;
+    private $pslzmeApiKey;
     private $urlLicensed;
     private $tablesRegistered;
 
@@ -36,6 +37,7 @@ class PslzmeConfiguration extends BackendModule {
             $this->pslzmeDBName = $databaseData["databaseName"];
             $this->pslzmeDBUser = $databaseData["databaseUser"];
             $this->pslzmeDBIPR = $databaseData["databaseIPR"];
+            $this->pslzmeApiKey = $databaseData["apiKey"];
             $this->urlLicensed = (int) $databaseData["urlLicensed"];
             $this->tablesRegistered = (int) $databaseData["tablesRegistered"];
         }
@@ -54,6 +56,7 @@ class PslzmeConfiguration extends BackendModule {
         $this->Template = new BackendTemplate($this->strTemplate);
         $this->Template->pslzmeDBName = $this->pslzmeDBName;
         $this->Template->pslzmeDBUser = $this->pslzmeDBUser;
+        $this->Template->pslzmeApiKey = $this->pslzmeApiKey;
         $this->Template->urlLicensed = $this->urlLicensed;
         $this->Template->tablesRegistered = $this->tablesRegistered;
 
