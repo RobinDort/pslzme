@@ -52,6 +52,11 @@ $GLOBALS['TL_DCA']['tl_pslzme_config'] = [
             'inputType' => 'checkbox',  
             'eval' => ['tl_class' => 'w50'],
             'sql' => "TINYINT(1) NOT NULL DEFAULT '0'"
+        ],
+        'tables_registered' => [
+            'inputType' => 'checkbox',  
+            'eval' => ['tl_class' => 'w50'],
+            'sql' => "TINYINT(1) NOT NULL DEFAULT '0'"
         ]
     ]
 ];

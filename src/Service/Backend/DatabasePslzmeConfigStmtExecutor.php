@@ -95,6 +95,26 @@ class DatabasePslzmeConfigStmtExecutor {
         }
     }
 
+    public function updateTablesRegistered() {
+        $stmt = $this->dbPslzmeConfigStmtPreparer->prepareUpdatePslzmeTablesRegistered();
+
+        try {
+
+            $stmt->bindValue(1, true, "boolean");
+            $affectedRows = $stmt->executeStatement();
+
+            if ($affectedRows > 0) {
+                return "Sucessfully updated tables registered.";
+            } else {
+                throw new DatabaseException("Unable to execute query prepareUpdatePslzmeTablesRegistered");
+            }
+
+        } catch (DatabaseException $dbe) {
+            //rethrow 
+            throw $dbe;
+        }
+    }
+
     public function updateCustomerAPIKey($apiKey) {
         $stmt = $this->dbPslzmeConfigStmtPreparer->prepareUpdatePslzmeCustomerApiKey();
 

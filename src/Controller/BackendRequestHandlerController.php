@@ -154,6 +154,9 @@ class BackendRequestHandlerController {
     public function createPslzmeTables(): JsonResponse {
         try {
             $this->databaseManager->initTables();
+            // update the config table to set the table registered to true.
+            $this->dbPslzmeConfigStmtExecutor->updateTablesRegistered();
+
             return new JsonResponse("Tables created successfully");
         } catch (Exception $e) {
             error_log($e->getMessage());

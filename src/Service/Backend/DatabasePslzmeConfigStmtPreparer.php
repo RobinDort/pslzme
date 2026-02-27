@@ -33,6 +33,12 @@ class DatabasePslzmeConfigStmtPreparer {
         return $stmt;
     }
 
+    public function prepareUpdatePslzmeTablesRegistered() {
+        $sqlQuery = "UPDATE tl_pslzme_config SET tables_registered = ?";
+        $stmt = $this->connection->prepare($sqlQuery);
+        return $stmt;
+    }
+
     public function prepareUpdatePslzmeCustomerApiKey() {
         $sqlQuery = "UPDATE tl_pslzme_config SET pslzme_api_key = ?";
         $stmt = $this->connection->prepare($sqlQuery);
