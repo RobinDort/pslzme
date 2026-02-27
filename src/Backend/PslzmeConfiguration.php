@@ -20,6 +20,7 @@ class PslzmeConfiguration extends BackendModule {
     private $pslzmeDBUser;
     private $pslzmeDBIPR;
     private $urlLicensed;
+    private $tablesRegistered;
 
 
     /**
@@ -36,6 +37,7 @@ class PslzmeConfiguration extends BackendModule {
             $this->pslzmeDBUser = $databaseData["databaseUser"];
             $this->pslzmeDBIPR = $databaseData["databaseIPR"];
             $this->urlLicensed = (int) $databaseData["urlLicensed"];
+            $this->tablesRegistered = (int) $databaseData["tablesRegistered"];
         }
     }
 
@@ -53,6 +55,7 @@ class PslzmeConfiguration extends BackendModule {
         $this->Template->pslzmeDBName = $this->pslzmeDBName;
         $this->Template->pslzmeDBUser = $this->pslzmeDBUser;
         $this->Template->urlLicensed = $this->urlLicensed;
+        $this->Template->tablesRegistered = $this->tablesRegistered;
 
         if(!empty($this->pslzmeDBIPR)) {
             $decodedPages = json_decode($this->pslzmeDBIPR,true);

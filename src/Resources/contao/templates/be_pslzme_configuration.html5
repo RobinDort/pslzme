@@ -74,7 +74,11 @@
                 <div class="pslzme-explanation">
                     <h3><?= $GLOBALS['TL_LANG']['pslzme_configuration']['config_step_three'] ?></h3>
                     <p><?= $GLOBALS['TL_LANG']['pslzme_configuration']['pslzme_explanation_part_six'] ?></p>
-                    <button type="submit" onclick="event.preventDefault();createPslzmeTables();"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['create_tables'] ?></button>
+                    <?php if ($this->tablesRegistered === 0): ?>
+                        <button type="submit" onclick="event.preventDefault();createPslzmeTables();"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['create_tables'] ?></button>
+                    <?php else: ?>
+                        <div id="tablesRegisteredInfo"><?= $GLOBALS['TL_LANG']['pslzme_configuration']['tablesRegisteredDone'] ?></div>   
+                    <?php endif; ?>
                 </div>
             </div>
             <p></p>
