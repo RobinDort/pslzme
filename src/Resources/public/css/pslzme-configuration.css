@@ -41,7 +41,8 @@
 	padding: 5px;
 }
 
-#urlLicensedInfo {
+#urlLicensedInfo,
+#tablesRegisteredInfo {
 	width: 200px;
 	text-align: center;
 	padding: 20px;

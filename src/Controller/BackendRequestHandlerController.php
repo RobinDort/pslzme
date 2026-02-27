@@ -97,15 +97,19 @@ class BackendRequestHandlerController {
             // start transaction so all operations are made sure to be saved into the db.
             $databaseConnection->getConnection()->beginTransaction();
             $insertCustomerResult = $dbStmtExcecutor->insertCustomer($requestData);
+            $customerApiKey = $insertCustomerResult["customerApiKey"];
 
             if ($insertCustomerResult["customerID"] === 0) {
+                // customer is already saved. Update the option again to proceed further configuration steps.
+                $this->dbPslzmeConfigStmtExecutor->updateUrlLicenseRegistration();
+                $this->dbPslzmeConfigStmtExecutor->updateCustomerAPIKey($customerApiKey);
                 $databaseConnection->getConnection()->commit();
                 return new JsonResponse($insertCustomerResult["response"]);
             }
 
             $resp .= $insertCustomerResult["response"];
             $customerID = $insertCustomerResult["customerID"];
-            $customerApiKey = $insertCustomerResult["customerApiKey"];
+            
             $insertKeyData = array(
                 "key"           => $requestData["key"],
                 "customerID"    => $customerID
