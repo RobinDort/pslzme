@@ -517,7 +517,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['text3DFogEnabled'] = [
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DFogColor'] = [
     'inputType' => 'text',
     'eval' => ['colorPicker' => true, 'mandatory' => false],
-    'sql' => "varchar(7) NULL default '#222222'",
+    'sql' => "varchar(20) NULL default '#222222'",
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DTextMirrored'] = [
