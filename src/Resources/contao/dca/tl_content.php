@@ -393,4 +393,166 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedMarqueeText'] = [
     'sql' => "TEXT NULL"
 ];
 
+
+/**
+ * Configuration for pslzme_3d_text element
+ */
+
+$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_3d_text'] = '{type_legend},type,{text_legend};personalized3DTextGroup,personalized3DText;unpersonalized3DTextGroup,unpersonalized3DText;3DColorOptionsGroup,3DSceneBackgroundColor,3DHighlightColorOne,3DHighlightColorTwo,3DHighlightColorThree;3DCameraOptionsGroup,3DCameraPosX,3DCameraPosY,3DCameraPosZ,3DCameraTargetPosX,3DCameraTargetPosY,3DCameraTargetPosZ;3DFurtherOptionsGroup,3DFogEnabled,3DFogColor,3DTextMirrored,3DTextDraggable,3DMovingLightEnabled,3DTextRotation,3DTextRotationDirection;{expert_legend:hide},cssID';
+
+$GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = '3DFogEnabled';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = '3DTextRotation';
+
+$GLOBALS['TL_DCA']['tl_content']['subpalettes']['3DFogEnabled'] = '3DFogColor';
+$GLOBALS['TL_DCA']['tl_content']['subpalettes']['3DTextRotation'] = '3DTextRotationDirection';
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['personalized3DTextGroup'] = [
+    'inputType' => 'group',
+];
+
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['personalized3DText'] = [
+    'exclude'   => true,
+    'inputType' => 'textarea',
+    'eval'      => ['rte' => 'tinyMCE', 'helpwizard' => true, 'mandatory' => false],
+    'sql' => "TEXT NULL"
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalized3DTextGroup'] = [
+    'inputType' => 'group',
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalized3DText'] = [
+    'exclude'   => true,
+    'inputType' => 'textarea',
+    'eval'      => ['rte' => 'tinyMCE', 'helpwizard' => true, 'mandatory' => true],
+    'sql' => "TEXT NULL"
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DColorOptionsGroup'] = [
+    'inputType' => 'group',
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DSceneBackgroundColor'] = [
+    'inputType' => 'text',
+    'eval' => ['colorPicker' => true, 'mandatory' => false],
+    'sql' => "varchar(7) NULL default '#222222'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DHighlightColorOne'] = [
+    'inputType' => 'text',
+    'eval' => ['colorPicker' => true, 'mandatory' => false],
+    'sql' => "varchar(7) NULL default '#a4dd46'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DHighlightColorTwo'] = [
+    'inputType' => 'text',
+    'eval' => ['colorPicker' => true, 'mandatory' => false],
+    'sql' => "varchar(7) NULL default '#0000ff'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DHighlightColorThree'] = [
+    'inputType' => 'text',
+    'eval' => ['colorPicker' => true, 'mandatory' => false],
+    'sql' => "varchar(7) NULL default '#ff0000'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DCameraOptionsGroup'] = [
+    'inputType' => 'group',
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DCameraPosX'] = [
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 1000, 'tl_class' => 'w33', 'mandatory' => false],
+    'default' => '0',
+    'sql' => "varchar(4) NULL default '0'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DCameraPosY'] = [
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 1000, 'tl_class' => 'w33', 'mandatory' => false],
+    'default' => '150',
+    'sql' => "varchar(4) NULL default '150'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DCameraPosZ'] = [
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 1000, 'tl_class' => 'w33', 'mandatory' => false],
+    'default' => '700',
+    'sql' => "varchar(4) NULL default '700'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DCameraTargetPosX'] = [
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 500, 'tl_class' => 'w33', 'mandatory' => false],
+    'default' => '0',
+    'sql' => "varchar(3) NULL default '0'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DCameraTargetPosY'] = [
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 500, 'tl_class' => 'w33', 'mandatory' => false],
+    'default' => '115',
+    'sql' => "varchar(3) NULL default '115'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DCameraTargetPosZ'] = [
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 500, 'tl_class' => 'w33', 'mandatory' => false],
+    'default' => '0',
+    'sql' => "varchar(3) NULL default '0'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DFurtherOptionsGroup'] = [
+    'inputType' => 'group',
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DFogEnabled'] = [
+    'inputType' => 'checkbox',
+    'eval' => ['isBoolean' => true, 'mandatory' => true, 'submitOnChange' => true],
+    'default' => true,
+    'sql' => "char(1) NOT NULL default '1'"
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DFogColor'] = [
+    'inputType' => 'text',
+    'eval' => ['colorPicker' => true, 'mandatory' => false],
+    'sql' => "varchar(7) NULL default '#222222'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DTextMirrored'] = [
+    'inputType' => 'checkbox',
+    'eval' => ['isBoolean' => true, 'mandatory' => true],
+    'default' => false,
+    'sql' => "char(1) NOT NULL default '0'"
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DTextDraggable'] = [
+    'inputType' => 'checkbox',
+    'eval' => ['isBoolean' => true, 'mandatory' => true],
+    'default' => true,
+    'sql' => "char(1) NOT NULL default '1'"
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DMovingLightEnabled'] = [
+    'inputType' => 'checkbox',
+    'eval' => ['isBoolean' => true, 'mandatory' => true],
+    'default' => true,
+    'sql' => "char(1) NOT NULL default '1'"
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DTextRotation'] = [
+    'inputType' => 'checkbox',
+    'eval' => ['isBoolean' => true, 'mandatory' => true, 'submitOnChange' => true],
+    'default' => true,
+    'sql' => "char(1) NOT NULL default '1'"
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['3DTextRotationDirection'] = [
+    'inputType' => 'select',
+    'eval' => ['mandatory' => true],
+    'options' => ['Left', 'Right'],
+    'default' => 'Left',
+    'sql' => "char(6) NOT NULL default 'Left'"
+];
 ?>
