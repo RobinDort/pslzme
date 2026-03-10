@@ -1,0 +1,27 @@
+<?php $this->extend('block_searchable'); ?>
+
+<?php $this->block('content'); ?>
+
+    <div class="pslzme-3d-text" <?= $this->text3DTextDraggable ? 'pslzme-3d-text-draggable' : '' ?>  
+        data-3d-text=<?= $this->usedText; ?>
+        data-background=<?= $this->text3DSceneBackgroundColor; ?>
+        data-highlight-color-one=<?= $this->text3DHighlightColorOne; ?>
+        data-highlight-color-two=<?= $this->text3DHighlightColorTwo; ?>
+        data-highlight-color-three=<?= $this->text3DHighlightColorThree; ?>
+        data-fog-enabled=<?= $this->text3DFogEnabled ? 'true' : 'false'; ?>
+        data-fog-color=<?= $this->text3DFogColor; ?>
+        data-mirrored=<?= $this->text3DTextMirrored ? 'true' : 'false'; ?>
+        data-moving-light=<?= $this->text3DMovingLightEnabled ? 'true' : 'false'; ?>
+        data-rotation-enabled=<?= $this->text3DTextRotation ? 'true' : 'false'; ?>
+        data-rotation-direction=<?= $this->text3DTextRotationDirection; ?>
+        data-draggable=<?= $this->text3DTextDraggable ? 'true' : 'false'; ?>
+        data-camera-pos-x=<?= $this->text3DCameraPosX; ?>
+        data-camera-pos-y=<?= $this->text3DCameraPosY; ?>
+        data-camera-pos-z=<?= $this->text3DCameraPosZ; ?>
+        data-camera-target-x=<?= $this->text3DCameraTargetPosX; ?>
+        data-camera-target-y=<?= $this->text3DCameraTargetPosY; ?>
+        data-camera-target-z=<?= $this->text3DCameraTargetPosZ; ?>
+        >
+    </div>
+
+<?php $this->endblock(); ?>

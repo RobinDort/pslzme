@@ -4,7 +4,7 @@ namespace RobinDort\PslzmeLinks\Elements;
 use Contao\ContentElement;
 
 /**
- * custom contao element that represents the main pslzme text element that is used to show personalized messages.
+ * custom contao element that represents the main pslzme marquee element that is used to display a moving slider.
  */
 class PslzmeMarqueeElement extends ContentElement {
 

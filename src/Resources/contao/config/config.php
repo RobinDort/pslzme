@@ -22,6 +22,8 @@ $GLOBALS['TL_CSS'][] = "bundles/robindortpslzmelinks/css/pslzme-navigation.css|s
 
 
 $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/pslzme.min.js|static";
+$GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/3D/bundles/pslzme-3d.bundle.js|static";
+
 
 
 // Init Frontend Modules
