@@ -70,6 +70,10 @@ $GLOBALS['TL_LANG']['tl_content']['secondImageSize'] = ['Vordergrundbildgröße'
 $GLOBALS['TL_LANG']['tl_content']['secondImageLink'] = ['Vordergrundbild Linkadresse', 'URL angeben zu der das Vordergrundbild verlinken soll'];
 $GLOBALS['TL_LANG']['tl_content']['secondImageAlt'] = ['Vordergrundbild Alternativtext', 'Alternativtext des Vordergrundbildes angeben'];
 $GLOBALS['TL_LANG']['tl_content']['secondImageTitle'] = ['Vordergrundbild Titel', 'Titel des Vordergrundbildes angeben'];
+$GLOBALS['TL_LANG']['tl_content']['personalizedMarqueeTextGroup'] = ["Personalisierter Marquee Text"];
+$GLOBALS['TL_LANG']['tl_content']['unpersonalizedMarqueeTextGroup'] = ["Unpersonalisierter Marquee Text"];
+$GLOBALS['TL_LANG']['tl_content']['personalizedMarqueeText'] = ['Personalisierter Text', 'Persönlichen Text eingeben'];
+$GLOBALS['TL_LANG']['tl_content']['unpersonalizedMarqueeText'] = ['Unpersonalisierter Text', 'Unpersonalisierten Text eingeben'];
 
 
 /** Pages */

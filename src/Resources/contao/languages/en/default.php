@@ -70,6 +70,10 @@ $GLOBALS['TL_LANG']['tl_content']['secondImageSize'] = ['Foreground Image Size',
 $GLOBALS['TL_LANG']['tl_content']['secondImageLink'] = ['Foreground Image Link Address', 'Enter the URL to which the foreground image should be linked'];
 $GLOBALS['TL_LANG']['tl_content']['secondImageAlt'] = ['Foreground Image Alt Text', 'Enter the alt text for the foreground image'];
 $GLOBALS['TL_LANG']['tl_content']['secondImageTitle'] = ['Foreground Image Title', 'Enter the title for the foreground image'];
+$GLOBALS['TL_LANG']['tl_content']['personalizedMarqueeTextGroup'] = ["Personalized marquee text"];
+$GLOBALS['TL_LANG']['tl_content']['unpersonalizedMarqueeTextGroup'] = ["Unpersonalized marquee text"];
+$GLOBALS['TL_LANG']['tl_content']['personalizedMarqueeText'] = ['Personalized text', 'Enter personalized text'];
+$GLOBALS['TL_LANG']['tl_content']['unpersonalizedMarqueeText'] = ['Unpersonalized text', 'Enter unpersonalized text'];
 
 
 /** Pages */
