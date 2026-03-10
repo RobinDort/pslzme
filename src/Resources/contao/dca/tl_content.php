@@ -436,25 +436,25 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['text3DColorOptionsGroup'] = [
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DSceneBackgroundColor'] = [
     'inputType' => 'text',
     'eval' => ['colorPicker' => true, 'mandatory' => false],
-    'sql' => "varchar(7) NULL default '#222222'",
+    'sql' => "varchar(20) NULL default '#222222'",
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DHighlightColorOne'] = [
     'inputType' => 'text',
     'eval' => ['colorPicker' => true, 'mandatory' => false],
-    'sql' => "varchar(7) NULL default '#a4dd46'",
+    'sql' => "varchar(20) NULL default '#a4dd46'",
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DHighlightColorTwo'] = [
     'inputType' => 'text',
     'eval' => ['colorPicker' => true, 'mandatory' => false],
-    'sql' => "varchar(7) NULL default '#0000ff'",
+    'sql' => "varchar(20) NULL default '#0000ff'",
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DHighlightColorThree'] = [
     'inputType' => 'text',
     'eval' => ['colorPicker' => true, 'mandatory' => false],
-    'sql' => "varchar(7) NULL default '#ff0000'",
+    'sql' => "varchar(20) NULL default '#ff0000'",
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraOptionsGroup'] = [
@@ -509,7 +509,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['text3DFurtherOptionsGroup'] = [
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DFogEnabled'] = [
     'inputType' => 'checkbox',
-    'eval' => ['isBoolean' => true, 'mandatory' => true, 'submitOnChange' => true],
+    'eval' => ['isBoolean' => true, 'mandatory' => false, 'submitOnChange' => true],
     'default' => true,
     'sql' => "char(1) NOT NULL default '1'"
 ];
@@ -522,28 +522,28 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['text3DFogColor'] = [
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DTextMirrored'] = [
     'inputType' => 'checkbox',
-    'eval' => ['isBoolean' => true, 'mandatory' => true],
+    'eval' => ['isBoolean' => true, 'mandatory' => false],
     'default' => false,
     'sql' => "char(1) NOT NULL default '0'"
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DTextDraggable'] = [
     'inputType' => 'checkbox',
-    'eval' => ['isBoolean' => true, 'mandatory' => true],
+    'eval' => ['isBoolean' => true, 'mandatory' => false],
     'default' => true,
     'sql' => "char(1) NOT NULL default '1'"
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DMovingLightEnabled'] = [
     'inputType' => 'checkbox',
-    'eval' => ['isBoolean' => true, 'mandatory' => true],
+    'eval' => ['isBoolean' => true, 'mandatory' => false],
     'default' => true,
     'sql' => "char(1) NOT NULL default '1'"
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DTextRotation'] = [
     'inputType' => 'checkbox',
-    'eval' => ['isBoolean' => true, 'mandatory' => true, 'submitOnChange' => true],
+    'eval' => ['isBoolean' => true, 'mandatory' => false, 'submitOnChange' => true],
     'default' => true,
     'sql' => "char(1) NOT NULL default '1'"
 ];
