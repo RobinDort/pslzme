@@ -365,4 +365,32 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['secondImageTitle'] = [
 ];
 
 
+
+/**
+ * Configuration for pslzme_marquee element
+ */
+$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_marquee'] = '{type_legend},type,headline;{text_legend};personalizedMarqueeTextGroup,personalizedMarqueeText;unpersonalizedMarqueeTextGroup,unpersonalizedMarqueeText;{expert_legend:hide},cssID';
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['personalizedMarqueeTextGroup'] = [
+    'inputType' => 'group',
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['personalizedMarqueeText'] = [
+    'exclude'   => true,
+    'inputType' => 'textarea',
+    'eval'      => ['rte' => 'tinyMCE', 'helpwizard' => true, 'mandatory' => false],
+    'sql' => "TEXT NULL"
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedMarqueeTextGroup'] = [
+    'inputType' => 'group',
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedMarqueeText'] = [
+    'exclude'   => true,
+    'inputType' => 'textarea',
+    'eval'      => ['rte' => 'tinyMCE', 'helpwizard' => true, 'mandatory' => true],
+    'sql' => "TEXT NULL"
+];
+
 ?>
