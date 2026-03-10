@@ -1,6 +1,7 @@
 <?php
 use RobinDort\PslzmeLinks\Module\PslzmeNavigation;
 use RobinDort\PslzmeLinks\Elements\PslzmeTextElement;
+use RobinDort\PslzmeLinks\Elements\Pslzme3DTextElement;
 use RobinDort\PslzmeLinks\Elements\PslzmeContentElement;
 use RobinDort\PslzmeLinks\Elements\PslzmeImageElement;
 use RobinDort\PslzmeLinks\Elements\PslzmeMarqueeElement;
@@ -38,9 +39,11 @@ $GLOBALS['BE_MOD']['pslzme']['pslzme_configuration'] = [
 
 // Init Content Elements
 $GLOBALS['TL_CTE']['pslzme']['pslzme_text'] = PslzmeTextElement::class;
+$GLOBALS['TL_CTE']['pslzme']['pslzme_3d_text'] = Pslzme3DTextElement::class;
 $GLOBALS['TL_CTE']['pslzme']['pslzme_content'] = PslzmeContentElement::class;
 $GLOBALS['TL_CTE']['pslzme']['pslzme_image'] = PslzmeImageElement::class;
 $GLOBALS['TL_CTE']['pslzme']['pslzme_marquee'] = PslzmeMarqueeElement::class;
+
 
 
 // Run initial setup when installing the plugin
