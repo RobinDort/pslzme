@@ -66,6 +66,22 @@
 	margin: 0;
 }
 
+.pslzme-3d-text {
+	height: 600px;
+	max-height: 1000px;
+	max-width: 3000px;
+}
+
+.pslzme-3d-text canvas {
+	max-width: 3000px;
+	max-height: 1000px;
+	display: block;
+}
+
+.pslzme-3d-text-draggable canvas {
+	cursor: pointer;
+}
+
 @keyframes marquee-content {
 	to {
 		transform: translateX(-50%);
