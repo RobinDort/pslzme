@@ -222,48 +222,50 @@ class Pslzme3DText {
 	}
 }
 
-document.querySelectorAll(".pslzme-3d-text").forEach((textElement) => {
-	console.log(textElement);
-	const dataText = textElement.getAttribute("data-3d-text");
-	const dataBackground = textElement.getAttribute("data-background");
-	const dataHighlightColorOne = textElement.getAttribute("data-highlight-color-one");
-	const dataHighlightColorTwo = textElement.getAttribute("data-highlight-color-two");
-	const dataHighlightColorThree = textElement.getAttribute("data-highlight-color-three");
-	const dataFogEnabled = textElement.getAttribute("data-fog-enabled");
-	const dataFogColor = textElement.getAttribute("data-fog-color");
-	const dataMirrored = textElement.getAttribute("data-mirrored");
-	const dataMovingLight = textElement.getAttribute("data-moving-light");
-	const dataRotationEnabled = textElement.getAttribute("data-rotation-enabled");
-	const dataRotationDirection = textElement.getAttribute("data-rotation-direction");
-	const dataDraggable = textElement.getAttribute("data-draggable");
-	const cameraPositionX = textElement.getAttribute("data-camera-pos-x");
-	const cameraPositionY = textElement.getAttribute("data-camera-pos-y");
-	const cameraPositionZ = textElement.getAttribute("data-camera-pos-z");
-	const cameraTargetX = textElement.getAttribute("data-camera-target-x");
-	const cameraTargetY = textElement.getAttribute("data-camera-target-y");
-	const cameraTargetZ = textElement.getAttribute("data-camera-target-z");
+document.addEventListener("DOMContentLoaded", () => {
+	document.querySelectorAll(".pslzme-3d-text").forEach((textElement) => {
+		console.log(textElement);
+		const dataText = textElement.getAttribute("data-3d-text");
+		const dataBackground = textElement.getAttribute("data-background");
+		const dataHighlightColorOne = textElement.getAttribute("data-highlight-color-one");
+		const dataHighlightColorTwo = textElement.getAttribute("data-highlight-color-two");
+		const dataHighlightColorThree = textElement.getAttribute("data-highlight-color-three");
+		const dataFogEnabled = textElement.getAttribute("data-fog-enabled");
+		const dataFogColor = textElement.getAttribute("data-fog-color");
+		const dataMirrored = textElement.getAttribute("data-mirrored");
+		const dataMovingLight = textElement.getAttribute("data-moving-light");
+		const dataRotationEnabled = textElement.getAttribute("data-rotation-enabled");
+		const dataRotationDirection = textElement.getAttribute("data-rotation-direction");
+		const dataDraggable = textElement.getAttribute("data-draggable");
+		const cameraPositionX = textElement.getAttribute("data-camera-pos-x");
+		const cameraPositionY = textElement.getAttribute("data-camera-pos-y");
+		const cameraPositionZ = textElement.getAttribute("data-camera-pos-z");
+		const cameraTargetX = textElement.getAttribute("data-camera-target-x");
+		const cameraTargetY = textElement.getAttribute("data-camera-target-y");
+		const cameraTargetZ = textElement.getAttribute("data-camera-target-z");
 
-	const data = {
-		dataText,
-		dataBackground,
-		dataHighlightColorOne,
-		dataHighlightColorTwo,
-		dataHighlightColorThree,
-		dataFogEnabled,
-		dataFogColor,
-		dataMirrored,
-		dataMovingLight,
-		dataRotationEnabled,
-		dataRotationDirection,
-		dataDraggable,
-		dataCameraPosX: cameraPositionX,
-		dataCameraPosY: cameraPositionY,
-		dataCameraPosZ: cameraPositionZ,
-		dataCameraTargetX: cameraTargetX,
-		dataCameraTargetY: cameraTargetY,
-		dataCameraTargetZ: cameraTargetZ,
-	};
-	customize3DText(textElement, data);
+		const data = {
+			dataText,
+			dataBackground,
+			dataHighlightColorOne,
+			dataHighlightColorTwo,
+			dataHighlightColorThree,
+			dataFogEnabled,
+			dataFogColor,
+			dataMirrored,
+			dataMovingLight,
+			dataRotationEnabled,
+			dataRotationDirection,
+			dataDraggable,
+			dataCameraPosX: cameraPositionX,
+			dataCameraPosY: cameraPositionY,
+			dataCameraPosZ: cameraPositionZ,
+			dataCameraTargetX: cameraTargetX,
+			dataCameraTargetY: cameraTargetY,
+			dataCameraTargetZ: cameraTargetZ,
+		};
+		customize3DText(textElement, data);
+	});
 });
 
 function customize3DText(textElement, data) {
