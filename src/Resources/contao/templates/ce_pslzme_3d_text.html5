@@ -2,7 +2,7 @@
 
 <?php $this->block('content'); ?>
 
-    <div class="pslzme-3d-text" <?= $this->text3DTextDraggable ? 'pslzme-3d-text-draggable' : '' ?>  
+    <div class="pslzme-3d-text <?= $this->text3DTextDraggable ? 'pslzme-3d-text-draggable' : '' ?>" 
         data-3d-text=<?= $this->usedText; ?>
         data-background=<?= $this->text3DSceneBackgroundColor; ?>
         data-highlight-color-one=<?= $this->text3DHighlightColorOne; ?>

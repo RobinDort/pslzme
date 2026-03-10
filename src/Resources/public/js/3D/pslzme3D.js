@@ -223,6 +223,7 @@ class Pslzme3DText {
 }
 
 document.querySelectorAll(".pslzme-3d-text").forEach((textElement) => {
+	console.log(textElement);
 	const dataText = textElement.getAttribute("data-3d-text");
 	const dataBackground = textElement.getAttribute("data-background");
 	const dataHighlightColorOne = textElement.getAttribute("data-highlight-color-one");
