@@ -72,7 +72,7 @@ class Pslzme3DText {
 		this.scene.add(this.group);
 
 		// LOAD FONT (await)
-		this.loadFont("../fonts/droid_sans_bold.typeface.json").then((font) => {
+		this.loadFont("/bundles/robindortpslzmelinks/fonts/droid_sans_bold.typeface.json").then((font) => {
 			this.createText(font, this.mirrored);
 		});
 
@@ -224,7 +224,6 @@ class Pslzme3DText {
 
 document.addEventListener("DOMContentLoaded", () => {
 	document.querySelectorAll(".pslzme-3d-text").forEach((textElement) => {
-		console.log(textElement);
 		const dataText = textElement.getAttribute("data-3d-text");
 		const dataBackground = textElement.getAttribute("data-background");
 		const dataHighlightColorOne = textElement.getAttribute("data-highlight-color-one");
