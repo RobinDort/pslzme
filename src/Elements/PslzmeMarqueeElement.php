@@ -11,8 +11,15 @@ class PslzmeMarqueeElement extends ContentElement {
     protected $strTemplate = 'ce_pslzme_marquee';
 
     protected function compile() {
-        $this->Template->personalizedMarqueeText = $this->personalizedMarqueeText;
-        $this->Template->unpersonalizedMarqueeText = $this->unpersonalizedMarqueeText;
+        $content = '';
+
+        if ($this->personalizedMarqueeText && $GLOBALS['decryptedVars']['varsSet'] === true) {
+            $content = $this->personalizedMarqueeText;
+        } else {
+            $content = $this->unpersonalizedMarqueeText;
+        }
+
+        $this->Template->content = $content;
     }
 
 }

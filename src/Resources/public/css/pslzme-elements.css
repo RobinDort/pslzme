@@ -35,6 +35,43 @@
 	font-weight: bold;
 }
 
+.pslzme-marquee {
+	padding: 4.8rem 0px;
+	font-size: 4rem;
+}
+
+.pslzme-marquee-text {
+	height: 100%;
+	overflow: clip;
+}
+
+.pslzme-marquee-text-track {
+	width: 200%; /* 2 items */
+	height: 100%;
+	display: flex;
+	animation: marquee-content 20s linear infinite;
+}
+
+.pslzme-marquee-item {
+	flex: 0 0 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.pslzme-marquee-item p {
+	padding: 2.8rem 0px;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin: 0;
+}
+
+@keyframes marquee-content {
+	to {
+		transform: translateX(-50%);
+	}
+}
+
 @media (max-width: 1366px) {
 	.pslzme-video video {
 		width: 100%;

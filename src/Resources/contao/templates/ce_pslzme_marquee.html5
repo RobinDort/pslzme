@@ -1,0 +1,19 @@
+<?php $this->extend('block_searchable'); ?>
+<?php $this->block('content'); ?>
+
+<?php if (!empty($this->content)) : ?>
+    <div class="pslzme-marquee">
+        <div class="pslzme-marquee-text">
+            <div class="pslzme-marquee-text-track">
+                <div class="pslzme-marquee-item">
+                    <?= $this->content ?>
+                </div>
+                <div class="pslzme-marquee-item">
+                    <?= $this->content ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+
+<?php $this->endblock(); ?>
