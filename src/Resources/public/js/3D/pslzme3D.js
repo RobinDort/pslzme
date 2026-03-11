@@ -243,6 +243,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		const cameraTargetY = textElement.getAttribute("data-camera-target-y");
 		const cameraTargetZ = textElement.getAttribute("data-camera-target-z");
 
+		console.log(dataRotationEnabled);
+
 		const data = {
 			dataText,
 			dataBackground,
