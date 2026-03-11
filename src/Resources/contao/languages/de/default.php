@@ -101,6 +101,8 @@ $GLOBALS['TL_LANG']['tl_content']['text3DTextDraggable'] = ["Text greifbar", 'Er
 $GLOBALS['TL_LANG']['tl_content']['text3DMovingLightEnabled'] = ["Bewegliches Licht aktiviert", 'Aktivieren Sie ein bewegliches Licht, das den Text aus verschiedenen Richtungen beleuchtet und so für einen dynamischen Effekt sorgt.'];
 $GLOBALS['TL_LANG']['tl_content']['text3DTextRotation'] = ["Text Rotation aktiviert", 'Aktivieren Sie die Rotation des Textes, um einen dynamischen Effekt zu erzielen.'];
 $GLOBALS['TL_LANG']['tl_content']['text3DTextRotationDirection'] = ["Rotationsrichtung", 'Wählen Sie die Richtung der Textrotation aus.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DTextRotationDirection']['Left'] = 'Links';
+$GLOBALS['TL_LANG']['tl_content']['text3DTextRotationDirection']['Right'] = 'Rechts';
 
 
 

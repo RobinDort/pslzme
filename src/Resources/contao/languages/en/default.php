@@ -100,6 +100,8 @@ $GLOBALS['TL_LANG']['tl_content']['text3DTextDraggable'] = ["Text Draggable", 'A
 $GLOBALS['TL_LANG']['tl_content']['text3DMovingLightEnabled'] = ["Moving Light Enabled", 'Enable a moving light that illuminates the text from various directions, creating a dynamic effect.'];
 $GLOBALS['TL_LANG']['tl_content']['text3DTextRotation'] = ["Text Rotation Enabled", 'Enable rotation of the text to create a dynamic effect.'];
 $GLOBALS['TL_LANG']['tl_content']['text3DTextRotationDirection'] = ["Rotation Direction", 'Choose the direction of the text rotation.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DTextRotationDirection']['Left'] = 'Left';
+$GLOBALS['TL_LANG']['tl_content']['text3DTextRotationDirection']['Right'] = 'Right';
 
 
 /** Pages */

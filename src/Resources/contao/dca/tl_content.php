@@ -552,6 +552,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['text3DTextRotationDirection'] = [
     'inputType' => 'select',
     'eval' => ['mandatory' => true],
     'options' => ['Left', 'Right'],
+    'reference' => &$GLOBALS['TL_LANG']['tl_content']['text3DTextRotationDirection'],
     'default' => 'Left',
     'sql' => "char(6) NOT NULL default 'Left'"
 ];
