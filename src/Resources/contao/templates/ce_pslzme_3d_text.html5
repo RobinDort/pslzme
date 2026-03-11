@@ -1,6 +1,7 @@
 <?php $this->extend('block_searchable'); ?>
 
 <?php $this->block('content'); ?>
+<?= $this->text3DTextRotation ?>
 
     <div class="pslzme-3d-text <?= $this->text3DTextDraggable === true ? 'pslzme-3d-text-draggable' : '' ?>" 
         data-3d-text="<?= $this->usedText; ?>"
