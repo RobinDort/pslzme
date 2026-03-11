@@ -12,7 +12,11 @@ class Pslzme3DTextElement extends ContentElement {
 
     protected function compile() {
 
-        $this->Template->usedText = $GLOBALS['decryptedVars']['varsSet'] === true && !empty($this->personalized3DText) ? $this->personalized3DText : $this->unpersonalized3DText;
+        $this->Template->usedText = $this->escape(strip_tags(
+            $GLOBALS['decryptedVars']['varsSet'] === true && !empty($this->personalized3DText)
+                ? $this->personalized3DText
+                : $this->unpersonalized3DText
+        ));
         $this->Template->text3DSceneBackgroundColor = $this->text3DSceneBackgroundColor;
         $this->Template->text3DHighlightColorOne = $this->text3DHighlightColorOne;
         $this->Template->text3DHighlightColorTwo = $this->text3DHighlightColorTwo;

@@ -16,13 +16,13 @@ class Pslzme3DText {
 		this.highlightColorOne = data.dataHighlightColorOne;
 		this.highlightColorTwo = data.dataHighlightColorTwo;
 		this.highlightColorThree = data.dataHighlightColorThree;
-		this.fogEnabled = data.dataFogEnabled;
+		this.fogEnabled = toBool(data.dataFogEnabled);
 		this.fogColor = data.dataFogColor;
-		this.mirrored = data.dataMirrored;
-		this.movingLight = data.dataMovingLight;
-		this.rotationEnabled = data.dataRotationEnabled;
+		this.mirrored = toBool(data.dataMirrored);
+		this.movingLight = toBool(data.dataMovingLight);
+		this.rotationEnabled = toBool(data.dataRotationEnabled);
 		this.rotationDirection = data.dataRotationDirection === "Right" ? -1 : 1;
-		this.dataDraggable = data.dataDraggable;
+		this.dataDraggable = toBool(data.dataDraggable);
 		this.cameraPositionX = parseFloat(data.dataCameraPosX) || 0;
 		this.cameraPositionY = parseFloat(data.dataCameraPosY) || 150;
 		this.cameraPositionZ = parseFloat(data.dataCameraPosZ) || 700;
@@ -269,4 +269,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function customize3DText(textElement, data) {
 	return new Pslzme3DText(textElement, data);
+}
+
+function toBool(value) {
+	return value === "true" || value === true;
 }
