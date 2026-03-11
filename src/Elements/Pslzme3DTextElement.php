@@ -30,11 +30,6 @@ class Pslzme3DTextElement extends ContentElement {
         $this->Template->text3DMovingLightEnabled = $this->text3DMovingLightEnabled;
         $this->Template->text3DTextRotation = $this->text3DTextRotation;
         $this->Template->text3DTextRotationDirection = $this->text3DTextRotationDirection;
-
-        error_log('text3DTextRotation: ' . $this->text3DTextRotation);
-        error_log('text3DMovingLightEnabled: ' . $this->text3DMovingLightEnabled);
-        error_log('text3DTextRotationDirection: ' . $this->text3DTextRotationDirection);
-
     }
 
 }
