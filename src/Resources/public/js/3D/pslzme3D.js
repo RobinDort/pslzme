@@ -45,7 +45,7 @@ class Pslzme3DText {
 		// SCENE
 		this.scene = new THREE.Scene();
 		this.scene.background = new THREE.Color(this.sceneBackground);
-		if (this.fogEnabled) {
+		if (this.fogEnabled === true) {
 			this.scene.fog = new THREE.Fog(this.fogColor, 250, 1400);
 		}
 
@@ -83,7 +83,7 @@ class Pslzme3DText {
 		this.scene.add(plane);
 
 		// MOVING PARTICLE LIGHT
-		if (this.movingLight) {
+		if (this.movingLight === true) {
 			this.particleLight = new THREE.Mesh(new THREE.SphereGeometry(2, 8, 8), new THREE.MeshBasicMaterial({ color: 0xffffff }));
 			this.particleLight.position.set(0, 150, 0);
 			this.particleLight.add(new THREE.PointLight(0xffffff, 100000 / 2));
@@ -165,7 +165,7 @@ class Pslzme3DText {
 
 		const timer = Date.now() * 0.00025;
 
-		if (this.movingLight) {
+		if (this.movingLight === true) {
 			// Move particle light in a circle
 			this.particleLight.position.x = 0 + Math.sin(timer * 7) * 400;
 			this.particleLight.position.y = 150 + Math.cos(timer * 5) * 100;
@@ -173,7 +173,7 @@ class Pslzme3DText {
 		}
 
 		// Smooth rotation
-		if (this.rotationEnabled) {
+		if (this.rotationEnabled === true) {
 			this.group.rotation.y += 0.0025 * this.rotationDirection;
 		}
 
@@ -187,7 +187,7 @@ class Pslzme3DText {
 		let isDragging = false;
 		let previousX = 0;
 
-		if (this.dataDraggable) {
+		if (this.dataDraggable === true) {
 			this.container.addEventListener("mousedown", (event) => {
 				isDragging = true;
 				previousX = event.clientX;
