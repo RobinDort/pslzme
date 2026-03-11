@@ -25,8 +25,11 @@ $GLOBALS['TL_LANG']['robindort_pslzme_links']['no'] = 'Nein';
 /** Custom elements */
 
 $GLOBALS['TL_LANG']['CTE']['pslzme_text'] = ['Pslzme Text', 'Personalisierbares Text element'];
+$GLOBALS['TL_LANG']['CTE']['pslzme_3d_text'] = ['Pslzme 3D Text', 'Personalisierbares 3D Text Element'];
 $GLOBALS['TL_LANG']['CTE']['pslzme_content'] = ['Pslzme Content', 'Personalisierbares Content Element'];
 $GLOBALS['TL_LANG']['CTE']['pslzme_image'] = ['Pslzme Image', 'Personalisierbares Image Element'];
+$GLOBALS['TL_LANG']['CTE']['pslzme_marquee'] = ['Pslzme Marquee', 'Personalisierbares Marquee Element'];
+
 
 
 /** Element fields */
@@ -74,6 +77,32 @@ $GLOBALS['TL_LANG']['tl_content']['personalizedMarqueeTextGroup'] = ["Personalis
 $GLOBALS['TL_LANG']['tl_content']['unpersonalizedMarqueeTextGroup'] = ["Unpersonalisierter Marquee Text"];
 $GLOBALS['TL_LANG']['tl_content']['personalizedMarqueeText'] = ['Personalisierter Text', 'Persönlichen Text eingeben'];
 $GLOBALS['TL_LANG']['tl_content']['unpersonalizedMarqueeText'] = ['Unpersonalisierter Text', 'Unpersonalisierten Text eingeben'];
+$GLOBALS['TL_LANG']['tl_content']['personalized3DTextGroup'] = ["Personalisierte 3D Texteigenschaften", 'Hier können Sie die Eigenschaften des personalisierten 3D Textes festlegen.'];
+$GLOBALS['TL_LANG']['tl_content']['personalized3DText'] = ['Personalisierter 3D Text', 'Persönlichen 3D Text eingeben'];
+$GLOBALS['TL_LANG']['tl_content']['unpersonalized3DTextGroup'] = ["Unpersonalisierte 3D Texteigenschaften", 'Hier können Sie die Eigenschaften des unpersonalisierten 3D Textes festlegen.'];
+$GLOBALS['TL_LANG']['tl_content']['unpersonalized3DText'] = ['Unpersonalisierter 3D Text', 'Unpersonalisierten 3D Text eingeben'];
+$GLOBALS['TL_LANG']['tl_content']['text3DColorOptionsGroup'] = ["Farboptionen", 'Hier können Sie die Farben des 3D Textes konfigurieren.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DSceneBackgroundColor'] = ["Hintergrundfarbe der 3D Szene", 'Geben Sie eine Hintergrundfarbe für die 3D Szene an.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DHighlightColorOne'] = ["Hightlightfarbe 1", 'Geben Sie eine Highlightfarbe an um den Text aus verschiedenen Richtungen zu beleuchten.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DHighlightColorTwo'] = ["Hightlightfarbe 2", 'Geben Sie eine Highlightfarbe an um den Text aus verschiedenen Richtungen zu beleuchten.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DHighlightColorThree'] = ["Hightlightfarbe 3", 'Geben Sie eine Highlightfarbe an um den Text aus verschiedenen Richtungen zu beleuchten.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DCameraOptionsGroup'] = ["Kameraoptionen", 'Hier können Sie die Kameraeinstellungen der 3D Szene konfigurieren.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DCameraPosX'] = ["Kamera Position X", 'Geben Sie die X Koordinate der Kamera Position an.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DCameraPosY'] = ["Kamera Position Y", 'Geben Sie die Y Koordinate der Kamera Position an.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DCameraPosZ'] = ["Kamera Position Z", 'Geben Sie die Z Koordinate der Kamera Position an.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DCameraTargetPosX'] = ["Kamera Ziel Position X", 'Geben Sie die X Koordinate der Kamera an, welche bestimmt in welche Richtung die Kamera blickt.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DCameraTargetPosY'] = ["Kamera Ziel Position Y", 'Geben Sie die Y Koordinate der Kamera an, welche bestimmt in welche Richtung die Kamera blickt.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DCameraTargetPosZ'] = ["Kamera Ziel Position Z", 'Geben Sie die Z Koordinate der Kamera an, welche bestimmt in welche Richtung die Kamera blickt.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DFurtherOptionsGroup'] = ["Weitere Optionen", 'Hier können Sie zusätzliche Einstellungen für die 3D Szene vornehmen.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DFogEnabled'] = ["Nebel aktiviert", 'Aktivieren Sie den Nebel Effekt in der 3D Szene.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DFogColor'] = ["Nebel Farbe", 'Geben Sie eine Farbe für den Nebel Effekt an.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DTextMirrored'] = ["Text spiegeln", 'Spiegeln Sie den Text, um einen interessanten visuellen Effekt zu erzielen.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DTextDraggable'] = ["Text greifbar", 'Ermöglichen Sie es den Besuchern, den Text mit der Maus zu greifen und zu bewegen.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DMovingLightEnabled'] = ["Bewegliches Licht aktiviert", 'Aktivieren Sie ein bewegliches Licht, das den Text aus verschiedenen Richtungen beleuchtet und so für einen dynamischen Effekt sorgt.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DTextRotation'] = ["Text Rotation aktiviert", 'Aktivieren Sie die Rotation des Textes, um einen dynamischen Effekt zu erzielen.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DTextRotationDirection'] = ["Rotationsrichtung", 'Wählen Sie die Richtung der Textrotation aus.'];
+
+
 
 
 /** Pages */

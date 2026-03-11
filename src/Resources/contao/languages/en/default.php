@@ -24,8 +24,10 @@ $GLOBALS['TL_LANG']['robindort_pslzme_links']['no'] = 'No';
 /** Custom elements */
 
 $GLOBALS['TL_LANG']['CTE']['pslzme_text'] = ['Pslzme Text', 'Personalizable text element'];
+$GLOBALS['TL_LANG']['CTE']['pslzme_3d_text'] = ['Pslzme 3D Text', 'Personalizable 3D Text Element'];
 $GLOBALS['TL_LANG']['CTE']['pslzme_content'] = ['Pslzme Content', 'Personalizable content element'];
 $GLOBALS['TL_LANG']['CTE']['pslzme_image'] = ['Pslzme Image', 'Personalizable image element'];
+$GLOBALS['TL_LANG']['CTE']['pslzme_marquee'] = ['Pslzme Marquee', 'Personalizable Marquee Element'];
 
 
 /** Element fields */
@@ -74,6 +76,30 @@ $GLOBALS['TL_LANG']['tl_content']['personalizedMarqueeTextGroup'] = ["Personaliz
 $GLOBALS['TL_LANG']['tl_content']['unpersonalizedMarqueeTextGroup'] = ["Unpersonalized marquee text"];
 $GLOBALS['TL_LANG']['tl_content']['personalizedMarqueeText'] = ['Personalized text', 'Enter personalized text'];
 $GLOBALS['TL_LANG']['tl_content']['unpersonalizedMarqueeText'] = ['Unpersonalized text', 'Enter unpersonalized text'];
+$GLOBALS['TL_LANG']['tl_content']['personalized3DTextGroup'] = ["Personalized 3D Text Properties", 'Here you can configure the properties of the personalized 3D text.'];
+$GLOBALS['TL_LANG']['tl_content']['personalized3DText'] = ['Personalized 3D Text', 'Enter personalized 3D text'];
+$GLOBALS['TL_LANG']['tl_content']['unpersonalized3DTextGroup'] = ["Unpersonalized 3D Text Properties", 'Here you can configure the properties of the unpersonalized 3D text.'];
+$GLOBALS['TL_LANG']['tl_content']['unpersonalized3DText'] = ['Unpersonalized 3D Text', 'Enter unpersonalized 3D text'];
+$GLOBALS['TL_LANG']['tl_content']['text3DColorOptionsGroup'] = ["Color Options", 'Here you can configure the colors of the 3D text.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DSceneBackgroundColor'] = ["Background Color of the 3D Scene", 'Specify a background color for the 3D scene.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DHighlightColorOne'] = ["Highlight Color 1", 'Specify a highlight color to illuminate the text from various directions.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DHighlightColorTwo'] = ["Highlight Color 2", 'Specify a highlight color to illuminate the text from various directions.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DHighlightColorThree'] = ["Highlight Color 3", 'Specify a highlight color to illuminate the text from various directions.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DCameraOptionsGroup'] = ["Camera Options", 'Here you can configure the camera settings of the 3D scene.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DCameraPosX'] = ["Camera Position X", 'Specify the X coordinate of the camera position.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DCameraPosY'] = ["Camera Position Y", 'Specify the Y coordinate of the camera position.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DCameraPosZ'] = ["Camera Position Z", 'Specify the Z coordinate of the camera position.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DCameraTargetPosX'] = ["Camera Target Position X", 'Specify the X coordinate of the camera, which determines in which direction the camera looks.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DCameraTargetPosY'] = ["Camera Target Position Y", 'Specify the Y coordinate of the camera, which determines in which direction the camera looks.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DCameraTargetPosZ'] = ["Camera Target Position Z", 'Specify the Z coordinate of the camera, which determines in which direction the camera looks.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DFurtherOptionsGroup'] = ["Further Options", 'Here you can make additional settings for the 3D scene.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DFogEnabled'] = ["Fog Enabled", 'Enable the fog effect in the 3D scene.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DFogColor'] = ["Fog Color", 'Specify a color for the fog effect.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DTextMirrored'] = ["Text Mirrored", 'Mirror the text to create an interesting visual effect.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DTextDraggable'] = ["Text Draggable", 'Allow visitors to grab and move the text with their mouse.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DMovingLightEnabled'] = ["Moving Light Enabled", 'Enable a moving light that illuminates the text from various directions, creating a dynamic effect.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DTextRotation'] = ["Text Rotation Enabled", 'Enable rotation of the text to create a dynamic effect.'];
+$GLOBALS['TL_LANG']['tl_content']['text3DTextRotationDirection'] = ["Rotation Direction", 'Choose the direction of the text rotation.'];
 
 
 /** Pages */
