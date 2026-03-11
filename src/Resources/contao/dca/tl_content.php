@@ -398,7 +398,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedMarqueeText'] = [
  * Configuration for pslzme_3d_text element
  */
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_3d_text'] = '{type_legend},type,{text_legend};personalized3DTextGroup,personalized3DText;unpersonalized3DTextGroup,unpersonalized3DText;text3DColorOptionsGroup,text3DSceneBackgroundColor,text3DHighlightColorOne,text3DHighlightColorTwo,text3DHighlightColorThree;text3DCameraOptionsGroup,text3DCameraPosX,text3DCameraPosY,text3DCameraPosZ,text3DCameraTargetPosX,text3DCameraTargetPosY,text3DCameraTargetPosZ;text3DFurtherOptionsGroup,text3DFogEnabled,text3DFogColor,text3DTextMirrored,text3DTextDraggable,text3DMovingLightEnabled,text3DTextRotation,text3DTextRotationDirection;{expert_legend:hide},cssID';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_3d_text'] = '{type_legend},type,{text_legend};personalized3DTextGroup,personalized3DText;unpersonalized3DTextGroup,unpersonalized3DText;text3DColorOptionsGroup,text3DSceneBackgroundColor,text3DHighlightColorOne,text3DHighlightColorTwo,text3DHighlightColorThree;text3DCameraOptionsGroup,text3DCameraPosX,text3DCameraPosY,text3DCameraPosZ,text3DCameraTargetPosX,text3DCameraTargetPosY,text3DCameraTargetPosZ;text3DFurtherOptionsGroup,text3DFogEnabled,text3DTextMirrored,text3DTextDraggable,text3DMovingLightEnabled,text3DTextRotation;{expert_legend:hide},cssID';
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'text3DFogEnabled';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'text3DTextRotation';
