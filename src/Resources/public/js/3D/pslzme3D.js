@@ -11,7 +11,7 @@ class Pslzme3DText {
 		this.pointerX = 0;
 		this.pointerXOnPointerDown = 0;
 		this.windowHalfX = window.innerWidth / 2;
-		this.usedText = data.dataText;
+		this.usedText = data.dataText.replace(/<[^>]*>/g, "");
 		this.sceneBackground = data.dataBackground;
 		this.highlightColorOne = data.dataHighlightColorOne;
 		this.highlightColorTwo = data.dataHighlightColorTwo;
