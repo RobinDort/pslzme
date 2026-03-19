@@ -71,6 +71,7 @@
 	height: 600px;
 	max-height: 1000px;
 	max-width: 3000px;
+	overflow: hidden;
 }
 
 .pslzme-3d-text canvas {

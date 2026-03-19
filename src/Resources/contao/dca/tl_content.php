@@ -398,7 +398,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedMarqueeText'] = [
  * Configuration for pslzme_3d_text element
  */
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_3d_text'] = '{type_legend},type,{text_legend};personalized3DTextGroup,personalized3DText;unpersonalized3DTextGroup,unpersonalized3DText;text3DColorOptionsGroup,text3DSceneBackgroundColor,text3DHighlightColorOne,text3DHighlightColorTwo,text3DHighlightColorThree;text3DCameraOptionsGroup,textDebugUIEnabled,text3DCameraPosX,text3DCameraPosXTablet,text3DCameraPosXMobile;text3DCameraPosY,text3DCameraPosYTablet,text3DCameraPosYMobile;text3DCameraPosZ,text3DCameraPosZTablet,text3DCameraPosZMobile;text3DCameraTargetPosX,text3DCameraTargetPosXTablet,text3DCameraTargetPosXMobile;text3DCameraTargetPosY,text3DCameraTargetPosYTablet,text3DCameraTargetPosYMobile;text3DCameraTargetPosZ,text3DCameraTargetPosZTablet,text3DCameraTargetPosZMobile;text3DFurtherOptionsGroup,text3DFogEnabled,text3DTextMirrored,text3DTextDraggable,text3DMovingLightEnabled,text3DTextRotation;{expert_legend:hide},cssID';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_3d_text'] = '{type_legend},type,{text_legend};personalized3DTextGroup,personalized3DText;unpersonalized3DTextGroup,unpersonalized3DText;text3DColorOptionsGroup,text3DSceneBackgroundColor,text3DHighlightColorOne,text3DHighlightColorTwo,text3DHighlightColorThree;text3DCameraOptionsGroup,textDebugUIEnabled;text3DCameraPosX,text3DCameraPosXTablet,text3DCameraPosXMobile;text3DCameraPosY,text3DCameraPosYTablet,text3DCameraPosYMobile;text3DCameraPosZ,text3DCameraPosZTablet,text3DCameraPosZMobile;text3DBorderRadiusGroup,text3DBorderRadius;text3DCameraTargetPosX,text3DCameraTargetPosXTablet,text3DCameraTargetPosXMobile;text3DCameraTargetPosY,text3DCameraTargetPosYTablet,text3DCameraTargetPosYMobile;text3DCameraTargetPosZ,text3DCameraTargetPosZTablet,text3DCameraTargetPosZMobile;text3DFurtherOptionsGroup,text3DFogEnabled,text3DTextMirrored,text3DTextDraggable,text3DMovingLightEnabled,text3DTextRotation;{expert_legend:hide},cssID';
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'text3DFogEnabled';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'text3DTextRotation';
@@ -592,6 +592,17 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraTargetPosZMobile'] = [
     'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
     'default' => '0',
     'sql' => "varchar(3) NULL default '0'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['text3DBorderRadiusGroup'] = [
+    'inputType' => 'group'
+];
+
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['text3DBorderRadius'] = [
+    'inputType' => 'trbl',
+    'eval' => ['rgxp' => 'digit', 'tl_class' => 'clr w50'],
+    'sql'       => "varchar(255) NOT NULL default ''"
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DFurtherOptionsGroup'] = [
