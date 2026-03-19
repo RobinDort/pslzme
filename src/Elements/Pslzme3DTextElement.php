@@ -12,6 +12,15 @@ class Pslzme3DTextElement extends ContentElement {
 
     protected function compile() {
 
+        $borderRadiusValue = deserialize($this->text3DBorderRadius);
+        $borderRadius = sprintf(
+            '%s%s %s%s %s%s %s%s',
+            $borderRadiusValue['top'] ?? 0, $borderRadiusValue['unit'] ?? 'px',
+            $borderRadiusValue['right'] ?? 0, $borderRadiusValue['unit'] ?? 'px',
+            $borderRadiusValue['bottom'] ?? 0, $borderRadiusValue['unit'] ?? 'px',
+            $borderRadiusValue['left'] ?? 0, $borderRadiusValue['unit'] ?? 'px'
+        );
+
         $this->Template->usedText = $GLOBALS['decryptedVars']['varsSet'] === true && !empty($this->personalized3DText) ? $this->personalized3DText : $this->unpersonalized3DText;
         $this->Template->text3DSceneBackgroundColor = $this->text3DSceneBackgroundColor;
         $this->Template->text3DHighlightColorOne = $this->text3DHighlightColorOne;
@@ -42,7 +51,7 @@ class Pslzme3DTextElement extends ContentElement {
         $this->Template->text3DCameraTargetPosZ = $this->text3DCameraTargetPosZ;
         $this->Template->text3DCameraTargetPosZTablet = $this->text3DCameraTargetPosZTablet;
         $this->Template->text3DCameraTargetPosZMobile = $this->text3DCameraTargetPosZMobile;
-
+        $this->Template->borderRadius = $borderRadius;
         $this->Template->text3DFogEnabled = $this->text3DFogEnabled;
         $this->Template->text3DFogColor = $this->text3DFogColor;
         $this->Template->text3DTextMirrored = $this->text3DTextMirrored;
