@@ -8,23 +8,27 @@ class PslzmeImageElement extends ContentElement {
 
     protected function compile() {
         $unit = $this->contentSpaceUnit ?: 'px';
-        $style = '';
 
-        if ($this->contentSpaceTop !== '') {
-            $style .= 'margin-top:' . $this->contentSpaceTop . $unit . ';';
-        }
-        if ($this->contentSpaceRight !== '') {
-            $style .= 'margin-right:' . $this->contentSpaceRight . $unit . ';';
-        }
-        if ($this->contentSpaceBottom !== '') {
-            $style .= 'margin-bottom:' . $this->contentSpaceBottom . $unit . ';';
-        }
-        if ($this->contentSpaceLeft !== '') {
-            $style .= 'margin-left:' . $this->contentSpaceLeft . $unit . ';';
-        }
+        $contentSpaceValue = unserialize($this->contentSpace);
+        $contentSpace = sprintf(
+            "%s%s %s%s %s%s %s%s",
+            $contentSpaceValue['top'] ?? 0, $contentSpaceValue['unit'] ?? 'px',
+            $contentSpaceValue['right'] ?? 0, $contentSpaceValue['unit'] ?? 'px',
+            $contentSpaceValue['bottom'] ?? 0, $contentSpaceValue['unit'] ?? 'px',
+            $contentSpaceValue['left'] ?? 0, $contentSpaceValue['unit'] ?? 'px',
+        );
 
+        $textSpaceValue = unserialize($this->textSpace);
+        $textSpace = sprintf(
+            "%s%s %s%s %s%s %s%s",
+            $textSpaceValue['top'] ?? 0, $textSpaceValue['unit'] ?? 'px',
+            $textSpaceValue['right'] ?? 0, $textSpaceValue['unit'] ?? 'px',
+            $textSpaceValue['bottom'] ?? 0, $textSpaceValue['unit'] ?? 'px',
+            $textSpaceValue['left'] ?? 0, $textSpaceValue['unit'] ?? 'px',
+        );
 
-        $this->Template->style = $style;
+        $this->Template->contentSpace = $contentSpace;
+        $this->Template->textSpace = $textSpace;
         $this->Template->firstImage = $this->firstImage;
         $this->Template->firstImageSize = $this->firstImageSize;
         $this->Template->firstImageAlt = $this->firstImageAlt;

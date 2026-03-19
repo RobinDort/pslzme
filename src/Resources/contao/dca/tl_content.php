@@ -195,7 +195,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['upPlayerPreload'] = [
 $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_image'] = '{type_legend},type;{text_legend};
 personalizedTextGroup,personalizedText;
 unpersonalizedTextGroup,unpersonalizedText;
-contentSpaceGroup,contentSpaceTop,contentSpaceRight,contentSpaceBottom,contentSpaceLeft,contentSpaceUnit;
+contentSpaceGroup,contentSpace,textSpace;
 firstImageGroup,firstImage,firstImageSize,firstImageAlt,firstImageTitle;
 secondImageGroup,secondImage,secondImageSize,secondImageLink,secondImageAlt,secondImageTitle;
 {expert_legend:hide},cssID';
@@ -205,53 +205,20 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['contentSpaceGroup'] = [
     'inputType' => 'group',
 ];
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['contentSpaceTop'] = [
-    'inputType' => 'text',
-    'eval' => [
-        'maxlength' => 64,
-        'tl_class' => 'w25',
-    ],
-    'sql' => "varchar(64) NOT NULL default ''",
+$GLOBALS['TL_DCA']['tl_content']['fields']['contentSpace'] = [
+    'inputType' => 'trbl',
+    'eval' => ['rgxp' => 'digit', 'tl_class' => 'w50'],
+    'options' => ['px', '%', 'em', 'rem', 'vw', 'vh'],
+    'sql' => "varchar(255) NOT NULL default ''"
 ];
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['contentSpaceRight'] = [
-    'inputType' => 'text',
-    'eval' => [
-        'maxlength' => 64,
-        'tl_class' => 'w25',
-    ],
-    'sql' => "varchar(64) NOT NULL default ''",
-];
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['contentSpaceBottom'] = [
-    'inputType' => 'text',
-    'eval' => [
-        'maxlength' => 64,
-        'tl_class' => 'w25',
-    ],
-    'sql' => "varchar(64) NOT NULL default ''",
+$GLOBALS['TL_DCA']['tl_content']['fields']['textSpace'] = [
+    'inputType' => 'trbl',
+    'eval' => ['rgxp' => 'digit', 'tl_class' => 'w50'],
+    'options' => ['px', '%', 'em', 'rem', 'vw', 'vh'],
+    'sql' => "varchar(255) NOT NULL default ''"
 ];
-
-$GLOBALS['TL_DCA']['tl_content']['fields']['contentSpaceLeft'] = [
-    'inputType' => 'text',
-    'eval' => [
-        'maxlength' => 64,
-        'tl_class' => 'w25',
-    ],
-    'sql' => "varchar(64) NOT NULL default ''",
-];
-
-$GLOBALS['TL_DCA']['tl_content']['fields']['contentSpaceUnit'] = [
-    'inputType' => 'select',
-    'options' => ['px', 'em', 'rem', '%', 'vh', 'vw'],
-    'default' => 'px',
-    'eval' => [
-        'maxlength' => 4,
-        'tl_class' => 'w25',
-    ],
-    'sql' => "varchar(4) NOT NULL default 'px'",
-];
-
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['firstImageGroup'] = [
     'inputType' => 'group',

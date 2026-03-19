@@ -63,7 +63,7 @@ if ($this->secondImage) {
 
 <?php $this->block('content'); ?>
 
-<div class="pslzme-ov-image-container <?= $this->class ?>" <?= !empty($this->style) ? 'style="' . $this->style . '"' : '' ?>>
+<div class="pslzme-ov-image-container <?= $this->class ?>"  <?= !empty($this->contentSpace) ? 'style="margin:' . $this->contentSpace . ';"' : '' ?>>
 
     <?php if ($backgroundImage): ?>
         <?= $backgroundImage ?>
@@ -73,7 +73,7 @@ if ($this->secondImage) {
 
     <!-- indexer::stop -->
 
-        <div class="ce_text block layered-text">
+        <div class="ce_text block layered-text" <?= !empty($this->textSpace) ? 'style="margin:' . $this->textSpace . ';"' : '' ?>>
             <?= $this->personalizedText ?>
         </div>
         
