@@ -26,7 +26,6 @@ class Pslzme3DText {
 		this.dataDraggable = toBool(data.dataDraggable);
 		this.debugUIEnabled = data.dataDebugUiEnabled;
 
-		console.log(data.dataDebugUiEnabled);
 		this.cameraPositionX = parseFloat(data.dataCameraPosX) || 0;
 		this.cameraPositionY = parseFloat(data.dataCameraPosY) || 150;
 		this.cameraPositionZ = parseFloat(data.dataCameraPosZ) || 700;

@@ -76,6 +76,7 @@
 	max-width: 3000px;
 	max-height: 1000px;
 	display: block;
+	position: relative;
 }
 
 .pslzme-3d-text-draggable canvas {
