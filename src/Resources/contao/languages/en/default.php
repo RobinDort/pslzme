@@ -85,6 +85,7 @@ $GLOBALS['TL_LANG']['tl_content']['text3DSceneBackgroundColor'] = ["Background C
 $GLOBALS['TL_LANG']['tl_content']['text3DHighlightColorOne'] = ["Highlight Color 1", 'Specify a highlight color to illuminate the text from various directions.'];
 $GLOBALS['TL_LANG']['tl_content']['text3DHighlightColorTwo'] = ["Highlight Color 2", 'Specify a highlight color to illuminate the text from various directions.'];
 $GLOBALS['TL_LANG']['tl_content']['text3DHighlightColorThree'] = ["Highlight Color 3", 'Specify a highlight color to illuminate the text from various directions.'];
+$GLOBALS['TL_LANG']['tl_content']['textDebugUIEnabled'] = ['3D Ddebug UI', 'Display a panel to tweak certain options?'];
 $GLOBALS['TL_LANG']['tl_content']['text3DCameraOptionsGroup'] = ["Camera Options", 'Here you can configure the camera settings of the 3D scene.'];
 $GLOBALS['TL_LANG']['tl_content']['text3DCameraPosX'] = ["Camera Position X", 'Specify the X coordinate of the camera position.'];
 $GLOBALS['TL_LANG']['tl_content']['text3DCameraPosXTablet'] = ["Tablet Camera Position X", 'Specify the X coordinate of the camera position on tablet sizes.'];

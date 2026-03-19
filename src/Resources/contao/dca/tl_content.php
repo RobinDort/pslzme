@@ -482,7 +482,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraPosXTablet'] = [
     'sql' => "varchar(4) NULL default '0'",
 ];
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraPosMobile'] = [
+$GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraPosXMobile'] = [
     'inputType' => 'text',
     'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
     'default' => '0',
@@ -503,7 +503,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraPosYTablet'] = [
     'sql' => "varchar(4) NULL default '150'",
 ];
 
-$GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraPosMobile'] = [
+$GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraPosYMobile'] = [
     'inputType' => 'text',
     'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
     'default' => '150',
