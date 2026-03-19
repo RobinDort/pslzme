@@ -15,12 +15,26 @@
         data-rotation-enabled="<?= $this->text3DTextRotation ? "true" : "false"; ?>"
         data-rotation-direction="<?= $this->text3DTextRotationDirection; ?>"
         data-draggable="<?= $this->text3DTextDraggable ? "true" : "false"; ?>"
+        data-debug-ui="<?= $this->textDebugUIEnabled ? "true" : "false"; ?>"
         data-camera-pos-x="<?= $this->text3DCameraPosX; ?>"
+        data-camera-pos-x-tablet="<?= $this->text3DCameraPosXTablet ?? $this->text3DCameraPosXTablet ?>"
+        data-camera-pos-x-mobile="<?= $this->text3DCameraPosXMobile ?? $this->text3DCameraPosXMobile ?>"
         data-camera-pos-y="<?= $this->text3DCameraPosY; ?>"
+        data-camera-pos-y-tablet="<?= $this->text3DCameraPosYTablet ?? $this->text3DCameraPosYTablet ?>"
+        data-camera-pos-y-mobile="<?= $this->text3DCameraPosYMobile ?? $this->text3DCameraPosYMobile ?>"
         data-camera-pos-z="<?= $this->text3DCameraPosZ; ?>"
+        data-camera-pos-z-tablet="<?= $this->text3DCameraPosZTablet ?? $this->text3DCameraPosZTablet ?>"
+        data-camera-pos-z-mobile="<?= $this->text3DCameraPosZMobile ?? $this->text3DCameraPosZMobile ?>"
         data-camera-target-x="<?= $this->text3DCameraTargetPosX; ?>"
+        data-camera-target-x-tablet="<?= $this->text3DCameraTargetPosXTablet ?? $this->text3DCameraTargetPosXTablet ?>"
+        data-camera-target-x-mobile="<?= $this->text3DCameraTargetPosXMobile ?? $this->text3DCameraTargetPosXMobile ?>"
         data-camera-target-y="<?= $this->text3DCameraTargetPosY; ?>"
+        data-camera-target-y-tablet="<?= $this->text3DCameraTargetPosYTablet ?? $this->text3DCameraTargetPosYTablet ?>"
+        data-camera-target-y-mobile="<?= $this->text3DCameraTargetPosYMobile ?? $this->text3DCameraTargetPosYMobile ?>"
         data-camera-target-z="<?= $this->text3DCameraTargetPosZ; ?>"
+        data-camera-target-z-tablet="<?= $this->text3DCameraTargetPosZTablet ?? $this->text3DCameraTargetPosZTablet ?>"
+        data-camera-target-z-mobile="<?= $this->text3DCameraTargetPosZMobile ?? $this->text3DCameraTargetPosZMobile ?>"
+
         >
     </div>
 

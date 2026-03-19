@@ -236,12 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const dataRotationEnabled = textElement.getAttribute("data-rotation-enabled");
 		const dataRotationDirection = textElement.getAttribute("data-rotation-direction");
 		const dataDraggable = textElement.getAttribute("data-draggable");
-		const cameraPositionX = textElement.getAttribute("data-camera-pos-x");
-		const cameraPositionY = textElement.getAttribute("data-camera-pos-y");
-		const cameraPositionZ = textElement.getAttribute("data-camera-pos-z");
-		const cameraTargetX = textElement.getAttribute("data-camera-target-x");
-		const cameraTargetY = textElement.getAttribute("data-camera-target-y");
-		const cameraTargetZ = textElement.getAttribute("data-camera-target-z");
+		const dataDebugUiEnabled = textElement.getAttribute("data-debug-ui");
 
 		const data = {
 			dataText,
@@ -256,12 +251,13 @@ document.addEventListener("DOMContentLoaded", () => {
 			dataRotationEnabled,
 			dataRotationDirection,
 			dataDraggable,
-			dataCameraPosX: cameraPositionX,
-			dataCameraPosY: cameraPositionY,
-			dataCameraPosZ: cameraPositionZ,
-			dataCameraTargetX: cameraTargetX,
-			dataCameraTargetY: cameraTargetY,
-			dataCameraTargetZ: cameraTargetZ,
+			dataDebugUiEnabled,
+			dataCameraPosX: getResponsiveValue(textElement, "cameraPosX"),
+			dataCameraPosY: getResponsiveValue(textElement, "cameraPosY"),
+			dataCameraPosZ: getResponsiveValue(textElement, "cameraPosZ"),
+			dataCameraTargetX: getResponsiveValue(textElement, "cameraTargetX"),
+			dataCameraTargetY: getResponsiveValue(textElement, "cameraTargetY"),
+			dataCameraTargetZ: getResponsiveValue(textElement, "cameraTargetZ"),
 		};
 		customize3DText(textElement, data);
 	});
@@ -269,6 +265,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function customize3DText(textElement, data) {
 	return new Pslzme3DText(textElement, data);
+}
+
+function getResponsiveValue(el, key) {
+	let value;
+
+	if (window.innerWidth <= 767 && el.dataset[key + "Mobile"] !== undefined) {
+		value = el.dataset[key + "Mobile"];
+	} else if (window.innerWidth <= 1024 && el.dataset[key + "Tablet"] !== undefined) {
+		value = el.dataset[key + "Tablet"];
+	} else {
+		value = el.dataset[key];
+	}
+
+	return parseFloat(value) || 0; // fallback to 0 if NaN
 }
 
 function toBool(value) {

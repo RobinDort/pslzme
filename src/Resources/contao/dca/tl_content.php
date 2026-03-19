@@ -398,7 +398,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedMarqueeText'] = [
  * Configuration for pslzme_3d_text element
  */
 
-$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_3d_text'] = '{type_legend},type,{text_legend};personalized3DTextGroup,personalized3DText;unpersonalized3DTextGroup,unpersonalized3DText;text3DColorOptionsGroup,text3DSceneBackgroundColor,text3DHighlightColorOne,text3DHighlightColorTwo,text3DHighlightColorThree;text3DCameraOptionsGroup,text3DCameraPosX,text3DCameraPosY,text3DCameraPosZ,text3DCameraTargetPosX,text3DCameraTargetPosY,text3DCameraTargetPosZ;text3DFurtherOptionsGroup,text3DFogEnabled,text3DTextMirrored,text3DTextDraggable,text3DMovingLightEnabled,text3DTextRotation;{expert_legend:hide},cssID';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_3d_text'] = '{type_legend},type,{text_legend};personalized3DTextGroup,personalized3DText;unpersonalized3DTextGroup,unpersonalized3DText;text3DColorOptionsGroup,text3DSceneBackgroundColor,text3DHighlightColorOne,text3DHighlightColorTwo,text3DHighlightColorThree;text3DCameraOptionsGroup,textDebugUIEnabled,text3DCameraPosX,text3DCameraPosXTablet,text3DCameraPosXMobile,text3DCameraPosY,text3DCameraPosYTablet,text3DCameraPosYMobile,text3DCameraPosZ,text3DCameraPosZTablet,text3DCameraPosZMobile,text3DCameraTargetPosX,text3DCameraTargetPosXTablet,text3DCameraTargetPosXMobile,text3DCameraTargetPosY,text3DCameraTargetPosYTablet,text3DCameraTargetPosYMobile,text3DCameraTargetPosZ,text3DCameraTargetPosZTablet,text3DCameraTargetPosZMobile;text3DFurtherOptionsGroup,text3DFogEnabled,text3DTextMirrored,text3DTextDraggable,text3DMovingLightEnabled,text3DTextRotation;{expert_legend:hide},cssID';
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'text3DFogEnabled';
 $GLOBALS['TL_DCA']['tl_content']['palettes']['__selector__'][] = 'text3DTextRotation';
@@ -461,44 +461,135 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraOptionsGroup'] = [
     'inputType' => 'group',
 ];
 
+$GLOBALS['TL_DCA']['tl_content']['fields']['textDebugUIEnabled'] = [
+    'inputType' => 'checkbox',
+    'eval' => ['isBoolean' => true, 'mandatory' => false],
+    'default' => false,
+    'sql' => "char(1) NOT NULL default '1'"
+];
+
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraPosX'] = [
     'inputType' => 'text',
-    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 1000, 'tl_class' => 'w33', 'mandatory' => false],
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
+    'default' => '0',
+    'sql' => "varchar(4) NULL default '0'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraPosXTablet'] = [
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
+    'default' => '0',
+    'sql' => "varchar(4) NULL default '0'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraPosMobile'] = [
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
     'default' => '0',
     'sql' => "varchar(4) NULL default '0'",
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraPosY'] = [
     'inputType' => 'text',
-    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 1000, 'tl_class' => 'w33', 'mandatory' => false],
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
+    'default' => '150',
+    'sql' => "varchar(4) NULL default '150'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraPosYTablet'] = [
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
+    'default' => '150',
+    'sql' => "varchar(4) NULL default '150'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraPosMobile'] = [
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
     'default' => '150',
     'sql' => "varchar(4) NULL default '150'",
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraPosZ'] = [
     'inputType' => 'text',
-    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 1000, 'tl_class' => 'w33', 'mandatory' => false],
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
+    'default' => '700',
+    'sql' => "varchar(4) NULL default '700'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraPosZTablet'] = [
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
+    'default' => '700',
+    'sql' => "varchar(4) NULL default '700'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraPosZMobile'] = [
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
     'default' => '700',
     'sql' => "varchar(4) NULL default '700'",
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraTargetPosX'] = [
     'inputType' => 'text',
-    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 500, 'tl_class' => 'w33', 'mandatory' => false],
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
+    'default' => '0',
+    'sql' => "varchar(3) NULL default '0'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraTargetPosXTablet'] = [
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
+    'default' => '0',
+    'sql' => "varchar(3) NULL default '0'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraTargetPosXMobile'] = [
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
     'default' => '0',
     'sql' => "varchar(3) NULL default '0'",
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraTargetPosY'] = [
     'inputType' => 'text',
-    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 500, 'tl_class' => 'w33', 'mandatory' => false],
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
+    'default' => '115',
+    'sql' => "varchar(3) NULL default '115'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraTargetPosYTablet'] = [
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
+    'default' => '115',
+    'sql' => "varchar(3) NULL default '115'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraTargetPosYMobile'] = [
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
     'default' => '115',
     'sql' => "varchar(3) NULL default '115'",
 ];
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraTargetPosZ'] = [
     'inputType' => 'text',
-    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 500, 'tl_class' => 'w33', 'mandatory' => false],
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
+    'default' => '0',
+    'sql' => "varchar(3) NULL default '0'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraTargetPosZTablet'] = [
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
+    'default' => '0',
+    'sql' => "varchar(3) NULL default '0'",
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['text3DCameraTargetPosZMobile'] = [
+    'inputType' => 'text',
+    'eval' => ['rgxp' => 'digit', 'minval' => 0, 'maxval' => 3000, 'tl_class' => 'w33', 'mandatory' => false],
     'default' => '0',
     'sql' => "varchar(3) NULL default '0'",
 ];
