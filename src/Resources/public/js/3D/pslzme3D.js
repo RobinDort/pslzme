@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
+import GUI from "lil-gui";
 
 class Pslzme3DText {
 	constructor(container, data) {
@@ -23,12 +24,36 @@ class Pslzme3DText {
 		this.rotationEnabled = toBool(data.dataRotationEnabled);
 		this.rotationDirection = data.dataRotationDirection === "Right" ? -1 : 1;
 		this.dataDraggable = toBool(data.dataDraggable);
+		this.debugUIEnabled = data.dataDebugUiEnabled;
+
 		this.cameraPositionX = parseFloat(data.dataCameraPosX) || 0;
 		this.cameraPositionY = parseFloat(data.dataCameraPosY) || 150;
 		this.cameraPositionZ = parseFloat(data.dataCameraPosZ) || 700;
 		this.cameraTargetX = parseFloat(data.dataCameraTargetX) || 0;
 		this.cameraTargetY = parseFloat(data.dataCameraTargetY) || 115;
 		this.cameraTargetZ = parseFloat(data.dataCameraTargetZ) || 0;
+
+		// init debug UI but hide it first
+		this.gui = new GUI();
+
+		this.container.appendChild(this.gui.domElement);
+		this.gui.domElement.style.position = "absolute";
+		this.gui.domElement.style.top = "10px";
+		this.gui.domElement.style.right = "10px";
+		this.gui.domElement.style.zIndex = 10;
+
+		this.cameraFolder = this.gui.addFolder("Camera Position");
+		this.cameraFolder.add(this, "cameraPositionX", 0, 3000).onChange(() => this.updateCamera());
+		this.cameraFolder.add(this, "cameraPositionY", 0, 3000).onChange(() => this.updateCamera());
+		this.cameraFolder.add(this, "cameraPositionZ", 0, 3000).onChange(() => this.updateCamera());
+		this.cameraFolder.open();
+
+		this.targetFolder = this.gui.addFolder("Camera Target");
+		this.targetFolder.add(this, "cameraTargetX", 0, 3000).onChange(() => this.updateCamera());
+		this.targetFolder.add(this, "cameraTargetY", 0, 3000).onChange(() => this.updateCamera());
+		this.targetFolder.add(this, "cameraTargetZ", 0, 3000).onChange(() => this.updateCamera());
+		this.targetFolder.open();
+		this.debugUIEnabled ? this.gui.show() : this.gui.hide();
 
 		this.init();
 	}
@@ -216,8 +241,18 @@ class Pslzme3DText {
 
 		this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
 
-		this.camera.updateProjectionMatrix();
+		this.camera.position.set(
+			getResponsiveValue(this.container, "cameraPosX"),
+			getResponsiveValue(this.container, "cameraPosY"),
+			getResponsiveValue(this.container, "cameraPosZ"),
+		);
+		this.cameraTarget.set(
+			getResponsiveValue(this.container, "cameraTargetX"),
+			getResponsiveValue(this.container, "cameraTargetY"),
+			getResponsiveValue(this.container, "cameraTargetZ"),
+		);
 
+		this.camera.updateProjectionMatrix();
 		this.renderer.setSize(this.container.clientWidth, this.container.clientHeight);
 	}
 }
