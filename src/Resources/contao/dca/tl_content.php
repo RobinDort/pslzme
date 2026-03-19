@@ -602,6 +602,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['text3DBorderRadiusGroup'] = [
 $GLOBALS['TL_DCA']['tl_content']['fields']['text3DBorderRadius'] = [
     'inputType' => 'trbl',
     'eval' => ['rgxp' => 'digit', 'tl_class' => 'clr w50'],
+    'options'   => ['px', '%', 'em', 'rem'],
     'sql'       => "varchar(255) NOT NULL default ''"
 ];
 
