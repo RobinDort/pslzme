@@ -2,7 +2,6 @@
 namespace RobinDort\PslzmeLinks\Elements;
 
 use Contao\ContentElement;
-use function Contao\deserialize;
 
 /**
  * custom contao element that represents the main pslzme 3d text element that is used to show personalized messages.
@@ -13,7 +12,7 @@ class Pslzme3DTextElement extends ContentElement {
 
     protected function compile() {
 
-        $borderRadiusValue = deserialize($this->text3DBorderRadius);
+        $borderRadiusValue = unserialize($this->text3DBorderRadius);
         $borderRadius = sprintf(
             '%s%s %s%s %s%s %s%s',
             $borderRadiusValue['top'] ?? 0, $borderRadiusValue['unit'] ?? 'px',
