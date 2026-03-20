@@ -81,7 +81,7 @@ if ($this->secondImage) {
 
     <?php else :?>
 
-        <div class="ce_text block layered-text">
+        <div class="ce_text block layered-text" <?= !empty($this->textSpace) ? 'style="margin:' . $this->textSpace . ';"' : '' ?>>
             <?= $this->unpersonalizedText ?>
         </div>
 
