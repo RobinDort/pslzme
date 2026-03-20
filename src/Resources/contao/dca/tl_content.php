@@ -365,6 +365,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['pslzmeMarqueeDirection'] = [
     'options' => ['left', 'right'],
     'default' => 'left',
     'reference' => &$GLOBALS['TL_LANG']['tl_content']['pslzmeMarqueeDirectionOptions'],
+    'sql' => "varchar(6) NOT NULL default 'left'"
 ];
 
 
