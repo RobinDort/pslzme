@@ -10,6 +10,7 @@ class PslzmeImageElement extends ContentElement {
         $unit = $this->contentSpaceUnit ?: 'px';
 
         $contentSpaceValue = unserialize($this->contentSpace) ?: [];
+        error_log($contentSpaceValue);
         $cpTop    = $contentSpaceValue['top'] ?? 0;
         $cpRight  = $contentSpaceValue['right'] ?? 0;
         $cpBottom = $contentSpaceValue['bottom'] ?? 0;
