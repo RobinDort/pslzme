@@ -10,12 +10,12 @@ class PslzmeImageElement extends ContentElement {
         $unit = $this->contentSpaceUnit ?: 'px';
 
         $contentSpaceValue = unserialize($this->contentSpace) ?: [];
-        error_log($contentSpaceValue);
-        $cpTop    = $contentSpaceValue['top'] ?? 0;
-        $cpRight  = $contentSpaceValue['right'] ?? 0;
-        $cpBottom = $contentSpaceValue['bottom'] ?? 0;
-        $cpLeft   = $contentSpaceValue['left'] ?? 0;
-        $cpUnit   = $contentSpaceValue['unit'] ?? 'px';
+
+        $cpTop    = !empty($contentSpaceValue['top']) ? $contentSpaceValue['top'] : 0;
+        $cpRight  = !empty($contentSpaceValue['right']) ? $contentSpaceValue['right'] : 0;
+        $cpBottom = !empty($contentSpaceValue['bottom']) ? $contentSpaceValue['bottom'] : 0;
+        $cpLeft   = !empty($contentSpaceValue['left']) ? $contentSpaceValue['left'] : 0;
+        $cpUnit   = !empty($contentSpaceValue['unit']) ? $contentSpaceValue['unit'] : 'px';
         $contentSpace = sprintf(
             "%s%s %s%s %s%s %s%s",
             $cpTop, $cpUnit,
@@ -25,11 +25,11 @@ class PslzmeImageElement extends ContentElement {
         );
 
         $textSpaceValue = unserialize($this->textSpace) ?: [];
-        $tpTop    = $textSpaceValue['top'] ?? 0;
-        $tpRight  = $textSpaceValue['right'] ?? 0;
-        $tpBottom = $textSpaceValue['bottom'] ?? 0;
-        $tpLeft   = $textSpaceValue['left'] ?? 0;
-        $tpUnit   = $textSpaceValue['unit'] ?? 'px';
+        $tpTop    = !empty($textSpaceValue['top']) ? $textSpaceValue['top'] : 0;
+        $tpRight  = !empty($textSpaceValue['right']) ? $textSpaceValue['right'] : 0;
+        $tpBottom = !empty($textSpaceValue['bottom']) ? $textSpaceValue['bottom'] : 0;
+        $tpLeft   = !empty($textSpaceValue['left']) ? $textSpaceValue['left'] : 0;
+        $tpUnit   = !empty($textSpaceValue['unit']) ? $textSpaceValue['unit'] : 'px';
         $textSpace = sprintf(
             "%s%s %s%s %s%s %s%s",
             $tpTop, $tpUnit,
