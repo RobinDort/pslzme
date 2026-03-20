@@ -336,7 +336,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['secondImageTitle'] = [
 /**
  * Configuration for pslzme_marquee element
  */
-$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_marquee'] = '{type_legend},type,headline;{text_legend};personalizedMarqueeTextGroup,personalizedMarqueeText;unpersonalizedMarqueeTextGroup,unpersonalizedMarqueeText;{expert_legend:hide},cssID';
+$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_marquee'] = '{type_legend},type,headline;{text_legend};personalizedMarqueeTextGroup,personalizedMarqueeText;unpersonalizedMarqueeTextGroup,unpersonalizedMarqueeText;pslzmeMarqueeDirection;{expert_legend:hide},cssID';
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['personalizedMarqueeTextGroup'] = [
     'inputType' => 'group',
@@ -358,6 +358,13 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['unpersonalizedMarqueeText'] = [
     'inputType' => 'textarea',
     'eval'      => ['rte' => 'tinyMCE', 'helpwizard' => true, 'mandatory' => true],
     'sql' => "TEXT NULL"
+];
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['pslzmeMarqueeDirection'] = [
+    'inputType' => 'radio',
+    'options' => ['left', 'right'],
+    'default' => 'left',
+    'reference' => &$GLOBALS['TL_LANG']['tl_content']['pslzmeMarqueeDirectionOptions'],
 ];
 
 

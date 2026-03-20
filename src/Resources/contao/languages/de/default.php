@@ -74,6 +74,8 @@ $GLOBALS['TL_LANG']['tl_content']['personalizedMarqueeTextGroup'] = ["Personalis
 $GLOBALS['TL_LANG']['tl_content']['unpersonalizedMarqueeTextGroup'] = ["Unpersonalisierter Marquee Text"];
 $GLOBALS['TL_LANG']['tl_content']['personalizedMarqueeText'] = ['Personalisierter Text', 'Persönlichen Text eingeben'];
 $GLOBALS['TL_LANG']['tl_content']['unpersonalizedMarqueeText'] = ['Unpersonalisierter Text', 'Unpersonalisierten Text eingeben'];
+$GLOBALS['TL_LANG']['tl_content']['pslzmeMarqueeDirection'] = ['Text Laufrichtung', 'Geben Sie an in welche Richtung der Text animiert werden soll'];
+$GLOBALS['TL_LANG']['tl_content']['pslzmeMarqueeDirectionOptions'] = ['left' => 'Links', 'right' => 'Rechts'];
 $GLOBALS['TL_LANG']['tl_content']['personalized3DTextGroup'] = ["Personalisierte 3D Texteigenschaften", 'Hier können Sie die Eigenschaften des personalisierten 3D Textes festlegen.'];
 $GLOBALS['TL_LANG']['tl_content']['personalized3DText'] = ['Personalisierter 3D Text', 'Persönlichen 3D Text eingeben'];
 $GLOBALS['TL_LANG']['tl_content']['unpersonalized3DTextGroup'] = ["Unpersonalisierte 3D Texteigenschaften", 'Hier können Sie die Eigenschaften des unpersonalisierten 3D Textes festlegen.'];

@@ -20,6 +20,7 @@ class PslzmeMarqueeElement extends ContentElement {
         }
 
         $this->Template->content = $content;
+        $this->Template->marqueeDirection = $this->pslzmeMarqueeDirection;
     }
 
 }

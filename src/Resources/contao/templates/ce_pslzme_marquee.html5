@@ -4,7 +4,7 @@
 <?php if (!empty($this->content)) : ?>
     <div class="pslzme-marquee">
         <div class="pslzme-marquee-text">
-            <div class="pslzme-marquee-text-track">
+            <div class="pslzme-marquee-text-track <?= $this->marqueeDirection === 'left' ? 'pslzme-marquee-text-anim-left' : 'pslzme-marquee-text-anim-right' ?>">
                 <div class="pslzme-marquee-item">
                     <?= $this->content ?>
                 </div>

@@ -73,6 +73,8 @@ $GLOBALS['TL_LANG']['tl_content']['personalizedMarqueeTextGroup'] = ["Personaliz
 $GLOBALS['TL_LANG']['tl_content']['unpersonalizedMarqueeTextGroup'] = ["Unpersonalized marquee text"];
 $GLOBALS['TL_LANG']['tl_content']['personalizedMarqueeText'] = ['Personalized text', 'Enter personalized text'];
 $GLOBALS['TL_LANG']['tl_content']['unpersonalizedMarqueeText'] = ['Unpersonalized text', 'Enter unpersonalized text'];
+$GLOBALS['TL_LANG']['tl_content']['pslzmeMarqueeDirection'] = ['Text Direction', 'Select in which direction the text should be animated to'];
+$GLOBALS['TL_LANG']['tl_content']['pslzmeMarqueeDirectionOptions'] = ['left' => 'Left', 'right' => 'Right'];
 $GLOBALS['TL_LANG']['tl_content']['personalized3DTextGroup'] = ["Personalized 3D Text Properties", 'Here you can configure the properties of the personalized 3D text.'];
 $GLOBALS['TL_LANG']['tl_content']['personalized3DText'] = ['Personalized 3D Text', 'Enter personalized 3D text'];
 $GLOBALS['TL_LANG']['tl_content']['unpersonalized3DTextGroup'] = ["Unpersonalized 3D Text Properties", 'Here you can configure the properties of the unpersonalized 3D text.'];
