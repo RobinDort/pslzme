@@ -25,7 +25,7 @@ class Pslzme3DText {
 		this.rotationDirection = data.dataRotationDirection === "Right" ? -1 : 1;
 		this.dataDraggable = toBool(data.dataDraggable);
 		this.dataFloorEnabled = toBool(data.dataFloorEnabled);
-		this.debugUIEnabled = data.dataDebugUiEnabled;
+		this.debugUIEnabled = toBool(data.dataDebugUiEnabled);
 
 		this.cameraPositionX = parseFloat(data.dataCameraPosX) || 0;
 		this.cameraPositionY = parseFloat(data.dataCameraPosY) || 150;
