@@ -116,6 +116,7 @@ $GLOBALS['TL_LANG']['tl_content']['text3DTextRotation'] = ["Text Rotation Enable
 $GLOBALS['TL_LANG']['tl_content']['text3DTextRotationDirection'] = ["Rotation Direction", 'Choose the direction of the text rotation.'];
 $GLOBALS['TL_LANG']['tl_content']['text3DTextRotationDirection']['Left'] = 'Left';
 $GLOBALS['TL_LANG']['tl_content']['text3DTextRotationDirection']['Right'] = 'Right';
+$GLOBALS['TL_LANG']['tl_content']['text3DfloorEnabled'] = ['Display floor', 'Do you want to display a floor underneath the 3d text?'];
 
 
 /** Pages */

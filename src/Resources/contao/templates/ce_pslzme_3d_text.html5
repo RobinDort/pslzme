@@ -16,6 +16,7 @@
         data-rotation-enabled="<?= $this->text3DTextRotation ? "true" : "false"; ?>"
         data-rotation-direction="<?= $this->text3DTextRotationDirection; ?>"
         data-draggable="<?= $this->text3DTextDraggable ? "true" : "false"; ?>"
+        data-floor-enabled="<?= $this->text3DFloorEnabled ? "true" : "false" ?>"
         data-debug-ui="<?= $this->textDebugUIEnabled ? "true" : "false"; ?>"
         data-camera-pos-x="<?= $this->text3DCameraPosX; ?>"
         data-camera-pos-x-tablet="<?= $this->text3DCameraPosXTablet ?? $this->text3DCameraPosXTablet ?>"

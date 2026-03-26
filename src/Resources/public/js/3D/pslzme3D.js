@@ -24,6 +24,7 @@ class Pslzme3DText {
 		this.rotationEnabled = toBool(data.dataRotationEnabled);
 		this.rotationDirection = data.dataRotationDirection === "Right" ? -1 : 1;
 		this.dataDraggable = toBool(data.dataDraggable);
+		this.dataFloorEnabled = toBool(data.dataFloorEnabled);
 		this.debugUIEnabled = data.dataDebugUiEnabled;
 
 		this.cameraPositionX = parseFloat(data.dataCameraPosX) || 0;
@@ -102,10 +103,12 @@ class Pslzme3DText {
 		});
 
 		// CREATE PLANE
-		const plane = new THREE.Mesh(new THREE.PlaneGeometry(10000, 10000), new THREE.MeshBasicMaterial({ color: 0xffffff, opacity: 0.8, transparent: true }));
-		plane.position.y = 100;
-		plane.rotation.x = -Math.PI / 2;
-		this.scene.add(plane);
+		if (this.dataFloorEnabled) {
+			const plane = new THREE.Mesh(new THREE.PlaneGeometry(10000, 10000), new THREE.MeshBasicMaterial({ color: 0xffffff, opacity: 0.8, transparent: true }));
+			plane.position.y = 100;
+			plane.rotation.x = -Math.PI / 2;
+			this.scene.add(plane);
+		}
 
 		// MOVING PARTICLE LIGHT
 		if (this.movingLight === true) {
@@ -271,6 +274,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const dataRotationEnabled = textElement.getAttribute("data-rotation-enabled");
 		const dataRotationDirection = textElement.getAttribute("data-rotation-direction");
 		const dataDraggable = textElement.getAttribute("data-draggable");
+		const dataFloorEnabled = textElement.getAttribute("data-floor-enabled");
 		const dataDebugUiEnabled = textElement.getAttribute("data-debug-ui");
 
 		const data = {
@@ -286,6 +290,7 @@ document.addEventListener("DOMContentLoaded", () => {
 			dataRotationEnabled,
 			dataRotationDirection,
 			dataDraggable,
+			dataFloorEnabled,
 			dataDebugUiEnabled,
 			dataCameraPosX: getResponsiveValue(textElement, "cameraPosX"),
 			dataCameraPosY: getResponsiveValue(textElement, "cameraPosY"),
