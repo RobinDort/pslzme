@@ -2,6 +2,7 @@
 namespace RobinDort\PslzmeLinks\Elements;
 
 use Contao\ContentElement;
+use Contao\ContentModel;
 
 /**
  * custom contao element that represents the main pslzme 3d text element that is used to show personalized messages.
