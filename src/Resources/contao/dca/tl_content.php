@@ -658,6 +658,14 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['pslzme_container_width'] = [
         'col-3',
         'col-9',
     ],
+    'reference' => [
+        'col-12' => $GLOBALS['TL_LANG']['pslzme_container_width']['col-12'],
+        'col-6' => $GLOBALS['TL_LANG']['pslzme_container_width']['col-6'],
+        'col-4' => $GLOBALS['TL_LANG']['pslzme_container_width']['col-4'],
+        'col-8' => $GLOBALS['TL_LANG']['pslzme_container_width']['col-8'],
+        'col-3' => $GLOBALS['TL_LANG']['pslzme_container_width']['col-3'],
+        'col-9' => $GLOBALS['TL_LANG']['pslzme_container_width']['col-9'],
+    ],
     'eval'      => ['mandatory'=>true, 'tl_class'=>'w50'],
     'sql'       => "varchar(16) NOT NULL default 'col-12'"
 ];

@@ -29,6 +29,7 @@ $GLOBALS['TL_LANG']['CTE']['pslzme_3d_text'] = ['Pslzme 3D Text', 'Personalisier
 $GLOBALS['TL_LANG']['CTE']['pslzme_content'] = ['Pslzme Content', 'Personalisierbares Content Element'];
 $GLOBALS['TL_LANG']['CTE']['pslzme_image'] = ['Pslzme Image', 'Personalisierbares Image Element'];
 $GLOBALS['TL_LANG']['CTE']['pslzme_marquee'] = ['Pslzme Marquee', 'Personalisierbares Marquee Element'];
+$GLOBALS['TL_LANG']['CTE']['pslzme_container'] = ['Pslzme Container', 'Container Element für pslzme Inhalte'];
 
 
 
