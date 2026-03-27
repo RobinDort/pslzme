@@ -14,11 +14,11 @@ class PslzmeTextElement extends ContentElement {
         $shouldRender = false;
 
         if ($varsSet) {
-            if (!empty($this->personalizedText) || ($this->showUnpersonalizedText && !empty($this->unpersonalizedText))) {
+            if (!empty($this->personalizedText) || ($this->showUnpersonalizedText === "1" && !empty($this->unpersonalizedText))) {
                 $shouldRender = true;
             }
         } else {
-            if ($this->showUnpersonalizedText && !empty($this->unpersonalizedText)) {
+            if ($this->showUnpersonalizedText === "1" && !empty($this->unpersonalizedText)) {
                 $shouldRender = true;
             }
         }
