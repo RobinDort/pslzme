@@ -9,13 +9,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 #[AsContentElement(
-    category: 'pslzme',
+    category: 'text',
     template: 'ce_pslzme_container',
     method: '__invoke',
     nestedFragments: true
 )]
-class PslzmeContainerController extends AbstractContentElementController
-{
+class PslzmeContainerController extends AbstractContentElementController {
     protected function getResponse(FragmentTemplate $template, ContentModel $model, Request $request): Response
     {
         $template->set('containerWidth', $model->pslzme_container_width);
