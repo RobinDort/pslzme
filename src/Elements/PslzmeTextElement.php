@@ -10,26 +10,38 @@ class PslzmeTextElement extends ContentElement {
 
     protected $strTemplate = 'ce_pslzme_text';
 
-    protected function compile() {
+
+    public function generate() {
+        $varsSet = $GLOBALS['decryptedVars']['varsSet'] ?? false;
+
+        $personalized   = $this->personalizedText;
+        $unpersonalized = $this->unpersonalizedText;
+        $showUnpersonalized = $this->showUnpersonalizedText === "1";
+
         $shouldRender = false;
 
-        if ($GLOBALS['decryptedVars']['varsSet'] === true) {
-            if (!empty($this->personalizedText) || ($this->showUnpersonalizedText === "1" && !empty($this->unpersonalizedText))) {
+        if ($varsSet) {
+            if (!empty($personalized) || ($showUnpersonalized && !empty($unpersonalized))) {
                 $shouldRender = true;
             }
         } else {
-            if ($this->showUnpersonalizedText === "1" && !empty($this->unpersonalizedText)) {
+            if ($showUnpersonalized && !empty($unpersonalized)) {
                 $shouldRender = true;
             }
         }
 
         if (!$shouldRender) {
-            // print nothing when the template should not render because nothing should be displayed
             return '';
         }
 
+        return parent::generate();
+    }
+
+
+    protected function compile() {
         $this->Template->personalizedText = $this->personalizedText;
         $this->Template->unpersonalizedText = $this->unpersonalizedText;
+        $this->Template->showUnpersonalizedText = $this->showUnpersonalizedText;
     }
 
 }
