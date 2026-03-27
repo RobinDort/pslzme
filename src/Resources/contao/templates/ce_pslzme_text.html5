@@ -2,8 +2,9 @@
 
 <?php $this->block('content'); ?>
 
-<?php if ($this->personalizedText && $GLOBALS['decryptedVars']['varsSet'] === true) :?>
+<?php if ($GLOBALS['decryptedVars']['varsSet'] === true) :?>
 
+<?php if( $this->personalizedText ): ?>	
 <!-- indexer::stop -->
 
 	<div class="ce_text block">
@@ -11,6 +12,13 @@
 	</div>
 	
 <!-- indexer::continue -->
+<?php else: ?>
+	<?php if ($this->showUnpersonalizedText && $this->showUnpersonalizedText === "1"): ?>
+		<div class="ce_text block">
+			<?= $this->unpersonalizedText ?>
+		</div>
+	<?php endif; ?>
+<?php endif; ?>
 
 <?php else :?>
 	<?php if ($this->showUnpersonalizedText && $this->showUnpersonalizedText === "1"): ?>
