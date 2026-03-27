@@ -24,9 +24,10 @@ class PslzmeTextElement extends ContentElement {
         }
 
         if (!$shouldRender) {
-            return;
+            // print nothing when the template should not render because nothing should be displayed
+            return '';
         }
-        
+
         $this->Template->personalizedText = $this->personalizedText;
         $this->Template->unpersonalizedText = $this->unpersonalizedText;
     }
