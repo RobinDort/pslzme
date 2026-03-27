@@ -641,4 +641,28 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['text3DfloorEnabled'] = [
     'default' => true,
     'sql' => "char(1) NOT NULL default '1'"
 ];
+
+/**
+ * Configuration for pslzme_container element
+ */
+
+$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_container'] = '{type_legend},type,headline;{container_legend};pslzme_container_width;{expert_legend:hide},cssID';
+
+$GLOBALS['TL_DCA']['tl_content']['fields']['pslzme_container_width'] = [
+    'inputType' => 'select',
+    'options'   => [
+        'col-12',
+        'col-6',
+        'col-4',
+        'col-8',
+        'col-3',
+        'col-9',
+    ],
+    'eval'      => ['mandatory'=>true, 'tl_class'=>'w50'],
+    'sql'       => "varchar(16) NOT NULL default 'col-12'"
+];
+
+// Allow child elements
+$GLOBALS['TL_DCA']['tl_content']['config']['ctable'][] = 'tl_content';
+
 ?>

@@ -1,0 +1,29 @@
+<?php
+namespace RobinDort\PslzmeLinks\Elements;
+
+use Contao\ContentElement;
+
+/**
+ * custom contao element that represents the main pslzme 3d text element that is used to show personalized messages.
+ */
+class PslzmeContainerElement extends ContentElement {
+    protected $strTemplate = 'ce_pslzme_container';
+
+    protected function compile() {
+        $this->Template->containerWidth = $this->pslzme_container_width;
+
+        // Fetch child elements
+        $this->Template->elements = $this->getChildElements();
+    }
+
+    protected function getChildElements() {
+        $children = \Contao\ContentModel::findBy(
+            ['ptable=?', 'pid=?'],
+            ['tl_content', $this->id]
+        );
+
+        return $children;
+    }
+}
+
+?>

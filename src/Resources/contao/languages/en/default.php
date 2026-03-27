@@ -117,6 +117,13 @@ $GLOBALS['TL_LANG']['tl_content']['text3DTextRotationDirection'] = ["Rotation Di
 $GLOBALS['TL_LANG']['tl_content']['text3DTextRotationDirection']['Left'] = 'Left';
 $GLOBALS['TL_LANG']['tl_content']['text3DTextRotationDirection']['Right'] = 'Right';
 $GLOBALS['TL_LANG']['tl_content']['text3DfloorEnabled'] = ['Display floor', 'Do you want to display a floor underneath the 3d text?'];
+$GLOBALS['TL_LANG']['tl_content']['pslzme_container_width'] = ["Container Width", 'Choose a width for the container'];
+$GLOBALS['TL_LANG']['tl_content']['pslzme_container_width']['col-12'] = "Full width (100%)";
+$GLOBALS['TL_LANG']['tl_content']['pslzme_container_width']['col-6'] = "Half width (50%)";
+$GLOBALS['TL_LANG']['tl_content']['pslzme_container_width']['col-4'] = "One third (33%)";
+$GLOBALS['TL_LANG']['tl_content']['pslzme_container_width']['col-8'] = "Two thirds (66%)";
+$GLOBALS['TL_LANG']['tl_content']['pslzme_container_width']['col-3'] = "One quarter (25%)";
+$GLOBALS['TL_LANG']['tl_content']['pslzme_container_width']['col-9'] = "Three quarters (75%)";
 
 
 /** Pages */
