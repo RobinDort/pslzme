@@ -120,12 +120,7 @@ $GLOBALS['TL_LANG']['tl_content']['text3DTextRotationDirection']['Left'] = 'Link
 $GLOBALS['TL_LANG']['tl_content']['text3DTextRotationDirection']['Right'] = 'Rechts';
 $GLOBALS['TL_LANG']['tl_content']['text3DfloorEnabled'] = ['Boden anzeigen', 'Möchten Sie unter dem 3D Text einen Boden anzeigen?'];
 $GLOBALS['TL_LANG']['tl_content']['pslzme_container_width'] = ["Container Breite", 'Wählen Sie eine Breite des Containers'];
-$GLOBALS['TL_LANG']['tl_content']['pslzme_container_width']['col-12'] = "Volle Breite (100%)";
-$GLOBALS['TL_LANG']['tl_content']['pslzme_container_width']['col-6'] = "Halbe Breite (50%)";
-$GLOBALS['TL_LANG']['tl_content']['pslzme_container_width']['col-4'] = "Ein Drittel (33%)";
-$GLOBALS['TL_LANG']['tl_content']['pslzme_container_width']['col-8'] = "Zwei Drittel (66%)";
-$GLOBALS['TL_LANG']['tl_content']['pslzme_container_width']['col-3'] = "Ein Viertel (25%)";
-$GLOBALS['TL_LANG']['tl_content']['pslzme_container_width']['col-9'] = "Drei Viertel (75%)";
+$GLOBALS['TL_LANG']['tl_content']['pslzme_container_width_options'] = ['col-12' => 'Volle Breite (100%)', 'col-6' => 'Halbe Breite (50%)', 'col-4' => 'Ein Drittel (33%)', 'col-8' => 'Zwei Drittel (66%)', 'col-3' => 'Ein Viertel (25%)', 'col-9' => 'Drei Viertel (75%)'];
 
 
 
