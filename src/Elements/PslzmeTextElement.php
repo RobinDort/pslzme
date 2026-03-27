@@ -13,7 +13,7 @@ class PslzmeTextElement extends ContentElement {
     protected function compile() {
         $shouldRender = false;
 
-        if ($varsSet) {
+        if ($GLOBALS['decryptedVars']['varsSet'] === true) {
             if (!empty($this->personalizedText) || ($this->showUnpersonalizedText === "1" && !empty($this->unpersonalizedText))) {
                 $shouldRender = true;
             }
