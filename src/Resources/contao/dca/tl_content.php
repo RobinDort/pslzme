@@ -642,27 +642,4 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['text3DfloorEnabled'] = [
     'sql' => "char(1) NOT NULL default '1'"
 ];
 
-/**
- * Configuration for pslzme_container element
- */
-
-$GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_container'] = '{type_legend},type,headline;{container_legend};pslzme_container_width;{expert_legend:hide},cssID';
-
-$GLOBALS['TL_DCA']['tl_content']['types']['pslzme_container'] = [ 'controller' => RobinDort\PslzmeLinks\Controller\ContentElement\PslzmeContainerController::class];
-
-$GLOBALS['TL_DCA']['tl_content']['fields']['pslzme_container_width'] = [
-    'inputType' => 'select',
-    'options'   => [
-        'col-12',
-        'col-6',
-        'col-4',
-        'col-8',
-        'col-3',
-        'col-9',
-    ],
-    'reference' => &$GLOBALS['TL_LANG']['tl_content']['pslzme_container_width_options'],
-    'eval'      => ['mandatory'=>true, 'tl_class'=>'w50'],
-    'sql'       => "varchar(16) NOT NULL default 'col-12'"
-];
-
 ?>
