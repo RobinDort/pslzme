@@ -13,7 +13,10 @@ class PslzmeContainerElement extends ContentElement {
         $this->Template->containerWidth = $this->pslzme_container_width;
 
         // Fetch child elements
-        $this->Template->elements = $this->getChildElements();
+       $this->Template->elements = ContentModel::findBy(
+            ['ptable=?'],
+            [$this->id]
+        );
     }
 
     protected function getChildElements() {
