@@ -5,6 +5,7 @@ use RobinDort\PslzmeLinks\Elements\Pslzme3DTextElement;
 use RobinDort\PslzmeLinks\Elements\PslzmeContentElement;
 use RobinDort\PslzmeLinks\Elements\PslzmeImageElement;
 use RobinDort\PslzmeLinks\Elements\PslzmeMarqueeElement;
+use RobinDort\PslzmeLinks\Elements\PslzmeContainerElement;
 use RobinDort\PslzmeLinks\EventListener\contao\InitialSetup;
 use RobinDort\PslzmeLinks\EventListener\contao\PslzmeInsertTag;
 use RobinDort\PslzmeLinks\Backend\PslzmeConfiguration;
@@ -43,6 +44,7 @@ $GLOBALS['TL_CTE']['pslzme']['pslzme_3d_text'] = Pslzme3DTextElement::class;
 $GLOBALS['TL_CTE']['pslzme']['pslzme_content'] = PslzmeContentElement::class;
 $GLOBALS['TL_CTE']['pslzme']['pslzme_image'] = PslzmeImageElement::class;
 $GLOBALS['TL_CTE']['pslzme']['pslzme_marquee'] = PslzmeMarqueeElement::class;
+$GLOBALS['TL_CTE']['pslzme']['pslzme_container'] = PslzmeContainerElement::class;
 
 
 
