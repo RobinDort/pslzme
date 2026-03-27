@@ -19,6 +19,7 @@ $GLOBALS['TL_CSS'][] = "bundles/robindortpslzmelinks/css/pslzme-cookie-caller.cs
 $GLOBALS['TL_CSS'][] = "bundles/robindortpslzmelinks/css/pslzme-configuration.css|static";
 $GLOBALS['TL_CSS'][] = "bundles/robindortpslzmelinks/css/pslzme-elements.css|static";
 $GLOBALS['TL_CSS'][] = "bundles/robindortpslzmelinks/css/pslzme-navigation.css|static";
+$GLOBALS['TL_CSS'][] = "bundles/robindortpslzmelinks/css/simple-grid.min.css|static";
 
 
 $GLOBALS['TL_JAVASCRIPT'][] = "bundles/robindortpslzmelinks/js/pslzme.min.js|static";
