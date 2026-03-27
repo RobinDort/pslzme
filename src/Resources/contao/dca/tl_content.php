@@ -663,7 +663,4 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['pslzme_container_width'] = [
     'sql'       => "varchar(16) NOT NULL default 'col-12'"
 ];
 
-// Allow child elements
-$GLOBALS['TL_DCA']['tl_content']['config']['ctable'][] = 'tl_content';
-
 ?>
