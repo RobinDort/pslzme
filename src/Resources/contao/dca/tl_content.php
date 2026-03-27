@@ -648,6 +648,8 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['text3DfloorEnabled'] = [
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['pslzme_container'] = '{type_legend},type,headline;{container_legend};pslzme_container_width;{expert_legend:hide},cssID';
 
+$GLOBALS['TL_DCA']['tl_content']['types']['pslzme_container'] = [ 'controller' => RobinDort\PslzmeLinks\Controller\ContentElement\PslzmeContainerController::class];
+
 $GLOBALS['TL_DCA']['tl_content']['fields']['pslzme_container_width'] = [
     'inputType' => 'select',
     'options'   => [
